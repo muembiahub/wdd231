@@ -1,7 +1,10 @@
 header {
   display: grid;
   grid-template-columns: 24px auto 44px;
+  background-color: #f8f9fa;
+  padding: 30px;
 }
+
 /* ...existing code... */
 .hamburger {
   width: 30px;
@@ -26,13 +29,13 @@ header {
 .hidden.show {
   display: block;
 }
-.active {
+.current {
   display: flex;
   justify-content: start;
-  gap: 20rem;
+  gap: 10rem;
   list-style: none;
 }
-.active a {
+.current a {
   text-decoration: none;
 }
 header img {
@@ -56,10 +59,7 @@ header img {
     flex-direction: row;
   }
 }
-header {
-  background-color: #f8f9fa;
-  padding: 30px;
-}
+
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
@@ -76,14 +76,46 @@ main {
 main h1 {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: #4502c9;
+  color: #e108ae;
   text-align: center;
 }
 footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #f8f9fa;
   padding: 20px;
   text-align: center;
   font-size: 0.9rem;
   color: #6c757d;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1) /* Optional shadow for footer */;
+}
+footer p {
+  margin: 5px 0;
+}
+footer a {
+  color: #007bff;
+  text-decoration: none;
+}
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+  color: #0056b3;
+
+}
+footer .social-media {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+.last-modified {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: #6c757d;
+  text-align: center;
+  border-top: #007bff 1px solid;
 }
