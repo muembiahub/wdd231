@@ -2,12 +2,24 @@ header {
   display: grid;
   grid-template-columns: 24px auto 44px;
 }
-.hamburger::before {
-  content: "\2630";
+/* ...existing code... */
+.hamburger {
+  width: 30px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
 }
-.hamburger.show::before {
-  content: "\00D7";
+.hamburger span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: #333;
+  border-radius: 2px;
+  transition: 0.3s;
 }
+
 .hidden {
   display: none;
 }
@@ -43,4 +55,35 @@ header img {
   .container {
     flex-direction: row;
   }
+}
+header {
+  background-color: #f8f9fa;
+  padding: 30px;
+}
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+main {
+  padding: 20px;
+  background-color: #ffffff;
+  margin: 20px auto;
+  max-width: 800px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+main h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #4502c9;
+  text-align: center;
+}
+footer {
+  background-color: #f8f9fa;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #6c757d;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1) /* Optional shadow for footer */;
 }
