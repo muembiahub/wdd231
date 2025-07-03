@@ -4,8 +4,36 @@ header {
   background-color: #f8f9fa;
   padding: 30px;
 }
+.profile {
+      position: relative;
+      padding: 30px;
 
-/* ...existing code... */
+    }
+    .profile  img {
+      width: 100px;
+      height: auto;
+    }
+    profile p {
+      max-width: 200px;
+    }
+
+.profile,
+.about,
+.services,
+.contact {
+  padding: 30px;
+  border: #007bff 2px solid;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+.about,
+.services,
+.contact {
+  background-color: #f0f0f0;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
 .hamburger {
   width: 30px;
   height: 24px;
