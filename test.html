@@ -3,22 +3,44 @@
     <head> 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="A simple test page to demonstrate HTML structure and linking external resources.">
+        <meta name="author" content="Jonathan M. Muembia">   
+        <meta name="keywords" content="HTML, test page, example, structure">
+        <meta name="robots" content="index, follow">
         <title>Document</title>
         <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" href="style.css">
-        <script src="script.js" defer></script>
+        <link rel="stylesheet" href="styles/test.css">
+        <script src="scripts/test.js" defer></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </head>
+    <body>
     <header>
-        <h1>Test Page</h1>
-        <p>This is a test page to demonstrate HTML structure.</p>
-        <nav>
-            <ul>
-                <li><a href="#section1">Section 1</a></li>
-                <li><a href="#section2">Section 2</a></li>
-                <li><a href="#section3">Section 3</a></li>
+        <img src="images/city-solid.svg" alt="Site Logo" width="1" height="1">
+        <span>Lubumbashi Rise Academy</span>
+        <button id="nav-button" class="humburger" aria-label="navigation"></button>
+    </header>
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-microsoft-teams" viewBox="0 0 16 16">
+        <path d="M.682 3.349h6.822c.377 0 .682.305.682.682v6.822a.68.68 0 0 1-.682.682H.682A.68.68 0 0 1 0 10.853V4.03c0-.377.305-.682.682-.682Zm5.206 2.596v-.72h-3.59v.72h1.357V9.66h.87V5.945z"/>
+        </svg>
+        <nav id="nav-menu" class="hidden">
+            <ul class="current">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
             </ul>
         </nav>
-    </header>
-
+    <main>
+        <h1>Welcome to My Test Page</h1>
+    </main>
+    <footer>
+        <p>&copy; 2023 Jonathan M. Muembia</p>
+        <p>Follow me on 
+            <a href="https://twitter.com/yourprofile">Twitter</a> and 
+            <a href="https://github.com/yourprofile">GitHub</a>
+        </p>
+    </footer>
+    </body>
 </html>
