@@ -1,0 +1,46 @@
+header {
+  display: grid;
+  grid-template-columns: 24px auto 44px;
+}
+.hamburger::before {
+  content: "\2630";
+}
+.hamburger.show::before {
+  content: "\00D7";
+}
+.hidden {
+  display: none;
+}
+.hidden.show {
+  display: block;
+}
+.active {
+  display: flex;
+  justify-content: start;
+  gap: 20rem;
+  list-style: none;
+}
+.active a {
+  text-decoration: none;
+}
+header img {
+  width: 20px;
+  height: auto;
+  display: block;
+  /* Optional enhancements */
+  margin-right: 1rem;
+  
+}
+/* For small screens (mobile) */
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+/* For medium and large screens */
+@media (min-width: 601px) {
+  .container {
+    flex-direction: row;
+  }
+}
