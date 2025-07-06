@@ -3,71 +3,85 @@
     <head> 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="This is a test page for Lubumbashi Rise Academy, showcasing the structure and content of the site.">
-        <meta name="author" content="Jonathan M. Muembia">   
-        <meta name="keywords" content="Lubumbashi Rise Academy, education, web development, Jonathan M. Muembia, web design, tutoring, workshops, community outreach">
-        <meta name="robots" content="index, follow">
+        <meta name="description" content="Home page of Lubumbashi Rise Academy. A place for learning and growth.">
+        <meta name="author" content="Jonathan M. Muembia">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <title>Lubumbashi Rise Academy</title>
         <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" href="styles/index-large.css">
-        <link rel="stylesheet" href="styles/index-small.css">
+        <link rel="stylesheet" href="styles/index.css">
         <link rel="stylesheet" href="styles/normalize.css">
         <script src="scripts/index.js" defer></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </head>
-    <body>
-    <header>
-        <img src="images/city-solid.svg" alt="Site Logo" width="1" height="1">
+     <header>
+        <div class="header-content">
+        <div class="logo-title">
+        <img src="images/city-solid.svg" alt="Site Logo">
         <span>Lubumbashi Rise Academy</span>
-        <div id="nav-button" class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
         </div>
-        <nav id="nav-menu" class="hidden">
-            <ul class="current">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">Chamber</a></li>
-                <li><a href="contact.html">Final</a></li>
+        <button id="menu-button" class="hamburger" aria-controls="main-nav" aria-expanded="false" aria-label="Open main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+        </button>
+        </div>
+       <nav id="main-nav" role="navigation" aria-label="Main menu">
+            <ul class="nav-list">
+                <li><a href="index.html" aria-current="page">Home</a></li>
+                <li><a href="chamber-project.html">Chamber Project</a></li>
+                <li><a href="final-project.html">Final Project</a></li>
+                <li><a href="about.html">About</a></li>
             </ul>
         </nav>
-         </header>
+</header>
     <main>
-        <section class="profile">
-            <h1>Welcome to Lubumbashi Rise Academy</h1>
-            <img src="images/profile.jpeg" alt="Profile Picture" width="150" height="150">
-            <p>Jonathan M. Muembia Web Developer and Designer</p>
+         <h1>Home</h1>
+        <div class="content-section">
+        <section class="about-me">
+            <h2>Welcome to Lubumbashi Rise Academy</h2>
+            <p>We are dedicated to providing quality education and resources for students in Lubumbashi.</p>
+            <p>Our mission is to empower learners with the skills and knowledge they need to succeed in today's world.</p>
+            <p>Explore our courses, connect with fellow students, and take your learning to the next level.</p>
+            <p>Join us in our journey towards excellence in education.</p>
+            <p>For more information, visit our <a href="https://www.lubumbashiriseacademy.com">website</a>.</p>
         </section>
-        <section class="about">
-            <h2>About Lubumbashi Rise Academy</h2>
-            <img src="images/lubumbashi.webp" alt="Lubumbashi Rise Academy" width="300" height="250">
-            <p>Lubumbashi Rise Academy is dedicated to providing quality education and resources to students in the Lubumbashi region. Our mission is to empower students through innovative teaching methods and a supportive learning environment.</p>
-            <p>We offer a range of services including tutoring, workshops, and community outreach programs. Our team is committed to helping students achieve their academic goals and develop essential skills for their future careers.</p>
-            <p>For more information about our programs and how to get involved, please visit our website or contact us directly.</p>
+        <section class="student-profile">
+            <h2>Student Profile</h2>
+            <p>Manage your profile information, track your progress, and access personalized resources.</p>
+
+            <div class="profile-info">
+                <img src="images/profile.jpeg" alt="Profile Picture" class="profile-picture">
+                <div class="profile-details">
+                    <h3>Jonathan M. Muembia</h3>
+                        <p>Web Developer and Designer</p>
+                        <p>Email: jonathanmuembia3@gmail.com</p>
+                    </div>
+            </div>
+        </div>
         </section>
-        <section class="services">
-            <h2>Our Services</h2>
-            <p>At Lubumbashi Rise Academy, we offer a variety of services to support students in their educational journey:</p>
-            <ul>
-                <li>Tutoring in various subjects</li>
-                <li>Workshops on study skills and time management</li>
-                <li>Community outreach programs</li>
-                <li>Career counseling and guidance</li>
+        <section class="courses">
+            <h2>Web Certificate Courses</h2>
+            <div id="course-buttons" class="course-buttons">
+                <button id="all-courses" class="course-button">All </button>
+                <button id="wdd-courses" class="course-button">WDD </button>
+                <button id="cse-courses" class="course-button">CSE </button>
+                
+            </div>
+            <ul id="courses-list" class="course-list">
+                <!-- Course items will be dynamically inserted here -->
+                <!-- Course items will be rendered here by index.js -->
             </ul>
-            <p>We believe in providing personalized support to help each student succeed.</p>
-        </section>
-        <section class="contact">
-            <h2>Contact Us</h2>
-            <p>If you have any questions or inquiries, please feel free to reach out to us through the contact form on our website.</p>
-            <p>This is a simple test page to show how Lubumbashi Rise Academy operates. So stay tuned for more updates!</p>
-            <p>Check out the <a href="https://www.lubumbashiriseacademy.com">Lubumbashi Rise Academy website</a> for more information.</p>
-            <p>For more details, you can also visit the <a href="https://www.lubumbashiriseacademy.com/about">About page</a>.</p>
-        </section>
-    </main>
+            <div id="courses-status" class="courses-completed">
+                <span>Courses Completed: </span><span id="completed-courses">0</span><br>
+                <span>Courses Not Completed: </span><span  id="not-completed-courses">0</span><br>
+            
+                <span>Total Credits for The Courses Selected is <span id="filtered-total-credits-value">0</span></span>
+            </div>               
+           </section>
+    </main>    
     <footer>
         <p>Follow us on our social media channels for updates and news.</p>
         <div class="social-media">
@@ -78,7 +92,7 @@
            <img src="images/microsoft-teams.svg" alt="Microsoft Teams" width="16" height="16"> <a href="https://teams.microsoft.com" target="_blank">Microsoft Teams</a>
         </div>
         <div class="copyright">
-        <p>Created by <a href="https://www.linkedin.com/in/jonathan-muembia-123456789">Jonathan M. Muembia.</a> This site is not affiliated with True Lubumbashi Rise Academy but we are working to support its mission and vision.The Author of this site is a web developer and designer but not currently at Lubumbashi Rise Academy.</p>
+        <p>Created by <a href="https://www.linkedin.com/in/jonathan-muembia-123456789">Jonathan M. Muembia.</a> This site is not affiliated with  Lubumbashi Rise Academy but we are working to support its mission and vision.The Author of this site is a web developer and designer but not currently at Lubumbashi Rise Academy.</p>
         <p>Powered by <a href="https://www.linkedin.com/in/jonathan-muembia-123456789">Jonathan M. Muembia. </a>Who is a web developer and designer at Lubumbashi Rise Academy. With desire to learn, grow and help others.</p>
     
         <p>For more information, visit our <a href="https://www.lubumbashiriseacademy.com">website</a>.</p>
