@@ -10,6 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// 
+
+
+
+// This script manages the course list and dynamically updates the UI based on user interactions.
 
 const courses = [
     {

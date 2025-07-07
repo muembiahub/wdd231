@@ -1,0 +1,137 @@
+{
+  "ward-members-information": {
+    "ward": "Ward 1",
+    "families": [
+      {
+        "family name": "Muembia",
+        "family details": {
+          "date moved in": "2023-01-15",
+          "number of people": 4,
+          "visited by bishopric": true,
+          "individual members": [
+            {
+              "name": "John Muembia",
+              "gender": "Male",
+              "birthdate": "1980-05-15"
+            },
+            {
+              "name": "Jane Muembia",
+              "gender": "Female",
+              "birthdate": "1985-08-25"
+            }
+          ]
+        }
+      },
+      {
+        "family name": "Doe",
+        "family details": {
+          "date moved in": "2022-06-01",
+          "number of people": 3,
+          "visited by bishopric": false,
+          "individual members": [
+            {
+              "name": "John Doe",
+              "gender": "Male",
+              "birthdate": "1990-01-01"
+            },
+            {
+              "name": "Jane Doe",
+              "gender": "Female",
+              "birthdate": "1992-02-02"
+            },
+            {
+              "name": "Jim Doe",
+              "gender": "Male",
+              "birthdate": "1995-03-15"
+            }
+          ]
+        }
+      },
+      {
+        "family name": "Smith",
+        "family details": {
+          "date moved in": "2021-03-10",
+          "number of people": 5,
+          "visited by bishopric": true,
+          "individual members": [
+            {
+              "name": "Alice Smith",
+              "gender": "Female",
+              "birthdate": "1995-05-05"
+            },
+            {
+              "name": "Bob Smith",
+              "gender": "Male",
+              "birthdate": "1990-10-10"
+            },
+            {
+              "name": "Charlie Smith",
+              "gender": "Male",
+              "birthdate": "1988-12-12"
+            },
+            {
+              "name": "Diana Smith",
+              "gender": "Female",
+              "birthdate": "1992-03-03"
+            },
+            {
+              "name": "Ethan Smith",
+              "gender": "Male",
+              "birthdate": "1985-07-07"
+            }
+          ]
+        }
+      }
+    
+    ]
+
+  },
+  "ward": "Ward 2",
+  "families": [
+      {
+      "family name": "Johnson",
+      "family details": {
+            "date moved in": "2023-02-20",
+            "number of people": 1,
+            "visited by bishopric": true,
+            "individual members": [
+            {
+                "name": "Michael Johnson",
+                "gender": "Male",
+                "birthdate": "1995-05-15"
+            }
+        ]
+    }
+    },
+    {
+      "family name": "Williams",
+      "family details": {
+            "date moved in": "2022-07-10",
+            "number of people": 4,
+            "visited by bishopric": false,
+            "individual members": [
+            {
+                "name": "David Williams",
+                "gender": "Male",
+                "birthdate": "1990-01-01"
+            },
+            {
+                "name": "Sarah Williams",
+                "gender": "Female",
+                "birthdate": "1992-02-02"
+            },
+            {
+                "name": "Emily Williams",
+                "gender": "Female",
+                "birthdate": "1995-03-03"
+            },
+            {
+                "name": "James Williams",
+                "gender": "Male",
+                "birthdate": "1998-04-04"
+            }
+        ]
+    }
+}
+  ]
+}
