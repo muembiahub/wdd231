@@ -1,0 +1,85 @@
+[
+        {
+            "name": "Springboard Tech Solutions",
+            "address": "123 Business Ave, Suite 100, Cityville, ST 12345",
+            "phone": "(123) 456-7890",
+            "website": "https://www.springboardtech.com",
+            "membershipLevel": "Gold",
+            "description": "Springboard Tech Solutions provides innovative tech solutions for businesses of all sizes.",
+            "logo": "images/springboard-tech-logo.png",
+            "location": "United States, California, Cityville"
+        },
+        {
+            "name": "Tech Innovators Inc.",
+            "address": "456 Tech Lane, Silicon Valley, CA 94043",
+            "phone": "(987) 654-3210",
+            "website": "https://www.techinnovators.com",
+            "membershipLevel": "Platinum",
+            "description": "Leading the way in technology solutions and innovation.",
+            "logo": "images/tech-innovators-logo.png",
+            "location": "United States, California, Silicon Valley"
+        },
+        {
+            "name": "Green Energy Solutions",
+            "address": "789 Eco St, Green City, CA 90210",
+            "phone": "(555) 123-4567",
+            "website": "https://www.greenenergysolutions.com",
+            "membershipLevel": "Silver",
+            "description": "Committed to providing sustainable energy solutions for a greener future.",
+            "logo": "images/green-energy-logo.png",
+            "location": "United States, Utah, Green City"
+        },
+        {
+            "name": "Global Marketing Agency",
+            "address": "321 Market St, Suite 200, Metropolis, NY 10001",
+            "phone": "(111) 222-3333",
+            "website": "https://www.globalmarketingagency.com",
+            "membershipLevel": "Gold",
+            "description": "Your partner in global marketing strategies and campaigns.",
+            "logo": "images/global-marketing-logo.png",
+            "location": "United States, Salt Lake City, Utah"
+        },
+        {
+            "name": "HealthTech Innovations",
+            "address": "654 Health Blvd, Wellness City, TX 73301",
+            "phone": "(444) 555-6666",
+            "website": "https://www.healthtechinnovations.com",
+            "membershipLevel": "Platinum",
+            "description": "Transforming healthcare with cutting-edge technology solutions.",
+            "logo": "images/healthtech-innovations-logo.png",
+            "location": "United States, Texas, Austin"
+        }
+        ,
+        {
+            "name": "EduTech Solutions",
+            "address": "987 Learning Lane, Education City, FL 33101",
+            "phone": "(777) 888-9999",
+            "website": "https://www.edutechsolutions.com",
+            "membershipLevel": "Silver",
+            "description": "Empowering education through innovative technology solutions.",
+            "logo": "images/edutech-solutions-logo.png",
+            "location": "United States, Arizona, Phoenix"
+        }
+        ,
+        {
+            "name": "FinTech Innovations",
+            "address": "159 Finance St, Suite 300, Finance City, IL 60601",
+            "phone": "(222) 333-4444",
+            "website": "https://www.fintechinnovations.com",
+            "membershipLevel": "Gold",
+            "description": "Revolutionizing the financial industry with innovative technology solutions.",
+            "logo": "images/fintech-innovations-logo.png",
+            "location": "United States, Illinois, Chicago"
+        }
+        ,
+        {
+            "name": "Smart Home Solutions",
+            "address": "753 Smart St, Smart City, WA 98001",
+            "phone": "(333) 444-5555",
+            "website": "https://www.smarthomesolutions.com",
+            "membershipLevel": "Platinum",
+            "description": "Bringing the future of smart living to your home.",
+            "logo": "images/smart-home-solutions-logo.png",
+            "location": "United States, Washington, Seattle"
+        }
+]

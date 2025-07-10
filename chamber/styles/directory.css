@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #dec1c1;
+  }
+  /* En-tête */
+  header {
+    background: #a47474;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  /* Logo et menu */
+  .logo-title {
+    display: flex;
+    align-items: center;
+  }
+  .logo {
+    width: 40px;
+    height: 40px;
+    background: #999;
+    margin-right: 10px;
+  }
+  /* Navigation */
+  nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #000;
+  }
+  /* Hero section */
+  .hero {
+    background: #5265a8;
+    padding: 20px;
+    border: 1px solid #bbb;
+    color: #e8e3e3;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.100);
+  }
+  /* Main content */
+
+  .directory-content{
+    display: flex;
+    padding: 30px;
+   
+  }
+  .news,.weather,.world-time-zone {
+    margin-right: 20px;
+    padding: 5px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    
+  }
+
+  .weather,.world-time-zone{
+    width: 300px;
+    height: 300px;
+  }
+
+  .members {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 5px;
+  padding: 1px;
+  background-color: #d4d4d4;
+  border-radius: 10px;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+.member-card h2,.directory-content h2 {
+  text-align: center;
+  border: #999 1px solid;
+  background-color: rgb(51, 49, 49);
+}
+
+.member-card{
+  background-color: #ccc;
+  border: 2px solid #0e0d0d;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1px;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 1px;
+  font-size: 0.8em;
+}
+
+.resume {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 20px;
+    padding: 20px;
+  }
+  
+.member-card:hover,.directory-content:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.member-card img {
+  display: block;
+  margin-top: 8px;
+}
+
+
+
+
+
+
+  /* Footer */
+  footer {
+    background: #a47474;
+    padding: 10px;
+    box-shadow: #999 10px 0px 10px;
+    border-top: #e10101 solid 2px;
+  }
+  /* Contact info & Social icons */
+  .footer-content {
+    display: flex;
+    padding: 10px;
+  }
+
+  .social-icons,.addresse,.copyright {
+    margin-right: 70px;
+    flex: 2;
+    padding: 10px;
+  }
+  .social-icons img {
+    width: 32px;
+    height: 32px;
+    margin-right: 30px;
+  }
