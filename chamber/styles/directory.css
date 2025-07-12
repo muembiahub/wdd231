@@ -111,32 +111,28 @@ nav a {
 	padding: 0.5rem;
 	background-color: #333;
 	text-align: center;
-
-	button {
+}
+button {
 		padding: 0.5rem 1rem;
 		font-weight: 700;
 	}
-}
 .grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	grid-gap: 10px;
 	align-items: center;
   border: 1px solid #fff;
+   }
 
 	.card {
 		text-align: center;
     border: 2px solid #555;
-		& > * {
-			margin: 0.1rem;
-		}
 	}
 
 	img {
 		border: 1px solid #fff;
 		box-shadow: 0 0 1rem #555;
 	}
-}
 
 h3 {
 	font-size: 1.2rem;
@@ -145,14 +141,14 @@ h3 {
 .list {
 	display: flex;
 	flex-direction: column;
+  padding: 10px;
+   }
+  
 
 	.card {
 		display: grid;
-		grid-template-columns: 2fr 1fr 1fr;
-
-		& > * {
-			margin: 0 1rem;
-		}
+		grid-template-columns: 0fr 1fr 1fr;
+   }
 
 		img {
 			display: flex;
@@ -165,11 +161,9 @@ h3 {
 		&:nth-child(even) {
 			background-color: #bbb;
 		}
-	}
-}
 
 img {
-	width: 100px;
+	width: 60px;
 	height: 50px;
 }
 
@@ -296,14 +290,16 @@ img {
   .list {
 	display: flex;
 	flex-direction: column;
+    }
 
 
 	.card {
 		display: grid;
-		grid-template-columns: 2fr 1fr 1fr;
+    grid-column: span;
     border: 1px solid  #000;
+  
     }
- }
+ 
    
    .footer-content {
     flex-direction: column; /* Small screens: column */
@@ -365,15 +361,6 @@ img {
   }
   .directory-content,.members {
     padding: 1px;
-  }
-  .member-card {
-    font-size: 1.5em;
-    padding: 1px;
-  }
-  .member-card img {
-    width: 50px;
-    height: 50px;
-    text-align: center;
   }
   .logo-title img {
     width: 18px;
