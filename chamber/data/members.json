@@ -1,85 +1,124 @@
 [
-        {
-            "name": "Springboard Tech Solutions",
-            "address": "123 Business Ave, Suite 100, Cityville, ST 12345",
-            "phone": "(123) 456-7890",
-            "website": "https://www.springboardtech.com",
-            "membershipLevel": "Gold",
-            "description": "Springboard Tech Solutions provides innovative tech solutions for businesses of all sizes.",
-            "logo": "images/springboard-tech-logo.png",
-            "location": "United States, California, Cityville"
-        },
-        {
-            "name": "Tech Innovators Inc.",
-            "address": "456 Tech Lane, Silicon Valley, CA 94043",
-            "phone": "(987) 654-3210",
-            "website": "https://www.techinnovators.com",
-            "membershipLevel": "Platinum",
-            "description": "Leading the way in technology solutions and innovation.",
-            "logo": "images/tech-innovators-logo.png",
-            "location": "United States, California, Silicon Valley"
-        },
-        {
-            "name": "Green Energy Solutions",
-            "address": "789 Eco St, Green City, CA 90210",
-            "phone": "(555) 123-4567",
-            "website": "https://www.greenenergysolutions.com",
-            "membershipLevel": "Silver",
-            "description": "Committed to providing sustainable energy solutions for a greener future.",
-            "logo": "images/green-energy-logo.png",
-            "location": "United States, Utah, Green City"
-        },
-        {
-            "name": "Global Marketing Agency",
-            "address": "321 Market St, Suite 200, Metropolis, NY 10001",
-            "phone": "(111) 222-3333",
-            "website": "https://www.globalmarketingagency.com",
-            "membershipLevel": "Gold",
-            "description": "Your partner in global marketing strategies and campaigns.",
-            "logo": "images/global-marketing-logo.png",
-            "location": "United States, Salt Lake City, Utah"
-        },
-        {
-            "name": "HealthTech Innovations",
-            "address": "654 Health Blvd, Wellness City, TX 73301",
-            "phone": "(444) 555-6666",
-            "website": "https://www.healthtechinnovations.com",
-            "membershipLevel": "Platinum",
-            "description": "Transforming healthcare with cutting-edge technology solutions.",
-            "logo": "images/healthtech-innovations-logo.png",
-            "location": "United States, Texas, Austin"
-        }
-        ,
-        {
-            "name": "EduTech Solutions",
-            "address": "987 Learning Lane, Education City, FL 33101",
-            "phone": "(777) 888-9999",
-            "website": "https://www.edutechsolutions.com",
-            "membershipLevel": "Silver",
-            "description": "Empowering education through innovative technology solutions.",
-            "logo": "images/edutech-solutions-logo.png",
-            "location": "United States, Arizona, Phoenix"
-        }
-        ,
-        {
-            "name": "FinTech Innovations",
-            "address": "159 Finance St, Suite 300, Finance City, IL 60601",
-            "phone": "(222) 333-4444",
-            "website": "https://www.fintechinnovations.com",
-            "membershipLevel": "Gold",
-            "description": "Revolutionizing the financial industry with innovative technology solutions.",
-            "logo": "images/fintech-innovations-logo.png",
-            "location": "United States, Illinois, Chicago"
-        }
-        ,
-        {
-            "name": "Smart Home Solutions",
-            "address": "753 Smart St, Smart City, WA 98001",
-            "phone": "(333) 444-5555",
-            "website": "https://www.smarthomesolutions.com",
-            "membershipLevel": "Platinum",
-            "description": "Bringing the future of smart living to your home.",
-            "logo": "images/smart-home-solutions-logo.png",
-            "location": "United States, Washington, Seattle"
-        }
+    {
+        "name": "Apple Inc.",
+        "address": "One Apple Park Way, Cupertino, CA 95014",
+        "phone": "(408) 996–1010",
+        "website": "https://www.apple.com",
+        "membershipLevel": "Platinum",
+        "description": "Apple designs and manufactures consumer electronics, software, and online services.",
+        "logo": "https://www.apple.com/ac/structured-data/images/knowledge_graph_logo.png",
+        "location": "United States, California, Cupertino"
+    },
+    {
+        "name": "Google LLC",
+        "address": "1600 Amphitheatre Parkway, Mountain View, CA 94043",
+        "phone": "(650) 253-0000",
+        "website": "https://www.google.com",
+        "membershipLevel": "Platinum",
+        "description": "Google specializes in Internet-related services and products.",
+        "logo": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png",
+        "location": "United States, California, Mountain View"
+    },
+    {
+        "name": "Microsoft Corporation",
+        "address": "One Microsoft Way, Redmond, WA 98052",
+        "phone": "(425) 882-8080",
+        "website": "https://www.microsoft.com",
+        "membershipLevel": "Gold",
+        "description": "Microsoft develops, licenses, and supports software, services, devices, and solutions.",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+        "location": "United States, Washington, Redmond"
+    },
+    {
+        "name": "Amazon.com, Inc.",
+        "address": "410 Terry Ave N, Seattle, WA 98109",
+        "phone": "(206) 266-1000",
+        "website": "https://www.amazon.com",
+        "membershipLevel": "Gold",
+        "description": "Amazon is a multinational technology company focusing on e-commerce, cloud computing, and AI.",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+        "location": "United States, Washington, Seattle"
+    },
+    {
+        "name": "Meta Platforms, Inc.",
+        "address": "1 Hacker Way, Menlo Park, CA 94025",
+        "phone": "(650) 543-4800",
+        "website": "https://www.meta.com",
+        "membershipLevel": "Silver",
+        "description": "Meta builds technologies that help people connect, find communities, and grow businesses.",
+        "logo": "https://logos-world.net/wp-content/uploads/2021/11/Meta-Logo-700x394.png",
+        "location": "United States, California, Menlo Park"
+    },
+    {
+        "name": "Samsung Electronics",
+        "address": "129 Samsung-ro, Yeongtong-gu, Suwon-si, Gyeonggi-do, South Korea",
+        "phone": "+82 2-2255-0114",
+        "website": "https://www.samsung.com",
+        "membershipLevel": "Silver",
+        "description": "Samsung is a South Korean multinational electronics company.",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg",
+        "location": "South Korea, Gyeonggi-do, Suwon-si"
+    },
+    {
+        "name": "LG  Electronics",
+        "address": "1-7-1 Konan, Minato-ku, Tokyo 108-0075, Japan",
+        "phone": "+81 3-6748-2111",
+        "website": "https://www.lg.com",
+        "membershipLevel": "Silver",
+        "description": "LG Electronics is a South Korean multinational electronics company.",
+        "logo": "https://www.logo.wine/a/logo/WebOS/WebOS-Logo.wine.svg",
+        "location": "Japan, Tokyo, Minato-ku"
+    },
+    {
+        "name": "Tesla, Inc.",
+        "address": "3500 Deer Creek Road, Palo Alto, CA 94304",
+        "phone": "(650) 681-5000",
+        "website": "https://www.tesla.com",
+        "membershipLevel": "Silver",
+        "description": "Tesla designs and manufactures electric vehicles and renewable energy products.",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png",
+        "location": "United States, California, Palo Alto"
+    },
+    {
+        "name": "Netflix, Inc.",
+        "address": "100 Winchester Circle, Los Gatos, CA 95032",
+        "phone": "(408) 540-3700",
+        "website": "https://www.netflix.com",
+        "membershipLevel": "Bronze",
+        "description": "Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more.",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg",
+        "location": "United States, California, Los Gatos"
+    },
+    {
+    
+        "name": "canal+",
+        "address": "123 Canal Street, Canal City, CC 12345",
+        "phone": "(123) 456-7890",
+        "website": "https://www.canalplus.com",
+        "membershipLevel": "Silver",
+        "description": "canal+ is dedicated to providing authentic solutions for modern businesses.",
+        "logo": "https://1000logos.net/wp-content/uploads/2023/03/Canal-Logo.png",
+        "location": "United States, Canal State, Canal City"
+    },
+  
+    {
+        "name": "IBM Corporation",
+        "address": "1 New Orchard Road, Armonk, NY 10504",
+        "phone": "(914) 499-1900",
+        "website": "https://www.ibm.com",
+        "membershipLevel": "Bronze",
+        "description": "IBM is a multinational technology and consulting company.",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
+        "location": "United States, New York, Armonk"
+    },
+    {
+        "name": "Oracle Corporation",
+        "address": "500 Oracle Parkway, Redwood Shores, CA 94065",
+        "phone": "(650) 506-7000",
+        "website": "https://www.oracle.com",
+        "membershipLevel": "Bronze",
+        "description": "Oracle provides database software and technology, cloud-engineered systems, and enterprise software products.",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg",
+        "location": "United States, California, Redwood Shores"
+    }
 ]

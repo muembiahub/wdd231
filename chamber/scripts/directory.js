@@ -1,42 +1,53 @@
-// this script populates the json data for the directory page.
-// It uses the Fetch API to retrieve data from a JSON file and dynamically generates HTML content.
-async function fetchMembers() {
-  try {
-    const response = await fetch('data/members.json'); 
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
+document.addEventListener('DOMContentLoaded', () => {
+  const menuButton = document.getElementById('menu-button');
+  const navList = document.querySelector('.nav-list');
+  menuButton.addEventListener('click', () => {
+    navList.classList.toggle('active');
+    menuButton.setAttribute(
+      'aria-expanded',
+      navList.classList.contains('active') ? 'true' : 'false'
+    );
+  });
+});
+const gridBtn = document.getElementById("grid");
+const listBtn = document.getElementById("list");
+const container = document.getElementById("companies");
 
-    const members = await response.json();
-    displayMembers(members);
-  } catch (error) {
-    console.error('Error fetching members:', error);
+async function fetchCompanies() {
+  try {
+    const response = await fetch("data/members.json"); // Adjust path if needed
+    if (!response.ok) throw new Error("Network error");
+    const companies = await response.json();
+    displayCompanies(companies);
+  } catch (err) {
+    console.error("Fetch error:", err);
   }
 }
 
-function displayMembers(data) {
-  const container = document.querySelector('.members');
-  container.innerHTML = ''; // Clear any previous content
-
-  data.forEach(member => {
-    const memberElement = document.createElement('div');
-    // add class to the member element 
-    memberElement.classList.add('member-card');
-    memberElement.innerHTML = `
-      <h2>${member.name}</h2>
-      <p><strong>Address:</strong> ${member.address}</p>
-      <p><strong>Phone:</strong> ${member.phone}</p>
-      <p><strong>Website:</strong> <a href="${member.website}" target="_blank">${member.website}</a></p>
-      <p><strong>Membership Level:</strong> ${member.membershipLevel}</p>
-      <p><strong>Description:</strong> ${member.description}</p>
-      <p><strong>Logo:</strong> <img src="${member.logo}" alt="${member.name} logo" style="width:100px;height:auto;"></p>
-        <p><strong>Location:</strong> ${member.location}</p>
+function displayCompanies(companies) {
+  container.innerHTML = "";
+  companies.forEach(company => {
+    const div = document.createElement("div");
+    div.classList.add("card");
+    div.innerHTML = `
+      <img src="${company.logo}" alt="${company.name} Logo" width="80"><br>
+      <strong>${company.name}</strong><br>
+      <p><strong>Description : </strong>${company.description}</p>
+      <p><strong>Address:</strong> ${company.address}<br>
+         <strong>Phone:</strong> ${company.phone}<br>
+         <strong>Website:</strong> <a href="${company.website}" target="_blank">${company.website}</a><br>
+         <strong>Membership:</strong> ${company.membershipLevel}<br>
+         <strong>Location:</strong> ${company.location}</p>
     `;
-    container.appendChild(memberElement);
-  })
+    container.appendChild(div);
+  });
 }
 
-fetchMembers();
+gridBtn.addEventListener("click", () => container.className = "grid");
+listBtn.addEventListener("click", () => container.className = "list");
+
+fetchCompanies();
+
 
 
 const address = [
@@ -105,7 +116,7 @@ const worldTimeZones = [
         currentTime: "2023-10-02T02:00:00+09:00"
     }
 ];
-// social media icons.
+
 // The data is rendered into the HTML structure of the directory page using JavaScript.
 // socialIcons is an array of objects, each representing a social media platform with its URL and icon.
 // It is used to display social media links on the directory page.

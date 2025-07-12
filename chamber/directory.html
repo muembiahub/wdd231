@@ -29,21 +29,27 @@
         <link rel="stylesheet" href="styles/normalize.css">
     </head>
     <body>
-         <header>
-  <div class="logo-title">
-    <div class="logo">
-        <img src="images/logo.jpg" alt=" Kazidomo Logo" style="width:100%; height:100%;">
-    </div>
-
-    <div>Kazidomo Business Lubumbashi || DRCongo</div>
-  </div>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Directory</a>
-    <a href="#">Join</a>
-    <a href="#">Discover</a>
-  </nav>
-</header>
+         <header class="header-content">
+                <div class="logo-title">
+                        <div class="logo">
+                            <img src="images/logo.jpg" alt=" Kazidomo Logo"width= "1"height="1">
+                        </div>
+                                <span>Kazidomo Business Lubumbashi || DRCongo</span>
+                                <button id="menu-button" class="hamburger" aria-controls="main-nav" aria-expanded="false" aria-label="Open main menu">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                </button>
+                </div>
+                    <div id="main-nav" class="navigation" aria-label="Main menu">
+                        <nav class="nav-list">
+                            <a href="#">Home</a>
+                            <a href="#">Directory</a>
+                            <a href="#">Join</a>
+                            <a href="#">Discover</a>
+                        </nav>
+                    </div>
+        </header>
     <main>
         <div class="hero">
             <div class="directory-header">
@@ -82,12 +88,13 @@
             
         </div>
     </div>
-   
-    <div class="members">
-        <h1>Directory</h1>
-        <p>Explore our directory to find local businesses and service providers.</p>
-        <div class="members"></div>
-    </div>
+   <div class="menu">
+   <h2>Company Directory</h2>
+   <button id="grid">Grid View</button>
+   <button id="list">List View</button>
+   </div>
+  
+  <section id="companies" class="grid"></section>
     </main>
     <footer>
         <div class="footer-content">
