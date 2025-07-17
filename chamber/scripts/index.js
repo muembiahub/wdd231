@@ -40,7 +40,7 @@ function displaySpotlight(companies) {
   selected.forEach(company => {
     const badge = company.membershipLevel.toLowerCase() === "gold"
   ? "🥇"
-  : company.membershipLevel.toLowerCase() === "premium"
+  : company.membershipLevel.toLowerCase() === "Platinum"
   ? "🏅 "
   : "🏅";
     const div = document.createElement("div");
@@ -87,9 +87,7 @@ const news = [
         content: "Join us for our annual business expo on November 5th. It's a great opportunity to network and showcase your business."
     }
 ];
-// This script populates the directory page with data from the provided arrays and objects.
-// It dynamically generates HTML content for the address, news, events, weather, world time zones
-// Select HTML elements
+
 const myTown = document.querySelector('#town');
 const weathericon = document.querySelector('#graphic');
 const description = document.querySelector('#description');

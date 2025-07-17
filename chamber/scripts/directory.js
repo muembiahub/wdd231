@@ -73,29 +73,7 @@ const news = [
 ];
 // This script populates the directory page with data from the provided arrays and objects.
 // It dynamically generates HTML content for the address, news, events, weather, world time zones
-const weather = {
-    location: "Lubumbashi, Democratic Republic of Congo",
-    current: {
-        temperature: 68,
-        description: "Sunny",
-        humidity: 30,
-        windSpeed: 5
-    },
-    forecast: [
-        {
-            day: "Monday",
-            high: 70,
-            low: 50,
-            description: "Partly cloudy"
-        },
-        {
-            day: "Tuesday",
-            high: 75,
-            low: 55,
-            description: "Sunny"
-        }
-    ]
-};
+
 
 // worldTimeZones is an array of objects, each representing a city with its time zone and current time.
 // It is used to display the current time in different parts of the world.
@@ -163,14 +141,54 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     `).join('');
 
-    // Weather
-    const weatherContainer = document.querySelector('.weather');
-    weatherContainer.innerHTML += `
-        <p><strong>Description:</strong> ${weather.current.description}</p>
-        <p>High: <span class="weather-high">${weather.forecast[0].high}°F</span></p>
-        <p>Low: <span class="weather-low">${weather.forecast[0].low}°F</span></p>
-        <p>Humidity: <span class="weather-humidity">${weather.current.humidity}%</span></p>
-    `;
+
+   const myTown = document.querySelector('#town');
+const weathericon = document.querySelector('#graphic');
+const description = document.querySelector('#description');
+const temperature = document.querySelector('#temperature');
+
+// Your API credentials and location
+const myKey = "fa51adddeaeb447604f750ef9f7eb3f3";
+const myLat = "49.752146489351716";
+const myLong = "6.651155582360723";
+
+// Construct the API URL
+const url = `https://api.openweathermap.org/data/2.5/weather?lat=${myLat}&lon=${myLong}&appid=${myKey}&units=imperial`;
+
+// Fetch weather data and display it
+async function apiFetch() {
+  try {
+    const response = await fetch(url);
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data); // For debugging
+      displayResults(data); // This now works!
+    } else {
+      throw Error(await response.text());
+    }
+  } catch (error) {
+    console.log("Fetch error:", error);
+    alert("Weather data couldn't load. Please try again later.");
+  }
+}
+
+// Display weather info in HTML
+function displayResults(data) {
+  myTown.textContent = data.name;
+  weathericon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+  weathericon.alt = data.weather[0].description;
+  description.textContent = data.weather[0].description;
+  temperature.textContent = `${data.main.temp}°F`;
+
+  const weatherTitle = `${data.name} Weather — ${data.weather[0].description}, ${data.main.temp}°F`;
+  document.getElementById("weather-title").textContent = weatherTitle;
+}
+
+// Call the function to fetch data
+apiFetch();
+
+
+
 
     // World Time Zone (show first city as example)
     const worldTimeZoneContainer = document.querySelector('.world-time-zone');
