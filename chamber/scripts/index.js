@@ -127,6 +127,9 @@ function displayResults(data) {
   weathericon.alt = data.weather[0].description;
   description.textContent = data.weather[0].description;
   temperature.textContent = `${data.main.temp}°F`;
+
+  const weatherTitle = `${data.name} Weather — ${data.weather[0].description}, ${data.main.temp}°F`;
+  document.getElementById("weather-title").textContent = weatherTitle;
 }
 
 // Call the function to fetch data
