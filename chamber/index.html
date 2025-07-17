@@ -21,7 +21,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-        <script src="scripts/directory.js" defer></script>
+        <script src="scripts/index.js" defer></script>
         <title>Chamber of Commerce Directory Page </title>
         <link rel="stylesheet" href="styles/directory.css">
     </head>
@@ -70,14 +70,11 @@
             </div>
        <div class="weather">
             <h2>Current Weather</h2>
-            <p><span class="weather-description"></span></p>
-            <p><span class="weather-high"></span></p>
-            <p><span class="weather-low"></span></p>
-            <p><span class="weather-humidity"></span></p>
-            <p><span class="weather-sunrise"></span></p>
-            <p><span class="weather-sunset"></span></p>
+            <h3 id="town"></h3>
+            <img src="" alt="" id="graphic">
+            <p id="description"></p>
+            <p id="temperature"></p> 
         </div>
-       
          <div class="world-time-zone">
             <h2>World Time Zone</h2>
             <p><span class="location"></span></p>
@@ -86,8 +83,9 @@
             
         </div>
     </div>
+     
    <div class="menu">
-   <h2>Company Directory</h2>
+   <h2> Featured Chamber Members</h2>
    <button id="grid">Grid View</button>
    <button id="list">List View</button>
    </div>

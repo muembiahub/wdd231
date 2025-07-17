@@ -124,7 +124,7 @@ button {
   border: 1px solid #fff;
    }
 
-	.card {
+	.grid .card {
 		text-align: center;
     border: 2px solid #555;
 	}
@@ -142,6 +142,13 @@ h3 {
 	flex-direction: column;
   padding: 10px;
    }
+.list .card {
+  font-family: Arial, sans-serif;
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
 
 img {
 	width: 60px;
@@ -265,21 +272,25 @@ img {
     background-color: #d4d4d4;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    width: 530px;
+    width: 500px;
+    text-align: center;
     
   }
+  .weather,.world-time-zone,.news{
+		text-align: center;
+    width: 300px;
+	}
   .list {
 	display: flex;
 	flex-direction: column;
     }
+  .list img{
+    align-items: center;
+  }
 
-
-	.card {
-		display: grid;
-    grid-column: span;
-    border: 1px solid  #000;
-  
-    }
+	.card, .card img {
+		text-align: center;
+	}
  
    
    .footer-content {
@@ -354,4 +365,7 @@ img {
   .nav-list.active {
     display: flex;
   }
+  .card, .card img {
+		text-align: center;
+	}
 }

@@ -5,43 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Timbuktu Chamber of Commerce Wireframe</title>
 <meta name="description" content="Wireframe for the Timbuktu Chamber of Commerce website, showcasing a simple layout with a header, hero image, main sections for events and weather, business information, and a footer." />
-<link rel="stylesheet" href="chamber/styles/directory.css" />
-
+<link rel="stylesheet" href="styles/essay.css" />\
+<script src="scripts/essay.js" defer> </script>
 </head>
 <body>
-<style>
-  .hamburger-menu {
-    position: relative;
-}
-
-.menu-items {
-    display: none; /* Hide menu items by default */
-    position: absolute;
-    top: 100%; /* Position below the button */
-    left: 0;
-    background-color: white;
-    border: 1px solid #ccc;
-    /* Other styles for your menu items */
-}
-
-.hamburger-button {
-    cursor: pointer;
-    /* Other styles for your button */
-}
-
-/* Show menu items when the menu is active */
-.hamburger-menu.active .menu-items {
-    display: block;
-}
-
-</style>
-
-<script>
-  document.querySelector('.hamburger-button').addEventListener('click', function() {
-    document.querySelector('.hamburger-menu').classList.toggle('active');
-});
-
-</script>
 <header>
  <div class="hamburger-menu">
     <button class="hamburger-button">☰</button>
@@ -53,20 +20,19 @@
 </div>
 
 </header>
-
-
+<h1>OpenWeatherMap.org API Test</h1>
+<main>
+  <p>The current temperature in Trier, Germany is <span id="current-temp"></span></p>
+   <div class="current-weather">
+            <h2>Current Weather</h2>
+            <h3 id="town"></h3>
+            <img src="" alt="" id="graphic">
+            <p id="description"></p>
+            <p id="temperature"></p> 
+        </div>
+</main>
 <footer>
-  <div>
-    <p>Timbuktu Chamber of Commerce</p>
-    <p>10 Rue De La Paix, Timbuktu, Mali 999</p>
-    <p>info@timbuktu.org | (223) 555-2300</p>
-  </div>
-  <div class="social-icons">
-    <div>🎥</div>
-    <div>🐦</div>
-    <div>in</div>
-  </div>
+  [Enter Your Name Here] | OpenWeatherMap.org | CC BY-SA 4.0
 </footer>
-
 </body>
 </html>
