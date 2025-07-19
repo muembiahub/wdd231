@@ -46,8 +46,9 @@ h1, h2 {
 /* ========== Navigation ========== */
 nav {
   max-width: 1200px;
-  margin: 1rem auto;
+  margin: 0rem auto;
   position: relative;
+  top: 0rem;
 }
 ul, li {
   list-style-type: none; /* removes bullets or numbers */
@@ -81,6 +82,7 @@ ul, li {
   flex-direction: column;
   background-color: #333;
   text-align: center;
+
 }
 
 .navigation.open {
