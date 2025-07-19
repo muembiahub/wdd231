@@ -1,13 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const menuButton = document.getElementById('menu-button');
-  const navList = document.querySelector('.nav-list');
-  menuButton.addEventListener('click', () => {
-    navList.classList.toggle('active');
-    menuButton.setAttribute(
-      'aria-expanded',
-      navList.classList.contains('active') ? 'true' : 'false'
-    );
-  });
+const hamButton = document.querySelector('#hamburger');
+const navigation = document.querySelector('.navigation');
+
+hamButton.addEventListener('click', () => {
+	navigation.classList.toggle('open');
+	hamButton.classList.toggle('open');
 });
 const gridBtn = document.getElementById("grid");
 const listBtn = document.getElementById("list");
