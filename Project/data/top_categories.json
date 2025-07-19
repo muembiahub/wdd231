@@ -1,0 +1,24 @@
+{
+  "top_categories": [
+    {
+      "category": "Immobilier",
+      "logo": "https://boncoin.cm/sites/default/files/categories/immobilier2s.png",
+      "page_url": "#"
+    },
+    {
+      "category": "Véhicules",
+      "logo": "https://boncoin.cm/sites/default/files/categories/vehicul555es.png",
+      "page_url": "#"
+    },
+    {
+      "category": "Téléphones et Tablettes",
+      "logo": "https://boncoin.cm/sites/default/files/categories/telephone22s.png",
+      "page_url": "#"
+    },
+    {
+      "category": "Pour la maison",
+      "logo": "https://boncoin.cm/sites/default/files/categories/pour_la_mais22on.png",
+      "page_url": "#"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "categories": [
+    {
+      "logo": "https://boncoin.cm/sites/default/files/categories/agriculture.png",
+      "category": "Alimentation & Agriculture",
+      "page_url": "categories/agriculture.html"
+    },
+    {
+      "logo": "https://boncoin.cm/sites/default/files/categories/construction33.png",
+      "category": "Construction & Réparation",
+      "page_url": "categories/construction.html"
+    },
+    {
+      "logo": "https://boncoin.cm/sites/default/files/categories/sante.png",
+      "category": "Santé & Beauté",
+      "page_url": "categories/sante.html"
+    },
+    {
+      "logo": "https://boncoin.cm/sites/default/files/categories/sports22.png",
+      "category": "Sport, Arts & Loisirs",
+      "page_url": "categories/sport.html"
+    },
+    {
+      "logo": "https://boncoin.cm/sites/default/files/categories/bebe2s.png",
+      "category": "Bébés & Enfants",
+      "page_url": "categories/bebe-et-enfants.html"
+    },
+    {
+      "logo": "images/emploi_et_formation.png",
+      "category": "Emploi & Formation",
+      "page_url": "categories/emploi-et-formation.html"
+    },
+    {
+      "logo": "images/mode.png",
+      "category": "Mode",
+      "page_url": "categories/mode.html"
+    },
+    {
+      "logo": "https://boncoin.cm/sites/default/files/categories/equipemen55t.png",
+      "category": "Équipement Professionnel",
+      "page_url": "categories/equipement-professionnel.html"
+    },
+    {
+      "logo": "https://boncoin.cm/sites/default/files/categories/electronic11s.png",
+      "category": "Électronique",
+      "page_url": "categories/electronique.html"
+    },
+    {
+      "logo": "https://boncoin.cm/sites/default/files/categories/immobilier2s.png",
+      "category": "Immobilier",
+      "page_url": "categories/immobilier.html"
+    },
+    {
+      "logo": "https://boncoin.cm/sites/default/files/categories/animaux2.png",
+      "category": "Animaux Domestiques",
+      "page_url": "categories/animaux-domestique.html"
+    },
+    {
+      "logo": "https://boncoin.cm/sites/default/files/categories/pour_la_mais22on.png",
+      "category": "Pour la Maison",
+      "page_url": "categories/pour-la-maison.html"
+    },
+    {
+      "logo": "https://boncoin.cm/sites/default/files/categories/hotel44s.png",
+      "category": "Hôtels & Restaurants",
+      "page_url": "categories/hotel-et-restaurant.html"
+    },
+    {
+      "logo": "https://boncoin.cm/sites/default/files/categories/telephone22s.png",
+      "category": "Téléphones & Tablettes",
+      "page_url": "categories/telephone-et-tablette.html"
+    },
+    {
+      "logo": "https://boncoin.cm/sites/default/files/categories/service44s.png",
+      "category": "Services",
+      "page_url": "categories/service.html"
+    },
+    {
+      "logo": "https://boncoin.cm/sites/default/files/categories/vehicul555es.png",
+      "category": "Véhicules",
+      "page_url": "categories/vehicule.html"
+    }
+  ]
+}

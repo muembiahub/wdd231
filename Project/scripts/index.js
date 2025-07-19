@@ -10,41 +10,93 @@ const gridBtn = document.getElementById("grid");
 const listBtn = document.getElementById("list");
 const container = document.getElementById("companies");
 
-async function fetchCompanies() {
+// Basculer entre grid et list
+gridBtn.addEventListener("click", () => {
+  container.className = "grid";
+});
+listBtn.addEventListener("click", () => {
+  container.className = "list";
+});
+
+async function fetchData() {
   try {
-    const response = await fetch("data/members.json"); // Adjust path if needed
-    if (!response.ok) throw new Error("Network error");
-    const companies = await response.json();
-    displayCompanies(companies);
+    const response = await fetch("data/categories.json");
+    if (!response.ok) throw new Error("Network response failed");
+    const data = await response.json();
+
+    displayCompanies(data.categories);
+    displayImages(data.images);
   } catch (err) {
-    console.error("Fetch error:", err);
+    console.error("Data fetch error:", err);
+    container.innerHTML = `<p>Error loading data.</p>`;
   }
 }
 
-function displayCompanies(companies) {
+function displayCompanies(categories) {
   container.innerHTML = "";
-  companies.forEach(company => {
-    const div = document.createElement("div");
-    div.classList.add("card");
-    div.innerHTML = `
-      <img src="${company.logo}" alt="${company.name} Logo" width="80"><br>
-      <strong>${company.name}</strong><br>
-      <p><strong>Description : </strong>${company.description}</p>
-      <p><strong>Address:</strong> ${company.address}<br>
-         <strong>Phone:</strong> ${company.phone}<br>
-         <strong>Website:</strong> <a href="${company.website}" target="_blank">${company.website}</a><br>
-         <strong>Membership:</strong> ${company.membershipLevel}<br>
-         <strong>Location:</strong> ${company.location}</p>
+  categories.forEach(cat => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <img src="${cat.logo}" alt="Logo ${cat.category}">
+      <div>
+        <h3><a href="${cat.page_url}" target="_blank">${cat.category}</a></h3>
+      </div>
     `;
-    container.appendChild(div);
+    container.appendChild(card);
   });
 }
 
-gridBtn.addEventListener("click", () => container.className = "grid");
-listBtn.addEventListener("click", () => container.className = "list");
+function displayImages(images = []) {
+  const extraImagesDiv = document.getElementById("extra-images");
+  if (!extraImagesDiv) return;
+  extraImagesDiv.innerHTML = "";
 
-fetchCompanies();
+  images.forEach(img => {
+    const el = document.createElement("img");
+    el.src = img;
+    el.alt = "Extra";
+    el.width = 60;
+    el.height = 60;
+    extraImagesDiv.appendChild(el);
+  });
+}
 
+// Charger les données au lancement
+fetchData();
+
+
+
+async function fetchData() {
+  try {
+    const response = await fetch("data/top_categories.json");
+    if (!response.ok) throw new Error("Network response failed");
+    const data = await response.json();
+
+    displayCompanies(data.categories);
+    displayImages(data.images);
+  } catch (err) {
+    console.error("Data fetch error:", err);
+    container.innerHTML = `<p>Error loading data.</p>`;
+  }
+}
+
+function displayCompanies(categories) {
+  container.innerHTML = "";
+  categories.forEach(cat => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <img src="${cat.logo}" alt="Logo ${cat.category}">
+      <div>
+        <h3><a href="${cat.page_url}" target="_blank">${cat.category}</a></h3>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
 
 
 const address = [
@@ -68,6 +120,22 @@ const news = [
         content: "Join us for our annual business expo on November 5th. It's a great opportunity to network and showcase your business."
     }
 ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // worldTimeZones is an array of objects, each representing a city with its time zone and current time.
@@ -131,59 +199,9 @@ document.addEventListener('DOMContentLoaded', () => {
     newsContainer.innerHTML += news.map(item => `
         <div class="news-item">
             <h3>${item.title}</h3>
-            <p><strong>Date:</strong> ${item.date}</p>
-            <p>${item.content}</p>
+            <p><strong>Date:</strong> ${item.date}<br>${item.content}</p>
         </div>
     `).join('');
-
-
-   const myTown = document.querySelector('#town');
-const weathericon = document.querySelector('#graphic');
-const description = document.querySelector('#description');
-const temperature = document.querySelector('#temperature');
-
-// Your API credentials and location
-const myKey = "fa51adddeaeb447604f750ef9f7eb3f3";
-const myLat = "49.752146489351716";
-const myLong = "6.651155582360723";
-
-// Construct the API URL
-const url = `https://api.openweathermap.org/data/2.5/weather?lat=${myLat}&lon=${myLong}&appid=${myKey}&units=imperial`;
-
-// Fetch weather data and display it
-async function apiFetch() {
-  try {
-    const response = await fetch(url);
-    if (response.ok) {
-      const data = await response.json();
-      console.log(data); // For debugging
-      displayResults(data); // This now works!
-    } else {
-      throw Error(await response.text());
-    }
-  } catch (error) {
-    console.log("Fetch error:", error);
-    alert("Weather data couldn't load. Please try again later.");
-  }
-}
-
-// Display weather info in HTML
-function displayResults(data) {
-  myTown.textContent = data.name;
-  weathericon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-  weathericon.alt = data.weather[0].description;
-  description.textContent = data.weather[0].description;
-  temperature.textContent = `${data.main.temp}°F`;
-
-  const weatherTitle = `${data.name} Weather — ${data.weather[0].description}, ${data.main.temp}°F`;
-  document.getElementById("weather-title").textContent = weatherTitle;
-}
-
-// Call the function to fetch data
-apiFetch();
-
-
-
 
     // World Time Zone (show first city as example)
     const worldTimeZoneContainer = document.querySelector('.world-time-zone');

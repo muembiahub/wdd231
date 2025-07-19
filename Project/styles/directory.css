@@ -1,0 +1,327 @@
+/* ========== Base Reset ========== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0e7e7;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ========== Typography ========== */
+h1, h2 {
+  color: rgb(140, 137, 206);
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+/* ========== Logo & Branding ========== */
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #7d7474;
+}
+
+.logo-title img {
+  width: 24px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.logo-title span {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* ========== Navigation ========== */
+nav {
+  max-width: 1200px;
+  margin: 0rem auto;
+  position: relative;
+  top: 0rem;
+}
+ul, li {
+  list-style-type: none; /* removes bullets or numbers */
+  margin: 0;
+  padding: 0;
+}
+
+
+#menu {
+  font-size: 1rem;
+  background: none;
+  color: #000;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: block;
+  border: none;
+  z-index: 10;
+}
+
+#menu::before {
+  content: "☰";
+}
+
+#menu.open::before {
+  content: "❌";
+}
+
+.navigation {
+  display: none;
+  flex-direction: column;
+  background-color: #333;
+  text-align: center;
+
+}
+
+.navigation.open {
+  display: flex;
+}
+
+.navigation a {
+  padding: 0.3rem;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+}
+
+.navigation a:hover {
+  background-color: #bbb;
+  color: #333;
+  font-weight: bold;
+}
+
+/* ========== Hero Section ========== */
+.hero {
+  background: #5265a8;
+  padding: 20px;
+  color: #e8e3e3;
+  font-size: 1.5em;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+
+
+
+
+
+/* Style général pour le conteneur */
+#companies {
+  margin: 20px;
+  padding: 10px;
+}
+
+/* Style pour la vue en grid (par défaut) */
+#companies.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+/* Style pour la vue en list */
+#companies.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+/* Style pour la version grid */
+#companies.grid .card {
+  background-color: #fff;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.1);
+  padding: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+  
+}
+
+/* Style pour la version list */
+#companies.list .card {
+  flex-direction: row;
+  align-items: flex-start;
+  background-color: #fff;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.1);
+  
+}
+
+/* Image dans la carte */
+.card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Spécifique à la liste, image à gauche */
+#companies.list .card img {
+  max-width: 80px;
+  margin-right: 15px;
+  margin-bottom: 0;
+   align-items: center;
+}
+
+/* Titre (dans la carte) */
+.card h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+}
+
+/* Lien du titre, pour le rendre cliquable et esthétique */
+.card h3 a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.card h3 a:hover {
+  text-decoration: underline;
+}
+
+/* Description */
+.card p {
+  margin: 5px 0;
+  font-size: 0.95em;
+  color: #333;
+  line-height: 1.4;
+}
+
+/* Pour les list items, rendre la carte plus large si list mode */
+#companies.list .card {
+  padding: 10px;
+  width: 100%;
+}
+.member {
+  background-color: #333;
+  color: rgb(230, 15, 15);
+  text-align: center;
+  padding: 1rem;
+}
+
+.member h3 {
+  margin-bottom: 0;
+}
+
+.resume {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #333;
+  margin: 20px 0;
+  padding: 20px;
+  text-align: center;
+}
+
+/* ========== Footer ========== */
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #7d7474;
+  gap: 20px;
+  align-items: center;
+  font-size: 1em;
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* ========== Small Screens (<= 700px) ========== */
+@media (max-width: 700px) {
+  .directory-content {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .news, .weather, .world-time-zone {
+    width: 100%;
+    padding: 8px;
+    font-size: 0.9rem;
+    
+    
+  }
+
+  .footer-content {
+    font-size: 0.9rem;
+  }
+
+  .logo-title img {
+    width: 18px;
+    height: 36px;
+  }
+}
+
+/* ========== Extra Small Screens (<= 320px) ========== */
+@media (max-width: 320px) {
+  body {
+    font-size: 0.8rem;
+    padding: 5px;
+  }
+
+  #menu {
+    font-size: 1.3rem;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .resume {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .news, .weather, .world-time-zone {
+    min-height: 80px;
+  }
+
+  .card img {
+    height: auto;
+  }
+}
+
+/* ========== Large Screens (> 700px) ========== */
+@media (min-width: 701px) {
+  .navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navigation a {
+    display: block;
+    padding: 1rem 2rem;
+    border-right: 1px solid #777;
+  }
+
+  .navigation a:last-child {
+    border-right: none;
+  }
+
+  #menu {
+    display: none; /* hide hamburger */
+  }
+
+  .directory-content {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}

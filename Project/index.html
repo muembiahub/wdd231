@@ -22,7 +22,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
         <script src="scripts/index.js" defer></script>
-        <title>Chamber of Commerce Join us  Page </title>
+        <title>Kazidomo Confiance Home Page </title>
         <link rel="stylesheet" href="styles/directory.css">
     </head>
     <body>
@@ -31,22 +31,64 @@
                         <div class="logo">
                             <img src="images/logo.jpg" alt=" Kazidomo Logo" width= "1" height="1">
                         </div>
-                               <span>Kazidomo Confiance  Lubumbashi || DRCongo</span>
+                               <span>Kazidomo Confiance || DRCongo</span>
                 </div>
                                 <button type="button" id="menu"></button>
                             <nav>
 	                            <ul class="navigation">
-		                            <li><a href="index.html">Home</a></li>
-		                            <li><a href="about.html" class="active">About Us</a></li>
-		                            <li><a href="directory.html">Directory</a></li>
-		                            <li><a href="join.html">Join Us</a></li>
-		                            <li><a href="discover.html">Discover Us</a></li>
+		                            <li><a href="index.html" title="Home">Acceuil</a></li>
+		                            <li><a href="directory.html" title="Service">Nos Produits</a></li>
+		                            <li><a href="join.html" title="History">Rejoinez-nous </a></li>
+		                            <li><a href="Discover.html" title="Contact">Contactez-nous </a></li>
 	                            </ul>
                             </nav>
         </header>
     <main>
-        
-    </main>
+        <div class="hero">
+            <div class="directory-header">
+                 <h1> Bienvenue chez Kazidomo Confiance </h1>
+                   <p>Explorez les services que nous proposons à la communauté.
+                      Que vous soyez à la recherche d’un professionnel qualifié ou d’une entreprise locale, notre annuaire est là pour vous.
+                      Chez Kazidomo, nous croyons que chaque talent mérite d’être visible — diplôme ou non.
+                      Nous connectons les compétences authentiques aux opportunités concrètes.
+                      Kazidomo, c’est bien plus qu’un label : c’est un pont de confiance entre humains
+                    </p>
+            </div>
+        </div>
+               <div class="directory-content">
+            <div class="news">
+                <h2>Events</h2>
+                <div class="event"></div>
+            </div>
+        <div class="weather">
+            <h2>Current Weather</h2>
+            <h3 id="town"></h3>
+           <img id="graphic" src="placeholder.jpg" alt="Weather icon">
+            <p id="description"></p>
+            <p id="temperature"></p>
+            <h3 id="weather-title"></h3>
+        </div>
+         <div class="world-time-zone">
+            <h2>World Time Zone</h2>
+            <p><span class="location"></span></p>
+            <p><span class="current-time"></span></p>
+            <p><span class="time-zone"></span></p>
+            
+        </div>
+    </div>
+   <div class="member">  
+  <h2>Choisissez la catégorie</h2>  
+  <button id="grid">Grid View</button>  
+  <button id="list">List View</button>  
+</div>  
+<div id="companies" class="grid"></div>
+<div id="top-categories">
+    <h2>Top catégories</h2>
+    <div id="top-companies"></div>
+</div>
+ 
+
+</main>
     <footer>
         <div class="footer-content">
             <div class="address"></div>
