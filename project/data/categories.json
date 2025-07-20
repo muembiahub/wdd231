@@ -1,12 +1,12 @@
 {
   "categories": [
     {
-      "logo": "https://boncoin.cm/sites/default/files/categories/agriculture.png",
+      "logo": "images/agriculture.png",
       "category": "Alimentation & Agriculture",
       "page_url": "categories/alimentation_agriculture.html"
     },
     {
-      "logo": "https://boncoin.cm/sites/default/files/categories/construction33.png",
+      "logo": "images/construction.png",
       "category": "Construction & Réparation",
       "page_url": "categories/construction.html"
     },
@@ -36,7 +36,7 @@
       "page_url": "categories/mode.html"
     },
     {
-      "logo": "https://boncoin.cm/sites/default/files/categories/equipemen55t.png",
+      "logo": "/images/equipement.png",
       "category": "Équipement Professionnel",
       "page_url": "categories/equipement-professionnel.html"
     },
