@@ -68,7 +68,7 @@
   <footer></footer>
 
   <script>
-    fetch("../footer.html") // ← remonte vers Project/ pour récupérer footer.html
+    fetch("footer.html") // ← remonte vers Project/ pour récupérer footer.html
       .then(res => res.text())
       .then(data => {
         document.querySelector("footer").innerHTML = data;
