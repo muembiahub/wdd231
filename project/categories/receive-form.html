@@ -95,18 +95,20 @@
 
         
 </main>
-    <footer>
-        
-    </footer>
-    <script>
-  fetch("../footer.html")
-    .then(res => res.text())
-    .then(data => {
-      document.querySelector("footer").innerHTML = data;
-      const modifiedSpan = document.getElementById("last-modified");
-      const currentYear = document.getElementById("currentyear");
-      if (modifiedSpan) modifiedSpan.textContent = document.lastModified;
-    });
-</script>
+    <footer></footer>
+
+  <script>
+    fetch("../footer.html") // ← remonte vers Project/ pour récupérer footer.html
+      .then(res => res.text())
+      .then(data => {
+        document.querySelector("footer").innerHTML = data;
+
+        // Met à jour l’année et la date dynamiquement
+        const yearSpan = document.getElementById("currentyear");
+        const modifiedSpan = document.getElementById("last-modified");
+        if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+        if (modifiedSpan) modifiedSpan.textContent = document.lastModified;
+      });
+  </script>
     </body>
 </html>
