@@ -1,24 +1,25 @@
 {
   "top_categories": [
+    
     {
-      "category": "Immobilier",
-      "logo": "https://boncoin.cm/sites/default/files/categories/immobilier2s.png",
-      "page_url": "#"
+      "logo": "https://boncoin.cm/sites/default/files/categories/hotel44s.png",
+      "category": "Hôtels & Restaurants",
+      "page_url": "categories/hotel-et-restaurant.html"
+    },
+     {
+      "logo": "images/emploi_et_formation.png",
+      "category": "Emploi & Formation",
+      "page_url": "categories/emploi-et-formation.html"
     },
     {
-      "category": "Véhicules",
-      "logo": "https://boncoin.cm/sites/default/files/categories/vehicul555es.png",
-      "page_url": "#"
+      "logo": "images/mode.png",
+      "category": "Mode",
+      "page_url": "categories/mode.html"
     },
     {
-      "category": "Téléphones et Tablettes",
-      "logo": "https://boncoin.cm/sites/default/files/categories/telephone22s.png",
-      "page_url": "#"
-    },
-    {
-      "category": "Pour la maison",
       "logo": "https://boncoin.cm/sites/default/files/categories/pour_la_mais22on.png",
-      "page_url": "#"
+      "category": "Pour la Maison",
+      "page_url": "categories/pour-la-maison.html"
     }
   ]
 }

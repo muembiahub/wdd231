@@ -17,19 +17,21 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="default">
         <meta name="keywords" content="Kazidomo, mobile application, service providers, geolocation, digital contracts, payment options, economic autonomy">
         <meta name="theme-color" content="#ffffff">
-        <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/Project/images/favicon.ico" type="image/x-icon" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-        <script src="scripts/index.js" defer></script>
-        <title>Kazidomo Confiance Home Page </title>
-        <link rel="stylesheet" href="styles/directory.css">
+        <script src="/Project/scripts/index.js" defer></script>
+        <script src="scripts/choice.js"></script>
+        <title>Kazidomo Confiance Alimentation & AgriculturePage </title>
+        <link rel="stylesheet" href="/Project/styles/directory.css">
+        <link rel="stylesheet" href="/Project/categories/styles/form-style.css">
     </head>
     <body>
          <header class="header-content">
                 <div class="logo-title">
                         <div class="logo">
-                            <img src="images/logo.jpg" alt=" Kazidomo Logo" width= "1" height="1">
+                            <img src="/Project/images/logo.jpg" alt=" Kazidomo Logo" width= "1" height="1">
                         </div>
                                <span>Kazidomo Confiance || DRCongo</span>
                 </div>
@@ -45,30 +47,25 @@
         </header>
     <main>
         <div class="hero">
-            <div class="directory-header">
-                 <h1> Bienvenue chez Kazidomo Confiance </h1>
-                   <p>Explorez les services que nous proposons à la communauté.
-                      Que vous soyez à la recherche d’un professionnel qualifié ou d’une entreprise locale, notre annuaire est là pour vous.
-                      Chez Kazidomo, nous croyons que chaque talent mérite d’être visible — diplôme ou non.
-                      Nous connectons les compétences authentiques aux opportunités concrètes.
-                      Kazidomo, c’est bien plus qu’un label : c’est un pont de confiance entre humains
-                    </p>
-            </div>
+            <h1>Formulaire d'un Service</h1>
         </div>
-        <div class="member">  
-            <h2>Choisissez la catégorie</h2>  
-                <button id="grid">Grid View</button>  
-                <button id="list">List View</button>  
-        </div>  
-            <div id="companies" class="grid"></div> 
+        <form id="serviceChoiceForm">
+                    <h2>Veuillez Selectionez Le Type de Service que vous voullez</h2>
+                    <label for="serviceType">Qu'est ce vous voullez ?</label>
+                    <select id="serviceType" name="serviceType">
+                    <option value="">-- Select --</option>
+                    <option value="offer">Cherchez un Emplois </option>
+                    <option value="receive">Trouvez un Prestataire</option>
+                    </select>
+                    <button type="submit">Continue</button>
+        </form>
+ 
 
 </main>
-    <footer>
+      <footer>
 
     </footer>
-    <footer></footer>
-
-<script>
+    <script>
   fetch("/Project/footer.html")
     .then(res => res.text())
     .then(data => {

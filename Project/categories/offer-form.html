@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
@@ -17,19 +18,27 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="default">
         <meta name="keywords" content="Kazidomo, mobile application, service providers, geolocation, digital contracts, payment options, economic autonomy">
         <meta name="theme-color" content="#ffffff">
-        <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/Project/images/favicon.ico" type="image/x-icon" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-        <script src="scripts/index.js" defer></script>
-        <title>Kazidomo Confiance Home Page </title>
-        <link rel="stylesheet" href="styles/directory.css">
+        <script src="/Project/scripts/index.js" defer></script>
+        <script src="scripts/choice.js"></script>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+        <title>Kazidomo Confiance Recherchez un service Page </title>
+        <link rel="stylesheet" href="/Project/styles/directory.css">
+        <link rel="stylesheet" href="styles/form-style.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
+
     </head>
-    <body>
          <header class="header-content">
                 <div class="logo-title">
                         <div class="logo">
-                            <img src="images/logo.jpg" alt=" Kazidomo Logo" width= "1" height="1">
+                            <img src="/Project/images/logo.jpg" alt=" Kazidomo Logo" width= "1" height="1">
                         </div>
                                <span>Kazidomo Confiance || DRCongo</span>
                 </div>
@@ -45,30 +54,54 @@
         </header>
     <main>
         <div class="hero">
-            <div class="directory-header">
-                 <h1> Bienvenue chez Kazidomo Confiance </h1>
-                   <p>Explorez les services que nous proposons à la communauté.
-                      Que vous soyez à la recherche d’un professionnel qualifié ou d’une entreprise locale, notre annuaire est là pour vous.
-                      Chez Kazidomo, nous croyons que chaque talent mérite d’être visible — diplôme ou non.
-                      Nous connectons les compétences authentiques aux opportunités concrètes.
-                      Kazidomo, c’est bien plus qu’un label : c’est un pont de confiance entre humains
-                    </p>
-            </div>
-        </div>
-        <div class="member">  
-            <h2>Choisissez la catégorie</h2>  
-                <button id="grid">Grid View</button>  
-                <button id="list">List View</button>  
-        </div>  
-            <div id="companies" class="grid"></div> 
+             <h1>En Recherche d'un Emplois</h1>
+  <form>
+    <label for="needType">Type d'Emplois recherché :</label>
+    <select id="needType" name="needType" required> 
+        <option value=" " aria-placeholder="service"> </option>
+
+    <label for="description">Décrivez votre besoin :</label>
+    <textarea id="description" name="description" required></textarea>
+
+    <label for="searchLocation">Recherchez un lieu :</label>
+    <input type="text" id="searchLocation" placeholder="Ex. Kampemba, Lubumbashi" />
+
+    
+
+    <label for="province">Province :</label>
+    <input type="text" id="province" name="province" placeholder="Province détectée" required />
+
+    <label for="quartier">Quartier :</label>
+    <input type="text" id="quartier" name="quartier" placeholder="Quartier détecté" required />
+     
+    <button type="button" onclick="getLocation()">📍 Détecter ma position</button>
+    <div id="map" style="height: 200px; margin-top: 20px;"></div>
+
+    
+    <label for="budget">Salaire (Proposez Votre Prix) :</label>
+    <input type="text" id="budget" name="budget">
+
+   <label for="countryCode">Pays / Indicatif :</label>
+   <select id="countryCode" name="countryCode" required>
+   <option value="">Sélectionnez un pays...</option>
+   </select>
+
+<!-- Champ de numéro, masqué tant qu’aucun pays n’est sélectionné -->
+   <div id="phoneContainer" style="display: none; margin-top: 5px;">
+   <label for="phone">Numéro de téléphone :</label>
+   <input type="tel" id="phone" name="phone"class="large-input" placeholder="Ex. 970 000 000" required />
+</div>
+    <button type="submit">Envoyer</button>
+  </form>
+
+
+ 
 
 </main>
     <footer>
-
+       
     </footer>
-    <footer></footer>
-
-<script>
+    <script>
   fetch("/Project/footer.html")
     .then(res => res.text())
     .then(data => {

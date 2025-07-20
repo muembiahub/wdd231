@@ -1,0 +1,98 @@
+[
+  {
+    "id": "alimentation-agriculture",
+    "name": "Alimentation & Agriculture",
+    "icon": "🌽",
+    "description": "Produits alimentaires, fermes, semences, outils agricoles."
+  },
+  {
+    "id": "construction-reparation",
+    "name": "Construction & Réparation",
+    "icon": "🔧",
+    "description": "Travaux de bâtiment, maçonnerie, plomberie, électricité."
+  },
+  {
+    "id": "sante-beaute",
+    "name": "Santé & Beauté",
+    "icon": "💅",
+    "description": "Soins, coiffure, produits de beauté, pharmacies."
+  },
+  {
+    "id": "sport-arts-loisirs",
+    "name": "Sport, Arts & Loisirs",
+    "icon": "🎨",
+    "description": "Équipement sportif, musique, jeux, spectacles."
+  },
+  {
+    "id": "bebes-enfants",
+    "name": "Bébés & Enfants",
+    "icon": "🧸",
+    "description": "Vêtements enfants, jouets, crèches, produits de puériculture."
+  },
+  {
+    "id": "emploi-formation",
+    "name": "Emploi & Formation",
+    "icon": "🎓",
+    "description": "Offres d’emploi, stages, cours, tutoriels, orientation."
+  },
+  {
+    "id": "mode",
+    "name": "Mode",
+    "icon": "👗",
+    "description": "Vêtements, accessoires, chaussures, prêt-à-porter."
+  },
+  {
+    "id": "equipement-pro",
+    "name": "Équipement Professionnel",
+    "icon": "⚙️",
+    "description": "Machines, mobilier professionnel, matériel technique."
+  },
+  {
+    "id": "electronique",
+    "name": "Électronique",
+    "icon": "📺",
+    "description": "TV, ordinateurs, imprimantes, gadgets électroniques."
+  },
+  {
+    "id": "immobilier",
+    "name": "Immobilier",
+    "icon": "🏠",
+    "description": "Vente, location, terrain, maisons, immeubles."
+  },
+  {
+    "id": "animaux",
+    "name": "Animaux Domestiques",
+    "icon": "🐶",
+    "description": "Chiens, chats, accessoires, vétérinaire."
+  },
+  {
+    "id": "maison",
+    "name": "Pour la Maison",
+    "icon": "🪑",
+    "description": "Meubles, décoration, literie, ustensiles."
+  },
+  {
+    "id": "hotels-restaurants",
+    "name": "Hôtels & Restaurants",
+    "icon": "🍽️",
+    "description": "Services de restauration, hôtels, livraisons."
+  },
+  {
+    "id": "telephones-tablettes",
+    "name": "Téléphones & Tablettes",
+    "icon": "📱",
+    "description": "Smartphones, accessoires, réparation mobile."
+  },
+  {
+    "id": "services",
+    "name": "Services",
+    "icon": "🛎️",
+    "description": "Transport, nettoyage, sécurité, prestations diverses."
+  },
+  {
+    "id": "vehicules",
+    "name": "Véhicules",
+    "icon": "🚗",
+    "description": "Voitures, motos, pièces détachées, location, vente."
+  }
+]
