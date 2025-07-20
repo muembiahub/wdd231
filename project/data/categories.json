@@ -36,47 +36,47 @@
       "page_url": "categories/mode.html"
     },
     {
-      "logo": "/images/equipement.png",
+      "logo": "images/equipement.png",
       "category": "Équipement Professionnel",
       "page_url": "categories/equipement-professionnel.html"
     },
     {
-      "logo": "https://boncoin.cm/sites/default/files/categories/electronic11s.png",
+      "logo": "images/electrionic.png",
       "category": "Électronique",
       "page_url": "categories/electronique.html"
     },
     {
-      "logo": "https://boncoin.cm/sites/default/files/categories/immobilier2s.png",
+      "logo": "images/immobilier.png",
       "category": "Immobilier",
       "page_url": "categories/immobilier.html"
     },
     {
-      "logo": "https://boncoin.cm/sites/default/files/categories/animaux2.png",
+      "logo": "images/animaux.png",
       "category": "Animaux Domestiques",
       "page_url": "categories/animaux-domestique.html"
     },
     {
-      "logo": "https://boncoin.cm/sites/default/files/categories/pour_la_mais22on.png",
+      "logo": "images/pour_la_maison.png",
       "category": "Pour la Maison",
       "page_url": "categories/pour-la-maison.html"
     },
     {
-      "logo": "https://boncoin.cm/sites/default/files/categories/hotel44s.png",
+      "logo": "images/hotel.png",
       "category": "Hôtels & Restaurants",
       "page_url": "categories/hotel-et-restaurant.html"
     },
     {
-      "logo": "https://boncoin.cm/sites/default/files/categories/telephone22s.png",
+      "logo": "images/telephone.png",
       "category": "Téléphones & Tablettes",
       "page_url": "categories/telephone-et-tablette.html"
     },
     {
-      "logo": "https://boncoin.cm/sites/default/files/categories/service44s.png",
+      "logo": "images/services.png",
       "category": "Services",
       "page_url": "categories/service.html"
     },
     {
-      "logo": "https://boncoin.cm/sites/default/files/categories/vehicul555es.png",
+      "logo": "images/vehicules.png",
       "category": "Véhicules",
       "page_url": "categories/vehicule.html"
     }
