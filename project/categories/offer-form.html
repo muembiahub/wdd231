@@ -107,6 +107,7 @@
     .then(data => {
       document.querySelector("footer").innerHTML = data;
       const modifiedSpan = document.getElementById("last-modified");
+      const currentYear = document.getElementById("currentyear");
       if (modifiedSpan) modifiedSpan.textContent = document.lastModified;
     });
 </script>
