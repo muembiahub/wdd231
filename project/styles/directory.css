@@ -259,7 +259,7 @@ h2::after,.card::after{
 footer {
 padding: 10px;
 background-color:  #6486ce ; /* Couleur de fond gris foncé */
-color: #0b0b0b; 
+color: black;
 
 }
 .copyright {
@@ -269,6 +269,28 @@ color: #0b0b0b;
   font-size: 12px; /* ajustez la taille selon votre besoin */
   z-index: 9999; /* pour qu'il reste au-dessus des autres éléments */
 }
+.footer-container {
+
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  min-height: 200px;
+
+}
+
+.address,
+.social-icons,
+.footer-links,
+.language-selector,
+.newsletter,
+.availability,
+.legal {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: row ;
+  justify-items: center;
+  text-align: center;
+}
+
 
 
 /* ========== Small Screens (<= 700px) ========== */
