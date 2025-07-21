@@ -220,79 +220,251 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // Catalogue Téléphones & Tablettes
+document.addEventListener("DOMContentLoaded", () => {
+  const catalog = document.getElementById("product-list");
+  const cart = JSON.parse(localStorage.getItem("panier")) || [];
 
-const title = document.getElementById("page-title");
-title.style.fontFamily = "Arial, sans-serif";
-title.style.color = "#0078d7";
-title.style.textAlign = "center";
-title.style.marginBottom = "1em";
+  // Style catalogue container
+  catalog.style.display = "grid";
+  catalog.style.gridTemplateColumns = "repeat(auto-fit, minmax(280px, 1fr))";
+  catalog.style.gap = "1em";
+  catalog.style.padding = "2em";
+  catalog.style.fontFamily = "Arial, sans-serif";
+  catalog.style.backgroundColor = "#6d6ec3ff";
 
-const catalog = document.getElementById("catalog");
-catalog.style.display = "grid";
-catalog.style.gridTemplateColumns = "repeat(auto-fit, minmax(280px, 1fr))";
-catalog.style.gap = "1.5em";
-catalog.style.padding = "2em";
-catalog.style.fontFamily = "Arial, sans-serif";
-catalog.style.backgroundColor = "#f9f9f9";
-
-fetch('https://muembiahub.github.io/wdd231/project/categories/scripts/telephones-tablettes.json')
-  .then(response => {
-    if (!response.ok) throw new Error("Données introuvables");
-    return response.json();
-  })
-  .then(products => {
-    catalog.innerHTML = "";
-
-    products.forEach(product => {
-      const card = document.createElement("div");
-      card.style.backgroundColor = "#fff";
-      card.style.border = "1px solid #ddd";
-      card.style.borderRadius = "10px";
-      card.style.padding = "1em";
-      card.style.boxShadow = "0 2px 5px rgba(0,0,0,0.08)";
-      card.style.transition = "transform 0.3s ease";
-      card.addEventListener("mouseenter", () => card.style.transform = "scale(1.02)");
-      card.addEventListener("mouseleave", () => card.style.transform = "scale(1)");
-
-      const img = document.createElement("img");
-      img.src = product.image;
-      img.alt = product.name;
-      img.style.width = "100%";
-      img.style.borderRadius = "6px";
-      img.style.marginBottom = "0.8em";
-
-      const name = document.createElement("h2");
-      name.textContent = product.name;
-      name.style.fontSize = "1.1em";
-      name.style.color = "#333";
-      name.style.marginBottom = "0.2em";
-
-      const brand = document.createElement("div");
-      brand.textContent = `Marque : ${product.brand}`;
-      brand.style.fontWeight = "bold";
-      brand.style.marginBottom = "0.3em";
-      brand.style.color = "#555";
-
-      const price = document.createElement("div");
-      price.textContent = `Prix : ${product.price}`;
-      price.style.color = "#0078d7";
-      price.style.marginBottom = "0.5em";
-
-      const desc = document.createElement("p");
-      desc.textContent = product.description;
-      desc.style.fontSize = "0.9em";
-      desc.style.lineHeight = "1.4";
-      desc.style.color = "#444";
-
-      card.appendChild(img);
-      card.appendChild(name);
-      card.appendChild(brand);
-      card.appendChild(price);
-      card.appendChild(desc);
-      catalog.appendChild(card);
-    });
-  })
-  .catch(error => {
-    catalog.innerHTML = "<p style='color:red'>⚠️ Échec du chargement des produits.</p>";
-    console.error(error);
+  // Créer bouton "Voir panier"
+  const viewCartBtn = document.createElement("button");
+  viewCartBtn.textContent = "🧺 Voir panier";
+  Object.assign(viewCartBtn.style, {
+    position: "fixed",
+    bottom: "20px",
+    right: "20px",
+    padding: "0.7em 1em",
+    backgroundColor: "#0078d7",
+    color: "#fff",
+    border: "none",
+    borderRadius: "8px",
+    cursor: "pointer",
+    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+    zIndex: "999"
   });
+  document.body.appendChild(viewCartBtn);
+
+  // Créer le panneau panier
+  const cartPanel = document.createElement("div");
+  cartPanel.style.display = "none";
+  cartPanel.style.position = "fixed";
+  cartPanel.style.bottom = "80px";
+  cartPanel.style.right = "20px";
+  cartPanel.style.width = "320px";
+  cartPanel.style.maxHeight = "400px";
+  cartPanel.style.overflowY = "auto";
+  cartPanel.style.backgroundColor = "#fff";
+  cartPanel.style.border = "1px solid #ccc";
+  cartPanel.style.borderRadius = "10px";
+  cartPanel.style.padding = "1em";
+  cartPanel.style.boxShadow = "0 4px 10px rgba(0,0,0,0.2)";
+  cartPanel.style.zIndex = "998";
+  document.body.appendChild(cartPanel);
+
+  // Fonction de mise à jour du panier
+ function updateCartDisplay() {
+  cartPanel.innerHTML = "";
+
+  if (cart.length === 0) {
+    cartPanel.innerHTML = "<p>Le panier est vide.</p>";
+    return;
+  }
+
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    const entry = document.createElement("div");
+    entry.textContent = `🛒 ${item.name} - ${item.price}`;
+    entry.style.marginBottom = "0.5em";
+
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "✖";
+    removeBtn.style.marginLeft = "10px";
+    removeBtn.style.backgroundColor = "#f44336";
+    removeBtn.style.color = "#fff";
+    removeBtn.style.border = "none";
+    removeBtn.style.borderRadius = "4px";
+    removeBtn.style.cursor = "pointer";
+
+    removeBtn.addEventListener("click", () => {
+      cart.splice(index, 1);
+      localStorage.setItem("panier", JSON.stringify(cart));
+      updateCartDisplay();
+    });
+
+    entry.appendChild(removeBtn);
+    cartPanel.appendChild(entry);
+
+    total += parseFloat(item.price.replace("$", ""));
+  });
+
+  const totalDiv = document.createElement("div");
+  totalDiv.textContent = `🧮 Total : $${total.toFixed(2)}`;
+  totalDiv.style.fontWeight = "bold";
+  totalDiv.style.marginTop = "1em";
+  cartPanel.appendChild(totalDiv);
+
+  // 👉 Ajouter le bouton "Payer maintenant"
+  const oldPayBtn = document.getElementById("payBtn");
+  if (oldPayBtn) {
+    oldPayBtn.remove();
+  }
+
+  const payBtn = document.createElement("button");
+  payBtn.id = "payBtn";
+  payBtn.textContent = "💳 Payer maintenant";
+  payBtn.style.marginTop = "1em";
+  payBtn.style.backgroundColor = "#4caf50";
+  payBtn.style.color = "#fff";
+  payBtn.style.border = "none";
+  payBtn.style.borderRadius = "6px";
+  payBtn.style.padding = "0.5em 1em";
+  payBtn.style.cursor = "pointer";
+
+  payBtn.addEventListener("click", () => {
+    if (cart.length === 0) {
+      alert("🛒 Votre panier est vide !");
+      return;
+    }
+
+    const total = cart.reduce((sum, item) => {
+      return sum + parseFloat(item.price.replace("$", ""));
+    }, 0);
+
+    alert(`✅ Paiement simulé de $${total.toFixed(2)} pour ${cart.length} article(s).\nMerci pour votre commande !`);
+
+    localStorage.removeItem("panier");
+    cart.length = 0;
+    updateCartDisplay();
+  });
+
+  cartPanel.appendChild(payBtn);
+
+  // 👉 Bouton "Vider le panier"
+  const clearBtn = document.createElement("button");
+  clearBtn.textContent = "🧹 Vider le panier";
+  clearBtn.style.marginTop = "1em";
+  clearBtn.style.backgroundColor = "#ff9800";
+  clearBtn.style.color = "#fff";
+  clearBtn.style.border = "none";
+  clearBtn.style.borderRadius = "6px";
+  clearBtn.style.padding = "0.5em 1em";
+  clearBtn.style.cursor = "pointer";
+
+  clearBtn.addEventListener("click", () => {
+    localStorage.removeItem("panier");
+    cart.length = 0;
+    updateCartDisplay();
+  });
+
+  cartPanel.appendChild(clearBtn);
+}
+
+  viewCartBtn.addEventListener("click", () => {
+    cartPanel.style.display = cartPanel.style.display === "none" ? "block" : "none";
+    updateCartDisplay();
+  });
+
+  // Charger les produits
+  fetch('scripts/telephones-tablettes.json')
+    .then(response => {
+      if (!response.ok) throw new Error("Données introuvables");
+      return response.json();
+    })
+    .then(products => {
+      catalog.innerHTML = "";
+
+      products.forEach(product => {
+        const card = document.createElement("div");
+        Object.assign(card.style, {
+          backgroundColor: "#fff",
+          border: "1px solid #ddd",
+          borderRadius: "10px",
+          padding: "1em",
+          boxShadow: "0 2px 5px rgba(0,0,0,0.08)",
+          transition: "transform 0.3s ease"
+        });
+        card.addEventListener("mouseenter", () => card.style.transform = "scale(1.02)");
+        card.addEventListener("mouseleave", () => card.style.transform = "scale(1)");
+
+        const img = document.createElement("img");
+        img.src = product.image;
+        img.alt = product.name;
+        Object.assign(img.style, {
+          width: "200px",
+          borderRadius: "4px",
+          marginBottom: "0.8em"
+        });
+
+        const name = document.createElement("h2");
+        name.textContent = product.name;
+        Object.assign(name.style, {
+          fontSize: "1.1em",
+          color: "#333",
+          marginBottom: "0.2em"
+        });
+
+        const brand = document.createElement("div");
+        brand.textContent = `Marque : ${product.brand}`;
+        Object.assign(brand.style, {
+          fontWeight: "bold",
+          marginBottom: "0.3em",
+          color: "#555"
+        });
+
+        const price = document.createElement("div");
+        price.textContent = `Prix : ${product.price}`;
+        Object.assign(price.style, {
+          color: "#0078d7",
+          marginBottom: "0.5em"
+        });
+
+        const desc = document.createElement("p");
+        desc.textContent = product.description;
+        Object.assign(desc.style, {
+          fontSize: "0.9em",
+          lineHeight: "1.4",
+          color: "#444"
+        });
+
+        const button = document.createElement("button");
+        button.textContent = "Ajouter au panier";
+        Object.assign(button.style, {
+          padding: "0.6em 1em",
+          backgroundColor: "#0078d7",
+          color: "#fff",
+          border: "none",
+          borderRadius: "6px",
+          cursor: "pointer",
+          marginTop: "0.5em",
+          transition: "background-color 0.3s ease"
+        });
+        button.addEventListener("mouseenter", () => button.style.backgroundColor = "#005bb5");
+        button.addEventListener("mouseleave", () => button.style.backgroundColor = "#0078d7");
+        button.addEventListener("click", () => {
+          cart.push(product);
+          localStorage.setItem("panier", JSON.stringify(cart));
+          updateCartDisplay();
+          alert(`✅ ${product.name} ajouté au panier !`);
+        });
+
+        card.appendChild(img);
+        card.appendChild(name);
+        card.appendChild(brand);
+        card.appendChild(price);
+        card.appendChild(desc);
+        card.appendChild(button);
+        catalog.appendChild(card);
+      });
+    })
+    .catch(error => {
+      catalog.innerHTML = "<p style='color:red'>⚠️ Échec du chargement des produits.</p>";
+      console.error(error);
+    });
+});
