@@ -231,7 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
     container.style.padding = "1em";
     container.style.backgroundColor = "#f9f9f9";
 
-    fetch('scripts/telephones-tablettes.json') // ajuste le chemin selon ton projet
+    fetch('scripts/telephones-tablettes.json') // ajuste le chemin selon  projet
       .then(response => {
         if (!response.ok) throw new Error("Fichier JSON introuvable");
         return response.json();
