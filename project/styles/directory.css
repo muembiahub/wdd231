@@ -334,7 +334,7 @@ color: black;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-      gap: 200px;
+    gap: 50px;
   }
 
   .navigation a {
