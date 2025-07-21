@@ -47,7 +47,7 @@ h1, h2 {
 
 /* ========== Navigation ========== */
 nav {
-  max-width: 1500px;
+  max-width: 1300px;
   margin: 0rem auto;
   position: relative;
   top: 0rem;
@@ -295,10 +295,7 @@ color: black;
 
 /* ========== Small Screens (<= 700px) ========== */
 @media (max-width: 700px) {
-  .directory-content {
-    flex-direction: column;
-    gap: 10px;
-  }
+  
  
   .logo-title img {
     width: 18px;
@@ -334,7 +331,7 @@ color: black;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 30px;
   }
 
   .navigation a {
