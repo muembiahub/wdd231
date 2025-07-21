@@ -47,7 +47,7 @@ h1, h2 {
 
 /* ========== Navigation ========== */
 nav {
-  max-width: auto;
+  max-width: 1500px;
   margin: 0rem auto;
   position: relative;
   top: 0rem;
