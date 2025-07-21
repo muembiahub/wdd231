@@ -221,57 +221,78 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Catalogue Téléphones & Tablettes
 
- const title = document.getElementById("page-title");
-    title.style.color = "#0078d7";
-    title.style.marginBottom = "1em";
-    title.style.fontFamily = "Arial, sans-serif";
+const title = document.getElementById("page-title");
+title.style.fontFamily = "Arial, sans-serif";
+title.style.color = "#0078d7";
+title.style.textAlign = "center";
+title.style.marginBottom = "1em";
 
-    const container = document.getElementById("product-list");
-    container.style.fontFamily = "Arial, sans-serif";
-    container.style.padding = "1em";
-    container.style.backgroundColor = "#f9f9f9";
+const catalog = document.getElementById("catalog");
+catalog.style.display = "grid";
+catalog.style.gridTemplateColumns = "repeat(auto-fit, minmax(280px, 1fr))";
+catalog.style.gap = "1.5em";
+catalog.style.padding = "2em";
+catalog.style.fontFamily = "Arial, sans-serif";
+catalog.style.backgroundColor = "#f9f9f9";
 
-    fetch('scripts/telephones-tablettes.json') // ajuste le chemin selon  projet
-      .then(response => {
-        if (!response.ok) throw new Error("Fichier JSON introuvable");
-        return response.json();
-      })
-      .then(products => {
-        container.innerHTML = "";
+fetch('https://muembiahub.github.io/wdd231/project/categories/scripts/telephones-tablettes.json')
+  .then(response => {
+    if (!response.ok) throw new Error("Données introuvables");
+    return response.json();
+  })
+  .then(products => {
+    catalog.innerHTML = "";
 
-        products.forEach(({ name, price }) => {
-          const card = document.createElement("div");
-          card.style.backgroundColor = "#fff";
-          card.style.border = "1px solid #ddd";
-          card.style.borderRadius = "8px";
-          card.style.padding = "1em";
-          card.style.marginBottom = "1em";
-          card.style.boxShadow = "0 2px 5px rgba(0,0,0,0.05)";
-          card.style.transition = "transform 0.3s ease";
+    products.forEach(product => {
+      const card = document.createElement("div");
+      card.style.backgroundColor = "#fff";
+      card.style.border = "1px solid #ddd";
+      card.style.borderRadius = "10px";
+      card.style.padding = "1em";
+      card.style.boxShadow = "0 2px 5px rgba(0,0,0,0.08)";
+      card.style.transition = "transform 0.3s ease";
+      card.addEventListener("mouseenter", () => card.style.transform = "scale(1.02)");
+      card.addEventListener("mouseleave", () => card.style.transform = "scale(1)");
 
-          card.addEventListener("mouseenter", () => {
-            card.style.transform = "scale(1.02)";
-          });
-          card.addEventListener("mouseleave", () => {
-            card.style.transform = "scale(1)";
-          });
+      const img = document.createElement("img");
+      img.src = product.image;
+      img.alt = product.name;
+      img.style.width = "100%";
+      img.style.borderRadius = "6px";
+      img.style.marginBottom = "0.8em";
 
-          const nameDiv = document.createElement("div");
-          nameDiv.textContent = name;
-          nameDiv.style.fontWeight = "bold";
-          nameDiv.style.fontSize = "1.1em";
-          nameDiv.style.marginBottom = "0.3em";
+      const name = document.createElement("h2");
+      name.textContent = product.name;
+      name.style.fontSize = "1.1em";
+      name.style.color = "#333";
+      name.style.marginBottom = "0.2em";
 
-          const priceDiv = document.createElement("div");
-          priceDiv.textContent = `Prix : ${price}`;
-          priceDiv.style.color = "#444";
+      const brand = document.createElement("div");
+      brand.textContent = `Marque : ${product.brand}`;
+      brand.style.fontWeight = "bold";
+      brand.style.marginBottom = "0.3em";
+      brand.style.color = "#555";
 
-          card.appendChild(nameDiv);
-          card.appendChild(priceDiv);
-          container.appendChild(card);
-        });
-      })
-      .catch(error => {
-        container.innerHTML = `<p style="color:red;">⚠️ Erreur de chargement des produits.</p>`;
-        console.error(error);
-      });
+      const price = document.createElement("div");
+      price.textContent = `Prix : ${product.price}`;
+      price.style.color = "#0078d7";
+      price.style.marginBottom = "0.5em";
+
+      const desc = document.createElement("p");
+      desc.textContent = product.description;
+      desc.style.fontSize = "0.9em";
+      desc.style.lineHeight = "1.4";
+      desc.style.color = "#444";
+
+      card.appendChild(img);
+      card.appendChild(name);
+      card.appendChild(brand);
+      card.appendChild(price);
+      card.appendChild(desc);
+      catalog.appendChild(card);
+    });
+  })
+  .catch(error => {
+    catalog.innerHTML = "<p style='color:red'>⚠️ Échec du chargement des produits.</p>";
+    console.error(error);
+  });
