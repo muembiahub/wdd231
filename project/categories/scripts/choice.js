@@ -139,3 +139,139 @@ document.addEventListener("DOMContentLoaded", async function () {
     console.error("Erreur de chargement du fichier countries.json :", error);
   }
 });
+
+
+
+
+// needType selection sur Formulaire 
+
+document.addEventListener("DOMContentLoaded", () => {
+  const select = document.getElementById("needType");
+  const preview = document.getElementById("preview");
+
+  fetch('scripts/services.json')
+    .then(response => response.json())
+    .then(data => {
+      data.forEach(({ id, name, icon, description }) => {
+        const option = document.createElement("option");
+        option.value = id;
+        option.textContent = `${icon} ${name}`;
+        option.title = description;
+        select.appendChild(option);
+      });
+
+     select.addEventListener("change", () => {
+  const selected = data.find(item => item.id === select.value);
+  preview.innerHTML = "";
+
+  if (selected) {
+    const card = document.createElement("div");
+    card.className = "preview-card";
+    card.style.padding = "1em";
+    card.style.borderRadius = "8px";
+    card.style.boxShadow = "0 2px 5px rgba(0,0,0,0.1)";
+    card.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+    card.style.opacity = "0";
+    card.style.transform = "translateY(10px)";
+    card.style.backgroundColor = "#f0f0f0";
+    card.style.border = "1px solid #ccc";
+
+    const title = document.createElement("h2");
+    title.textContent = `${selected.icon} ${selected.name}`;
+    title.style.marginBottom = "0.5em";
+
+    const desc = document.createElement("p");
+    desc.textContent = selected.description;
+    desc.style.marginBottom = "1em";
+
+    const link = document.createElement("a");
+    link.href = `${selected.id}.html`; // 🔗 chemin vers la page dédiée
+    link.textContent = "Voir les détails";
+    link.style.display = "inline-block";
+    link.style.padding = "0.5em 1em";
+    link.style.backgroundColor = "#0078d7";
+    link.style.color = "#fff";
+    link.style.borderRadius = "4px";
+    link.style.textDecoration = "none";
+
+    link.addEventListener("mouseover", () => link.style.backgroundColor = "#005bb5");
+    link.addEventListener("mouseout", () => link.style.backgroundColor = "#0078d7");
+
+    card.appendChild(title);
+    card.appendChild(desc);
+    card.appendChild(link);
+    preview.appendChild(card);
+
+    // Animation d’apparition
+    setTimeout(() => {
+      card.style.opacity = "1";
+      card.style.transform = "translateY(0)";
+    }, 10);
+  }
+});
+    })
+    .catch(error => {
+      preview.innerHTML = `<p style="color: red;">⚠️ Erreur de chargement.</p>`;
+      console.error(error);
+    });
+});
+
+
+
+
+// Catalogue Téléphones & Tablettes
+
+ const title = document.getElementById("page-title");
+    title.style.color = "#0078d7";
+    title.style.marginBottom = "1em";
+    title.style.fontFamily = "Arial, sans-serif";
+
+    const container = document.getElementById("product-list");
+    container.style.fontFamily = "Arial, sans-serif";
+    container.style.padding = "1em";
+    container.style.backgroundColor = "#f9f9f9";
+
+    fetch('../data/telephones.json') // ajuste le chemin selon ton projet
+      .then(response => {
+        if (!response.ok) throw new Error("Fichier JSON introuvable");
+        return response.json();
+      })
+      .then(products => {
+        container.innerHTML = "";
+
+        products.forEach(({ name, price }) => {
+          const card = document.createElement("div");
+          card.style.backgroundColor = "#fff";
+          card.style.border = "1px solid #ddd";
+          card.style.borderRadius = "8px";
+          card.style.padding = "1em";
+          card.style.marginBottom = "1em";
+          card.style.boxShadow = "0 2px 5px rgba(0,0,0,0.05)";
+          card.style.transition = "transform 0.3s ease";
+
+          card.addEventListener("mouseenter", () => {
+            card.style.transform = "scale(1.02)";
+          });
+          card.addEventListener("mouseleave", () => {
+            card.style.transform = "scale(1)";
+          });
+
+          const nameDiv = document.createElement("div");
+          nameDiv.textContent = name;
+          nameDiv.style.fontWeight = "bold";
+          nameDiv.style.fontSize = "1.1em";
+          nameDiv.style.marginBottom = "0.3em";
+
+          const priceDiv = document.createElement("div");
+          priceDiv.textContent = `Prix : ${price}`;
+          priceDiv.style.color = "#444";
+
+          card.appendChild(nameDiv);
+          card.appendChild(priceDiv);
+          container.appendChild(card);
+        });
+      })
+      .catch(error => {
+        container.innerHTML = `<p style="color:red;">⚠️ Erreur de chargement des produits.</p>`;
+        console.error(error);
+      });

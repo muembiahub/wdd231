@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
@@ -24,17 +23,11 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
         <script src="../scripts/index.js" defer></script>
         <script src="scripts/choice.js"></script>
-        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-        <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-
-        <title>Kazidomo Confiance Recherchez un service Page </title>
+        <title>Catalogue Téléphones & Tablettes</title>
         <link rel="stylesheet" href="../styles/directory.css">
         <link rel="stylesheet" href="styles/form-style.css">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-        <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
-
-
     </head>
+    <body>
          <header class="header-content">
                 <div class="logo-title">
                         <div class="logo">
@@ -53,61 +46,17 @@
                             </nav>
         </header>
     <main>
-        <div class="hero">
-             <h1>En Recherche d'un Emplois</h1>
-  <form>
-    <label for="needType">Type d'Emplois recherché :</label>
-    <select id="needType" name="needType" required>
-    <option value="">-- Choisissez une catégorie --</option>
-  </select>
-  <div id="preview" aria-live="polite" style="margin-top: 1em;"></div>
+         <h1 id="page-title">📱 Téléphones & Tablettes</h1>
+            <div id="product-list">Chargement...</div>
 
-
-
-    <label for="description">Décrivez votre besoin :</label>
-    <textarea id="description" name="description" required></textarea>
-
-    <label for="searchLocation">Recherchez un lieu :</label>
-    <input type="text" id="searchLocation" placeholder="Ex. Kampemba, Lubumbashi" />
-
-    
-
-    <label for="province">Province :</label>
-    <input type="text" id="province" name="province" placeholder="Province détectée" required />
-
-    <label for="quartier">Quartier :</label>
-    <input type="text" id="quartier" name="quartier" placeholder="Quartier détecté" required />
-     
-    <button type="button" onclick="getLocation()">📍 Détecter ma position</button>
-    <div id="map" style="height: 200px; margin-top: 20px;"></div>
-
-    
-    <label for="budget">Salaire (Proposez Votre Prix) :</label>
-    <input type="text" id="budget" name="budget">
-
-   <label for="countryCode">Pays / Indicatif :</label>
-   <select id="countryCode" name="countryCode" required>
-   <option value="">Sélectionnez un pays...</option>
-   </select>
-
-<!-- Champ de numéro, masqué tant qu’aucun pays n’est sélectionné -->
-   <div id="phoneContainer" style="display: none; margin-top: 5px;">
-   <label for="phone">Numéro de téléphone :</label>
-   <input type="tel" id="phone" name="phone"class="large-input" placeholder="Ex. 970 000 000" required />
-</div>
-    <button type="submit">Envoyer</button>
-  </form>
-
-
+        
  
 
 </main>
-  <!-- Ton contenu ici -->
-
-  <footer></footer>
+       <footer></footer>
 
   <script>
-   fetch("../footer.html", { cache: "no-store" })
+    fetch("../footer.html", { cache: "no-store" })
   .then(res => res.text())
   .then(data => {
     document.querySelector("footer").innerHTML = data;
@@ -118,6 +67,5 @@
     if (modifiedSpan) modifiedSpan.textContent = document.lastModified;
   });
   </script>
-
     </body>
 </html>
