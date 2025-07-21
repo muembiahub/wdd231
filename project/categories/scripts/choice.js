@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
     card.style.border = "1px solid #ccc";
 
     const title = document.createElement("h2");
-    title.textContent = `https://muembiahub.github.io/wdd231/project/categories/${selected.icon} ${selected.name}`;
+    title.textContent = `${selected.icon} ${selected.name}`;
     title.style.marginBottom = "0.5em";
 
     const desc = document.createElement("p");
