@@ -47,7 +47,7 @@ h1, h2 {
 
 /* ========== Navigation ========== */
 nav {
-  max-width: 1300px;
+  max-width: 1010px;
   margin: 0rem auto;
   position: relative;
   top: 0rem;
@@ -331,7 +331,6 @@ color: black;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 30px;
   }
 
   .navigation a {
