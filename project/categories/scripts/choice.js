@@ -149,11 +149,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const select = document.getElementById("needType");
   const preview = document.getElementById("preview");
 
-  const actionButton = document.createElement("button");
-  actionButton.textContent = "Découvrir cette catégorie";
-  actionButton.style.display = "none";
-  actionButton.className = "category-btn";
-  preview.after(actionButton);
+const actionButton = document.createElement("a");
+actionButton.textContent = "Découvrir cette catégorie";
+actionButton.className = "category-btn";
+actionButton.style.display = "none";
+preview.after(actionButton);
+
 
   fetch('scripts/services.json')
     .then(response => response.json())
@@ -187,14 +188,9 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           `;
           actionButton.style.display = "inline-block";
-          actionButton.onclick = () => {
-            actionButton.href =` ${selected.id}.html`;
+           actionButton.style.display = "inline-block";
+          actionButton.href = `${selected.id}.html`;
           };
-        } else {
-          preview.innerHTML = `<p>Veuillez choisir une catégorie pour voir les informations.</p>`;
-          actionButton.style.display = "none";
-        }
-      });
     })
     .catch(error => {
       console.error("Erreur de chargement :", error);
