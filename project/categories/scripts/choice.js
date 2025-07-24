@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
           `;
           actionButton.style.display = "inline-block";
           actionButton.onclick = () => {
-            actionButton.href =` ${selected.id}.html`;
+          window.location.href =` ${selected.id}.html`;
           };
         } else {
           preview.innerHTML = `<p>Veuillez choisir une catégorie pour voir les informations.</p>`;
