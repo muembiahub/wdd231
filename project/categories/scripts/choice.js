@@ -188,7 +188,6 @@ document.addEventListener("DOMContentLoaded", () => {
           `;
           actionButton.style.display = "inline-block";
           actionButton.onclick = () => {
-            alert(`Vous avez choisi "${selected.name}". À vous de jouer !`);
             window.location.href = `${selected.id}.html`;
           };
         } else {
