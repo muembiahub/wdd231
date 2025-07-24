@@ -193,9 +193,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         actionButton.style.display = "inline-block";
-        actionButton.onclick = () => {
-          window.location.href = `${selectedId}.html`; // redirection vers page nommée comme l’ID
-        };
+        if (selectedId) {
+           window.location.href = `${selectedId}.html`;
+           } 
+       else {
+            console.warn("Aucun ID sélectionné.");
+           }
       });
     })
     .catch(error => {
