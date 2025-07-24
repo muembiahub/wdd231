@@ -141,4 +141,89 @@
       "📱 Gadgets et innovations"
     ]
   }
+    ,
+  {
+    "id": "immobilier",
+    "name": "Immobilier",
+    "icon": "🏠",
+    "summary": "Acheter, louer, bâtir — trouvez votre espace.",
+    "details": "Maisons, terrains, appartements ou immeubles pour tous les projets immobiliers.",
+    "features": [
+      "🏘️ Maisons à vendre/louer",
+      "🧱 Terrains disponibles",
+      "🏢 Immeubles et bureaux",
+      "📑 Accompagnement juridique",
+      "🏗️ Construction sur mesure"
+    ]
+  },
+  {
+    "id": "animaux",
+    "name": "Animaux Domestiques",
+    "icon": "🐶",
+    "summary": "Vos compagnons bien accompagnés.",
+    "details": "Tout pour les animaux de compagnie : nourriture, accessoires, soins et vétérinaires.",
+    "features": [
+      "🐾 Nourriture spécialisée",
+      "🛏️ Accessoires & jouets",
+      "🐕 Adoption et vente",
+      "👨‍⚕️ Soins vétérinaires",
+      "🚿 Toilettage & entretien"
+    ]
+  },
+  {
+    "id": "maison",
+    "name": "Pour la Maison",
+    "icon": "🪑",
+    "summary": "L’art de vivre chez soi.",
+    "details": "Meubles, décoration, literie et ustensiles pour rendre votre maison agréable et fonctionnelle.",
+    "features": [
+      "🛏️ Literie et confort",
+      "🪞 Décoration & ambiance",
+      "🍽️ Ustensiles & cuisine",
+      "🪑 Meubles modernes",
+      "🧹 Produits d’entretien"
+    ]
+  },
+  {
+    "id": "hotels-restaurants",
+    "name": "Hôtels & Restaurants",
+    "icon": "🍽️",
+    "summary": "Savourez et séjournez avec style.",
+    "details": "Des établissements de qualité pour manger, se détendre ou organiser vos événements, avec livraison disponible.",
+    "features": [
+      "🍲 Restauration locale & internationale",
+      "🏨 Hôtels & hébergement",
+      "📦 Livraison de repas",
+      "🥂 Services événementiels",
+      "🧾 Menus & réservations"
+    ]
+  },
+  {
+    "id": "services",
+    "name": "Services",
+    "icon": "🛎️",
+    "summary": "Des prestations utiles au quotidien.",
+    "details": "Transport, nettoyage, sécurité, et autres services pour particuliers et professionnels.",
+    "features": [
+      "🚗 Transport et livraison",
+      "🧹 Nettoyage domestique & pro",
+      "🔒 Sécurité & gardiennage",
+      "🧰 Maintenance & dépannage",
+      "📝 Services administratifs"
+    ]
+  },
+  {
+    "id": "vehicules",
+    "name": "Véhicules",
+    "icon": "🚗",
+    "summary": "Roulez en toute liberté.",
+    "details": "Voitures, motos, pièces détachées et services de location/vente adaptés à vos besoins.",
+    "features": [
+      "🚘 Voitures neuves et d'occasion",
+      "🏍️ Motos & scooters",
+      "🔩 Pièces et accessoires",
+      "📋 Location courte et longue durée",
+      "🧑‍🔧 Réparation & entretien"
+    ]
+  }
 ]
