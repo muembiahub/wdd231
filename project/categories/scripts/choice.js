@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
       data.forEach(({ id, name, icon, summary,details,features }) => {
         const option = document.createElement("option");
         option.value = id;
-        option.textContent = `${icon} ${name} ${summary} ${details}${features}`;
+        option.textContent = `${icon} ${name} `;
         option.title = name;
         select.appendChild(option);
       });
