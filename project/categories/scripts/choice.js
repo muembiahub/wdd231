@@ -188,7 +188,6 @@ preview.after(actionButton);
             </div>
           `;
           actionButton.style.display = "inline-block";
-           actionButton.style.display = "inline-block";
           actionButton.href = `${selected.id}.html`;
           };
     })
