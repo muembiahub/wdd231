@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Charpantier",
+    "price": "$210",
+    "image": "images/charpantier-metalic.webp",
+    "description": "N/A."
+  },
+  {
+    "name": "Charpantier",
+    "price": "$159",
+    "image": "images/charpantier-planche.webp",
+    "description": "N/A."
+  }
+]
