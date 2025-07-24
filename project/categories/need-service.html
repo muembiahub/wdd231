@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:title" content="Directory">
+        <meta property="og:description" content="Kazidomo is a smart mobile application designed to enable anyone with a skill or trade—formal or informal—to offer their services in their neighborhood, city, or beyond.">
+        <meta property="og:url" content="https://muembiahub.github.io/wdd231/chamber">
+        <meta property="og:site_name" content="Kazidomo">
+        <meta property="og:image" content="https://muembiahub.github.io/wdd231/chamber/images/facebook-tag.png"/>
+        <meta name="author" content="Jonathan M. Muembia">
+        <meta name="description" content="Kazidomo is a smart mobile application designed to enable anyone with a skill or trade—formal or informal—to offer their services in their neighborhood, city, or beyond.">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="application-name" content="Kazidomo">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+        <meta name="keywords" content="Kazidomo, mobile application, service providers, geolocation, digital contracts, payment options, economic autonomy">
+        <meta name="theme-color" content="#ffffff">
+        <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <script src="../scripts/index.js" defer></script>
+        <script src="scripts/choice.js"></script>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+        <title>Kazidomo Confiance Recherchez un service Page </title>
+        <link rel="stylesheet" href="../styles/directory.css">
+        <link rel="stylesheet" href="styles/form-style.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
+
+    </head>
+         <header class="header-content">
+                <div class="logo-title">
+                        <div class="logo">
+                            <img src="../images/logo.jpg" alt=" Kazidomo Logo" width= "1" height="1">
+                        </div>
+                               <span>Kazidomo Confiance || DRCongo</span>
+                </div>
+                                <button type="button" id="menu"></button>
+                            <nav>
+	                            <ul class="navigation">
+		                            <li><a href="../index.html" title="Home">Acceuil</a></li>
+		                            <li><a href="directory.html" title="Service">Nos Produits</a></li>
+		                            <li><a href="join.html" title="History">Rejoinez-nous </a></li>
+		                            <li><a href="Discover.html" title="Contact">Contactez-nous </a></li>
+	                            </ul>
+                            </nav>
+        </header>
+    <main>
+        <div class="hero">
+             <h1>En Recherche d'un Emplois</h1>
+  <form>
+    <label for="needType">Service recherché :</label>
+    <select id="needType" name="needType" required>
+    <option value="">-- Choisissez une catégorie --</option>
+  </select>
+  <div id="preview" aria-live="polite" style="margin-top: 1em;"></div>
+  </form>
+
+
+ 
+
+</main>
+  <!-- Ton contenu ici -->
+
+  <footer></footer>
+
+  <script>
+   fetch("../footer.html", { cache: "no-store" })
+  .then(res => res.text())
+  .then(data => {
+    document.querySelector("footer").innerHTML = data;
+
+    const yearSpan = document.getElementById("currentyear");
+    const modifiedSpan = document.getElementById("last-modified");
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+    if (modifiedSpan) modifiedSpan.textContent = document.lastModified;
+  });
+  </script>
+
+    </body>
+</html>

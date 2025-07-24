@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
       const choice = select.value;
 
       if (choice === "offer") {
-        window.location.href = "offer-form.html";
+        window.location.href = "look-job.html";
       } else if (choice === "receive") {
-        window.location.href = "receive-form.html";
+        window.location.href = "need-service.html";
       } else {
         alert("Veuillez sélectionner une option avant de continuer.");
       }
