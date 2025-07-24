@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const option = document.createElement("option");
         option.value = id;
         option.textContent = `${icon} ${name} ${summary} ${details}${features}`;
-        option.title = description;
+        option.title = name;
         select.appendChild(option);
       });
 
