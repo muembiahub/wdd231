@@ -11,7 +11,7 @@
       { "label": "🌍 Livraison rapide partout dans le pays", "link": "/telephones-tablettes/livraison-rapide.html" },
       { "label": "🔧 Garantie & service après-vente inclus", "link": "/telephones-tablettes/garantie-service.html" },
       { "label": "🔋 Autonomie, performance et design", "link": "/telephones-tablettes/autonomie-performance-design.html" },
-      { "label": "🛒 Produits : smartphones, tablettes, accessoires", "link": "/telephones-tablettes/produits.html" },
+      { "label": "🛒 Produits : smartphones, tablettes, accessoires", "link": "../telephones-tablettes/produits.html" },
       { "label": "🔩 Services : réparation mobile", "link": "/telephones-tablettes/reparation-mobile.html" }
     ]
   },
