@@ -151,8 +151,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const actionButton = document.createElement("button");
   actionButton.textContent = "Découvrir cette catégorie";
-  actionButton.style.display = "none";
   actionButton.className = "category-btn";
+  actionButton.style.display = "none";
   preview.after(actionButton);
 
   fetch('scripts/services.json')
@@ -167,7 +167,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       select.addEventListener("change", () => {
-        const selected = data.find(item => item.id === select.value);
+        const selectedId = select.value;
+
+        const selected = data.find(item => item.id === selectedId);
         if (selected) {
           preview.innerHTML = `
             <div class="preview-block">
@@ -186,14 +188,14 @@ document.addEventListener("DOMContentLoaded", () => {
               </section>
             </div>
           `;
-          actionButton.style.display = "inline-block";
-          actionButton.onclick = () => {
-          window.location.href =`${selected.id}.html`;
-          };
         } else {
-          preview.innerHTML = `<p>Veuillez choisir une catégorie pour voir les informations.</p>`;
-          actionButton.style.display = "none";
+          preview.innerHTML = `<p>Aucune information disponible pour cette catégorie.</p>`;
         }
+
+        actionButton.style.display = "inline-block";
+        actionButton.onclick = () => {
+          window.location.href = `${selectedId}.html`; // redirection vers page nommée comme l’ID
+        };
       });
     })
     .catch(error => {
@@ -202,7 +204,6 @@ document.addEventListener("DOMContentLoaded", () => {
       actionButton.style.display = "none";
     });
 });
-
 
 
 
