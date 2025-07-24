@@ -189,8 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
           actionButton.style.display = "inline-block";
           actionButton.onclick = () => {
             alert(`Vous avez choisi "${selected.name}". À vous de jouer !`);
-            // Ou rediriger vers une autre page / déclencher une action :
-            // window.location.href = `categorie.html?id=${selected.id}`;
+            window.location.href = `${selected.id}`;
           };
         } else {
           preview.innerHTML = `<p>Veuillez choisir une catégorie pour voir les informations.</p>`;
