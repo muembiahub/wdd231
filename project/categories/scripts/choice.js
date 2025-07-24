@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const choice = select.value;
 
       if (choice === "offer") {
-        window.location.href = "look-job.html";
+        window.location.href = "looking-job.html";
       } else if (choice === "receive") {
         window.location.href = "need-service.html";
       } else {
