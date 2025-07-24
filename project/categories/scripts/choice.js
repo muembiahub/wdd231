@@ -149,25 +149,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const select = document.getElementById("needType");
   const preview = document.getElementById("preview");
 
-  let selectedId = ""; // pour garder l’id sélectionné
-
-  // Création du bouton visible dès le départ, mais désactivé
-  const actionButton = document.createElement("button");
-  actionButton.textContent = "Découvrir cette catégorie";
-  actionButton.className = "category-btn";
-  actionButton.disabled = true;
-  preview.after(actionButton);
-
   fetch('scripts/services.json')
     .then(response => response.json())
     .then(data => {
-      // Ajoute une option par défaut
+      // Option par défaut
       const defaultOption = document.createElement("option");
       defaultOption.textContent = "-- Choisir une catégorie --";
       defaultOption.value = "";
       select.appendChild(defaultOption);
 
-      // Ajoute les options du JSON
+      // Remplir le menu déroulant
       data.forEach(({ id, name, icon, summary }) => {
         const option = document.createElement("option");
         option.value = id;
@@ -176,12 +167,11 @@ document.addEventListener("DOMContentLoaded", () => {
         select.appendChild(option);
       });
 
-      // Quand on change la sélection
+      // Au changement de sélection
       select.addEventListener("change", () => {
-        selectedId = select.value;
-        actionButton.disabled = !selectedId;
-
+        const selectedId = select.value;
         const selected = data.find(item => item.id === selectedId);
+
         if (selected) {
           preview.innerHTML = `
             <div class="preview-block">
@@ -189,7 +179,17 @@ document.addEventListener("DOMContentLoaded", () => {
               <section><h4>Résumé</h4><p>${selected.summary}</p></section>
               <section><h4>Détails</h4><p>${selected.details}</p></section>
               <section><h4>Caractéristiques</h4>
-                <ul>${selected.features.map(f => `<li>${f}</li>`).join('')}</ul>
+                <ul>
+                  ${selected.features.map(f => {
+                    if (typeof f === "string") {
+                      return `<li>${f}</li>`;
+                    } else {
+                      return f.link
+                        ? `<li><a href="${f.link}" target="_blank" rel="noopener">${f.label}</a></li>`
+                        : `<li>${f.label}</li>`;
+                    }
+                  }).join("")}
+                </ul>
               </section>
             </div>
           `;
@@ -197,33 +197,10 @@ document.addEventListener("DOMContentLoaded", () => {
           preview.innerHTML = `<p>Aucune information disponible pour cette catégorie.</p>`;
         }
       });
-      actionButton.addEventListener("click", () => {
-  if (selectedId) {
-    console.log("Redirection vers :", `${selectedId}.html`);
-    window.location.href = `${selectedId}.html`;
-  } else {
-    alert("Aucune catégorie sélectionnée !");
-  }
-});
-
-      // Quand on clique sur le bouton
-      actionButton.addEventListener("click", () => {
-        if (selectedId) {
-          actionButton.textContent = "Chargement...";
-          actionButton.style.opacity = "0.8";
-          actionButton.style.transform = "scale(0.97)";
-          actionButton.style.cursor = "wait";
-
-          setTimeout(() => {
-            window.location.href = `${selectedId}.html`;
-          }, 500); // petit effet visuel
-        }
-      });
     })
     .catch(error => {
       console.error("Erreur de chargement :", error);
       preview.innerHTML = `<p>Erreur lors du chargement des données.</p>`;
-      actionButton.style.display = "none";
     });
 });
 

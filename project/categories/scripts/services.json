@@ -6,13 +6,13 @@
     "summary": "Des téléphones récents, performants et accessibles chez Kazidomo.",
     "details": "Que vous cherchiez un smartphone moderne, un téléphone simple ou un appareil professionnel — Kazidomo vous propose des modèles fiables, au meilleur prix, livrés partout dans le pays avec garantie et assistance.",
     "features": [
-      "✨ Modèles récents et fiables",
-      "💰 Prix compétitifs pour tous les budgets",
-      "🌍 Livraison rapide partout dans le pays",
-      "🔧 Garantie & service après-vente inclus",
-      "🔋 Autonomie, performance et design",
-      "🛒 Produits : smartphones, tablettes, accessoires",
-      "🔩 Services : réparation mobile"
+      { "label": "✨ Modèles récents et fiables", "link": "/telephones-tablettes/modeles-recents-fiables.html" },
+      { "label": "💰 Prix compétitifs pour tous les budgets", "link": "/telephones-tablettes/prix-competitifs.html" },
+      { "label": "🌍 Livraison rapide partout dans le pays", "link": "/telephones-tablettes/livraison-rapide.html" },
+      { "label": "🔧 Garantie & service après-vente inclus", "link": "/telephones-tablettes/garantie-service.html" },
+      { "label": "🔋 Autonomie, performance et design", "link": "/telephones-tablettes/autonomie-performance-design.html" },
+      { "label": "🛒 Produits : smartphones, tablettes, accessoires", "link": "/telephones-tablettes/produits.html" },
+      { "label": "🔩 Services : réparation mobile", "link": "/telephones-tablettes/reparation-mobile.html" }
     ]
   },
   {
@@ -22,11 +22,11 @@
     "summary": "Les bases de notre quotidien, du champ à la table.",
     "details": "Découvrez les produits alimentaires frais, les semences de qualité, les outils agricoles et les services liés aux fermes pour soutenir la production locale.",
     "features": [
-      "🌾 Produits alimentaires locaux",
-      "🧑‍🌾 Matériel pour fermes et cultures",
-      "🌱 Semences et engrais",
-      "🛠️ Outils agricoles et accessoires",
-      "🚜 Assistance technique et conseils"
+      { "label": "🌾 Produits alimentaires locaux", "link": "/alimentation-agriculture/produits-alimentaires-locaux.html" },
+      { "label": "🧑‍🌾 Matériel pour fermes et cultures", "link": "/alimentation-agriculture/materiel-fermes-cultures.html" },
+      { "label": "🌱 Semences et engrais", "link": "/alimentation-agriculture/semences-engrais.html" },
+      { "label": "🛠️ Outils agricoles et accessoires", "link": "/alimentation-agriculture/outils-agricoles-accessoires.html" },
+      { "label": "🚜 Assistance technique et conseils", "link": "/alimentation-agriculture/assistance-technique-conseils.html" }
     ]
   },
   {
@@ -36,11 +36,11 @@
     "summary": "Bâtir, rénover, réparer — le savoir-faire à votre service.",
     "details": "Maçons, plombiers, électriciens et autres professionnels pour tout type de travaux ou réparations dans vos maisons ou locaux.",
     "features": [
-      "🏗️ Travaux de construction et rénovation",
-      "🚿 Plomberie et sanitaire",
-      "💡 Électricité et câblage",
-      "🧱 Matériaux de qualité",
-      "🔨 Services de réparation rapide"
+      { "label": "🏗️ Travaux de construction et rénovation", "link": "/construction-reparation/travaux-construction-renovation.html" },
+      { "label": "🚿 Plomberie et sanitaire", "link": "/construction-reparation/plomberie-sanitaire.html" },
+      { "label": "💡 Électricité et câblage", "link": "/construction-reparation/electricite-cablage.html" },
+      { "label": "🧱 Matériaux de qualité", "link": "/construction-reparation/materiaux-qualite.html" },
+      { "label": "🔨 Services de réparation rapide", "link": "/construction-reparation/reparation-rapide.html" }
     ]
   },
   {
@@ -50,11 +50,11 @@
     "summary": "Prenez soin de vous, de votre santé à votre style.",
     "details": "Un espace dédié au bien-être avec des produits de beauté, coiffure, soins corporels et pharmacie.",
     "features": [
-      "🧴 Produits de beauté et soins",
-      "💊 Médicaments et pharmacies",
-      "✂️ Services de coiffure",
-      "💆 Soins esthétiques",
-      "🧘 Bien-être et relaxation"
+      { "label": "🧴 Produits de beauté et soins", "link": "/sante-beaute/produits-beaute-soins.html" },
+      { "label": "💊 Médicaments et pharmacies", "link": "/sante-beaute/medicaments-pharmacies.html" },
+      { "label": "✂️ Services de coiffure", "link": "/sante-beaute/services-coiffure.html" },
+      { "label": "💆 Soins esthétiques", "link": "/sante-beaute/soins-esthetiques.html" },
+      { "label": "🧘 Bien-être et relaxation", "link": "/sante-beaute/bien-etre-relaxation.html" }
     ]
   },
   {
@@ -64,11 +64,11 @@
     "summary": "Bougez, créez, amusez-vous !",
     "details": "Tout pour les passions et les divertissements : équipement sportif, instruments de musique, jeux, spectacles.",
     "features": [
-      "⚽ Matériel de sport",
-      "🎶 Instruments et musique",
-      "🎭 Activités artistiques",
-      "🎲 Jeux et loisirs",
-      "🎫 Événements et spectacles"
+      { "label": "⚽ Matériel de sport", "link": "/sport-arts-loisirs/materiel-sport.html" },
+      { "label": "🎶 Instruments et musique", "link": "/sport-arts-loisirs/instruments-musique.html" },
+      { "label": "🎭 Activités artistiques", "link": "/sport-arts-loisirs/activites-artistiques.html" },
+      { "label": "🎲 Jeux et loisirs", "link": "/sport-arts-loisirs/jeux-loisirs.html" },
+      { "label": "🎫 Événements et spectacles", "link": "/sport-arts-loisirs/evenements-spectacles.html" }
     ]
   },
   {
@@ -78,11 +78,11 @@
     "summary": "Le monde des petits, avec tout pour grandir.",
     "details": "De la naissance à l'enfance : vêtements, jouets, crèches et produits de puériculture de confiance.",
     "features": [
-      "🧦 Vêtements enfants & bébés",
-      "🧸 Jouets éducatifs",
-      "🏫 Services de garde & crèche",
-      "🍼 Puériculture & alimentation",
-      "📚 Livres & apprentissage"
+      { "label": "🧦 Vêtements enfants & bébés", "link": "/bebes-enfants/vetements-enfants-bebes.html" },
+      { "label": "🧸 Jouets éducatifs", "link": "/bebes-enfants/jouets-educatifs.html" },
+      { "label": "🏫 Services de garde & crèche", "link": "/bebes-enfants/services-garde-creche.html" },
+      { "label": "🍼 Puériculture & alimentation", "link": "/bebes-enfants/puericulture-alimentation.html" },
+      { "label": "📚 Livres & apprentissage", "link": "/bebes-enfants/livres-apprentissage.html" }
     ]
   },
   {
@@ -92,11 +92,11 @@
     "summary": "Votre avenir commence ici.",
     "details": "Un portail pour trouver du travail, des stages, des formations, ou apprendre à travers des tutoriels pratiques.",
     "features": [
-      "📄 Offres d'emploi et stages",
-      "👨‍🏫 Cours et formations",
-      "🧠 Tutoriels & apprentissage",
-      "📍 Orientation et coaching",
-      "📚 Ressources éducatives"
+      { "label": "📄 Offres d'emploi et stages", "link": "/emploi-formation/offres-emploi-stages.html" },
+      { "label": "👨‍🏫 Cours et formations", "link": "/emploi-formation/cours-formations.html" },
+      { "label": "🧠 Tutoriels & apprentissage", "link": "/emploi-formation/tutoriels-apprentissage.html" },
+      { "label": "📍 Orientation et coaching", "link": "/emploi-formation/orientation-coaching.html" },
+      { "label": "📚 Ressources éducatives", "link": "/emploi-formation/ressources-educatives.html" }
     ]
   },
   {
@@ -106,12 +106,10 @@
     "summary": "Soyez tendance, à votre façon.",
     "details": "Découvrez des vêtements stylés, des accessoires uniques et des chaussures pour tous les goûts.",
     "features": [
-      "👚 Vêtements pour tous",
-      "👠 Chaussures et accessoires",
-      "🧥 Mode urbaine & locale",
-      "🛍️ Offres saisonnières",
-      "👗 Prêt-à-porter & sur-mesure"
-    ]
+      { "label": "👚 Vêtements pour tous", "link": "/mode/vetements-pour-tous.html" },
+      { "label": "👠 Chaussures et accessoires", "link": "/mode/chaussures-accessoires.html" }
+  
+          ]
   },
   {
     "id": "equipement-pro",
@@ -120,11 +118,11 @@
     "summary": "Outils et matériel pour vos activités professionnelles.",
     "details": "Machines, mobilier et équipements techniques pour les entreprises et les indépendants.",
     "features": [
-      "🛠️ Matériel technique spécialisé",
-      "🪑 Mobilier professionnel",
-      "🏭 Machines industrielles",
-      "📦 Stock & logistique",
-      "🔌 Outils haute performance"
+      { "label": "🛠️ Matériel technique spécialisé", "link": "/equipement-pro/materiel-technique-specialise.html" },
+      { "label": "🪑 Mobilier professionnel", "link": "/equipement-pro/mobilier-professionnel.html" },
+      { "label": "🏭 Machines industrielles", "link": "/equipement-pro/machines-industrielles.html" },
+      { "label": "📦 Stock & logistique", "link": "/equipement-pro/stock-logistique.html" },
+      { "label": "🔌 Outils haute performance", "link": "/equipement-pro/outils-haute-performance.html" }
     ]
   },
   {
@@ -134,14 +132,13 @@
     "summary": "High-tech, au bout des doigts.",
     "details": "Ordinateurs, télévisions, imprimantes et gadgets pour améliorer votre quotidien numérique.",
     "features": [
-      "💻 Ordinateurs & portables",
-      "🖨️ Imprimantes et accessoires",
-      "📺 Télévisions & audio",
-      "📷 Caméras & drones",
-      "📱 Gadgets et innovations"
+      { "label": "💻 Ordinateurs & portables", "link": "/electronique/ordinateurs-portables.html" },
+      { "label": "🖨️ Imprimantes et accessoires", "link": "/electronique/imprimantes-accessoires.html" },
+      { "label": "📺 Télévisions & audio", "link": "/electronique/televisions-audio.html" },
+      { "label": "📷 Caméras & drones", "link": "/electronique/cameras-drones.html" },
+      { "label": "📱 Gadgets et innovations", "link": "/electronique/gadgets-innovations.html" }
     ]
-  }
-    ,
+  },
   {
     "id": "immobilier",
     "name": "Immobilier",
@@ -149,11 +146,11 @@
     "summary": "Acheter, louer, bâtir — trouvez votre espace.",
     "details": "Maisons, terrains, appartements ou immeubles pour tous les projets immobiliers.",
     "features": [
-      "🏘️ Maisons à vendre/louer",
-      "🧱 Terrains disponibles",
-      "🏢 Immeubles et bureaux",
-      "📑 Accompagnement juridique",
-      "🏗️ Construction sur mesure"
+      { "label": "🏘️ Maisons à vendre/louer", "link": "/immobilier/maisons-vendre-louer.html" },
+      { "label": "🧱 Terrains disponibles", "link": "/immobilier/terrains-disponibles.html" },
+      { "label": "🏢 Immeubles et bureaux", "link": "/immobilier/immeubles-bureaux.html" },
+      { "label": "📑 Accompagnement juridique", "link": "/immobilier/accompagnement-juridique.html" },
+      { "label": "🏗️ Construction sur mesure", "link": "/immobilier/construction-sur-mesure.html" }
     ]
   },
   {
@@ -163,11 +160,11 @@
     "summary": "Vos compagnons bien accompagnés.",
     "details": "Tout pour les animaux de compagnie : nourriture, accessoires, soins et vétérinaires.",
     "features": [
-      "🐾 Nourriture spécialisée",
-      "🛏️ Accessoires & jouets",
-      "🐕 Adoption et vente",
-      "👨‍⚕️ Soins vétérinaires",
-      "🚿 Toilettage & entretien"
+      { "label": "🐾 Nourriture spécialisée", "link": "/animaux/nourriture-specialisee.html" },
+      { "label": "🛏️ Accessoires & jouets", "link": "/animaux/accessoires-jouets.html" },
+      { "label": "🐕 Adoption et vente", "link": "/animaux/adoption-vente.html" },
+      { "label": "👨‍⚕️ Soins vétérinaires", "link": "/animaux/soins-veterinaires.html" },
+      { "label": "🚿 Toilettage & entretien", "link": "/animaux/toilettage-entretien.html" }
     ]
   },
   {
@@ -177,11 +174,11 @@
     "summary": "L’art de vivre chez soi.",
     "details": "Meubles, décoration, literie et ustensiles pour rendre votre maison agréable et fonctionnelle.",
     "features": [
-      "🛏️ Literie et confort",
-      "🪞 Décoration & ambiance",
-      "🍽️ Ustensiles & cuisine",
-      "🪑 Meubles modernes",
-      "🧹 Produits d’entretien"
+      { "label": "🛏️ Literie et confort", "link": "/maison/literie-confort.html" },
+      { "label": "🪞 Décoration & ambiance", "link": "/maison/decoration-ambiance.html" },
+      { "label": "🍽️ Ustensiles & cuisine", "link": "/maison/ustensiles-cuisine.html" },
+      { "label": "🪑 Meubles modernes", "link": "/maison/meubles-modernes.html" },
+      { "label": "🧹 Produits d’entretien", "link": "/maison/produits-entretien.html" }
     ]
   },
   {
@@ -191,11 +188,11 @@
     "summary": "Savourez et séjournez avec style.",
     "details": "Des établissements de qualité pour manger, se détendre ou organiser vos événements, avec livraison disponible.",
     "features": [
-      "🍲 Restauration locale & internationale",
-      "🏨 Hôtels & hébergement",
-      "📦 Livraison de repas",
-      "🥂 Services événementiels",
-      "🧾 Menus & réservations"
+      { "label": "🍲 Restauration locale & internationale", "link": "/hotels-restaurants/restauration-locale-internationale.html" },
+      { "label": "🏨 Hôtels & hébergement", "link": "/hotels-restaurants/hotels-hebergement.html" },
+      { "label": "📦 Livraison de repas", "link": "/hotels-restaurants/livraison-repas.html" },
+      { "label": "🥂 Services événementiels", "link": "/hotels-restaurants/services-evenementiels.html" },
+      { "label": "🧾 Menus & réservations", "link": "/hotels-restaurants/menus-reservations.html" }
     ]
   },
   {
@@ -205,11 +202,11 @@
     "summary": "Des prestations utiles au quotidien.",
     "details": "Transport, nettoyage, sécurité, et autres services pour particuliers et professionnels.",
     "features": [
-      "🚗 Transport et livraison",
-      "🧹 Nettoyage domestique & pro",
-      "🔒 Sécurité & gardiennage",
-      "🧰 Maintenance & dépannage",
-      "📝 Services administratifs"
+      { "label": "🚗 Transport et livraison", "link": "/services/transport-livraison.html" },
+      { "label": "🧹 Nettoyage domestique & pro", "link": "/services/nettoyage-domestique-pro.html" },
+      { "label": "🔒 Sécurité & gardiennage", "link": "/services/securite-gardiennage.html" },
+      { "label": "🧰 Maintenance & dépannage", "link": "/services/maintenance-depannage.html" },
+      { "label": "📝 Services administratifs", "link": "/services/services-administratifs.html" }
     ]
   },
   {
@@ -219,11 +216,12 @@
     "summary": "Roulez en toute liberté.",
     "details": "Voitures, motos, pièces détachées et services de location/vente adaptés à vos besoins.",
     "features": [
-      "🚘 Voitures neuves et d'occasion",
-      "🏍️ Motos & scooters",
-      "🔩 Pièces et accessoires",
-      "📋 Location courte et longue durée",
-      "🧑‍🔧 Réparation & entretien"
+      { "label": "🚘 Voitures neuves et d'occasion", "link": "/vehicules/voitures-neuves-occasion.html" },
+      { "label": "🏍️ Motos & scooters", "link": "/vehicules/motos-scooters.html" },
+      { "label": "🔩 Pièces et accessoires", "link": "/vehicules/pieces-accessoires.html" },
+      { "label": "📋 Location courte et longue durée", "link": "/vehicules/location-courte-longue-duree.html" },
+      { "label": "🧑‍🔧 Réparation & entretien", "link": "/vehicules/reparation-entretien.html" }
     ]
   }
 ]
+     
