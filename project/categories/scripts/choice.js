@@ -152,70 +152,46 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch('scripts/services.json')
     .then(response => response.json())
     .then(data => {
-      data.forEach(({ id, name, icon, summary,details,features }) => {
+      data.forEach(({ id, name, icon, summary }) => {
         const option = document.createElement("option");
         option.value = id;
-        option.textContent = `${icon} ${name} `;
-        option.title = `${summary}`;
+        option.textContent = `${icon} ${name}`;
+        option.title = summary;
         select.appendChild(option);
       });
 
-     select.addEventListener("change", () => {
-  const selected = data.find(item => item.id === select.value);
-  preview.innerHTML = "";
-
-  if (selected) {
-    const card = document.createElement("div");
-    card.className = "preview-card";
-    card.style.padding = "1em";
-    card.style.borderRadius = "8px";
-    card.style.boxShadow = "0 2px 5px rgba(0,0,0,0.1)";
-    card.style.transition = "opacity 0.4s ease, transform 0.4s ease";
-    card.style.opacity = "0";
-    card.style.transform = "translateY(10px)";
-    card.style.backgroundColor = "#f0f0f0";
-    card.style.border = "1px solid #ccc";
-
-    const title = document.createElement("h2");
-    title.textContent = `${selected.icon} ${selected.name}`;
-    title.style.marginBottom = "0.5em";
-
-    const desc = document.createElement("p");
-    desc.textContent = selected.summary;
-    desc.style.marginBottom = "1em";
-
-    const link = document.createElement("a");
-    link.href = `${selected.id}.html`; // 🔗 chemin vers la page dédiée
-    link.textContent = "Voir les détails";
-    link.style.display = "inline-block";
-    link.style.padding = "0.5em 1em";
-    link.style.backgroundColor = "#0078d7";
-    link.style.color = "#fff";
-    link.style.borderRadius = "4px";
-    link.style.textDecoration = "none";
-
-    link.addEventListener("mouseover", () => link.style.backgroundColor = "#005bb5");
-    link.addEventListener("mouseout", () => link.style.backgroundColor = "#0078d7");
-
-    card.appendChild(title);
-    card.appendChild(desc);
-    card.appendChild(link);
-    preview.appendChild(card);
-
-    // Animation d’apparition
-    setTimeout(() => {
-      card.style.opacity = "1";
-      card.style.transform = "translateY(0)";
-    }, 10);
-  }
-});
+      select.addEventListener("change", () => {
+        const selected = data.find(item => item.id === select.value);
+        if (selected) {
+          preview.innerHTML = `
+            <div class="preview-block">
+              <h3>${selected.icon} ${selected.name}</h3>
+              <section>
+                <h4>Résumé</h4>
+                <p>${selected.summary}</p>
+              </section>
+              <section>
+                <h4>Détails</h4>
+                <p>${selected.details}</p>
+              </section>
+              <section>
+                <h4>Caractéristiques</h4>
+                <ul>
+                  ${selected.features.map(feature => `<li>${feature}</li>`).join("")}
+                </ul>
+              </section>
+            </div>
+          `;
+        } else {
+          preview.innerHTML = `<p>Veuillez choisir une catégorie pour voir les informations.</p>`;
+        }
+      });
     })
     .catch(error => {
-      preview.innerHTML = `<p style="color: red;">⚠️ Erreur de chargement.</p>`;
-      console.error(error);
+      console.error("Erreur de chargement :", error);
+      preview.innerHTML = `<p>Erreur lors du chargement des données.</p>`;
     });
 });
-
 
 
 
