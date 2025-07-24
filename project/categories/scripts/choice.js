@@ -197,6 +197,14 @@ document.addEventListener("DOMContentLoaded", () => {
           preview.innerHTML = `<p>Aucune information disponible pour cette catégorie.</p>`;
         }
       });
+      actionButton.addEventListener("click", () => {
+  if (selectedId) {
+    console.log("Redirection vers :", `${selectedId}.html`);
+    window.location.href = `${selectedId}.html`;
+  } else {
+    alert("Aucune catégorie sélectionnée !");
+  }
+});
 
       // Quand on clique sur le bouton
       actionButton.addEventListener("click", () => {
