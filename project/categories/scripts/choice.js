@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const actionButton = document.createElement("button");
   actionButton.textContent = "Découvrir cette catégorie";
   actionButton.className = "category-btn";
-  actionButton.style.display = "none";
+  actionButton.disabled = true;
   preview.after(actionButton);
 
   fetch('scripts/services.json')
