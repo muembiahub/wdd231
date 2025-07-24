@@ -81,7 +81,18 @@
     "id": "telephones-tablettes",
     "name": "Téléphones & Tablettes",
     "icon": "📱",
-    "description": "📱 Kazidomo – votre destination mobile !\n\n🔹 Smartphones modernes\n🔹 Téléphones classiques\n🔹 Tablettes performantes\n\n💼 Services :\n- Réparation mobile\n- Accessoires compatibles\n\n🌟 Pourquoi choisir Kazidomo ?\n- Prix compétitifs\n- Livraison rapide 🇨🇩\n- Garantie incluse\n\n🛒 Commandez dès aujourd’hui !"
+    "summary": "Des téléphones récents, performants et accessibles chez Kazidomo.",
+    "details": "Que vous cherchiez un smartphone moderne, un téléphone simple ou un appareil professionnel — Kazidomo vous propose des modèles fiables, au meilleur prix, livrés partout dans le pays avec garantie et assistance.",
+    "features": [
+    "✨ Modèles récents et fiables",
+    "💰 Prix compétitifs pour tous les budgets",
+    "🌍 Livraison rapide partout dans le pays",
+    "🔧 Garantie & service après-vente inclus",
+    "🔋 Autonomie, performance et design",
+    "🛒 Produits : smartphones, tablettes, accessoires",
+    "🔩 Services : réparation mobile"
+  ]
+
   },
   {
     "id": "services",

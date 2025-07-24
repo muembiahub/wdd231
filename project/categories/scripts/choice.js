@@ -152,10 +152,10 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch('scripts/services.json')
     .then(response => response.json())
     .then(data => {
-      data.forEach(({ id, name, icon, description }) => {
+      data.forEach(({ id, name, icon, summary,details,features }) => {
         const option = document.createElement("option");
         option.value = id;
-        option.textContent = `${icon} ${name}`;
+        option.textContent = `${icon} ${name} ${summary} ${details}${features}`;
         option.title = description;
         select.appendChild(option);
       });
