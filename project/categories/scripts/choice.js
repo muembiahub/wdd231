@@ -149,6 +149,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const select = document.getElementById("needType");
   const preview = document.getElementById("preview");
 
+  const actionButton = document.createElement("button");
+  actionButton.textContent = "Découvrir cette catégorie";
+  actionButton.style.display = "none";
+  actionButton.className = "category-btn";
+  preview.after(actionButton);
+
   fetch('scripts/services.json')
     .then(response => response.json())
     .then(data => {
@@ -176,22 +182,33 @@ document.addEventListener("DOMContentLoaded", () => {
               </section>
               <section>
                 <h4>Caractéristiques</h4>
-                <ul>
-                  ${selected.features.map(feature => `<li>${feature}</li>`).join("")}
-                </ul>
+                <ul>${selected.features.map(f => `<li>${f}</li>`).join('')}</ul>
               </section>
             </div>
           `;
+          actionButton.style.display = "inline-block";
+          actionButton.onclick = () => {
+            alert(`Vous avez choisi "${selected.name}". À vous de jouer !`);
+            // Ou rediriger vers une autre page / déclencher une action :
+            // window.location.href = `categorie.html?id=${selected.id}`;
+          };
         } else {
           preview.innerHTML = `<p>Veuillez choisir une catégorie pour voir les informations.</p>`;
+          actionButton.style.display = "none";
         }
       });
     })
     .catch(error => {
       console.error("Erreur de chargement :", error);
       preview.innerHTML = `<p>Erreur lors du chargement des données.</p>`;
+      actionButton.style.display = "none";
     });
 });
+
+
+
+
+
 
 
 
