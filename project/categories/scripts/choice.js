@@ -151,7 +151,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const actionButton = document.createElement("button");
   actionButton.textContent = "Découvrir cette catégorie";
-  actionButton.href= `${select.id}.html`;
   actionButton.style.display = "none";
   actionButton.className = "category-btn";
   preview.after(actionButton);
@@ -189,6 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
           `;
           actionButton.style.display = "inline-block";
           actionButton.onclick = () => {
+            actionButton.href =` ${selected.id}.html`;
           };
         } else {
           preview.innerHTML = `<p>Veuillez choisir une catégorie pour voir les informations.</p>`;
