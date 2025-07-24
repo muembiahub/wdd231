@@ -149,6 +149,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const select = document.getElementById("needType");
   const preview = document.getElementById("preview");
 
+  let selectedId = ""; // pour garder l’id sélectionné
+
+  // Création du bouton visible dès le départ, mais désactivé
   const actionButton = document.createElement("button");
   actionButton.textContent = "Découvrir cette catégorie";
   actionButton.className = "category-btn";
@@ -158,6 +161,13 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch('scripts/services.json')
     .then(response => response.json())
     .then(data => {
+      // Ajoute une option par défaut
+      const defaultOption = document.createElement("option");
+      defaultOption.textContent = "-- Choisir une catégorie --";
+      defaultOption.value = "";
+      select.appendChild(defaultOption);
+
+      // Ajoute les options du JSON
       data.forEach(({ id, name, icon, summary }) => {
         const option = document.createElement("option");
         option.value = id;
@@ -166,24 +176,19 @@ document.addEventListener("DOMContentLoaded", () => {
         select.appendChild(option);
       });
 
+      // Quand on change la sélection
       select.addEventListener("change", () => {
-        const selectedId = select.value;
+        selectedId = select.value;
+        actionButton.disabled = !selectedId;
 
         const selected = data.find(item => item.id === selectedId);
         if (selected) {
           preview.innerHTML = `
             <div class="preview-block">
               <h3>${selected.icon} ${selected.name}</h3>
-              <section>
-                <h4>Résumé</h4>
-                <p>${selected.summary}</p>
-              </section>
-              <section>
-                <h4>Détails</h4>
-                <p>${selected.details}</p>
-              </section>
-              <section>
-                <h4>Caractéristiques</h4>
+              <section><h4>Résumé</h4><p>${selected.summary}</p></section>
+              <section><h4>Détails</h4><p>${selected.details}</p></section>
+              <section><h4>Caractéristiques</h4>
                 <ul>${selected.features.map(f => `<li>${f}</li>`).join('')}</ul>
               </section>
             </div>
@@ -191,14 +196,20 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           preview.innerHTML = `<p>Aucune information disponible pour cette catégorie.</p>`;
         }
+      });
 
-        actionButton.style.display = "inline-block";
+      // Quand on clique sur le bouton
+      actionButton.addEventListener("click", () => {
         if (selectedId) {
-           window.location.href = `${selectedId}.html`;
-           } 
-       else {
-            console.warn("Aucun ID sélectionné.");
-           }
+          actionButton.textContent = "Chargement...";
+          actionButton.style.opacity = "0.8";
+          actionButton.style.transform = "scale(0.97)";
+          actionButton.style.cursor = "wait";
+
+          setTimeout(() => {
+            window.location.href = `${selectedId}.html`;
+          }, 500); // petit effet visuel
+        }
       });
     })
     .catch(error => {
@@ -207,6 +218,9 @@ document.addEventListener("DOMContentLoaded", () => {
       actionButton.style.display = "none";
     });
 });
+
+
+
 
 
 
