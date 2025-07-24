@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
     title.style.marginBottom = "0.5em";
 
     const desc = document.createElement("p");
-    desc.textContent = selected.description;
+    desc.textContent = selected.summary;
     desc.style.marginBottom = "1em";
 
     const link = document.createElement("a");
