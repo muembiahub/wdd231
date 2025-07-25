@@ -2,16 +2,12 @@
   
   {
     "id": "alimentation-agriculture",
-    "name": "Alimentation & Agriculture",
+    "name": "Agriculture",
     "icon": "🌽",
     "summary": "Les bases de notre quotidien, du champ à la table.",
-    "details": "Découvrez les produits alimentaires frais, les semences de qualité, les outils agricoles et les services liés aux fermes pour soutenir la production locale.",
+    "details": "fermes pour soutenir la production locale.",
     "features": [
-      { "label": "🌾 Produits alimentaires locaux", "link": "/alimentation-agriculture/produits-alimentaires-locaux.html" },
-      { "label": "🧑‍🌾 Matériel pour fermes et cultures", "link": "/alimentation-agriculture/materiel-fermes-cultures.html" },
-      { "label": "🌱 Semences et engrais", "link": "/alimentation-agriculture/semences-engrais.html" },
-      { "label": "🛠️ Outils agricoles et accessoires", "link": "/alimentation-agriculture/outils-agricoles-accessoires.html" },
-      { "label": "🚜 Assistance technique et conseils", "link": "/alimentation-agriculture/assistance-technique-conseils.html" }
+    { "label": "🚜 Assistance technique et conseils", "link": "/alimentation-agriculture/assistance-technique-conseils.html" }
     ]
   },
   {
@@ -29,37 +25,45 @@
     ]
   },
   {
-    "id": "sante-beaute",
-    "name": "Santé & Beauté",
+    "id": "beaute",
+    "name": "Beauté",
     "icon": "💅",
-    "summary": "Prenez soin de vous, de votre santé à votre style.",
-    "details": "Un espace dédié au bien-être avec des produits de beauté, coiffure, soins corporels et pharmacie.",
+    "summary": "Prenez soin de vous et de  votre style.",
+    "details": "Un espace dédié aux coiffure et  soins corporels.",
     "features": [
       { "label": "✂️ Services de coiffure", "link": "/sante-beaute/services-coiffure.html" },
       { "label": "💆 Soins esthétiques", "link": "/sante-beaute/soins-esthetiques.html" },
       { "label": "🧘 Bien-être et relaxation", "link": "/sante-beaute/bien-etre-relaxation.html" }
     ]
   },
+   {
+    "id": "sante",
+    "name": "Santé ",
+    "icon": "💅",
+    "summary": "Prenez ",
+    "details": "Un espace dédié au bien-être de votre sante avec les hopitaux moderne",
+    "features": [
+      { "label": "✂️ Orientation aux specialistes de santer", "link": "/sante-beaute/services-coiffure.html" }
+    ]
+  },
   {
-    "id": "emploi-formation",
-    "name": "Emploi & Formation",
+    "id": "formation",
+    "name": "Formation",
     "icon": "🎓",
     "summary": "Votre avenir commence ici.",
-    "details": "Un portail pour trouver du travail, des stages, des formations, ou apprendre à travers des tutoriels pratiques.",
+    "details": "Un portail pour trouver des formations, ou apprendre à travers des tutoriels pratiques.",
     "features": [
-      { "label": "📄 Offres d'emploi et stages", "link": "/emploi-formation/offres-emploi-stages.html" },
       { "label": "👨‍🏫 Cours et formations", "link": "/emploi-formation/cours-formations.html" },
       { "label": "🧠 Tutoriels & apprentissage", "link": "/emploi-formation/tutoriels-apprentissage.html" },
-      { "label": "📍 Orientation et coaching", "link": "/emploi-formation/orientation-coaching.html" },
-      { "label": "📚 Ressources éducatives", "link": "/emploi-formation/ressources-educatives.html" }
-    ]
+      { "label": "📍 Orientation et coaching", "link": "/emploi-formation/orientation-coaching.html" }
+      ]
   },
   {
     "id": "mode",
     "name": "Mode",
     "icon": "👗",
     "summary": "Soyez tendance, à votre façon.",
-    "details": "Découvrez des vêtements stylés, des accessoires uniques et des chaussures pour tous les goûts.",
+    "details": "Découvrez des vêtements stylés.",
     "features": 
       { "label": "👚 Vêtements pour tous", "link": "/mode/vetements-pour-tous.html" }
   },
@@ -85,21 +89,31 @@
     "summary": "Vos compagnons bien accompagnés.",
     "details": "Tout pour les animaux de compagnie : nourriture, accessoires, soins et vétérinaires.",
     "features": [
-      { "label": "🐾 Nourriture spécialisée", "link": "/animaux/nourriture-specialisee.html" },
-      { "label": "🛏️ Accessoires & jouets", "link": "/animaux/accessoires-jouets.html" },
       { "label": "🐕 Adoption et vente", "link": "/animaux/adoption-vente.html" },
-      { "label": "👨‍⚕️ Soins vétérinaires", "link": "/animaux/soins-veterinaires.html" },
-      { "label": "🚿 Toilettage & entretien", "link": "/animaux/toilettage-entretien.html" }
+      { "label": "👨‍⚕️ Soins vétérinaires", "link": "/animaux/soins-veterinaires.html" }
+    ]
+  },
+  {   
+  
+    "id": "fete",
+    "name": "manifestation et ceremonies",
+    "icon": "🐶",
+    "summary": "Vos compagnons bien accompagnés.",
+    "details": "Tout pour les animaux de compagnie : nourriture, accessoires, soins et vétérinaires.",
+    "features": [
+      { "label": "decoration ceremonie", "link": "/animaux/adoption-vente.html" },
+  
     ]
   },
   {
+
     "id": "maison",
     "name": "Pour la Maison",
     "icon": "🪑",
     "summary": "L’art de vivre chez soi.",
     "details": "Meubles, décoration, literie et ustensiles pour rendre votre maison agréable et fonctionnelle.",
     "features": [
-      { "label": "🛏️ Literie et confort", "link": "/maison/literie-confort.html" },
+      { "label": "🛏️ Nounou", "link": "/maison/nounou.html" },
       { "label": "🪞 Décoration & ambiance", "link": "/maison/decoration-ambiance.html" },
       { "label": "🍽️ Ustensiles & cuisine", "link": "/maison/ustensiles-cuisine.html" },
       { "label": "🪑 Meubles modernes", "link": "/maison/meubles-modernes.html" },
