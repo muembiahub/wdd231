@@ -11,12 +11,12 @@
       "page_url": "categories/construction-reparation.html"
     },
     {
-      "logo": "images/sante.png",
+      "logo": "images/africa-medi.webp",
       "category": "Santé",
       "page_url": "categories/sante.html"
     },
     {
-      "logo": "images/sport.png",
+      "logo": "images/sante.png",
       "category": "Beaute",
       "page_url": "categories/beaute.html"
     },
@@ -26,7 +26,7 @@
       "page_url": "categories/formation.html"
     },
     {
-      "logo": "images/vetement-femme",
+      "logo": "images/vetement-femme.webp",
       "category": "Mode",
       "page_url": "categories/mode.html"
     },
