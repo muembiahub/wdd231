@@ -40,18 +40,6 @@
       { "label": "🧘 Bien-être et relaxation", "link": "/sante-beaute/bien-etre-relaxation.html" }
     ]
   },
- 
-  {
-    "id": "bebes-enfants",
-    "name": "Bébés & Enfants",
-    "icon": "🧸",
-    "summary": "Le monde des petits, avec tout pour grandir.",
-    "details": "De la naissance à l'enfance : vêtements, jouets, crèches et produits de puériculture de confiance.",
-    "features": [
-  
-      { "label": "🏫 Nounou ", "link": "/bebes-enfants/services-garde-creche.html" }
-    ]
-  },
   {
     "id": "emploi-formation",
     "name": "Emploi & Formation",

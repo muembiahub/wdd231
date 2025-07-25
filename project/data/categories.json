@@ -12,21 +12,16 @@
     },
     {
       "logo": "images/sante.png",
-      "category": "Santé & Beauté",
+      "category": "Santé",
       "page_url": "categories/categorie-choice.html"
     },
     {
       "logo": "images/sport.png",
-      "category": "Sport, Arts & Loisirs",
+      "category": "Beaute",
       "page_url": "categories/categorie-choice.html"
     },
     {
-      "logo": "images/bebe.png",
-      "category": "Bébés & Enfants",
-      "page_url": "categories/categorie-choice.html"
-    },
-    {
-      "logo": "images/emploi_et_formation.png",
+      "logo": "images/formation.png",
       "category": "Emploi & Formation",
       "page_url": "categories/categorie-choice.html"
     },
@@ -38,11 +33,6 @@
     {
       "logo": "images/equipement.png",
       "category": "Équipement Professionnel",
-      "page_url": "categories/categorie-choice.html"
-    },
-    {
-      "logo": "images/electronique.png",
-      "category": "Électronique",
       "page_url": "categories/categorie-choice.html"
     },
     {
@@ -63,11 +53,6 @@
     {
       "logo": "images/hotel.png",
       "category": "Hôtels & Restaurants",
-      "page_url": "categories/categorie-choice.html"
-    },
-    {
-      "logo": "images/telephone.png",
-      "category": "Téléphones & Tablettes",
       "page_url": "categories/categorie-choice.html"
     },
     {
