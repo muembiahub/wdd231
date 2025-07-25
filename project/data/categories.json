@@ -2,7 +2,7 @@
   "categories": [
     {
       "logo": "images/agriculture.png",
-      "category": "Alimentation & Agriculture",
+      "category": "Agriculture",
       "page_url": "categories/categorie-choice.html"
     },
     {
@@ -22,7 +22,7 @@
     },
     {
       "logo": "images/formation.png",
-      "category": "Emploi & Formation",
+      "category": "Formation",
       "page_url": "categories/categorie-choice.html"
     },
     {
