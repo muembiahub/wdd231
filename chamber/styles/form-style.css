@@ -1,0 +1,193 @@
+/* form-style.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1:hover,form:hover {
+  text-shadow: 0 0 10px #0f87ea;
+}
+
+h1::after,form::after{
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 3px;
+    animation: underlinePulse 2s infinite;
+}
+
+@keyframes underlinePulse {
+  0% { opacity: 0.3; width: 50%; }
+  50% { opacity: 1; width: 80%; }
+  100% { opacity: 0.3; width: 50%; }
+}
+
+
+form {
+  max-width: 300px;
+  background-color: #fff;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input[type="text"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.large-input {
+   width: 50%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
+}
+
+
+button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 13px;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+
+.membership-cards {
+    flex-direction: column;
+    width: 50%; 
+  }
+
+.membership {
+  padding: 2rem;
+  border-radius: 2px;
+  background-color:white;
+  text-align: center;
+  margin: 20PX;
+  border :#333 solid 1px;
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 40px;
+}
+#content{
+  display: flex;
+  justify-content: space-around;
+
+}
+
+
+
+.membership {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideFade 0.6s ease-out forwards;
+  background-color: rgb(219, 14, 14);
+}
+
+/* Animation en cascade */
+.membership:nth-child(1) { animation-delay: .5s; }
+.membership:nth-child(2) { animation-delay: 2.10s; }
+.membership:nth-child(3) { animation-delay: 5.30s; }
+.membership:nth-child(4) { animation-delay: 4.40s; }
+
+@keyframes slideFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    background-color: #b5c6b9;
+  }
+}
+.membership-cards a{
+  border: #333 solid 1px;
+  padding: 5px;
+  text-decoration: none;
+  background-color: #f5f5f5;
+  border-radius: 3px;
+   box-shadow: 0 0 5rem #555;
+
+}
+
+/* ========== Small Screens (<= 700px) ========== */
+@media (max-width: 700px) {
+  #content {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+form {
+  max-width: 600px;
+  background-color: #fff;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+  .membership-cards {
+    flex-direction: column;
+    width: 102%; 
+  }
+  
+
+ 
+}
+
+/* ========== Extra Small Screens (<= 320px) ========== */
+@media (max-width: 320px) {
+  #content {
+    flex-direction: column;
+    justify-content: center;
+  }
+   .membership-cards {
+    flex-direction: column;
+  }
+  
+
+}
+
+/* ========== Large Screens (> 700px) ========== */
+@media (min-width: 701px) {
+  
+  #content {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  
+}

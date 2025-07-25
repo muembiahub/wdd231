@@ -1,20 +1,5 @@
 [
-  {
-    "id": "telephones-tablettes",
-    "name": "Téléphones & Tablettes",
-    "icon": "📱",
-    "summary": "Des téléphones récents, performants et accessibles chez Kazidomo.",
-    "details": "Que vous cherchiez un smartphone moderne, un téléphone simple ou un appareil professionnel — Kazidomo vous propose des modèles fiables, au meilleur prix, livrés partout dans le pays avec garantie et assistance.",
-    "features": [
-      { "label": "✨ Modèles récents et fiables", "link": "/telephones-tablettes/modeles-recents-fiables.html" },
-      { "label": "💰 Prix compétitifs pour tous les budgets", "link": "/telephones-tablettes/prix-competitifs.html" },
-      { "label": "🌍 Livraison rapide partout dans le pays", "link": "/telephones-tablettes/livraison-rapide.html" },
-      { "label": "🔧 Garantie & service après-vente inclus", "link": "/telephones-tablettes/garantie-service.html" },
-      { "label": "🔋 Autonomie, performance et design", "link": "/telephones-tablettes/autonomie-performance-design.html" },
-      { "label": "🛒 Produits : smartphones, tablettes, accessoires", "link": "../telephones-tablettes/produits.html" },
-      { "label": "🔩 Services : réparation mobile", "link": "/telephones-tablettes/reparation-mobile.html" }
-    ]
-  },
+  
   {
     "id": "alimentation-agriculture",
     "name": "Alimentation & Agriculture",
@@ -50,27 +35,12 @@
     "summary": "Prenez soin de vous, de votre santé à votre style.",
     "details": "Un espace dédié au bien-être avec des produits de beauté, coiffure, soins corporels et pharmacie.",
     "features": [
-      { "label": "🧴 Produits de beauté et soins", "link": "/sante-beaute/produits-beaute-soins.html" },
-      { "label": "💊 Médicaments et pharmacies", "link": "/sante-beaute/medicaments-pharmacies.html" },
       { "label": "✂️ Services de coiffure", "link": "/sante-beaute/services-coiffure.html" },
       { "label": "💆 Soins esthétiques", "link": "/sante-beaute/soins-esthetiques.html" },
       { "label": "🧘 Bien-être et relaxation", "link": "/sante-beaute/bien-etre-relaxation.html" }
     ]
   },
-  {
-    "id": "sport-arts-loisirs",
-    "name": "Sport, Arts & Loisirs",
-    "icon": "🎨",
-    "summary": "Bougez, créez, amusez-vous !",
-    "details": "Tout pour les passions et les divertissements : équipement sportif, instruments de musique, jeux, spectacles.",
-    "features": [
-      { "label": "⚽ Matériel de sport", "link": "/sport-arts-loisirs/materiel-sport.html" },
-      { "label": "🎶 Instruments et musique", "link": "/sport-arts-loisirs/instruments-musique.html" },
-      { "label": "🎭 Activités artistiques", "link": "/sport-arts-loisirs/activites-artistiques.html" },
-      { "label": "🎲 Jeux et loisirs", "link": "/sport-arts-loisirs/jeux-loisirs.html" },
-      { "label": "🎫 Événements et spectacles", "link": "/sport-arts-loisirs/evenements-spectacles.html" }
-    ]
-  },
+ 
   {
     "id": "bebes-enfants",
     "name": "Bébés & Enfants",
@@ -78,11 +48,8 @@
     "summary": "Le monde des petits, avec tout pour grandir.",
     "details": "De la naissance à l'enfance : vêtements, jouets, crèches et produits de puériculture de confiance.",
     "features": [
-      { "label": "🧦 Vêtements enfants & bébés", "link": "/bebes-enfants/vetements-enfants-bebes.html" },
-      { "label": "🧸 Jouets éducatifs", "link": "/bebes-enfants/jouets-educatifs.html" },
-      { "label": "🏫 Services de garde & crèche", "link": "/bebes-enfants/services-garde-creche.html" },
-      { "label": "🍼 Puériculture & alimentation", "link": "/bebes-enfants/puericulture-alimentation.html" },
-      { "label": "📚 Livres & apprentissage", "link": "/bebes-enfants/livres-apprentissage.html" }
+  
+      { "label": "🏫 Nounou ", "link": "/bebes-enfants/services-garde-creche.html" }
     ]
   },
   {
@@ -105,40 +72,10 @@
     "icon": "👗",
     "summary": "Soyez tendance, à votre façon.",
     "details": "Découvrez des vêtements stylés, des accessoires uniques et des chaussures pour tous les goûts.",
-    "features": [
-      { "label": "👚 Vêtements pour tous", "link": "/mode/vetements-pour-tous.html" },
-      { "label": "👠 Chaussures et accessoires", "link": "/mode/chaussures-accessoires.html" }
-  
-          ]
+    "features": 
+      { "label": "👚 Vêtements pour tous", "link": "/mode/vetements-pour-tous.html" }
   },
-  {
-    "id": "equipement-pro",
-    "name": "Équipement Professionnel",
-    "icon": "⚙️",
-    "summary": "Outils et matériel pour vos activités professionnelles.",
-    "details": "Machines, mobilier et équipements techniques pour les entreprises et les indépendants.",
-    "features": [
-      { "label": "🛠️ Matériel technique spécialisé", "link": "/equipement-pro/materiel-technique-specialise.html" },
-      { "label": "🪑 Mobilier professionnel", "link": "/equipement-pro/mobilier-professionnel.html" },
-      { "label": "🏭 Machines industrielles", "link": "/equipement-pro/machines-industrielles.html" },
-      { "label": "📦 Stock & logistique", "link": "/equipement-pro/stock-logistique.html" },
-      { "label": "🔌 Outils haute performance", "link": "/equipement-pro/outils-haute-performance.html" }
-    ]
-  },
-  {
-    "id": "electronique",
-    "name": "Électronique",
-    "icon": "📺",
-    "summary": "High-tech, au bout des doigts.",
-    "details": "Ordinateurs, télévisions, imprimantes et gadgets pour améliorer votre quotidien numérique.",
-    "features": [
-      { "label": "💻 Ordinateurs & portables", "link": "/electronique/ordinateurs-portables.html" },
-      { "label": "🖨️ Imprimantes et accessoires", "link": "/electronique/imprimantes-accessoires.html" },
-      { "label": "📺 Télévisions & audio", "link": "/electronique/televisions-audio.html" },
-      { "label": "📷 Caméras & drones", "link": "/electronique/cameras-drones.html" },
-      { "label": "📱 Gadgets et innovations", "link": "/electronique/gadgets-innovations.html" }
-    ]
-  },
+
   {
     "id": "immobilier",
     "name": "Immobilier",
@@ -178,7 +115,7 @@
       { "label": "🪞 Décoration & ambiance", "link": "/maison/decoration-ambiance.html" },
       { "label": "🍽️ Ustensiles & cuisine", "link": "/maison/ustensiles-cuisine.html" },
       { "label": "🪑 Meubles modernes", "link": "/maison/meubles-modernes.html" },
-      { "label": "🧹 Produits d’entretien", "link": "/maison/produits-entretien.html" }
+      { "label": "🧹 femme, Homme menager", "link": "/maison/produits-entretien.html" }
     ]
   },
   {
@@ -205,8 +142,7 @@
       { "label": "🚗 Transport et livraison", "link": "/services/transport-livraison.html" },
       { "label": "🧹 Nettoyage domestique & pro", "link": "/services/nettoyage-domestique-pro.html" },
       { "label": "🔒 Sécurité & gardiennage", "link": "/services/securite-gardiennage.html" },
-      { "label": "🧰 Maintenance & dépannage", "link": "/services/maintenance-depannage.html" },
-      { "label": "📝 Services administratifs", "link": "/services/services-administratifs.html" }
+      { "label": "🧰 Maintenance & dépannage", "link": "/services/maintenance-depannage.html" }
     ]
   },
   {
@@ -216,10 +152,6 @@
     "summary": "Roulez en toute liberté.",
     "details": "Voitures, motos, pièces détachées et services de location/vente adaptés à vos besoins.",
     "features": [
-      { "label": "🚘 Voitures neuves et d'occasion", "link": "/vehicules/voitures-neuves-occasion.html" },
-      { "label": "🏍️ Motos & scooters", "link": "/vehicules/motos-scooters.html" },
-      { "label": "🔩 Pièces et accessoires", "link": "/vehicules/pieces-accessoires.html" },
-      { "label": "📋 Location courte et longue durée", "link": "/vehicules/location-courte-longue-duree.html" },
       { "label": "🧑‍🔧 Réparation & entretien", "link": "/vehicules/reparation-entretien.html" }
     ]
   }

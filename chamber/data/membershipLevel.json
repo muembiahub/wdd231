@@ -1,0 +1,34 @@
+[
+    {       
+        "title": "NP Membership",
+        "description":["Free membership",
+         "Basic event access",
+         "Community listing"
+        ]
+   
+    },
+    {
+        "title": "Bronze Membership",
+       "description":["Free membership",
+         "Basic event access",
+         "Community listing"
+        ]
+    },
+    {
+        "title": "Silver Membership",
+        "membershipLevel": "Gold",
+        "description":["Free membership",
+         "Basic event access",
+         "Community listing"
+        ]
+ 
+    },
+    {
+        "title": "Gold Membership",
+        "description":["Free membership",
+         "Basic event access",
+         "Community listing"
+        ]
+ 
+    }
+]

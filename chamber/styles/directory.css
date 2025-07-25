@@ -62,8 +62,8 @@ ul, li {
   background: none;
   color: #000;
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.1rem;
+  right: 0.7rem;
   display: block;
   border: none;
   z-index: 10;

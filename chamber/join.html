@@ -21,9 +21,10 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-        <script src="scripts/index.js" defer></script>
+        <script src="scripts/footer.js" defer></script>
         <title>Chamber of Commerce Join us  Page </title>
         <link rel="stylesheet" href="styles/directory.css">
+        <link rel="stylesheet" href="styles/form-style.css">
     </head>
     <body>
          <header class="header-content">
@@ -45,9 +46,123 @@
                             </nav>
         </header>
     <main>
-        
+      <div id="content">
+       <form action="thankyou.html" method="get">
+
+  <!-- Applicant's First Name -->
+  <label for="firstName">First Name:</label>
+  <input type="text" id="firstName" name="firstName" title="Applicant's First Name" required autocomplete="given-name" />
+
+  <!-- Applicant's Last Name -->
+  <label for="lastName">Last Name:</label>
+  <input type="text" id="lastName" name="lastName" title="Applicant's Last Name" required autocomplete="family-name" />
+
+  <!-- Applicant's Organizational Title -->
+  <label for="orgTitle">Organizational Title:</label>
+  <input type="text"
+         id="orgTitle"
+         name="orgTitle"
+         title="Your title within the organization"
+         autocomplete="organization-title"
+         pattern="[A-Za-z\- ]{7,}"
+         />
+
+  <!-- Applicant's Email -->
+  <label for="email">Email Address:</label>
+  <input type="email"
+         id="email"
+         name="email"
+         title="Contact Email"
+         required
+         autocomplete="email"
+         placeholder="e.g. john.doe@example.com"
+         />
+
+  <!-- Applicant's Mobile Number -->
+  <label for="mobile">Mobile Phone:</label>
+  <input type="tel"
+         id="mobile"
+         name="mobile"
+         title="Mobile Contact Number"
+         required
+         autocomplete="tel"
+         />
+
+  <!-- Organization Name -->
+  <label for="orgName">Organization Name:</label>
+  <input type="text"
+         id="orgName"
+         name="orgName"
+         title="Business or Organization Name"
+         required
+         autocomplete="organization"
+         />
+
+  <!-- Membership Level Selection -->
+  <label for="membership">Membership Level:</label>
+  <select id="membership" name="membershipLevel" title="Select a Membership Level" required>
+    <option value="">-- Choose a level --</option>
+    <option value="np">NP Membership (Non-profit, No Fee)</option>
+    <option value="bronze">Bronze Membership</option>
+    <option value="silver">Silver Membership</option>
+    <option value="gold">Gold Membership</option>
+  </select>
+
+  <!-- Organization Description -->
+  <label for="orgDescription">Organization Description:</label>
+  <textarea id="orgDescription"
+            name="organizationDescription"
+            title="Brief description of the organization"
+            rows="4"
+            cols="50"
+            ></textarea>
+
+  <!-- Timestamp Field -->
+  <input type="hidden" id="formTimestamp" name="formTimestamp" value="<?= new Date().toISOString() ?>" />
+
+  <!-- Submission Button -->
+   <button type="submit"> Submit Membership Application   </button>
+</form>
+
+<div class="membership-cards">
+  <div class="membership">
+    
+</div>
+
+</div>
+
+
+
+  <h3>Bronze Membership Benefits</h3>
+
+    Access to local events
+    Basic advertising support
+    10% discount on training
+ 
+
+<dialog id="silverModal">
+  <h3>Silver Membership Benefits</h3>
+  <ul>
+    Priority event access
+    Spotlight listing on homepage
+    20% discount on all trainings
+    Custom promotional features
+  </ul>
+  <button onclick="document.getElementById('silverModal').close()">Close</button>
+</dialog>
+
+<dialog id="goldModal">
+  <h3>Gold Membership Benefits</h3>
+  <ul>
+    <li>All silver benefits</li>
+    <li>Full event sponsorship</li>
+    <li>Dedicated spotlight advertising</li>
+    <li>Exclusive networking access</li>
+  </ul>
+  <button onclick="document.getElementById('goldModal').close()">Close</button>
+</dialog>
     </main>
-    <footer>
+   <footer>
         <div class="footer-content">
             <div class="address"></div>
             <div class="social-icons"> </div>
