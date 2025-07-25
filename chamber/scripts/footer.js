@@ -8,25 +8,6 @@ hamButton.addEventListener('click', () => {
 
 
 
-<h3>NP Membership</h3>
-    <a href="#npModal" onclick="document.getElementById('npModal').showModal()">View Benefits</a>
-  </div>
-  <div class="membership">
-    <h3>Bronze Membership</h3>
-    <a href="#bronzeModal" onclick="document.getElementById('bronzeModal').showModal()">View Benefits</a>
-  </div>
-  <div class="membership">
-    <h3>Silver Membership</h3>
-    <a href="#silverModal" onclick="document.getElementById('silverModal').showModal()">View Benefits</a>
-  </div>
-  <div class="membership">
-    <h3>Gold Membership</h3>
-    <a href="#goldModal" onclick="document.getElementById('goldModal').showModal()">View Benefits</a>
-  </div>
-
-
-
-
 
 
 
