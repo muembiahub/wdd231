@@ -3,72 +3,72 @@
     {
       "logo": "images/agriculture.png",
       "category": "Agriculture",
-      "page_url": "categories/categorie-choice.html"
+      "page_url": "categories/agriculture.html"
     },
     {
       "logo": "images/construction.png",
       "category": "Construction & Réparation",
-      "page_url": "categories/categorie-choice.html"
+      "page_url": "categories/construction-reparation.html"
     },
     {
       "logo": "images/sante.png",
       "category": "Santé",
-      "page_url": "categories/categorie-choice.html"
+      "page_url": "categories/sante.html"
     },
     {
       "logo": "images/sport.png",
       "category": "Beaute",
-      "page_url": "categories/categorie-choice.html"
+      "page_url": "categories/beaute.html"
     },
     {
       "logo": "images/formation.png",
       "category": "Formation",
-      "page_url": "categories/categorie-choice.html"
+      "page_url": "categories/formation.html"
     },
     {
-      "logo": "images/mode.png",
+      "logo": "images/vetement-femme",
       "category": "Mode",
-      "page_url": "categories/categorie-choice.html"
+      "page_url": "categories/mode.html"
     },
     {
       "logo": "images/equipement.png",
       "category": "Équipement Professionnel",
-      "page_url": "categories/categorie-choice.html"
+      "page_url": "categories/equipement-professionnel.html"
     },
     {
       "logo": "images/immobilier.png",
       "category": "Immobilier",
-      "page_url": "categories/categorie-choice.html"
+      "page_url": "categories/immobilier.html"
     },
     {
       "logo": "images/animaux.png",
       "category": "Animaux Domestiques",
-      "page_url": "categories/categorie-choice.html"
+      "page_url": "categories/animaux-domestiques.html"
     },
     {
       "logo": "images/pour_la_maison.png",
       "category": "Pour la Maison",
-      "page_url": "categories/categorie-choice.html"
+      "page_url": "categories/pour-la-maison.html"
     },
     {
       "logo": "images/hotel.png",
       "category": "Hôtels & Restaurants",
-      "page_url": "categories/categorie-choice.html"
+      "page_url": "categories/hotels-restaurants.html"
     },
     {
       "logo": "images/services.png",
       "category": "Services",
-      "page_url": "categories/categorie-choice.html"
+      "page_url": "categories/services.html"
     },
     {
       "logo": "images/vehicules.png",
       "category": "Véhicules",
-      "page_url": "categories/categorie-choice.html"
+      "page_url": "categories/vehicules.html"
     },
     {
       "logo": "images/vehicules.png",
       "category": "Manifestation et Ceremonies",
-      "page_url": "categories/categorie-choice.html"
+      "page_url": "categories/fetes.html"
     }
   ]
 }
