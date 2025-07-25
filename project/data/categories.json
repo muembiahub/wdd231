@@ -64,6 +64,11 @@
       "logo": "images/vehicules.png",
       "category": "Véhicules",
       "page_url": "categories/categorie-choice.html"
+    },
+    {
+      "logo": "images/vehicules.png",
+      "category": "Manifestation et Ceremonies",
+      "page_url": "categories/categorie-choice.html"
     }
   ]
 }
