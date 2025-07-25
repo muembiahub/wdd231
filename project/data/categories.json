@@ -11,7 +11,7 @@
       "page_url": "categories/construction-reparation.html"
     },
     {
-      "logo": "categories/images/africa-medi.webp",
+      "logo": "images/africa-medi.webp",
       "category": "Santé",
       "page_url": "categories/sante.html"
     },
@@ -26,7 +26,7 @@
       "page_url": "categories/formation.html"
     },
     {
-      "logo": "categorie/images/vetement-femme.webp",
+      "logo": "images/vetement-femme.webp",
       "category": "Mode",
       "page_url": "categories/mode.html"
     },
