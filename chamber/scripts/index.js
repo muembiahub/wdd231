@@ -5,6 +5,8 @@ hamButton.addEventListener('click', () => {
 	navigation.classList.toggle('open');
 	hamButton.classList.toggle('open');
 });
+
+
 const gridBtn = document.getElementById("grid");
 const listBtn = document.getElementById("list");
 const container = document.getElementById("companies");
@@ -23,7 +25,7 @@ function displaySpotlight(companies) {
   container.innerHTML = "";
 
  
-  const allowedLevels = ["Gold","Platinum"];
+  const allowedLevels = ["Gold"];
   const spotlightMembers = companies.filter(company =>
   allowedLevels.includes(company.membershipLevel)
 );
@@ -227,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (copyrightContainer) {
         copyrightContainer.innerHTML = `&copy; ${currentYear} Kazidomo . <br>
          All rights reserved.<br>
-        Powered by <a href="https://www.byu.edu" target="_blank">BYU</a><br>
+        Powered by <a href="https://www.jonathanmuembia.com" target="_blank">Jonathan Muembia</a><br>
         Last updated: <span id="last-modified">${document.lastModified}</span>`;
     }
 });

@@ -126,12 +126,36 @@ ul, li {
 
 /* ========== Hero Section ========== */
 .hero {
-  background: #5265a8;
-  padding: 20px;
-  color: #e8e3e3;
-  font-size: 1.5em;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
+      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.4&auto=format&fit=crop&w=1650&q=80'); /* Replace with your image URL */
+      background-size: cover;
+      background-position: center;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: rgb(245, 244, 252);
+      text-shadow: 2px 4px 4px rgba(0,0,0,0.7);
+      text-align: center;
+      padding: 20px;
+    }
+  .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .cta-button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      background-color: #ff5722;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .cta-button:hover {
+      background-color: #e64a19;
+    }
 
 /* ========== Content Sections ========== */
 .directory-content {
