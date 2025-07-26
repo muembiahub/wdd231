@@ -137,7 +137,16 @@ button:hover {
   box-shadow: 0 0 5rem #555;
 
 }
-
+ .container h1{
+  text-align: center;
+  font-size: 2.8em;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+ }
+ .container p{
+  text-align: center;
+  font-size: medium;
+  font-family: 'Courier New', Courier, monospace;
+ }
   .container {
     position: relative;
     opacity: 0;
