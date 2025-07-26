@@ -84,7 +84,7 @@ ul, li {
   background: none;
   color: #000;
   position: absolute;
-  top: 0.1rem;
+  top: 1rem;
   right: 0.7rem;
   display: block;
   border: none;
@@ -126,7 +126,7 @@ ul, li {
 
 /* ========== Hero Section ========== */
 .hero {
-      background-image: url('/chamber/images/photohero.webp'),'alt=Hero';
+      background-image: url('/chamber/images/photohero.webp');
       background-size: cover;
       background-position: center;
       height: 80vh;
@@ -139,13 +139,10 @@ ul, li {
       text-align: center;
       padding: 20px;
     }
-    .hero p{
-      font-size: large;
-      color: #000;
-    }
   .hero h1 {
       font-size: 2rem;
       margin-bottom: 20px;
+      text-align: center;
     }
     .cta-button {
       padding: 15px 30px;
