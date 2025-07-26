@@ -9,6 +9,109 @@ hamButton.addEventListener('click', () => {
 
 
 
+fetch('data/membershipLevel.json')
+  .then(response => response.json())
+  .then(data => {
+    const container = document.querySelector('.membership-cards');
+
+    data.forEach(membership => {
+      const card = document.createElement('div');
+      card.className = 'membership';
+
+      const title = document.createElement('h3');
+      title.textContent = membership.title;
+      card.appendChild(title);
+
+      const viewBtn = document.createElement('button');
+      viewBtn.textContent = 'View More';
+      viewBtn.className = 'view-more-btn';
+
+      const list = document.createElement('ul');
+      list.className = 'membership-description';
+      list.style.display = 'none'; // Initially hidden
+
+      membership.description.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        list.appendChild(li);
+      });
+
+      viewBtn.addEventListener('click', () => {
+        const isVisible = list.style.display === 'block';
+        list.style.display = isVisible ? 'none' : 'block';
+        viewBtn.textContent = isVisible ? 'View More' : 'View Less';
+      });
+
+      card.appendChild(viewBtn);
+      card.appendChild(list);
+      container.appendChild(card);
+    });
+  })
+  .catch(error => console.error('Error loading memberships:', error));
+
+
+
+
+  
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector("form");
+
+  // Auto-generate timestamp if field exists
+  const timestampField = document.getElementById("timestamp");
+  if (timestampField) {
+    const now = new Date();
+    timestampField.value = now.toLocaleString(); // Customize format if needed
+  }
+
+  // Handle form submission and store data
+  if (form) {
+    form.addEventListener("submit", function () {
+      const fields = ["firstName", "lastName", "email", "mobile", "businessName", "timestamp"];
+
+      fields.forEach(id => {
+        const input = document.getElementById(id);
+        if (input) {
+          localStorage.setItem(id, input.value);
+        }
+      });
+    });
+  }
+
+  // Display data on thankyou.html
+  const dataDisplayIds = {
+    showFirstName: "firstName",
+    showLastName: "lastName",
+    showEmail: "email",
+    showMobile: "mobile",
+    showBusinessName: "businessName",
+    showTimestamp: "timestamp"
+  };
+
+  for (const [spanId, storedKey] of Object.entries(dataDisplayIds)) {
+    const outputElement = document.getElementById(spanId);
+    const value = localStorage.getItem(storedKey);
+
+    if (outputElement && value) {
+      outputElement.textContent = value;
+    }
+  }
+
+  // Optionally clear localStorage after displaying
+  // localStorage.clear();
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -83,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (copyrightContainer) {
         copyrightContainer.innerHTML = `&copy; ${currentYear} Kazidomo . <br>
          All rights reserved.<br>
-        Powered by <a href="https://www.byu.edu" target="_blank">BYU</a><br>
+        Powered by <a href="https://www.jonathanmuembia.com" target="_blank">Jonathan Muembia</a><br>
         Last updated: <span id="last-modified">${document.lastModified}</span>`;
     }
 });

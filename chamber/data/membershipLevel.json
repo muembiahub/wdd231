@@ -1,34 +1,34 @@
 [
-    {       
-        "title": "NP Membership",
-        "description":["Free membership",
-         "Basic event access",
-         "Community listing"
-        ]
-   
-    },
-    {
-        "title": "Bronze Membership",
-       "description":["Free membership",
-         "Basic event access",
-         "Community listing"
-        ]
-    },
-    {
-        "title": "Silver Membership",
-        "membershipLevel": "Gold",
-        "description":["Free membership",
-         "Basic event access",
-         "Community listing"
-        ]
- 
-    },
-    {
-        "title": "Gold Membership",
-        "description":["Free membership",
-         "Basic event access",
-         "Community listing"
-        ]
- 
-    }
+  {
+    "title": "NP Membership",
+    "description": [
+      "Free membership",
+      "Access to selected community events",
+      "Listing in public directory"
+    ]
+  },
+  {
+    "title": "Bronze Membership",
+    "description": [
+      "All NP benefits included",
+      "Early access to basic events",
+      "Member badge on profile"
+    ]
+  },
+  {
+    "title": "Silver Membership",
+    "description": [
+      "All Bronze benefits included",
+      "Access to premium events",
+      "Priority community support"
+    ]
+  },
+  {
+    "title": "Gold Membership",
+    "description": [
+      "All Silver benefits included",
+      "Exclusive invites and networking",
+      "Recognition on community spotlight"
+    ]
+  }
 ]
