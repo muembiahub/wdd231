@@ -138,6 +138,40 @@ button:hover {
 
 }
 
+  .container {
+    position: relative;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.8s ease-out;
+  }
+  .container.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .confetti {
+    position: absolute;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    animation: fall 3s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(300px) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+
 /* ========== Small Screens (<= 700px) ========== */
 @media (max-width: 700px) {
   #content {

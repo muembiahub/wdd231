@@ -212,7 +212,7 @@ apiFetch();
     if (copyrightContainer) {
         copyrightContainer.innerHTML = `&copy; ${currentYear} Kazidomo . <br>
          All rights reserved.<br>
-        Powered by <a href="https://www.byu.edu" target="_blank">BYU</a><br>
+        Powered by <a href="https://www.jonathanmuembia.com" target="_blank">Jonathan Muembia</a><br>
         Last updated: <span id="last-modified">${document.lastModified}</span>`;
     }
 });

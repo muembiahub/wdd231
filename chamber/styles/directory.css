@@ -126,7 +126,7 @@ ul, li {
 
 /* ========== Hero Section ========== */
 .hero {
-      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.4&auto=format&fit=crop&w=1650&q=80'); /* Replace with your image URL */
+      background-image: url('images/photohero.webp');
       background-size: cover;
       background-position: center;
       height: 80vh;
@@ -135,9 +135,13 @@ ul, li {
       justify-content: center;
       align-items: center;
       color: rgb(245, 244, 252);
-      text-shadow: 2px 4px 4px rgba(0,0,0,0.7);
+      text-shadow: 0px 2px 6px rgba(169, 154, 154, 0.7);
       text-align: center;
       padding: 20px;
+    }
+    .hero p{
+      font-size: large;
+      color: #000;
     }
   .hero h1 {
       font-size: 2rem;
@@ -148,10 +152,10 @@ ul, li {
       font-size: 1.2rem;
       background-color: #ff5722;
       color: #fff;
-      border: none;
-      border-radius: 5px;
+      border-radius: 30px;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      width: auto;
     }
     .cta-button:hover {
       background-color: #e64a19;

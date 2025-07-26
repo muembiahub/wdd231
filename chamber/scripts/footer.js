@@ -52,7 +52,7 @@ fetch('data/membershipLevel.json')
 
 
 
-  
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("form");
@@ -100,6 +100,24 @@ document.addEventListener("DOMContentLoaded", () => {
   // Optionally clear localStorage after displaying
   // localStorage.clear();
 });
+
+
+// animation on thankfull page after submit form
+
+ window.addEventListener("DOMContentLoaded", () => {
+    const container = document.querySelector(".container");
+    container.classList.add("visible");
+
+    // Trigger confetti burst
+    for (let i = 0; i < 30; i++) {
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+      confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+      confetti.style.left = `${Math.random() * 100}%`;
+      confetti.style.animationDelay = `${Math.random()}s`;
+      container.appendChild(confetti);
+    }
+  });
 
 
 
