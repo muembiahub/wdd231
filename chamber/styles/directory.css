@@ -126,7 +126,7 @@ ul, li {
 
 /* ========== Hero Section ========== */
 .hero {
-      background-image: url('/images/photohero.webp');
+      background-image: url('https://muembiahub.github.io/wdd231/chamber/images/photohero.webp');
       background-size: cover;
       background-position: center;
       height: 80vh;
