@@ -148,14 +148,14 @@ ul, li {
       padding: 15px 30px;
       font-size: 1.2rem;
       background-color: #ff5722;
-      color: #fff;
+      color: #0f0505;
       border-radius: 30px;
       cursor: pointer;
       transition: background-color 0.3s ease;
       width: auto;
     }
     .cta-button:hover {
-      background-color: #e64a19;
+      background-color: #0a40e0;
     }
 
 /* ========== Content Sections ========== */
