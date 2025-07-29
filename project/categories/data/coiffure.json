@@ -15,7 +15,7 @@
           "id": "srv001",
           "name": "Coupe Homme",
           "duration": "30min",
-          "price": 5,
+          "price": 20,
           "homeService": true,
           "image": "categories/images/coupe-homme.webp"
         },
@@ -35,7 +35,8 @@
           "homeService": true,
           "image": "categories/images/coupe-enfant.webp"
         }
-      ]
+      ],
+      "image": "categories/images/coupe-femme-homme-enfant.webp"
     },
     {
       "id": "cat002",
@@ -73,6 +74,8 @@
           "image": "categories/images/tresses-enfants.webp"
         }
       ]
+      ,
+      "image": "categories/images/tresses.webp"
     },
     {
       "id": "cat003",
@@ -91,7 +94,7 @@
           "duration": "75min",
           "price": 18,
           "homeService": false,
-          "image": "categories/images//defrisage.webp"
+          "image": "categories/images/capillaires.webp"
         },
         {
           "id": "srv008",
@@ -109,7 +112,10 @@
           "homeService": false,
           "image": "categories/images/shampooing-soin.webp"
         }
+        
       ]
+      ,
+      "image": "categories/images/soins-capillaires.webp"
     },
     {
       "id": "cat004",
@@ -136,9 +142,58 @@
           "duration": "45min",
           "price": 12,
           "homeService": true,
-          "image": "categories/images/maquillage-leger.webp"
+          "image": "categories/images/coiffure-mariage-african.webp"
         }
       ]
-    }
+      ,
+       "image": "categories/images/coiffure-evenementielle.webp"
+    },
+  {
+  "id": "cat005",
+  "title": "Soins des Ongles",
+  "summary": "Des mains impeccables pour toutes les occasions.",
+  "details": "Des prestations variées pour embellir, protéger et sublimer vos ongles.",
+  "features": [
+    "Manucure professionnelle et personnalisée",
+    "Pose de vernis classique ou semi-permanent",
+    "Soins nourrissants et réparateurs pour ongles fragiles"
+                ],
+            "services": [
+                    {
+                        "id": "srv012",
+                        "name": "Manucure Classique",
+                        "duration": "30min",
+                        "price": 15,
+                        "homeService": true,
+                         "image": "categories/images/manucure-classique.webp"
+                        },
+                        {    
+                             "id": "srv013",
+                            "name": "Manucure Semi-permanente",
+                            "duration": "45min",
+                            "price": 25,
+                            "homeService": false,
+                            "image": "categories/images/manucure-semi.webp"
+                            },
+                            {
+                             "id": "srv014",
+                             "name": "Soin Réparateur Ongles",
+                             "duration": "20min",
+                             "price": 18,
+                             "homeService": true,
+                             "image": "categories/images/soin-ongles.webp"
+                            },
+                            {
+                                "id": "srv015",
+                                "name": "Pose de Faux Ongles",
+                                "duration": "60min",
+                                "price": 35,
+                                "homeService": false,
+                                "image": "categories/images/faux-ongles.webp"
+                            }
+                        ],
+    "image": "categories/images/soins-des-ongles.webp"
+     }
+
   ]
-}
+ }
