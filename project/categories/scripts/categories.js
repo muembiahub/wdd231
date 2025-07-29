@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(data => {
       const container = document.getElementById('catalogue-coiffure');
 
-      data.categories.forEach(item => {
+      data.coiffure.forEach(item => {
         const card = document.createElement('div');
         card.className = 'card';
 
@@ -168,8 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     data-produit="${opt.name}"
                     data-title="${item.title}"
                     data-price="${opt.price}"
-                    data-dimensions="${opt.duration}"
-                    data-custom="${opt.homeService}">
+                    data-duration="${opt.duration}"
+                    data-homeService="${opt.homeService}">
               Contacter un agent
             </button>
           </li>
@@ -237,11 +237,11 @@ if (detectBtn) {
       const produit = btn.dataset.produit;
       const category = btn.dataset.title;
       const price = btn.dataset.price;
-      const dimensions = btn.dataset.dimensions;
-      const custom = btn.dataset.custom === "true" ? "Oui" : "Non";
+      const duration = btn.dataset.duration;
+      const homeService= btn.dataset.homeService === "true" ? "Oui" : "Non";
 
       const message = `Bonjour, je suis intéressé par "${produit}" dans la catégorie "${category}".\n\n` +
-                      `Prix : ${price} €\nDimensions : ${dimensions}\nPersonnalisable : ${custom}\n\n` +
+                      `Prix : ${price} €\nDuration : ${duration}\nPersonnalisable : ${homeService}\n\n` +
                       `Merci de me fournir plus d'informations.`;
 
       if (messageField) messageField.value = message;
