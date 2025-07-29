@@ -1,0 +1,144 @@
+{
+  "categories": [
+    {
+      "id": "cat001",
+      "title": "Coupes",
+      "summary": "Coupes stylées pour hommes, femmes et enfants.",
+      "details": "Des coupes rapides et personnalisées, avec option de service à domicile selon le type de prestation.",
+      "features": [
+        "Adaptées à tout type de cheveux",
+        "Disponible pour tous les âges",
+        "Service mobile pour certaines options"
+      ],
+      "options": [
+        {
+          "id": "srv001",
+          "name": "Coupe Homme",
+          "duration": "30min",
+          "price": 5,
+          "homeService": true,
+          "image": "categories/images/coupe-homme.webp"
+        },
+        {
+          "id": "srv002",
+          "name": "Coupe Femme",
+          "duration": "45min",
+          "price": 8,
+          "homeService": false,
+          "image": "categories/images/coupe-femme.webp"
+        },
+        {
+          "id": "srv003",
+          "name": "Coupe enfant",
+          "duration": "25min",
+          "price": 4,
+          "homeService": true,
+          "image": "categories/images/coupe-enfant.webp"
+        }
+      ]
+    },
+    {
+      "id": "cat002",
+      "title": "Tresses",
+      "summary": "Tresses africaines modernes et traditionnelles.",
+      "details": "Des tresses réalisées avec soin, adaptées à tous les types de cheveux et occasions. Possibilité d'ajouter des rajouts.",
+      "features": [
+        "Style durable",
+        "Rajouts optionnels",
+        "Disponible pour enfants et adultes"
+      ],
+      "services": [
+        {
+          "id": "srv004",
+          "name": "Tresses simples",
+          "duration": "90min",
+          "price": 15,
+          "homeService": true,
+          "image": "categories/images/tresses-simples.webp"
+        },
+        {
+          "id": "srv005",
+          "name": "Tresses avec rajouts",
+          "duration": "120min",
+          "price": 25,
+          "homeService": true,
+          "image": "categories/images/tresses-rajouts.webp"
+        },
+        {
+          "id": "srv006",
+          "name": "Tresses enfants",
+          "duration": "60min",
+          "price": 10,
+          "homeService": true,
+          "image": "categories/images/tresses-enfants.webp"
+        }
+      ]
+    },
+    {
+      "id": "cat003",
+      "title": "Soins capillaires",
+      "summary": "Traitements pour renforcer ou sublimer vos cheveux.",
+      "details": "Des soins ciblés pour défriser, nourrir, ou colorer les cheveux avec des produits professionnels.",
+      "features": [
+        "Soins adaptés à tout type de cheveux",
+        "Produits professionnels",
+        "Disponible à domicile selon le service"
+      ],
+      "services": [
+        {
+          "id": "srv007",
+          "name": "Défrisage",
+          "duration": "75min",
+          "price": 18,
+          "homeService": false,
+          "image": "categories/images//defrisage.webp"
+        },
+        {
+          "id": "srv008",
+          "name": "Coloration",
+          "duration": "60min",
+          "price": 20,
+          "homeService": true,
+          "image": "categories/images/coloration.webp"
+        },
+        {
+          "id": "srv009",
+          "name": "Shampooing & Soin",
+          "duration": "40min",
+          "price": 7,
+          "homeService": false,
+          "image": "categories/images/shampooing-soin.webp"
+        }
+      ]
+    },
+    {
+      "id": "cat004",
+      "title": "Coiffure événementielle",
+      "summary": "Mise en beauté pour vos plus beaux jours.",
+      "details": "Des coiffures et maquillages pensés pour les mariages, cérémonies et événements spéciaux.",
+      "features": [
+        "Coiffure professionnelle et élégante",
+        "Maquillage doux inclus",
+        "Service mobile pour faciliter la préparation"
+      ],
+      "services": [
+        {
+          "id": "srv010",
+          "name": "Coiffure Mariage",
+          "duration": "90min",
+          "price": 30,
+          "homeService": true,
+          "image": "categories/images/coiffure-mariage.webp"
+        },
+        {
+          "id": "srv011",
+          "name": "Maquillage léger",
+          "duration": "45min",
+          "price": 12,
+          "homeService": true,
+          "image": "categories/images/maquillage-leger.webp"
+        }
+      ]
+    }
+  ]
+}

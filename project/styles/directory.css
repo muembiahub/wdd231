@@ -108,8 +108,7 @@ ul, li {
 }
 
 .navigation a {
-  padding: 0.3rem;
-  text-align: center;
+  padding: 0.5rem 5rem;
   text-decoration: none;
   color: white;
 }
@@ -121,7 +120,38 @@ ul, li {
 }
 
 /* ========== Hero Section ========== */
-
+.hero {
+      background-image: url('/project/images/photohero.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: rgb(245, 244, 252);
+      text-shadow: 0px 2px 6px rgba(169, 154, 154, 0.7);
+      text-align: center;
+      padding: 20px;
+    }
+  .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .cta-button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      background-color: #ff5722;
+      color: #0f0505;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: auto;
+    }
+    .cta-button:hover {
+      background-color: #0a40e0;
+    }
 
 
 
@@ -267,31 +297,52 @@ color: black;
 
 
 
-/* ========== Small Screens (<= 700px) ========== */
-@media (max-width: 700px) {
-  
- 
-  .logo-title img {
-    width: 18px;
-    height: 36px;
+/* ========== Small Screens ( 768px) ========== */
+/*    */
+@media (min-width: 481px) and (max-width: 768px) {
+  /* Mobile paysage + tablettes */
+  #menu {
+  display: block;
+  position: absolute;
+  top: 7rem;
+  right: 8rem;
+  border: 1px solid black;
+  background: none;
+  color: var(--color-text);
+  transform: scale(1.0);
+  z-index: 5;
+}
+.navigation a {
+    display: block;
+    padding: 0.5rem 3rem;
+    border-right: 1px solid #777;
   }
 }
 
-/* ========== Extra Small Screens (<= 320px) ========== */
-@media (max-width: 320px) {
+
+/* ========== Extra Small Screens (480px) ========== */
+@media (max-width: 480px) {
   body {
     font-size: 0.8rem;
     padding: 5px;
   }
 
   #menu {
-    font-size: 1.3rem;
-    top: 0.5rem;
-    right: 0.5rem;
-  }
-
-
-
+  display: block;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  border: 1px  black;
+  background: none;
+  color: var(--color-text);
+  transform: scale(2.5);
+  z-index: 5;
+}
+.navigation a {
+  padding: 0.1rem 3rem;
+  text-decoration: none;
+  color: white;
+}
   .card img {
     height: auto;
   }
@@ -308,7 +359,7 @@ color: black;
 
   .navigation a {
     display: block;
-    padding: 1rem 2rem;
+    padding: 1rem 5rem;
     border-right: 1px solid #777;
   }
 
