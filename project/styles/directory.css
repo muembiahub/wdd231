@@ -121,7 +121,7 @@ ul, li {
 
 /* ========== Hero Section ========== */
 .hero {
-      background-image: url('/project/images/photohero.jpg');
+      background-image: url('/project/images/photohero.webp');
       background-size: cover;
       background-position: center;
       height: 80vh;
