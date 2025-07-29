@@ -1,58 +1,5 @@
 /* form-style.css */
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
-  margin: 0;
-  padding: 20px;
-}
-
-h1 {
-  color: #333;
-  text-align: center;
-  margin-bottom: 20px;
-}
-h1,form {
-  animation: clignote 2.5s infinite;
-  color: #093ce4f8;
-  font-weight: 70;
-  margin-top: 20px;
-  position: relative;
-  cursor: default;
-  transition: text-shadow 0.4s ease;
-}
-
-h1:hover,form:hover {
-  text-shadow: 0 0 10px #0f87ea;
-}
-
-h1::after,form::after{
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 3px;
-  background: linear-gradient(to right, #2e6fe3, #6bb5ff);
-  animation: underlinePulse 2s infinite;
-}
-
-@keyframes underlinePulse {
-  0% { opacity: 0.3; width: 50%; }
-  50% { opacity: 1; width: 80%; }
-  100% { opacity: 0.3; width: 50%; }
-}
-
-
-form {
-  max-width: 600px;
-  margin: 0 auto;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
 
 label {
   display: block;

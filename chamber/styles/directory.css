@@ -102,7 +102,6 @@ ul, li {
 .navigation {
   display: none;
   flex-direction: column;
-
   text-align: center;
 
 }

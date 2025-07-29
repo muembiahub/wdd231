@@ -1,17 +1,23 @@
 {
   "categories": [
     {
-      "logo": "images/agriculture.png",
+      "logo": "images/agriculture.webp",
       "category": "Agriculture",
       "page_url": "categories/agriculture.html"
     },
     {
-      "logo": "images/construction.png",
-      "category": "Construction & Réparation",
+      "logo": "images/construction.webp",
+      "category": "Construction",
       "page_url": "categories/construction-reparation.html"
+    }
+    ,
+    {
+      "logo": "images/manifestation-et-ceremonie.webp",
+      "category": "Manifestation et Ceremonies",
+      "page_url": "categories/fetes.html"
     },
     {
-      "logo": "images/africa-medi.webp",
+      "logo": "images/african-medi.webp",
       "category": "Santé",
       "page_url": "categories/sante.html"
     },
@@ -21,7 +27,7 @@
       "page_url": "categories/beaute.html"
     },
     {
-      "logo": "images/formation.png",
+      "logo": "images/formation.webp",
       "category": "Formation",
       "page_url": "categories/formation.html"
     },
@@ -47,8 +53,8 @@
     },
     {
       "logo": "images/pour_la_maison.png",
-      "category": "Pour la Maison",
-      "page_url": "categories/pour-la-maison.html"
+      "category": "Menuiserie",
+      "page_url": "categories/menuiserie.html"
     },
     {
       "logo": "images/hotel.png",
@@ -64,11 +70,6 @@
       "logo": "images/vehicules.png",
       "category": "Véhicules",
       "page_url": "categories/vehicules.html"
-    },
-    {
-      "logo": "images/vehicules.png",
-      "category": "Manifestation et Ceremonies",
-      "page_url": "categories/fetes.html"
     }
   ]
 }
