@@ -183,7 +183,7 @@ ul, li {
   padding: var(--spacing);
 }
 
-.strong{
+strong{
   color: red;
   font-size: larger;
 }
