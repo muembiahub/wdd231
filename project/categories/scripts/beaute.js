@@ -36,9 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         card.innerHTML = `
           <h2>${item.title}</h2>
-          <p><strong>Résumé :</strong> ${item.summary}</p>
           <img src="../${item.image}" alt="${item.title}" />
-          <p><strong>Détails :</strong> ${item.details}</p>
           <div><strong>Caractéristiques :</strong><ul>${features}</ul></div>
           <div><strong>Options disponibles :</strong><ul>${options}</ul></div>
         `;
