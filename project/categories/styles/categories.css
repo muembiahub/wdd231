@@ -183,6 +183,11 @@ ul, li {
   padding: var(--spacing);
 }
 
+.strong{
+  color: red;
+  font-size: larger;
+}
+
 /* -------- Pied de page étendu -------- */
 /* ========== Footer ========== */
 
