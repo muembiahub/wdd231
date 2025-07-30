@@ -40,8 +40,8 @@
     },
     {
       "id": "cat002",
-      "title": "Tresses",
-      "summary": "Tresses africaines modernes et traditionnelles.",
+      "title": "Tissage & Tresses",
+      "summary": "Tissage & Tresses africaines modernes et traditionnelles.",
       "details": "Des tresses réalisées avec soin, adaptées à tous les types de cheveux et occasions. Possibilité d'ajouter des rajouts.",
       "features": [
         "Style durable",
@@ -51,27 +51,27 @@
       "services": [
         {
           "id": "srv004",
-          "name": "Tresses simples",
+          "name": "Tissage",
           "duration": "90min",
-          "price": 15,
+          "price": 35,
           "homeService": true,
-          "image": "categories/images/tresses-simples.webp"
+          "image": "categories/images/tissage.webp"
         },
         {
           "id": "srv005",
-          "name": "Tresses avec rajouts",
+          "name": "Pose perrique",
           "duration": "120min",
-          "price": 25,
+          "price": 40,
           "homeService": true,
-          "image": "categories/images/tresses-rajouts.webp"
+          "image": "categories/images/pose-perrique.webp"
         },
         {
           "id": "srv006",
-          "name": "Tresses enfants",
+          "name": "Afro",
           "duration": "60min",
-          "price": 10,
+          "price": 35,
           "homeService": true,
-          "image": "categories/images/tresses-enfants.webp"
+          "image": "categories/images/afro.webp"
         }
       ]
       ,

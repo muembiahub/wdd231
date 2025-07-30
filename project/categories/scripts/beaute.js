@@ -19,9 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <strong>${opt.name}</strong><br />
             <img src="../${opt.image}" alt="${opt.title}" />
             Prix : ${opt.price.toFixed(2)} $<br />
-            Dimensions : ${opt.duration}<br />
+            Duration : ${opt.duration}<br />
             Personnalisable : ${opt.homeService ? "Oui" : "Non"}<br />
-            Stock : ${opt.stock}<br />
             <button class="open-modal"
                     data-produit="${opt.name}"
                     data-image = "${opt.image}"
