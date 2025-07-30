@@ -1,7 +1,5 @@
 
- // 1. Charger les données JSON et générer les cartes pour coiffure page 
-
-
+ // 1. Charger les données JSON et générer les cartes pour beaute page 
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Charger les données JSON et générer les cartes pour coiffure page 
@@ -73,7 +71,7 @@ if (detectBtn) {
         if (gpsInput) gpsInput.value = gpsCoords;
 
         if (messageField) {
-          const gpsText = `📍 Localisation : ${gpsCoords}\n🗺️ Carte : ${mapURL}\n\n`;
+          const gpsText = `📍Ma Localisation Est : ${gpsCoords}\n🗺️ Voici sur La Carte : ${mapURL}\n\n`;
           messageField.value = gpsText + messageField.value;
         }
 
