@@ -14,6 +14,8 @@ label {
   display: block;
   margin-top: 15px;
   font-weight: bold;
+ color: #1a1a1a 
+
 }
 
 input[type="text"],
@@ -42,8 +44,8 @@ select {
 button {
   margin-top: 20px;
   padding: 10px 15px;
-  background-color: #76a381;
-  color: white;
+  background-color: #e4eaef;
+  color:rgb(18, 16, 16);
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;

@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Address
     const addressContainer = document.querySelector('.address');
     addressContainer.innerHTML = address.map(item => `
-        <p><h4>${item.name}</h4>
+        <p><h2>${item.name}</h2>
         <p>${item.address}<br>
         <strong>Phone:</strong> ${item.phone}<br>
         <strong>Email:</strong> <a href="mailto:${item.email}">${item.email}</a><br>
