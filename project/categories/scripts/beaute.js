@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <li>
             <strong>${opt.name}</strong><br />
             <img src="../${opt.image}" alt="${opt.title}" />
+
             Prix : ${opt.price.toFixed(2)} $<br />
             Duration : ${opt.duration}<br />
             Personnalisable : ${opt.homeService ? "Oui" : "Non"}<br />
@@ -39,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
           <div><strong>Caractéristiques :</strong><ul>${features}</ul></div>
           <div><strong>Options disponibles :</strong><ul>${options}</ul></div>
         `;
-       
 
         container.appendChild(card);
       });
