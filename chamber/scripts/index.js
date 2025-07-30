@@ -9,58 +9,90 @@ hamButton.addEventListener('click', () => {
 
 const gridBtn = document.getElementById("grid");
 const listBtn = document.getElementById("list");
+const dropdown = document.getElementById("needType");
+const preview = document.getElementById("preview");
 const container = document.getElementById("companies");
 
-async function fetchCompanies() {
+// Toggle view class
+gridBtn.addEventListener("click", () => container.className = "grid");
+listBtn.addEventListener("click", () => container.className = "list");
+
+// Trigger fetch on dropdown change
+dropdown.addEventListener("change", () => {
+  const selectedLevel = dropdown.value;
+
+    const validLevels = ["Gold", "Silver"]; // Add your real levels
+  if (!validLevels.includes(selectedLevel)) {
+    preview.textContent = "Please select a valid membership level.";
+    container.innerHTML = ""; // Clear previous results
+    return;
+  }
+
+  preview.textContent = selectedLevel ? `Showing ${selectedLevel} members` : "";
+  fetchCompanies(selectedLevel);
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  preview.textContent = "Select a membership level to view featured members.";
+});
+
+async function fetchCompanies(level = "") {
   try {
-    const response = await fetch("data/members.json"); // Adjust path if needed
+    const response = await fetch("data/members.json");
     if (!response.ok) throw new Error("Network error");
     const companies = await response.json();
-    displaySpotlight(companies) ;
+    displayCompanies(companies, level);
   } catch (err) {
     console.error("Fetch error:", err);
+    container.innerHTML = `<p>Error loading member data.</p>`;
   }
 }
-function displaySpotlight(companies) {
+
+function displayCompanies(companies, levelFilter = "") {
   container.innerHTML = "";
 
- 
-  const allowedLevels = ["Gold"];
-  const spotlightMembers = companies.filter(company =>
-  allowedLevels.includes(company.membershipLevel)
-);
+  const filtered = levelFilter
+    ? companies.filter(c => c.membershipLevel === levelFilter)
+    : companies;
 
-  const shuffled = spotlightMembers.sort(() => 0.5 - Math.random());
-  const selected = shuffled.slice(0, 10); // Pick 2 random featured members
-  
+  const spotlight = filtered.sort(() => 0.5 - Math.random()).slice(0, 10);
 
+  if (spotlight.length === 0) {
+    container.innerHTML = `<p>No members found at that level.</p>`;
+    return;
+  }
 
-  selected.forEach(company => {
-    const badge = company.membershipLevel.toLowerCase() === "gold"
-  ? "🥇"
-  : company.membershipLevel.toLowerCase() === "Platinum"
-  ? "🏅 "
-  : "🏅";
+  spotlight.forEach(company => {
+    const badge = company.membershipLevel === "Gold" ? "🥇"
+      : company.membershipLevel === "Platinum" ? "🏅"
+      : "🔘";
+
     const div = document.createElement("div");
     div.classList.add("card");
     div.innerHTML = `
       <img src="${company.logo}" alt="${company.name} Logo" width="80"><br>
       <strong>${company.name}</strong><br>
-      <p><strong>Description : </strong>${company.description}<br>
-      <p><strong>Address:</strong> ${company.address}<br>
-         <strong>Phone:</strong> ${company.phone}<br>
-         <strong>Website:</strong> <a href="${company.website}" target="_blank">${company.website}</a><br>
-         <strong>Membership:</strong> ${company.membershipLevel} ${badge}<br>
-         <strong>Location:</strong> ${company.location}</p>
+      <p><strong>Description:</strong> ${company.description}<br>
+      <strong>Phone:</strong> ${company.phone}<br>
+      <strong>Website:</strong> <a href="${company.website}" target="_blank">${company.website}</a><br>
+      <strong>Membership:</strong> ${company.membershipLevel} ${badge}<br>
+      <strong>Location:</strong> ${company.location}</p>
     `;
     container.appendChild(div);
   });
 }
 
-gridBtn.addEventListener("click", () => container.className = "grid");
-listBtn.addEventListener("click", () => container.className = "list");
 
-fetchCompanies();
+
+
+// 
+const currentPage = location.pathname.split("/").pop(); 
+document.querySelectorAll(".navigation a").forEach(link => {
+  if (link.getAttribute("href") === currentPage) {
+    link.classList.add("active");
+  }
+});
+
 
 
 
@@ -120,9 +152,6 @@ async function apiFetch() {
 function displayResults(data) {
   myTown.textContent = data.name;
   weathericon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-  weathericon.alt = data.weather[0].description;
-  description.textContent = data.weather[0].description;
-  temperature.textContent = `${data.main.temp}°F`;
 
   const weatherTitle = `${data.name} Weather — ${data.weather[0].description}, ${data.main.temp}°F`;
   document.getElementById("weather-title").textContent = weatherTitle;
@@ -206,10 +235,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const worldTimeZoneContainer = document.querySelector('.world-time-zone');
     if (worldTimeZones.length > 0) {
         const zone = worldTimeZones[0];
-        worldTimeZoneContainer.innerHTML += `
-            <p>Location: <span class="location">${zone.city}</span></p>
-            <p>Current Time: <span class="current-time">${zone.currentTime}</span></p>
-            <p>Time Zone: <span class="time-zone">${zone.timeZone}</span></p>
+        worldTimeZoneContainer.innerHTML += `Location: ${zone.city} —
+            Current Time: ${zone.currentTime} —
+            Time Zone: ${zone.timeZone}
         `;
     }
 

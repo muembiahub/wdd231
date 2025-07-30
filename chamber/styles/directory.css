@@ -28,17 +28,17 @@ footer {
   background: #004466;
   padding: 1rem;
   text-align: center;
-  color: #000;
+  color: #ffffff;
 }
 
 a:-webkit-any-link {
-    color: rgb(173, 117, 117);
+    color: #ffffff;
     cursor: pointer;
     text-decoration: none;
  }
 /* ========== Typography ========== */
 h1, h2 {
-  color: rgb(140, 137, 206);
+  color: rgb(97 95 110);
   padding: 10px;
   text-align: center;
   text-transform: uppercase;
@@ -71,6 +71,7 @@ nav {
   margin: 0rem auto;
   position: relative;
   top: 0rem;
+
 }
 ul, li {
   list-style-type: none; /* removes bullets or numbers */
@@ -110,12 +111,24 @@ ul, li {
   display: flex;
 }
 
+
 .navigation a {
-  padding: 0.3rem;
-  text-align: center;
   text-decoration: none;
+  padding: 0.6rem 2rem;
   color: white;
+  border-radius: 0.4rem;
+  transition: all 0.3s ease;
 }
+
+/* Active link styling */
+.navigation a.active {
+  background-color: #0078D7;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: underline;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
 
 .navigation a:hover {
   background-color: #bbb;
@@ -143,16 +156,16 @@ ul, li {
       margin-bottom: 20px;
       text-align: center;
     }
-    .cta-button {
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      background-color: #ff5722;
-      color: #0f0505;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      width: auto;
-    }
+   .cta-button {
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        background-color: #865242;
+        color: #ffffff;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: auto;
+}
     .cta-button:hover {
       background-color: #0a40e0;
     }
@@ -202,15 +215,49 @@ ul, li {
 
 /* ========== Member & Resume ========== */
 .member {
-  background-color: #333;
-  color: rgb(230, 15, 15);
   text-align: center;
   padding: 1rem;
+}
+.member a{
+  color: #0a40e0;
 }
 
 .member h3 {
   margin-bottom: 0;
 }
+.featured{
+  border: #0078D7 1px solid;
+  max-width: 70%;
+  margin: 9%;
+  padding: 1%;
+  position: relative;
+}
+select {
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  background: #ffffff;
+  color: #383838;
+}
+
+
+button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #e4eaef;
+  color:rgb(18, 16, 16);
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 13px;
+}
+
+button:hover {
+  background-color: #24522e;
+}
+
 
 .resume {
   font-weight: bold;
@@ -300,7 +347,7 @@ ul, li {
 
   .navigation a {
     display: block;
-    padding: 1rem 2rem;
+    padding: 1rem 3rem;
     border-right: 1px solid #777;
   }
 

@@ -24,7 +24,6 @@
         <script src="scripts/index.js" defer></script>
         <title>Chamber of Commerce Home  Page </title>
         <link rel="stylesheet" href="styles/directory.css">
-        <link rel="stylesheet" href="styles/form-style.css">
     </head>
     <body>
          <header class="header-content">
@@ -36,13 +35,13 @@
                 </div>
                                 <button type="button" id="menu"></button>
                             <nav>
-	                            <ul class="navigation">
-		                            <li><a href="index.html">Home</a></li>
-		                            <li><a href="about.html" class="active">About Us</a></li>
-		                            <li><a href="directory.html">Directory</a></li>
-		                            <li><a href="join.html">Join Us</a></li>
-		                            <li><a href="discover.html">Discover Us</a></li>
-	                            </ul>
+                                 <ul class="navigation">
+                                        <li><a href="index.html">Home</a></li>
+                                         <li><a href="about.html">About Us</a></li>
+                                          <li><a href="directory.html">Directory</a></li>
+                                          <li><a href="join.html">Join Us</a></li>
+                                          <li><a href="discover.html">Discover Us</a></li>
+                                 </ul>
                             </nav>
         </header>
     <main>
@@ -85,13 +84,24 @@
     </div>
      
    <div class="member">
-   <h2> Featured Chamber Members</h2>
-   <h3>Gold Membership Level</h3>
-   <button id="grid">Grid View</button>
-   <button id="list">List View</button>
-   </div>
+    <div class="featured">
+    <label for="needType">Featured Membership Level :</label>
+<select id="needType" name="needType" required>
+    <option value="">--Filter by Membership Level--</option>
+    <option value="Gold">Gold</option>
+    <option value="Silver">Silver</option>
+</select>
+
+                    <div id="preview" aria-live="polite" style="margin-top: 1em;"></div>
+                    <button id="grid">Grid View</button>
+                    <button id="list">List View</button>
+</div>
+                    <div id="companies" class="grid"></div>
+  </div>
+   
   
-  <div id="companies" class="grid"></div>
+  
+  
     </main>
     <footer>
         <div class="footer-content">

@@ -46,6 +46,16 @@ listBtn.addEventListener("click", () => container.className = "list");
 fetchCompanies();
 
 
+const currentPage = location.pathname.split("/").pop(); // e.g. 'about.html'
+document.querySelectorAll(".navigation a").forEach(link => {
+  if (link.getAttribute("href") === currentPage) {
+    link.classList.add("active");
+  }
+});
+
+
+
+
 
 const address = [
     {
@@ -172,8 +182,7 @@ function displayResults(data) {
   myTown.textContent = data.name;
   weathericon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
   weathericon.alt = data.weather[0].description;
-  description.textContent = data.weather[0].description;
-  temperature.textContent = `${data.main.temp}°F`;
+ 
 
   const weatherTitle = `${data.name} Weather — ${data.weather[0].description}, ${data.main.temp}°F`;
   document.getElementById("weather-title").textContent = weatherTitle;

@@ -125,9 +125,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+// 
 
-
-
+const currentPage = location.pathname.split("/").pop(); // e.g. 'about.html'
+document.querySelectorAll(".navigation a").forEach(link => {
+  if (link.getAttribute("href") === currentPage) {
+    link.classList.add("active");
+  }
+});
 
 
 
@@ -180,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Address
     const addressContainer = document.querySelector('.address');
     addressContainer.innerHTML = address.map(item => `
-        <p><h2>${item.name}</h2>
+        <p><h4>${item.name}</h4>
         <p>${item.address}<br>
         <strong>Phone:</strong> ${item.phone}<br>
         <strong>Email:</strong> <a href="mailto:${item.email}">${item.email}</a><br>
