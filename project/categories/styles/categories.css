@@ -186,6 +186,7 @@ ul, li {
 em{
   color: red;
   font-size: larger;
+  text-decoration: brown;
 }
 
 /* -------- Pied de page étendu -------- */
