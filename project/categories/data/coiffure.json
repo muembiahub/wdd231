@@ -92,17 +92,17 @@
           "id": "srv007",
           "name": "Défrisage",
           "duration": "75min",
-          "price": 18,
-          "homeService": false,
-          "image": "categories/images/capillaires.webp"
+          "price": 20,
+          "homeService": true,
+          "image": "categories/images/defrisage-complet.webp"
         },
         {
           "id": "srv008",
-          "name": "Coloration",
+          "name": "Tong",
           "duration": "60min",
-          "price": 20,
+          "price": 35,
           "homeService": true,
-          "image": "categories/images/coloration.webp"
+          "image": "categories/images/tong.webp"
         },
         {
           "id": "srv009",
