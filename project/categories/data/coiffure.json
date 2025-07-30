@@ -24,7 +24,7 @@
           "name": "Coupe Femme",
           "duration": "45min",
           "price": 8,
-          "homeService": false,
+          "homeService": true,
           "image": "categories/images/coupe-femme.webp"
         },
         {
@@ -150,7 +150,7 @@
           "duration": "45min",
           "price": 100,
           "homeService": true,
-          "image": "categories/images/micro-shading-et-shindig .webp"
+          "image": "categories/images/micro-shading-et-shindig.webp"
         }
       ]
       ,
@@ -180,7 +180,7 @@
                             "name": "Manucure Semi-permanente",
                             "duration": "45min",
                             "price": 25,
-                            "homeService": false,
+                            "homeService": true,
                             "image": "categories/images/manucure-semi.webp"
                             },
                             {
@@ -196,7 +196,7 @@
                                 "name": "Pose de Faux Ongles",
                                 "duration": "60min",
                                 "price": 35,
-                                "homeService": false,
+                                "homeService": true,
                                 "image": "categories/images/faux-ongles.webp"
                             }
                         ],
