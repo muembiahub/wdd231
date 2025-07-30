@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div><strong>Caractéristiques :</strong><ul>${features}</ul></div>
           <div><strong>Options disponibles :</strong><ul>${options}</ul></div>
         `;
+        document.style.opt.image = width = '100px', height = '100px'
 
         container.appendChild(card);
       });
