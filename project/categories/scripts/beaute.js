@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <strong>${opt.name}</strong><br />
             <img src="../${opt.image}" alt="${opt.title}" />
 
-            <strong>Prix : ${opt.price.toFixed(2)} $ <strong><br />
+            <strong>Prix : ${opt.price.toFixed(2)} $ </strong><br />
             Duration : ${opt.duration}<br />
             Personnalisable : ${opt.homeService ? "Oui" : "Non"}<br />
             <button class="open-modal"
