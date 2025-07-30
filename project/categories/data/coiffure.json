@@ -106,11 +106,11 @@
         },
         {
           "id": "srv009",
-          "name": "Shampooing & Soin",
+          "name": "Broching simple  broching plus lisage ",
           "duration": "40min",
-          "price": 7,
-          "homeService": false,
-          "image": "categories/images/shampooing-soin.webp"
+          "price": 10,
+          "homeService": true,
+          "image": "categories/images/broching-simple-broching-plus-lisage.webp"
         }
         
       ]
@@ -143,6 +143,14 @@
           "price": 12,
           "homeService": true,
           "image": "categories/images/coiffure-mariage-african.webp"
+        },
+        {
+          "id": "srv012",
+          "name": "Micro shading et shindig ",
+          "duration": "45min",
+          "price": 100,
+          "homeService": true,
+          "image": "categories/images/micro-shading-et-shindig .webp"
         }
       ]
       ,
