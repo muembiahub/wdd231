@@ -1,0 +1,83 @@
+
+    :root {
+      --color-primary: #003366;
+      --color-accent: #FFCC00;
+      --color-light: #F8F9FA;
+      --color-text: #222;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Roboto', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: var(--color-light);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    header,footer{
+      background-color: var(--color-primary);
+      color: #ffff;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    section {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: white;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+    }
+
+    h1, h2 {
+      font-family: var(--font-heading);
+      color: var(--color-primary);
+      text-align: center;
+    }
+    
+    .navigation a{
+      text-decoration: none;
+       color: white;
+    }
+    .navigation ul, li {
+    list-style-type: none; /* removes bullets or numbers */
+    margin: 0;
+    padding: 0;
+     }
+    .color-sample {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .swatch, #test{
+      flex: 1;
+      padding: 1rem;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .wireframes img {
+      width: 100%;
+      max-width: 380px;
+      display: block;
+      margin: 1rem auto;
+      border: 1px solid #ccc;
+      height: 50%;
+    }
+    button{
+      background: var(--color-accent);
+      color: #020202;
+      font-size: 19px;
+      border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+    }
+  
+
+   
