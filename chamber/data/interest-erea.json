@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Kamalondo Stadium",
+    "address": "Avenue Kamalondo, Lubumbashi, Haut-Katanga, DRC",
+    "description": "A vibrant hub for local football matches and community events, home to TP Mazembe.",
+    "image": "images/kamalondo.webp"
+  },
+  {
+    "name": "Lubumbashi Botanical Garden",
+    "address": "Route Golf, Lubumbashi, Haut-Katanga, DRC",
+    "description": "A peaceful oasis showcasing native and exotic plant species, ideal for nature walks and education.",
+    "image": "images/botanical-garden.webp"
+  },
+  {
+    "name": "The Mining Museum",
+    "address": "Avenue du Musée, Lubumbashi, Haut-Katanga, DRC",
+    "description": "Explore the rich mining history of the region with artifacts, geology exhibits, and cultural insights.",
+    "image": "images/mining-museum.webp"
+  },
+  {
+    "name": "Mediathèque de Lubumbashi",
+    "address": "Avenue Munama, Makutano, Lubumbashi, Haut-Katanga, DRC",
+    "description": "A modern media library offering books, digital resources, and cultural programming for all ages.",
+    "image": "images/mediathèque.webp"
+  },
+  {
+    "name": "Galerie du Pétrole",
+    "address": "Avenue du Pétrole, Makutano, Lubumbashi, Haut-Katanga, DRC",
+    "description": "An art and history gallery highlighting the petroleum industry’s impact on Congolese society.",
+    "image": "images/galerie-du-petrole.webp"
+  },
+  {
+    "name": "Kiwele Cultural Center",
+    "address": "Boulevard Kamanyola, Lubumbashi, Haut-Katanga, DRC",
+    "description": "A vibrant venue for music, dance, and traditional Congolese performances and workshops.",
+    "image": "images/kiwele-center.webp"
+  },
+  {
+    "name": "Kitumaïni Market",
+    "address": "Rue Kitumaïni, Makutano, Lubumbashi, Haut-Katanga, DRC",
+    "description": "A bustling local market offering fresh produce, handmade crafts, and daily essentials.",
+    "image": "images/kitumaini-market.webp"
+  },
+  {
+    "name": "Makutano Viewpoint",
+    "address": "Makutano Hilltop, Lubumbashi, Haut-Katanga, DRC",
+    "description": "A scenic overlook offering panoramic views of Lubumbashi’s skyline and surrounding landscapes.",
+    "image": "images/makutano-viewpoint.webp"
+  }
+]
