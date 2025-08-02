@@ -22,7 +22,7 @@ hamButton.addEventListener('click', () => {
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
-          <img src="${item.image}" alt="${item.name}">
+          <img src="${item.image}" alt="${item.name}" loading="lazy">
           <h3>${item.name}</h3>
           <p><strong> Description:</strong> ${item.description}</p>
           <p><strong>Address:</strong> ${item.address}</p>
