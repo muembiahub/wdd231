@@ -142,7 +142,6 @@ strong, a, span{
     background-color: red;
     border-radius: 50%;
     animation: fall 3s linear infinite;
-    pointer-events: none;
   }
 
   @keyframes fall {
