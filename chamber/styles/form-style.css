@@ -78,7 +78,9 @@ button:hover {
   justify-content: space-around;
 
 }
-
+strong, a, span{
+  font-size: 1.5em;
+}
 
 
 .membership {
