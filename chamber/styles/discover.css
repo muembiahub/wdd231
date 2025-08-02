@@ -135,6 +135,9 @@ ul, li {
   color: #333;
   font-weight: bold;
 }
+.hero{
+  background-color: #0078D7;
+}
 .visit-message {
   padding: 1.5em;
   background-color: #f0f4f8;
