@@ -1,0 +1,114 @@
+[
+  {
+    "name": "Samsung Galaxy A53",
+    "brand": "Samsung",
+    "price": "$210",
+    "image": "https://images.samsung.com/is/image/samsung/p6pim/af/galaxy-a53-5g-sm-a536ezkafaa/gallery/af-galaxy-a53-5g-sm-a536-412027-sm-a536ezkafaa-531502306",
+    "description": "Smartphone 5G avec écran Super AMOLED 6.5”, 128Go de stockage, 5000mAh de batterie."
+  },
+  {
+    "name": "iPhone XR",
+    "brand": "Apple",
+    "price": "$159",
+    "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-xr-select-201809?wid=940&hei=1112&fmt=png-alpha&.v=1537030220619",
+    "description": "Écran Liquid Retina 6.1”, appareil photo 12MP, Face ID, performant et accessible."
+  },
+  {
+    "name": "Tablette éducative 128Go",
+    "brand": "Luxury Touch",
+    "price": "$59",
+    "image": "https://woju.ci/wp-content/uploads/2023/09/tablette-enfant.jpg",
+    "description": "Tablette pour enfants avec contenu éducatif intégré, 128Go de mémoire, idéale pour l’apprentissage."
+  },
+  {
+    "name": "Redmi Note 14 Pro",
+    "brand": "Xiaomi",
+    "price": "$250",
+    "image": "https://i01.appmifile.com/webfile/globalimg/products/pc/redmi-note-14-pro/specs01.png",
+    "description": "Smartphone AMOLED 120Hz, caméra 200MP, batterie 5100mAh, performance haut de gamme."
+  },
+  {
+    "name": "Tecno Spark 10 Pro",
+    "brand": "Tecno",
+    "price": "$145",
+    "image": "https://fdn2.gsmarena.com/vv/pics/tecno/tecno-spark10-pro-1.jpg",
+    "description": "Selfie 32MP, design premium, 256Go de stockage, conçu pour les jeunes créateurs."
+  },
+  {
+    "name": "Itel S23 Plus OLED",
+    "brand": "Itel",
+    "price": "$135",
+    "image": "https://www.itel-life.com/images/s23plus.png",
+    "description": "Écran OLED incurvé, capteur 50MP, 256Go ROM, rapport qualité/prix imbattable."
+  },
+  {
+    "name": "Samsung Galaxy S24 Ultra",
+    "brand": "Samsung",
+    "price": "$1,099",
+    "image": "https://images.samsung.com/is/image/samsung/p6pim/af/s24-ultra/gallery/af-s24-ultra-512gb-graphite-sm-s928bzkemea-543376168",
+    "description": "Caméra 200MP, zoom optique, processeur Snapdragon 8 Gen 3, écran AMOLED 6.8”."
+  },
+  {
+    "name": "iPhone 15 Pro Max",
+    "brand": "Apple",
+    "price": "$1,199",
+    "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-max-finish-select-202309?wid=940&hei=1112&fmt=png-alpha&.v=1693500599202",
+    "description": "Titanium, puce A17 Pro, caméra téléphoto, USB-C, écran 6.7”."
+  },
+  {
+    "name": "iPad Air M2 (2024)",
+    "brand": "Apple",
+    "price": "$599",
+    "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-finish-select-202405?wid=940&hei=1112&fmt=png-alpha&.v=1713976896366",
+    "description": "Tablette 11” avec puce M2, Wi-Fi 6E, idéal pour productivité et dessin."
+  },
+  {
+    "name": "Redmi Pad SE",
+    "brand": "Xiaomi",
+    "price": "$169",
+    "image": "https://i01.appmifile.com/webfile/globalimg/products/pc/redmi-pad-se/overview01.png",
+    "description": "Écran 11” FHD+, batterie 8000mAh, Android 13, idéale pour multimédia."
+  },
+  {
+    "name": "Realme 12 Pro+",
+    "brand": "Realme",
+    "price": "$369",
+    "image": "https://fdn2.gsmarena.com/vv/pics/realme/realme-12-pro-plus-2.jpg",
+    "description": "Caméra périscope 64MP, écran AMOLED 6.7”, recharge 67W."
+  },
+  {
+    "name": "Infinix Zero 30 5G",
+    "brand": "Infinix",
+    "price": "$289",
+    "image": "https://fdn2.gsmarena.com/vv/pics/infinix/infinix-zero30-5g-1.jpg",
+    "description": "Caméra selfie 50MP, vidéo 4K, design incurvé, 12Go RAM."
+  },
+  {
+    "name": "Huawei MatePad 11.5\"",
+    "brand": "Huawei",
+    "price": "$279",
+    "image": "https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/tablets/matepad-11.5/promo/matepad-11.5-promo-img.png",
+    "description": "Écran 120Hz, Wi-Fi 6, clavier magnétique, HarmonyOS."
+  },
+  {
+    "name": "Lenovo Tab M10 Plus Gen 3",
+    "brand": "Lenovo",
+    "price": "$189",
+    "image": "https://p2-ofp.static.pub/fes/cms/2022/03/07/9sbrzwleynm0wnbfbqba7bbtp8rjls223773.jpg",
+    "description": "Écran 10.6” FHD, Android 12, Dolby Atmos, bon rapport qualité/prix."
+  },
+  {
+    "name": "Google Pixel 8",
+    "brand": "Google",
+    "price": "$699",
+    "image": "https://store.google.com/product/images/pixel_8_colors.jpg",
+    "description": "Caméra IA, écran OLED 120Hz, mise à jour 7 ans, Android 14 natif."
+  },
+  {
+    "name": "Samsung Galaxy Tab S9",
+    "brand": "Samsung",
+    "price": "$799",
+    "image": "https://images.samsung.com/is/image/samsung/p6pim/af/galaxy-tab-s9/gallery/galaxy-tab-s9-graphite-412244-531502354",
+    "description": "Tablette AMOLED 11”, stylet S Pen, résistance IP68, mode DeX."
+  }
+]

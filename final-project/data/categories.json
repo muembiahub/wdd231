@@ -1,0 +1,75 @@
+{
+  "categories": [
+    {
+      "logo": "images/agriculture.webp",
+      "category": "Agriculture",
+      "page_url": "categories/agriculture.html"
+    },
+    {
+      "logo": "images/construction.webp",
+      "category": "Construction",
+      "page_url": "categories/construction-reparation.html"
+    }
+    ,
+    {
+      "logo": "images/manifestation-et-ceremonie.webp",
+      "category": "Manifestation et Ceremonies",
+      "page_url": "categories/fetes.html"
+    },
+    {
+      "logo": "images/african-medi.webp",
+      "category": "Santé",
+      "page_url": "categories/sante.html"
+    },
+    {
+      "logo": "images/sante.png",
+      "category": "Beaute",
+      "page_url": "categories/beaute.html"
+    },
+    {
+      "logo": "images/formation.webp",
+      "category": "Formation",
+      "page_url": "categories/formation.html"
+    },
+    {
+      "logo": "images/vetement-femme.webp",
+      "category": "Mode",
+      "page_url": "categories/mode.html"
+    },
+    {
+      "logo": "images/equipement.png",
+      "category": "Équipement Professionnel",
+      "page_url": "categories/equipement-professionnel.html"
+    },
+    {
+      "logo": "images/immobilier.png",
+      "category": "Immobilier",
+      "page_url": "categories/immobilier.html"
+    },
+    {
+      "logo": "images/animaux.png",
+      "category": "Animaux Domestiques",
+      "page_url": "categories/animaux-domestiques.html"
+    },
+    {
+      "logo": "images/pour_la_maison.png",
+      "category": "Menuiserie",
+      "page_url": "categories/menuiserie.html"
+    },
+    {
+      "logo": "images/hotel.png",
+      "category": "Hôtels & Restaurants",
+      "page_url": "categories/hotels-restaurants.html"
+    },
+    {
+      "logo": "images/services.png",
+      "category": "Services",
+      "page_url": "categories/services.html"
+    },
+    {
+      "logo": "images/vehicules.png",
+      "category": "Véhicules",
+      "page_url": "categories/vehicules.html"
+    }
+  ]
+}

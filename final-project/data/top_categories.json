@@ -1,0 +1,25 @@
+{
+  "top_categories": [
+    
+    {
+      "logo": "https://boncoin.cm/sites/default/files/categories/hotel44s.png",
+      "category": "Hôtels & Restaurants",
+      "page_url": "categories/hotel-et-restaurant.html"
+    },
+     {
+      "logo": "images/emploi_et_formation.png",
+      "category": "Emploi & Formation",
+      "page_url": "categories/emploi-et-formation.html"
+    },
+    {
+      "logo": "images/mode.png",
+      "category": "Mode",
+      "page_url": "categories/mode.html"
+    },
+    {
+      "logo": "https://boncoin.cm/sites/default/files/categories/pour_la_mais22on.png",
+      "category": "Pour la Maison",
+      "page_url": "categories/pour-la-maison.html"
+    }
+  ]
+}
