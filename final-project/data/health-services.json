@@ -1,0 +1,44 @@
+[
+  {
+    "id": "general-medicine",
+    "name": "General Medicine",
+    "description": "Consultations with licensed doctors for common illnesses and checkups.",
+    "icon": "👨‍⚕️",
+    "category": "Health & Wellness"
+  },
+  {
+    "id": "nursing-care",
+    "name": "Nursing Care",
+    "description": "Home-based care by certified nurses for recovery and chronic conditions.",
+    "icon": "🧑‍⚕️",
+    "category": "Health & Wellness"
+  },
+  {
+    "id": "mental-health",
+    "name": "Mental Health Support",
+    "description": "Counseling and therapy services for emotional and psychological well-being.",
+    "icon": "🧠",
+    "category": "Health & Wellness"
+  },
+  {
+    "id": "maternal-care",
+    "name": "Maternal & Child Care",
+    "description": "Prenatal checkups, postnatal support, and pediatric consultations.",
+    "icon": "🤰",
+    "category": "Health & Wellness"
+  },
+  {
+    "id": "pharmacy",
+    "name": "Pharmacy Services",
+    "description": "Access to essential medicines and pharmacist guidance.",
+    "icon": "💊",
+    "category": "Health & Wellness"
+  },
+  {
+    "id": "mobile-clinic",
+    "name": "Mobile Clinic",
+    "description": "Community outreach with mobile health units for remote areas.",
+    "icon": "🚐",
+    "category": "Health & Wellness"
+  }
+]

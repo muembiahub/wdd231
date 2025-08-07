@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- 🌐 Meta Information -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Jonathan M. Muembia">
+  <meta name="description" content="Reach out to trusted service providers through Kazidomo. Use GPS, choose your service type, and send your message via WhatsApp, Email, or Phone.">
+  <meta name="robots" content="index, follow">
+  <meta name="application-name" content="Kazidomo">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="keywords" content="Kazidomo, contact, service providers, GPS, WhatsApp, Email, DRCongo">
+
+  <!-- 📱 Social Sharing Tags -->
+  <meta property="og:title" content="Kazidomo Contact">
+  <meta property="og:description" content="Reach out to trusted service providers through Kazidomo. Use GPS, choose your service type, and send your message via WhatsApp, Email, or Phone.">
+  <meta property="og:url" content="https://muembiahub.github.io/wdd231/contact">
+  <meta property="og:site_name" content="Kazidomo">
+  <meta property="og:image" content="https://muembiahub.github.io/wdd231/chamber/images/facebook-tag.png"/>
+
+  <!-- 🖼️ Icons & Styles -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="styles/directory.css">
+  <link rel="stylesheet" href="styles/form-style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
+  <!-- 🧠 Scripts -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+  <script src="scripts/contact.js" defer></script>
+
+  <title>Contact | Kazidomo Confiance</title>
+</head>
+<body>
+
+  <!-- 🔝 Header Section -->
+  <header class="header-content">
+    <div class="logo-title">
+      <div class="logo">
+        <img src="images/logo-health.webp" alt="Kazidomo Santé Logo" width="60" height="60">
+      </div>
+      <span>Kazidomo Santé || DRCongo</span>
+    </div>
+    <button type="button" id="menu"></button>
+    <nav>
+      <ul class="navigation">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="service.html">Health Services</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 📬 Main Contact Section -->
+  <main>
+    
+    <section class="contact-section">
+      <h2>Contact a Service Provider</h2>
+      <p>Use the form below to send a message to a Kazidomo agent. You can detect your location, choose the type of service you need, and select how you want to be contacted.</p>
+
+      <!-- 📝 Contact Form -->
+      <form id="contactForm">
+        <!-- 👤 Full Name -->
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <!-- 🛠️ Service Type Dropdown -->
+        <label for="serviceType">Type of Service:</label>
+        <select id="serviceType" name="serviceType" required>
+          <option value="">-- Select a service --</option>
+          <option value="carpentry">Carpentry</option>
+          <option value="plumbing">Plumbing</option>
+          <option value="health">Health & Wellness</option>
+          <option value="education">Tutoring & Education</option>
+          <option value="transport">Transport & Delivery</option>
+        </select>
+
+        <!-- 📍 GPS Location -->
+        <label for="gps">Your Location:</label>
+        <input type="text" id="gps" name="gps" readonly placeholder="GPS Coordinates">
+        <button type="button" id="detectGPS">📍 Detect Location</button>
+
+        <!-- 🗺️ Interactive Map -->
+        <div id="map" style="height: 300px; margin-top: 1rem;"></div>
+
+        <!-- 💬 Message Field -->
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="6" placeholder="Write your message here..." required></textarea>
+
+        <!-- ☎️ Contact Method -->
+        <fieldset>
+          <legend>Preferred Contact Method:</legend>
+          <label><input type="radio" name="contactMethod" value="whatsapp" checked> WhatsApp</label>
+          <label><input type="radio" name="contactMethod" value="email"> Email</label>
+          <label><input type="radio" name="contactMethod" value="phone"> Phone Call</label>
+        </fieldset>
+
+        <!-- 📤 Submit Button -->
+        <div class="send-links">
+          <button type="submit">Send Message</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- 🔚 Footer Section -->
+  <footer></footer>
+
+  <!-- 🧩 Footer Loader Script -->
+  <script>
+    fetch("footer.html", { cache: "no-store" })
+      .then(res => res.text())
+      .then(data => {
+        document.querySelector("footer").innerHTML = data;
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+@media (min-width: 641px) and (max-width: 1024px) {
+  .testimonial-card {
+    grid-template-areas:
+      "image name"
+      "image description"
+      "image address";
+    border: #0078D7 1px solid;
+    margin: 1em 8px;
+    background-color: #777;
+    border-radius: 8px;
+    overflow: hidden;
+    color: #ffffff;
+  }
+
+  .testimonial-card img {
+    width: 450px;
+    height: 200px;
+    grid-area: image;
+  }
+
+  .testimonial-card h3 {
+    grid-area: name;
+    font-size: 15px;
+    margin: 1em 10px;
+  }
+
+  .testimonial-card p {
+    font-size: 10px;
+    margin: 1.5em 10px;
+  }
+
+  .footer-content {
+    font-size: 0.9rem;
+  }
+
+  .logo-title img {
+    width: 18px;
+    height: 36px;
+  }
+}

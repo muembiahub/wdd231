@@ -1,0 +1,42 @@
+{
+  "organization": "Kazidomo",
+  "location": {
+    "city": "Lubumbashi",
+    "country": "DRC",
+    "note": "Services available across the DRC"
+  },
+  "availability": {
+    "days": "Monday to Saturday",
+    "hours": "8:00 AM to 6:00 PM"
+  },
+  "socialMedia": [
+    {
+      "name": "Facebook",
+      "url": "https://facebook.com/kazidomo",
+      "icon": "https://muembiahub.github.io/wdd231/project/images/facebook.svg"
+    },
+    {
+      "name": "LinkedIn",
+      "url": "https://linkedin.com/company/kazidomo",
+      "icon": "https://muembiahub.github.io/wdd231/project/images/linkedin.svg"
+    },
+    {
+      "name": "Instagram",
+      "url": "https://instagram.com/kazidomo",
+      "icon": "https://muembiahub.github.io/wdd231/project/images/instagram.svg"
+    }
+  ],
+  "legal": {
+    "privacyPolicy": "/project/legal/privacy.html",
+    "termsOfUse": "/project/legal/terms.html"
+  },
+  "credits": {
+    "poweredBy": {
+      "name": "Jonathan Muembia",
+      "url": "https://jonathanmuembia.com",
+      "role": "Web Developer"
+    },
+    "copyrightYear": "dynamic",
+    "lastUpdated": "dynamic"
+  }
+}

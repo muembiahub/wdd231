@@ -6,94 +6,115 @@ hamButton.addEventListener('click', () => {
 	hamButton.classList.toggle('open');
 });
 
-const gridBtn = document.getElementById("grid");
-const listBtn = document.getElementById("list");
-const container = document.getElementById("companies");
-
-// Basculer entre grid et list
-gridBtn.addEventListener("click", () => {
-  container.className = "grid";
-});
-listBtn.addEventListener("click", () => {
-  container.className = "list";
-});
-
-async function fetchData() {
-  try {
-    const response = await fetch("data/categories.json");
-    if (!response.ok) throw new Error("Network response failed");
-    const data = await response.json();
-
-    displayCompanies(data.categories);
-    displayImages(data.images);
-  } catch (err) {
-    console.error("Data fetch error:", err);
-    container.innerHTML = `<p>Error loading data.</p>`;
-  }
-}
-
-function displayCompanies(categories) {
-  container.innerHTML = "";
-  categories.forEach(cat => {
-    const card = document.createElement("div");
-    card.className = "card";
-
-    card.innerHTML = `
-      <img src="${cat.logo}" alt="Logo ${cat.category}">
-      <div>
-        <h3><a href="${cat.page_url}" target="_blank">${cat.category}</a></h3>
-      </div>
-    `;
-    container.appendChild(card);
-  });
-}
-
-function displayImages(images = []) {
-  const extraImagesDiv = document.getElementById("extra-images");
-  if (!extraImagesDiv) return;
-  extraImagesDiv.innerHTML = "";
-
-  images.forEach(img => {
-    const el = document.createElement("img");
-    el.src = img;
-    el.alt = "Extra";
-    el.width = 60;
-    el.height = 60;
-    extraImagesDiv.appendChild(el);
-  });
-}
-
-// Charger les données au lancement
-fetchData();
-
-const url = 'data/top_categories.json';
-
-fetch(url)
+fetch("data/community-voices.json")
   .then(response => response.json())
-  .then(data => {
-    const top_categories = data.top_categories;
-    const cards = document.querySelector('#top-categories');
+  .then(testimonials => {
+    const container = document.getElementById("testimonials");
 
-    top_categories.forEach(top_categorie => {
-      const card = document.createElement('section');
-      card.setAttribute('class', 'card');
-
-      const h2 = document.createElement('h2');
-      h2.textContent = `${top_categorie.category}`;
-      card.appendChild(h2);
-
-
-      const image = document.createElement('img');
-      image.setAttribute('src', top_categorie.page_url);
-      image.setAttribute('alt', ` ${top_categorie.logo}`);
-    card.appendChild(image);
-    // Make the image responsive with inline styles
-
-
-      cards.appendChild(card);
+    testimonials.forEach(person => {
+      const card = document.createElement("div");
+      card.className = "testimonial-card";
+      card.innerHTML = `
+        <p><img src="${person.image}" alt="${person.name}"</p>
+        <h3>${person.name}</h3>
+        <p><strong>${person.quote}</strong></p>
+        <p>${person.location} <br><em>${person.service}</em></p>
+      `;
+      container.appendChild(card);
     });
   })
-  // Handle errors
-  .catch(error => console.error('Error fetching data:', error));
+  .catch(error => console.error("Error loading testimonials:", error));
 
 
+
+
+// Directory functionality
+const currentPage = location.pathname.split("/").pop(); 
+document.querySelectorAll(".navigation a").forEach(link => {
+  if (link.getAttribute("href") === currentPage) {
+    link.classList.add("active");
+  }
+});
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("data/footercontent.json")
+    .then(response => response.json())
+    .then(data => renderFooter(data))
+    .catch(error => console.error("Footer load error:", error));
+});
+
+function renderFooter(data) {
+  const footer = document.querySelector(".footer-content");
+  if (!footer) {
+    console.error("Footer element not found");
+    return;
+  }
+  
+
+  // 📍 Address
+  footer.innerHTML += `<p class="address">${data.organization} | ${data.location.city}, ${data.location.country}</p>`;
+
+  // 🌐 Social Media Icons
+  const socialDiv = document.createElement("div");
+  socialDiv.className = "social-icons";
+  socialDiv.style.margin = "10px 0";
+  data.socialMedia.forEach(platform => {
+    const a = document.createElement("a");
+    a.href = platform.url;
+    a.target = "_blank";
+    a.title = platform.name;
+
+    const img = document.createElement("img");
+    img.src = platform.icon;
+    img.alt = `${platform.name} icon`;
+    img.width = 32;
+    img.height = 32;
+    img.style.marginRight = "8px";
+
+    a.appendChild(img);
+    socialDiv.appendChild(a);
+  });
+  footer.appendChild(socialDiv);
+
+  // 📍 Location & Availability
+  footer.innerHTML += `<p>📍 ${data.location.note}</p>`;
+  footer.innerHTML += `<p>🕒 Availability: ${data.availability.days} — ${data.availability.hours}</p>`;
+
+  // 📄 Legal Links
+  footer.innerHTML += `
+    <p style="margin-top: 10px;">
+      <a href="${data.legal.privacyPolicy}">Privacy Policy</a> —
+      <a href="${data.legal.termsOfUse}">Terms of Use</a>
+    </p>
+  `;
+
+  // © Copyright & Credits
+  const copyright = document.createElement("p");
+  copyright.className = "copyright";
+  const year = new Date().getFullYear();
+  const lastModified = document.lastModified;
+
+  copyright.innerHTML = `
+    <style>
+      .copyright {
+        font-size: 0.8rem;
+        color: #000;
+        border-top: #0e120fff 1px solid;
+        padding-top: 0.5rem;
+        margin-top: 10px;
+      }
+    </style>
+    &copy; ${year} ${data.organization}. All rights reserved.<br>
+    Powered by <a href="${data.credits.poweredBy.url}" target="_blank">${data.credits.poweredBy.name}</a><br>
+    Last updated: ${lastModified}
+  `;
+  footer.appendChild(copyright);
+
+  // Inject into page
+  document.body.appendChild(footer);
+}

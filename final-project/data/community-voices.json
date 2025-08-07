@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Amina",
+    "location": "Lubumbashi",
+    "service": "Maternal Care & Traditional Healing",
+    "quote": "Kazidomo Santé helped me find a midwife and herbalist when I needed it most. I was nervous about my pregnancy, but the platform connected me with a caring provider who spoke my language and respected my traditions. It felt like someone was finally listening to me.",
+    "image": "https://images.unsplash.com/photo-1491349174775-aaafddd81942?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D"
+  },
+  {
+    "name": "Patrick",
+    "location": "Kolwezi",
+    "service": "Fitness Coaching",
+    "quote": "I booked a fitness coach through the app and now I feel stronger every week. Before, I didn’t know where to start with my health goals. Kazidomo Santé gave me access to someone who understood my lifestyle and helped me build a routine that works—even with my busy schedule.",
+    "image": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVyc29ufGVufDB8fDB8fHww"
+  },
+  {
+    "name": "Chantal",
+    "location": "Likasi",
+    "service": "Diabetes Screening & Preventive Care",
+    "quote": "Thanks to Kazidomo Santé, I discovered a local clinic offering free diabetes screenings. I had been feeling tired and dizzy for months, but didn’t know where to go. The directory was easy to use, and now I’m getting the care I need without worrying about cost.",
+    "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cGVyc29ufGVufDB8fDB8fHww"
+  },
+  {
+    "name": "Jean-Paul",
+    "location": "Kasumbalesa",
+    "service": "Mental Health Counseling",
+    "quote": "I was struggling with anxiety and didn’t know who to talk to. Kazidomo Santé connected me with a mental health counselor who offered sessions in Swahili. It changed my life. I feel heard, supported, and more hopeful about the future.",
+    "image": "https://plus.unsplash.com/premium_photo-1678197937465-bdbc4ed95815?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGVyc29ufGVufDB8fDB8fHww"
+  },
+  {
+    "name": "Mado",
+    "location": "Lubudi",
+    "service": "Traditional Healing",
+    "quote": "My grandmother needed traditional healing after a fall, and Kazidomo Santé helped us find a trusted healer nearby. The experience was respectful and holistic. It’s beautiful to see technology honoring our cultural practices.",
+    "image": "https://plus.unsplash.com/premium_photo-1689551670902-19b441a6afde?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D"
+  },
+  {
+    "name": "David",
+    "location": "Kamina",
+    "service": "Pharmacy Access",
+    "quote": "I used Kazidomo Santé to locate a pharmacy that had the exact medication my son needed. The pharmacist even offered advice on dosage and side effects. It saved us a long trip to the city.",
+    "image": "https://images.unsplash.com/photo-1557862921-37829c790f19?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTh8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D"
+  },
+  {
+    "name": "Esther",
+    "location": "Sakania",
+    "service": "Nutrition & Wellness",
+    "quote": "After months of fatigue, I found a nutritionist through Kazidomo Santé who helped me adjust my diet. I feel more energized and my children are eating better too. It’s more than health—it’s transformation.",
+    "image": "https://images.unsplash.com/photo-1554727242-741c14fa561c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDR8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D"
+  },
+  {
+    "name": "Moïse",
+    "location": "Pweto",
+    "service": "Emergency Care",
+    "quote": "During a late-night emergency, Kazidomo Santé helped me locate the nearest clinic that was still open. The staff were ready and professional. I don’t know what I would’ve done without it.",
+    "image": "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D"
+  }
+]

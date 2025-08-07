@@ -25,12 +25,6 @@ main {
   box-sizing: border-box;
 }
 
-footer {
-  background-color:  #6486ce;
-  padding: 1rem;
-  text-align: center;
-  color: #000;
-}
 
 h1 {
   color: #333;
@@ -121,7 +115,7 @@ ul, li {
 
 /* ========== Hero Section ========== */
 .hero {
-      background-image: url('/project/images/photohero.webp');
+      background-image: url('../images/image-hero.webp');
       background-size: cover;
       background-position: center;
       height: 80vh;
@@ -155,151 +149,49 @@ ul, li {
 
 
 
-/* Style général pour le conteneur */
-#companies {
-  margin: 20px;
-  padding: 10px;
-}
-
-/* Style pour la vue en grid (par défaut) */
-#companies.grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
-}
-
-/* Style pour la vue en list */
-#companies.list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-
-/* Style pour la version grid */
-#companies.grid .card {
-  background-color: #fff;
- box-shadow: 0 20px 80px rgba(0,0,0,0.9);
-  padding: 1px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.3s ease;
+ .testimonial-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   
 }
-
-/* Style pour la version list */
-#companies.list .card {
-  flex-direction: row;
-
-  text-align: center;
-  background-color: #fff;
-  box-shadow: 0 20px 80px rgba(0,0,0,0.9);
-  
+.testimonial-card img {
+  width: 10%;
+  height: 10%;
+ 
 }
-
-/* Image dans la carte */
-.card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-/* Spécifique à la liste, image à gauche */
-#companies.list .card img {
-  max-width: 80px;
-  margin-right: 15px;
-  margin-bottom: 0;
-   align-items: center;
-}
-
-/* Titre (dans la carte) */
-.card h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.2em;
-}
-
-/* Lien du titre, pour le rendre cliquable et esthétique */
-.card h3 a {
-  text-decoration: none;
-  color: #007bff;
-}
-
-.card h3 a:hover {
-  text-decoration: underline;
-}
-
-/* Description */
-.card p {
-  margin: 5px 0;
-  font-size: 0.95em;
-  color: #333;
-  line-height: 1.4;
-}
-
-/* Pour les list items, rendre la carte plus large si list mode */
-#companies.list .card {
-  padding: 10px;
-  width: 100%;
-}
-.member {
-  background-color: #333;
-  color: rgb(230, 15, 15);
-  text-align: center;
-  padding: 1rem;
-}
-
-.member h3 {
-  margin-bottom: 0;
-}
-
-
-
-
 
 
 /* ========== Footer ========== */
+
 footer {
-padding: 10px;
-background-color:  #6486ce ; /* Couleur de fond gris foncé */
-color: black;
-
-}
-.copyright {
-  position: relative;
-  text-align: center; /* pour centrer le texte */
-  border-top: #030303 solid 1px;
-  font-size: 12px; /* ajustez la taille selon votre besoin */
-  z-index: 9999; /* pour qu'il reste au-dessus des autres éléments */
-}
-.footer-container {
-
-  padding: 20px;
-  font-family: 'Roboto', sans-serif;
-  min-height: 200px;
-
-}
-
-.address,
-.social-icons,
-.footer-links,
-.language-selector,
-.newsletter,
-.availability,
-.legal {
-  margin-bottom: 12px;
-  display: flex;
-  flex-direction: row ;
-  justify-items: center;
+  background-color: #6486ce;
+  padding: 1rem;
   text-align: center;
+  color: #000;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
 }
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.footer-content p {
+  margin: 0.2rem 0;
+}
+
 
 
 
 /* ========== Small Screens ( 768px) ========== */
 /*    */
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   /* Mobile paysage + tablettes */
   #menu {
   display: block;
@@ -316,6 +208,19 @@ color: black;
     display: block;
     padding: 0.5rem 3rem;
     border-right: 1px solid #777;
+  }
+  .testimonial-card {
+    width: 100%;
+    margin: 10px auto;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: grid;
+    overflow: hidden;
+    grid-template-areas: "image "
+                        "name "
+                         "quote"
+                         "location"
+                        "service";
   }
 }
 
@@ -343,9 +248,7 @@ color: black;
   text-decoration: none;
   color: white;
 }
-  .card img {
-    height: auto;
-  }
+
 }
 
 /* ========== Large Screens (> 700px) ========== */

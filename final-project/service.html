@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- 🌐 Meta Info -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Jonathan M. Muembia">
+  <meta name="description" content="Discover trusted services offered through Kazidomo—from carpentry and plumbing to health and education.">
+  <meta name="robots" content="index, follow">
+  <meta name="application-name" content="Kazidomo">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="keywords" content="Kazidomo, services, trades, health, education, DRCongo, mobile platform">
+
+  <!-- 🖼️ Social Sharing -->
+  <meta property="og:title" content="Kazidomo Services">
+  <meta property="og:description" content="Discover trusted services offered through Kazidomo—from carpentry and plumbing to health and education.">
+  <meta property="og:url" content="https://muembiahub.github.io/final-project/service.html">
+  <meta property="og:site_name" content="Kazidomo">
+  <meta property="og:image" content="https://muembiahub.github.io/wdd231/chamber/images/facebook-tag.png"/>
+
+  <!-- 🖌️ Styles & Icons -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="styles/directory.css">
+  <link rel="stylesheet" href="styles/form-style.css">
+  <link rel="stylesheet" href="styles/service.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
+  <!-- ⚙️ Scripts -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+  <script src="scripts/service.js" defer></script>
+
+  <title>Kazidomo | Services</title>
+</head>
+<body>
+
+  <!-- 🔝 Header -->
+  <header class="header-content">
+    <div class="logo-title">
+      <div class="logo">
+        <img src="images/logo-health.webp" alt="Kazidomo Santé Logo" width="60" height="60">
+      </div>
+      <span>Kazidomo Santé || DRCongo</span>
+    </div>
+    <button type="button" id="menu"></button>
+    <nav>
+      <ul class="navigation">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="service.html">Health Services</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 🖼️ Hero Section -->
+  <section class="hero">
+    <h1>Explore Kazidomo Services</h1>
+    <p>Find skilled providers near you—from carpenters and plumbers to health professionals and educators.</p>
+    <a href="#catalogue" class="cta-button">Browse Services</a>
+  </section>
+
+  <!-- 📦 Service Catalogue -->
+  <main>
+    <section id="catalogue">
+      <!-- Dynamic service cards will be injected here by service.js -->
+    </section>
+  </main>
+
+  <!-- 🔚 Footer -->
+  <footer></footer>
+
+  <script>
+    fetch("footer.html", { cache: "no-store" })
+      .then(res => res.text())
+      .then(data => {
+        document.querySelector("footer").innerHTML = data;
+      });
+  </script>
+</body>
+</html>
