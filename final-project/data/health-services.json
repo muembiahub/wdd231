@@ -1,44 +1,87 @@
 [
-  {
-    "id": "general-medicine",
-    "name": "General Medicine",
-    "description": "Consultations with licensed doctors for common illnesses and checkups.",
-    "icon": "👨‍⚕️",
-    "category": "Health & Wellness"
-  },
-  {
-    "id": "nursing-care",
-    "name": "Nursing Care",
-    "description": "Home-based care by certified nurses for recovery and chronic conditions.",
-    "icon": "🧑‍⚕️",
-    "category": "Health & Wellness"
-  },
-  {
-    "id": "mental-health",
-    "name": "Mental Health Support",
-    "description": "Counseling and therapy services for emotional and psychological well-being.",
-    "icon": "🧠",
-    "category": "Health & Wellness"
-  },
-  {
-    "id": "maternal-care",
-    "name": "Maternal & Child Care",
-    "description": "Prenatal checkups, postnatal support, and pediatric consultations.",
-    "icon": "🤰",
-    "category": "Health & Wellness"
-  },
-  {
-    "id": "pharmacy",
-    "name": "Pharmacy Services",
-    "description": "Access to essential medicines and pharmacist guidance.",
-    "icon": "💊",
-    "category": "Health & Wellness"
-  },
-  {
-    "id": "mobile-clinic",
-    "name": "Mobile Clinic",
-    "description": "Community outreach with mobile health units for remote areas.",
-    "icon": "🚐",
-    "category": "Health & Wellness"
-  }
-]
+    {
+      "id": "general_medicine",
+      "image": "images/general_medicine.webp",
+      "category": "Health & Wellness",
+      "introduction": "The department of General Medicine deals with the prevention, diagnosis and non-surgical treatment of various diseases. It serves as the first point of contact whenever a patient visits the hospital.",
+      "treatment": [
+        "All types of fevers",
+        "Infections affecting different organs of the body",
+        "Metabolic and endocrine diseases (diabetes, thyroid, cholesterol, obesity)",
+        "Blood pressure issues",
+        "Digestive infections (vomiting, diarrhoea, jaundice)",
+        "Neurological problems (headache, muscular weakness, epilepsy)"
+      ]
+    },
+    {
+      "id": "mental_health_support",
+      "image": "images/mental_health_support.webp",
+      "category": "Health & Wellness",
+      "introduction": "Access confidential counseling and therapy to navigate stress, trauma, anxiety, and emotional challenges with trained mental health professionals.",
+      "treatment": [
+        "Individual and group therapy sessions",
+        "Stress and anxiety management",
+        "Support for trauma recovery and grief",
+        "Counseling for depression and mood disorders",
+        "Behavioral therapy and coping strategies",
+        "Mental health education and awareness"
+      ]
+    },
+    {
+      "id": "maternal_child_care",
+      "image": "images/maternal_child_care.webp",
+      "category": "Health & Wellness",
+      "introduction": "Comprehensive support for mothers and children, including prenatal checkups, postnatal care, vaccinations, and pediatric consultations.",
+      "treatment": [
+        "Prenatal and postnatal checkups",
+        "Vaccinations and growth monitoring",
+        "Nutrition and breastfeeding support",
+        "Pediatric consultations and early development screening",
+        "Maternal health education and counseling",
+        "Emergency care for mother and child"
+      ]
+    },
+    {
+      "id": "pharmacy_services",
+      "image": "images/pharmacy_services.webp",
+      "category": "Health & Wellness",
+      "introduction": "Get essential medications, dosage guidance, and pharmacist support for safe and effective treatment — all in one accessible location.",
+      "treatment": [
+        "Prescription fulfillment and over-the-counter medications",
+        "Dosage guidance and medication safety",
+        "Pharmacist consultations and health advice",
+        "Support for chronic condition medication plans",
+        "Access to essential drugs and supplements",
+        "Medication delivery and refill services"
+      ]
+    },
+    {
+      "id": "mobile_clinic",
+      "image": "images/mobile_clinic.webp",
+      "category": "Health & Wellness",
+      "introduction": "Mobile health units bring medical services to underserved areas, offering checkups, screenings, and urgent care directly within your community.",
+      "treatment": [
+        "Basic health checkups and screenings",
+        "Vaccinations and preventive care",
+        "Urgent care and minor treatments",
+        "Health education and awareness campaigns",
+        "Referrals to specialized services",
+        "Support during health emergencies and outreach missions"
+      ]
+    },
+    {
+      "id": "nursing_care",
+      "image": "images/nursing_care.webp",
+      "category": "Health & Wellness",
+      "introduction": "Professional home-based care by certified nurses, supporting recovery, chronic condition management, and daily health monitoring with compassion.",
+      "treatment": [
+        "Medication management and administration",
+        "Wound care and IV therapy",
+        "Assistance with daily living activities (bathing, dressing, grooming)",
+        "Monitoring chronic conditions and vital signs",
+        "Patient and family education on health management",
+        "Support for post-surgical recovery and mobility"
+      ]
+    }
+  ]
+

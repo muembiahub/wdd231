@@ -33,12 +33,20 @@ a:-webkit-any-link {
 
 /* ========== Typography ========== */
 h1, h2 {
-  color: white;
+  color: rgb(59, 11, 235);
   padding: 10px;
   text-align: center;
   text-transform: uppercase;
   border-radius: 10px;
   font-size: 1rem;
+  font-weight: bold;
+  text-decoration-line: underline;
+}
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  text-decoration-line: none;
 }
 
 /* ========== Logo & Branding ========== */
@@ -161,18 +169,81 @@ ul, li {
 
 .visit-message {
   padding: 1.5em;
-  background-color: #f0f4f8;
   border-left: 4px solid #0078d7;
   font-size: 1.5rem;
   margin-bottom: 1em;
-  color: #333;
+  color: #0078d7;
   font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
   text-align: center;
 }
 
 strong, a, span {
-  font-size: 1.5em;
+  font-size: 1em;
 }
+.card img {
+  max-width: 100%;
+  box-shadow: 0 0 3rem #555;
+}
+
+/* form */
+form {
+  max-width: 400px;
+  background-color: #b5c6b9;
+  padding: 20px;
+  margin: 10px;
+
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+ color: #1a1a1a 
+
+}
+
+input[type="text"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.large-input {
+   width: 50%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
+}
+
+
+button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #e4eaef;
+  color:rgb(18, 16, 16);
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 13px;
+}
+
+button:hover {
+  background-color: #24522e;
+}
+
+
+
+/* ========== Footer ========== */
 
 
 .footer-content {

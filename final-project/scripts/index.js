@@ -13,13 +13,16 @@ fetch("data/community-voices.json")
 
     testimonials.forEach(person => {
       const card = document.createElement("div");
-      card.className = "testimonial-card";
+      card.className = "card";
+
       card.innerHTML = `
-        <p><img src="${person.image}" alt="${person.name}"</p>
+        <img src="${person.image}" alt="${person.name}" loading="lazy">
         <h3>${person.name}</h3>
-        <p><strong>${person.quote}</strong></p>
-        <p>${person.location} <br><em>${person.service}</em></p>
+        <p class="address"><strong>Adresse : ${person.location}</strong></p>
+        <p class="service"><strong>Service : ${person.service}</strong></p>
+        <p class="quote"><strong>${person.quote}</strong></p>
       `;
+
       container.appendChild(card);
     });
   })
@@ -27,8 +30,32 @@ fetch("data/community-voices.json")
 
 
 
+  // Load items from JSON and display them service page html 
+  fetch("data/health-services.json")
+    .then(response => response.json())
+    .then(services => {
+      const container = document.getElementById("services");
 
-// Directory functionality
+      services.forEach(service => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+          <h3>${service.id}</h3>
+          <p class="image"><img src="${service.image}" alt="${service.id} image"></p>
+          <p class="category"><strong>Category:</strong> ${service.category}</p>
+          <p class="description">${service.introduction}</p>
+          <p class="treatment"><strong>Treatment:</strong> ${service.treatment.join(", ")}</p>
+        `;
+
+        container.appendChild(card);
+      });
+    })
+    .catch(error => console.error("Error loading services:", error));
+
+  
+
+// Directory functionality  
 const currentPage = location.pathname.split("/").pop(); 
 document.querySelectorAll(".navigation a").forEach(link => {
   if (link.getAttribute("href") === currentPage) {
@@ -118,3 +145,39 @@ function renderFooter(data) {
   // Inject into page
   document.body.appendChild(footer);
 }
+
+
+
+// Visit Message 
+
+  (function () {
+  const messageContainer = document.getElementById("visit-message");
+  const lastVisitKey = "lastVisitDate";
+  const now = new Date();
+  const storedDate = localStorage.getItem(lastVisitKey);
+
+  let message = "";
+
+  if (!storedDate) {
+    // First visit
+    message = "Welcome! Let us know if you have any questions.";
+  } else {
+    const previousDate = new Date(storedDate);
+    const timeDiff = now - previousDate;
+    const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+    if (daysDiff < 1) {
+      message = "Back so soon! Awesome!";
+    } else if (daysDiff === 1) {
+      message = "You last visited 1 day ago.";
+    } else {
+      message = `You last visited ${daysDiff} days ago.`;
+    }
+  }
+
+  // Display the message
+  messageContainer.textContent = message;
+
+  // Update localStorage with current visit
+  localStorage.setItem(lastVisitKey, now.toISOString());
+})();
