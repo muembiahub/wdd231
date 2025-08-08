@@ -14,7 +14,7 @@
 
   .testimonial-card {
     width: 100%;
-    margin: 10px auto;
+    margin: 0.3rem 1em;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     display: grid;
@@ -38,6 +38,8 @@
   }
    .testimonial-card img {
     width: 100%;
+    box-shadow: 50%;
+    object-fit: cover;
     grid-area: image;
   }
 

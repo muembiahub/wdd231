@@ -28,29 +28,20 @@
     
        display: grid;
        grid-template-areas:
-      "image"
-      "name"
-      "service"
+      "image name"
+      " image service"
       "quote"
       "location";
   
   }
   .testimonial-card img {
-    width: 30%;
-    height: 40%;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
     object-fit: cover;
     grid-area: image;
   }
-  .testimonial-card h3 {
-    font-size: 15px;
-    margin: 1em 10px;
-    grid-area: name;
-  }
-  .testimonial-card p {
-    font-size: 14px;
-    margin: 0.5em 10px;
-    grid-area: quote;
-  }
+  
 
 
 

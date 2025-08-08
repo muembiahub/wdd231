@@ -1,33 +1,74 @@
 @media (min-width: 641px) and (max-width: 1024px) {
+  
+   #menu {
+    font-size: 2.5rem;
+    top: 0.5rem;
+    right: 0.5rem;
+    border: 1px solid black;
+  }
+   .hero {
+    padding: 2rem 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  
   .testimonial-card {
-    grid-template-areas:
-      "image name"
-      "image description"
-      "image address";
-    border: #0078D7 1px solid;
-    margin: 1em 8px;
-    background-color: #777;
-    border-radius: 8px;
-    overflow: hidden;
-    color: #ffffff;
-  }
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  align-items: start;
+}
 
-  .testimonial-card img {
-    width: 450px;
-    height: 200px;
-    grid-area: image;
-  }
+/* Image à gauche */
+.testimonial-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+}
 
-  .testimonial-card h3 {
-    grid-area: name;
-    font-size: 15px;
-    margin: 1em 10px;
-  }
+/* Contenu à droite */
+.text-content {
+  display: grid;
+  grid-template-areas:
+    "name"
+    "location"
+    "service"
+    "quote";
+  grid-template-rows: auto;
+  gap: 0.3rem;
+}
 
-  .testimonial-card p {
-    font-size: 10px;
-    margin: 1.5em 10px;
-  }
+.name {
+  grid-area: name;
+  font-size: 1rem;
+  margin: 0;
+  color: #d00;
+}
+
+.location {
+  grid-area: location;
+  font-weight: bold;
+  color: #555;
+}
+
+.service {
+  grid-area: service;
+  font-style: italic;
+  color: #333;
+}
+
+.quote {
+  grid-area: quote;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #222;
+}
+ 
 
   .footer-content {
     font-size: 0.9rem;
