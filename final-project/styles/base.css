@@ -135,7 +135,7 @@ ul, li {
   padding: 0.1rem 1rem;
 }
 
-.hero {
+.hero{
       background-image: url('../images/image-hero.webp');
       background-size: cover;
       background-position: center;
