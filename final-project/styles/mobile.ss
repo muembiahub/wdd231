@@ -13,12 +13,6 @@
 
 
   .card{
-  border: #0078D7 1px solid;
-  margin: 1em 8px;
-  color: #ffffff;
-  background-color: #777;
-  border-radius: 8px;
-  overflow: hidden;
   display: grid;
   grid-template-areas: 
   "name"
