@@ -101,6 +101,7 @@ function renderFooter(data) {
     img.alt = `${platform.name} icon`;
     img.width = 32;
     img.height = 32;
+    img.loading = "lazy";
     img.style.marginRight = "8px";
 
     a.appendChild(img);
