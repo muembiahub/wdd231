@@ -29,6 +29,7 @@ a:-webkit-any-link {
   color: #ffffff;
   cursor: pointer;
   text-decoration: none;
+  font-size: 1.5em;
 }
 
 /* ========== Typography ========== */
@@ -178,7 +179,7 @@ ul, li {
 }
 
 strong, a, span {
-  font-size: 1em;
+  font-size: 1.5em;
 }
 .card img {
   max-width: 100%;
@@ -194,11 +195,12 @@ form {
 
 }
 
-label {
+legend, label {
   display: block;
   margin-top: 15px;
   font-weight: bold;
- color: #1a1a1a 
+  color: #1a1a1a;
+  font-size: 1rem;
 
 }
 
@@ -206,6 +208,7 @@ input[type="text"],
 textarea,
 select {
   width: 100%;
+  font-size: 1rem;
   padding: 10px;
   margin-top: 5px;
   border: 1px solid #ccc;
@@ -240,6 +243,18 @@ button {
 button:hover {
   background-color: #24522e;
 }
+.dots::after {
+  content: '';
+  animation: dots 1.5s steps(3, end) infinite;
+}
+
+@keyframes dots {
+  0% { content: ''; }
+  33% { content: '.'; }
+  66% { content: '..'; }
+  100% { content: '...'; }
+}
+
 
 
 

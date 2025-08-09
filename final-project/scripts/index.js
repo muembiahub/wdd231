@@ -41,11 +41,11 @@ fetch("data/community-voices.json")
         card.className = "card";
 
         card.innerHTML = `
-          <h3>${service.id}</h3>
-          <p class="image"><img src="${service.image}" alt="${service.id} image"></p>
-          <p class="category"><strong>Category:</strong> ${service.category}</p>
-          <p class="description">${service.introduction}</p>
-          <p class="treatment"><strong>Treatment:</strong> ${service.treatment.join(", ")}</p>
+          <h3>${service.name}</h3>
+          <p class="image"><img src="${service.image}" alt="${service.name} image"></p>
+          <p class="service"><strong>Treatment:</strong> ${service.service}</p>
+          <p class="quote"><strong> Quote : </strong>${service.quote}</p>
+          <p class="address"><strong>Address:</strong> ${service.address}</p>
         `;
 
         container.appendChild(card);
@@ -181,3 +181,62 @@ function renderFooter(data) {
   // Update localStorage with current visit
   localStorage.setItem(lastVisitKey, now.toISOString());
 })();
+
+
+
+//2. Références du modal
+
+const gpsInput = document.getElementById('gps');
+const detectBtn = document.getElementById('detectGPS');
+const mapContainer = document.getElementById('map');
+const mapStatus = document.getElementById('mapStatus');
+let mapInstance = null;
+
+if (detectBtn) {
+  detectBtn.addEventListener('click', () => {
+    if ("geolocation" in navigator) {
+      // Show loading message
+      mapStatus.innerHTML =  "📡 Locating<span class='dots'>...</span>";
+
+      navigator.geolocation.getCurrentPosition(position => {
+        const lat = position.coords.latitude.toFixed(6);
+        const lon = position.coords.longitude.toFixed(6);
+        const gpsCoords = `${lat}, ${lon}`;
+        const mapURL = `https://www.google.com/maps?q=${lat},${lon}`;
+
+        if (gpsInput) gpsInput.value = gpsCoords;
+
+        detectBtn.disabled = true;
+        detectBtn.textContent = "✅ Location detected";
+
+        // Initialize or update map
+        if (!mapInstance) {
+          mapInstance = L.map('map').setView([lat, lon], 15);
+
+          // Wait for tiles to load before hiding status
+          mapInstance.on('load', () => {
+            mapStatus.textContent = "";
+          });
+
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+          }).addTo(mapInstance);
+        } else {
+          mapInstance.setView([lat, lon], 15);
+          mapStatus.textContent = ""; // Hide status immediately if map already exists
+        }
+
+        // Add marker
+        L.marker([lat, lon]).addTo(mapInstance)
+          .bindPopup("📍 You are here")
+          .openPopup();
+
+      }, error => {
+        mapStatus.textContent = "";
+        alert("⚠️ Unable to retrieve your location.");
+      });
+    } else {
+      alert("🛑 Geolocation is not supported by your browser.");
+    }
+  });
+}
