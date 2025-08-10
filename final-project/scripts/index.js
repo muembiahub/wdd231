@@ -42,7 +42,7 @@ fetch("data/community-voices.json")
 
         card.innerHTML = `
           <h3>${service.name}</h3>
-          <p class="image"><img src="${service.image}" alt="${service.name} image"></p>
+          <p class="image"><img src="${service.image}" alt="${service.name}" loading="lazy"></p>
           <p class="service"><strong>Treatment:</strong> ${service.service}</p>
           <p class="quote"><strong> Quote : </strong>${service.quote}</p>
           <p class="address"><strong>Address:</strong> ${service.address}</p>
