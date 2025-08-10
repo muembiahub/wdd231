@@ -24,6 +24,11 @@
       "name": "Instagram",
       "url": "https://instagram.com/kazidomo",
       "icon": "https://muembiahub.github.io/wdd231/project/images/instagram.svg"
+    },
+    {
+      "name": "My Video",
+      "url": "https://share.vidyard.com/watch/R1TA7MQQw1JLogrUs7KaC5",
+      "icon": "https://muembiahub.github.io/wdd231/project/images/profile.jpeg"
     }
   ],
   "legal": {
