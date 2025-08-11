@@ -131,7 +131,7 @@ function renderFooter(data) {
   copyright.innerHTML = `
     <style>
       .copyright {
-        font-size: 0.8rem;
+        font-size: 1.6rem;
         color: #000;
         border-top: #0e120fff 1px solid;
         padding-top: 0.5rem;
@@ -140,6 +140,7 @@ function renderFooter(data) {
     </style>
     &copy; ${year} ${data.organization}. All rights reserved.<br>
     Powered by <a href="${data.credits.poweredBy.url}" target="_blank">${data.credits.poweredBy.name}</a><br>
+    Role: ${data.credits.poweredBy.role}<br>
     Last updated: ${lastModified}
   `;
   footer.appendChild(copyright);
