@@ -93,7 +93,13 @@ ul, li {
 }
 
 #menu::before {
-  content: "☰";
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url(../images/house-blank.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 #menu.open::before {
@@ -292,6 +298,12 @@ button:hover {
     flex-direction: column;
     gap: 10px;
   }
+   #menu {
+    position: fixed;
+    top: 1px;
+    left: 480px;
+    z-index: 1000;
+  }
 
   .news, .weather, .world-time-zone {
     width: 100%;
@@ -319,9 +331,8 @@ button:hover {
   }
 
   #menu {
-    font-size: 1.3rem;
-    top: 0.5rem;
-    right: 0.5rem;
+    top: 5px;
+    left: 250px;
   }
 
   .resume {
