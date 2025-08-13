@@ -299,7 +299,6 @@ button:hover {
     gap: 10px;
   }
    #menu {
-    position: fixed;
     top: 1px;
     left: 480px;
     z-index: 1000;
