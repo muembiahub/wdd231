@@ -62,6 +62,15 @@ h1, h2 {
   display: flex;
 }
 
+.project-details p {
+  padding: 10px 0;
+  border-left: 1px solid #9b7979;
+  border-bottom: 1px solid #9b7979;
+   border-top: 1px solid #9b7979;
+  border-right: 1px solid #9b7979;
+}
+
+
 /* ========== Logo & Branding ========== */
 .logo-title {
   display: flex;
