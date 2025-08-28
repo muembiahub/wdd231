@@ -33,7 +33,7 @@ a:-webkit-any-link {
 
 /* ========== Typography ========== */
 h1, h2 {
-  color: rgb(59, 11, 235);
+  color: rgb(92, 81, 128);
   padding: 10px;
   text-align: center;
   text-transform: uppercase;
@@ -42,11 +42,24 @@ h1, h2 {
   font-weight: bold;
   text-decoration-line: underline;
 }
-.hero h1 {
-  font-size: 2rem;
+.hero h1, .hero h2 {
+  font-size: 1.2rem;
   margin-bottom: 20px;
   text-align: center;
   text-decoration-line: none;
+}
+.hero p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: rgb(31, 11, 245);
+}
+.project-details {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  display: flex;
 }
 
 /* ========== Logo & Branding ========== */
@@ -138,7 +151,6 @@ ul, li {
       background-image: url('../images/image-hero.webp');
       background-size: cover;
       background-position: center;
-      height: 80vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -147,11 +159,6 @@ ul, li {
       text-shadow: 0px 2px 6px rgba(169, 154, 154, 0.7);
       text-align: center;
       padding: 20px;
-    }
-  .hero h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      text-align: center;
     }
    .cta-button {
         padding: 15px 30px;
@@ -164,15 +171,16 @@ ul, li {
         width: auto;
 }
     .cta-button:hover {
-      background-color: #0a40e0;
+      background-color: #446ce4;
     }
 
 .visit-message {
-  padding: 1.5em;
-  border-left: 4px solid #0078d7;
-  font-size: 1.5rem;
-  margin-bottom: 1em;
-  color: #0078d7;
+  padding: 1em;
+  border-left: 4px solid #0611ed;
+  font-size: 1rem;
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+  color:rgb(0 90 161);
   font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
   text-align: center;
   text-transform: capitalize;

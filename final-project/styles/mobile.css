@@ -1,7 +1,7 @@
 @media (max-width: 640px) {
   body {
-    font-size: 1rem;
-    padding: 5px;
+   font-size: 1em;
+   line-height: 1.4;
   }
 
   #menu {
@@ -10,9 +10,18 @@
     right: 0.7rem;
     border: 1px solid black;
   }
+ .hero h1 {
+  font-size: clamp(1.2rem, 5vw, 2.5rem);
+}
+
+
+  .hero {
+    padding: 2px 1px;
+  }
+ 
 
 .card{
-   background-color: #444;
+  background-color: #444;
   color: #fff;
   border-radius: 8px;
   margin: 1em 8px;
@@ -21,7 +30,7 @@
  
 }
 .card h3 {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin: 0.5em 0;
 }
 .card img{
@@ -30,6 +39,11 @@
   border: 1px solid #0078D7;
   margin: 0.5em 0;
   box-shadow: #444 0 2px 4px;
+}
+p {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin: 0.5em 0;
 }
 
 
