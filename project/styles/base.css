@@ -9,7 +9,7 @@ body {
   font-family: "Poppins", sans-serif;
 }
 main {
-  padding-top: 60px; /* même valeur que la hauteur du header */
+  padding-top: 100px; /* même valeur que la hauteur du header */
 }
 
 .navbar {
@@ -19,7 +19,6 @@ main {
   background: #fff;
   color: #000;
   opacity: 0.85;
-  height: 90px;
   z-index: 20;
 }
 
@@ -157,16 +156,7 @@ main {
 }
 
 /* 🧩 Carte individuelle */
-.card {
-  position: absolute;
-  background: white;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  cursor: pointer;
-  
-}
+
 
 .card a {
   display: block;
@@ -301,15 +291,7 @@ main {
   padding: 3em;
 }
 
-/* -------- Carte -------- */
-.card{
-  background: white;
-  border-radius: var(--radius);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  padding: 1em;
-  margin: 2em;
-  transition: transform 0.3s ease;
-}
+
 
 #catalogue-coiffure:hover, #catalogue-menuiserie:hover {
   transform: translateY(-5px);
