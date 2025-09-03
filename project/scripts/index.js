@@ -1,99 +1,73 @@
-const hamButton = document.querySelector('#menu');
-const navigation = document.querySelector('.navigation');
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.getElementById("carouselTrack");
+  const dotContainer = document.getElementById("dotContainer");
 
-hamButton.addEventListener('click', () => {
-	navigation.classList.toggle('open');
-	hamButton.classList.toggle('open');
-});
+  let currentIndex = 0;
+  let cards = [];
 
-const gridBtn = document.getElementById("grid");
-const listBtn = document.getElementById("list");
-const container = document.getElementById("companies");
+  fetch("data/categories.json")
+    .then(res => res.json())
+    .then(data => {
+      const categories = data.categories;
 
-// Basculer entre grid et list
-gridBtn.addEventListener("click", () => {
-  container.className = "grid";
-});
-listBtn.addEventListener("click", () => {
-  container.className = "list";
-});
+      if (!Array.isArray(categories)) {
+        throw new Error("Le JSON doit contenir un tableau 'categories'.");
+      }
 
-async function fetchData() {
-  try {
-    const response = await fetch("data/categories.json");
-    if (!response.ok) throw new Error("Network response failed");
-    const data = await response.json();
+      categories.forEach((item, index) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.setAttribute("data-index", index);
 
-    displayCompanies(data.categories);
-    displayImages(data.images);
-  } catch (err) {
-    console.error("Data fetch error:", err);
-    container.innerHTML = `<p>Error loading data.</p>`;
-  }
-}
+        card.innerHTML = `
+          <a href="${item.page_url}" target="_self">
+            <img src="${item.logo}" alt="${item.category}">
+            <h3>${item.category}</h3>
+          </a>
+        `;
 
-function displayCompanies(categories) {
-  container.innerHTML = "";
-  categories.forEach(cat => {
-    const card = document.createElement("div");
-    card.className = "card";
+        track.appendChild(card);
+        cards.push(card);
 
-    card.innerHTML = `
-      <img src="${cat.logo}" alt="Logo ${cat.category}">
-      <div>
-        <h3><a href="${cat.page_url}" target="_blank">${cat.category}</a></h3>
-      </div>
-    `;
-    container.appendChild(card);
-  });
-}
+        const dot = document.createElement("div");
+        dot.className = "dot";
+        dot.setAttribute("data-index", index);
+        if (index === 0) dot.classList.add("active");
+        dot.addEventListener("click", () => updateCarousel(index));
+        dotContainer.appendChild(dot);
+      });
 
-function displayImages(images = []) {
-  const extraImagesDiv = document.getElementById("extra-images");
-  if (!extraImagesDiv) return;
-  extraImagesDiv.innerHTML = "";
+      updateCarousel(0);
 
-  images.forEach(img => {
-    const el = document.createElement("img");
-    el.src = img;
-    el.alt = "Extra";
-    el.width = 60;
-    el.height = 60;
-    extraImagesDiv.appendChild(el);
-  });
-}
+      document.querySelector(".nav-arrow.left").addEventListener("click", () => {
+        updateCarousel(Math.max(currentIndex - 1, 0));
+      });
 
-// Charger les données au lancement
-fetchData();
-
-const url = 'data/top_categories.json';
-
-fetch(url)
-  .then(response => response.json())
-  .then(data => {
-    const top_categories = data.top_categories;
-    const cards = document.querySelector('#top-categories');
-
-    top_categories.forEach(top_categorie => {
-      const card = document.createElement('section');
-      card.setAttribute('class', 'card');
-
-      const h2 = document.createElement('h2');
-      h2.textContent = `${top_categorie.category}`;
-      card.appendChild(h2);
-
-
-      const image = document.createElement('img');
-      image.setAttribute('src', top_categorie.page_url);
-      image.setAttribute('alt', ` ${top_categorie.logo}`);
-    card.appendChild(image);
-    // Make the image responsive with inline styles
-
-
-      cards.appendChild(card);
+      document.querySelector(".nav-arrow.right").addEventListener("click", () => {
+        updateCarousel(Math.min(currentIndex + 1, cards.length - 1));
+      });
+    })
+    .catch(error => {
+      console.error("Erreur lors du chargement du JSON :", error);
     });
-  })
-  // Handle errors
-  .catch(error => console.error('Error fetching data:', error));
 
+  function updateCarousel(index) {
+    currentIndex = index;
 
+    cards.forEach((card, i) => {
+      card.classList.remove("center", "left-1", "left-2", "right-1", "right-2", "hidden");
+
+      if (i === index) card.classList.add("center");
+      else if (i === index - 1) card.classList.add("left-1");
+      else if (i === index - 2) card.classList.add("left-2");
+      else if (i === index + 1) card.classList.add("right-1");
+      else if (i === index + 2) card.classList.add("right-2");
+      else card.classList.add("hidden");
+    });
+
+    document.querySelectorAll(".dot").forEach(dot => {
+      dot.classList.remove("active");
+    });
+    document.querySelector(`.dot[data-index="${index}"]`).classList.add("active");
+  }
+});

@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       data.coiffure.forEach(item => {
         const card = document.createElement('div');
-        card.className = 'card';
+        card.className = 'catalogue-coiffure';
 
         const features = item.features.map(f => `<li>${f}</li>`).join('');
         const allOptions = item.options || item.services || [];

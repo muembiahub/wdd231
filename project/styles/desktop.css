@@ -1,0 +1,8 @@
+@media (min-width: 1025px) {
+  .navbar input[type="checkbox"],
+.navbar .hamburger-lines {
+  display: none;
+}
+
+
+ }

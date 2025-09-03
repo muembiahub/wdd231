@@ -23,51 +23,61 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
         <script src="scripts/index.js" defer></script>
         <title>Kazidomo Confiance Home Page </title>
-        <link rel="stylesheet" href="styles/directory.css">
+        <link rel="stylesheet" href="styles/base.css">
+        <link rel="stylesheet" href="styles/mobile.css">
+        <link rel="stylesheet" href="styles/desktop.css">
+        <link rel="stylesheet" href="styles/tablets.css">
+
        
     </head>
     <body>
-         <header class="header-content">
-                <div class="logo-title">
-                        <div class="logo">
-                            <img src="images/logo.jpg" alt=" Kazidomo Logo" width= "1" height="1">
-                        </div>
-                               <span>Kazidomo Confiance || DRCongo</span>
-                </div>
-                                <button type="button" id="menu"></button>
-                            <nav>
-	                            <ul class="navigation">
-		                            <li><a href="index.html" title="Home">Acceuil</a></li>
-		                            <li><a href="directory.html" title="Service">Nos Produits</a></li>
-		                            <li><a href="join.html" title="History">Rejoinez-nous </a></li>
-		                            <li><a href="Discover.html" title="Contact">Contactez-nous </a></li>
-	                            </ul>
-                            </nav>
-        </header>
-    <main>
-        <div class="hero">
-            <div class="directory-header">
-                 <h1> Bienvenue chez Kazidomo Confiance </h1>
+        <header>
+          <nav class="navbar">
+      <div class="navbar-container container">
+          <input type="checkbox" name="" id="menu-toggle">
+          <div class="hamburger-lines">
+              <span class="line line1"></span>
+              <span class="line line2"></span>
+              <span class="line line3"></span>
+          </div>
+          <ul class="menu-items">
+              <li><a href="index.html" title="Home">Acceuil</a></li>
+		          <li><a href="nos-produits.html" title="Service">Nos Produits</a></li>
+		          <li><a href="contact.html" title="Contact">Contactez-nous </a></li>
+          </ul>
+          <h1 class="logo"><img src="../project/images/logo.jpg" alt="Kazidomo Logo"> Kazidomo Confiance||RDCongo </h1>
+      </div>
+  </nav>
+   </header>
+   <main>
+    <section class="showcase-area" id="showcase">
+      <div class="showcase-container">
+        <h1 class="main-title" id="home">Bienvenue chez Kazidomo Confiance</h1>
                    <p>Découvrez les services conçus pour vous et votre communauté.
                     Que vous cherchiez un professionnel passionné ou une entreprise de proximité, notre annuaire vous guide.
                     Chez Kazidomo, nous croyons que le talent ne se mesure pas à un diplôme — mais à l’impact réel.
                     Nous facilitons les connexions entre savoir-faire authentique et opportunités concrètes.
                     Kazidomo, c’est plus qu’un label : c’est un lien de confiance, de personne à personne.
                     </p>
-                 <button class="cta-button" onclick="handleCTA()">Visitez-nous Aujourd'hui</button>
-            </div>
-        </div>
-        <div class="member">  
-            <h2>Choisissez la catégorie</h2>  
-                <button id="grid">Grid View</button>  
-                <button id="list">List View</button>  
-        </div>  
-            <div id="companies" class="grid"></div> 
+                    <a href="#food-menu" class="btn btn-primary">Menu</a>
+      </div>
+    </section>
+    <h1 class="about-title">NOS CATÉGORIES</h1>
+
+  <div class="carousel-container">
+    <button class="nav-arrow left">‹</button>
+    <div class="carousel-track" id="carouselTrack"></div>
+    <button class="nav-arrow right">›</button>
+  </div>
+
+  <div class="dots" id="dotContainer"></div>
+
+
 
 </main>
   <!-- Ton contenu ici -->
 
-  <footer></footer>
+  <footer> </footer>
 
   <script>
     fetch("footer.html", { cache: "no-store" })
@@ -81,5 +91,6 @@
     if (modifiedSpan) modifiedSpan.textContent = document.lastModified;
   });
   </script>
+ 
 </body>
 </html>

@@ -77,16 +77,6 @@ const worldTimeZones = [
         city: "New York",
         timeZone: "America/New_York",
         currentTime: "2023-10-01T12:00:00-04:00"
-    },
-    {
-        city: "London",
-        timeZone: "Europe/London",
-        currentTime: "2023-10-01T17:00:00+01:00"
-    },
-    {
-        city: "Tokyo",
-        timeZone: "Asia/Tokyo",
-        currentTime: "2023-10-02T02:00:00+09:00"
     }
 ];
 

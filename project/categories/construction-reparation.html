@@ -22,10 +22,10 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
         <script src="../scripts/index.js" defer></script>
-        <script src="scripts/choice.js"></script>
-        <title>Kazidomo Confiance Alimentation & AgriculturePage </title>
-        <link rel="stylesheet" href="../styles/directory.css">
+        <script src="scripts/construction.js" defer></script>
+        <title>Kazidomo Confiance Construction page </title>
         <link rel="stylesheet" href="styles/form-style.css">
+        <link rel="stylesheet" href="styles/categories.css">
     </head>
     <body>
          <header class="header-content">
@@ -40,29 +40,48 @@
 	                            <ul class="navigation">
 		                            <li><a href="../index.html" title="Home">Acceuil</a></li>
 		                            <li><a href="directory.html" title="Service">Nos Produits</a></li>
-		                            <li><a href="join.html" title="History">Rejoinez-nous </a></li>
 		                            <li><a href="Discover.html" title="Contact">Contactez-nous </a></li>
 	                            </ul>
                             </nav>
         </header>
-    <main>
-        <div class="hero">
-            <h1>Formulaire d'un Service</h1>
+<main>       
+       <!-- 📦 Catalogue dynamique -->
+  <section id="catalogue-coiffure"></section>  
+
+  <!-- 💬 Modal de contact -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Contacter un agent</h3>
+
+      <form>
+        <label for="name">Nom Complet :</label>
+        <input type="text" id="name" name="name" required>
+
+        <div class="gps-section">
+  <label for="gps">Ma position :</labe>
+  <input type="text" id="gps" readonly placeholder="Coordonnées GPS">
+  <button id="detectGPS" type="button">📍 Détecter la position</button>
+    </div>
+
+        <label for="message">Message :</label><br>
+        <textarea id="message" rows="8" cols="50" placeholder="Votre message ici..."></textarea>
+
+        <!-- 🔗 Liens d’envoi dynamiques -->
+        <div class="send-links">
+          <button id="sendWhatsApp">WhatsApp</button>
+          <button id="sendEmail">Email</button>
+
         </div>
-        <form id="serviceChoiceForm">
-                    <h2>Veuillez Selectionez Le Type de Service que vous voullez</h2>
-                    <label for="serviceType">Qu'est ce vous voullez ?</label>
-                    <select id="serviceType" name="serviceType">
-                    <option value="">-- Select --</option>
-                    <option value="offer">Cherchez un Emplois </option>
-                    <option value="receive">Trouvez un Prestataire</option>
-                    </select>
-                    <button type="submit">Continue</button>
-        </form>
- 
+      </form>
+    </div>
+  </div>
+</body>
 
 </main>
-       <footer></footer>
+       <footer>
+
+       </footer>
 
   <script>
     fetch("../footer.html", { cache: "no-store" })
@@ -76,5 +95,6 @@
     if (modifiedSpan) modifiedSpan.textContent = document.lastModified;
   });
   </script>
+  
     </body>
 </html>
