@@ -1,4 +1,4 @@
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   .navbar {
     opacity: 0.95;
   }
@@ -86,6 +86,25 @@
     right: 0.4em;
     font-size: 0.8rem;
   }
+ 
+.showcase-area {
+   height: 70vh;
+  background: linear-gradient(
+      rgba(240, 240, 240, 0.144),
+      rgba(255, 255, 255, 0.336)
+    ),
+    url("https://i.postimg.cc/wT3TQS3V/header-image2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 1rem;
+  text-align: center;
+}
+.showcase-area h1 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
 
   .navbar-container input[type="checkbox"]:checked ~ .menu-items {
     transform: translateX(0);
@@ -102,4 +121,35 @@
   .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
     transform: rotate(-35deg);
   }
+  .about-title {
+  font-size: 2rem;
+  font-weight: 90;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  position: absolute;
+  left: 50%;
+  bottom: 8%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  white-space: nowrap;
+  font-family: "Arial Black", "Arial Bold", Arial, sans-serif;
+  background: linear-gradient(270deg, #cb041b 35%, #ffffff00 76%);
+  /*background: linear-gradient(to bottom, rgb(8 42 123 / 35%) 30%, rgb(255 255 255 / 0%) 76%);*/
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientShift 6s ease infinite;
+  background-size: 400% 400%;
 }
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+  .carousel-track {
+    transform: scaleX(1.1);
+  }
+
+}
+

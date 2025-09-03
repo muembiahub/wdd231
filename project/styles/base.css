@@ -76,27 +76,10 @@ body {
 
 /* ............//// Showcase styling ////......... */
 
-.showcase-area {
-  height: 120vh;
-  background: linear-gradient(
-      rgba(240, 240, 240, 0.144),
-      rgba(255, 255, 255, 0.336)
-    ),
-    url("https://i.postimg.cc/wT3TQS3V/header-image2.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 1rem;
-  margin: 1rem;
-  text-align: center;
-}
-.showcase-area h1 {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 1rem;
-}
+
+
 .showcase-area p{
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #1d0393;
   line-height: 1.5;
 }
@@ -107,12 +90,12 @@ body {
   align-items: center;
   justify-content: center;
   height: 100%;
-  font-size: 1.6rem;
+  font-size: 1rem;
 }
 
 .main-title {
   text-transform: uppercase;
-  margin-top: 1.5em;
+  margin-top: 1em;
 }
 
 
@@ -149,33 +132,7 @@ body {
 
 
 
-/* 🏷️ Titre stylisé */
-.about-title {
-  font-size: 8rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  pointer-events: none;
-  white-space: nowrap;
-  font-family: "Arial Black", "Arial Bold", Arial, sans-serif;
-  background: linear-gradient(270deg, #cb041b 35%, #ffffff00 76%);
-  /*background: linear-gradient(to bottom, rgb(8 42 123 / 35%) 30%, rgb(255 255 255 / 0%) 76%);*/
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: gradientShift 6s ease infinite;
-  background-size: 400% 400%;
-}
 
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
 
 /* 🎠 Conteneur du carousel */
 .carousel-container {
@@ -185,10 +142,13 @@ body {
   position: relative;
   perspective: 1000px;
   margin-top: 80px;
+ 
 }
 
 /* 🛤️ Piste des cartes */
 .carousel-track {
+  width: max-content; /* s’adapte à la taille totale des cartes */
+  padding: 0 2rem; 
   width: 100%;
   height: 100%;
   display: flex;
@@ -196,20 +156,22 @@ body {
   align-items: center;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.8s cubic-bezier(0.2, 0.2, 0.45, 0.94);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+
 }
 
 /* 🧩 Carte individuelle */
 .card {
   position: absolute;
-  width: 280px;
-  height: 380px;
   background: white;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   cursor: pointer;
+  
 }
 
 .card a {
@@ -286,7 +248,7 @@ body {
   height: 40px;
   border-radius: 50%;
   display: flex;
-  align-items: center;
+  align-items: spa;
   justify-content: center;
   cursor: pointer;
   z-index: 20;
