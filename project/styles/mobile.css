@@ -2,7 +2,6 @@
   .navbar {
     opacity: 0.95;
   }
-
   .navbar-container input[type="checkbox"],
   .navbar-container .hamburger-lines {
     display: block;
@@ -13,6 +12,8 @@
     position: relative;
     height: 64px;
   }
+
+
 
   .navbar-container input[type="checkbox"] {
     position: absolute;

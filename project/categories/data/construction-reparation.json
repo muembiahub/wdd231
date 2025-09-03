@@ -1,0 +1,85 @@
+{
+  "travaux": {
+    "plomberie": [
+      {
+        "type": "Réparation lavabo",
+        "prix": "20$",
+        "image": "images/reparation_lavabo.jpg",
+        "alt": "Lavabo en cours de réparation",
+        "description": "Remplacement du siphon et resserrage des joints sous le lavabo de la salle de bain."
+      },
+      {
+        "type": "Réparation mélangeur cuisine",
+        "prix": "20$",
+        "image": "images/melangeur_cuisine.jpg",
+        "alt": "Mélangeur de cuisine démonté",
+        "description": "Réparation du mécanisme de mélange eau chaude/froide dans la cuisine."
+      },
+      {
+        "type": "Débouchage WC",
+        "prix": "25$",
+        "image": "images/debouchage_wc.jpg",
+        "alt": "Technicien débouchant un WC",
+        "description": "Utilisation d’un furet manuel pour déboucher les toilettes obstruées."
+      },
+      {
+        "type": "Remplacement robinet salle de bain",
+        "prix": "30$",
+        "heure": "23:22",
+        "image": "images/robinet_sdb.jpg",
+        "alt": "Nouveau robinet installé",
+        "description": "Installation d’un robinet moderne avec économiseur d’eau dans la salle de bain."
+      },
+      {
+        "type": "Inspection fuite sous évier",
+        "prix": "15$",
+        "heure": "23:35",
+        "image": "images/fuite_evier.jpg",
+        "alt": "Fuite sous évier détectée",
+        "description": "Inspection visuelle et test de pression pour localiser une fuite sous l’évier."
+      }
+    ],
+    "construction": [
+      {
+        "type": "Coulage dalle béton",
+        "prix": "120$",
+        "heure": "08:30",
+        "image": "images/dalle_beton.jpg",
+        "alt": "Ouvriers coulant une dalle en béton",
+        "description": "Préparation du coffrage et coulage de la dalle pour fondation."
+      },
+      {
+        "type": "Montage mur en briques",
+        "prix": "95$",
+        "heure": "10:15",
+        "image": "images/mur_briques.jpg",
+        "alt": "Mur en briques en cours de montage",
+        "description": "Élévation du mur porteur avec briques rouges et mortier."
+      },
+      {
+        "type": "Pose charpente bois",
+        "prix": "150$",
+        "heure": "13:00",
+        "image": "images/charpente_bois.jpg",
+        "alt": "Charpente en bois installée sur le toit",
+        "description": "Assemblage et fixation de la structure en bois pour toiture."
+      },
+      {
+        "type": "Installation portes métalliques",
+        "prix": "60$",
+        "heure": "15:30",
+        "image": "images/portes_metal.jpg",
+        "alt": "Portes métalliques posées sur chantier",
+        "description": "Pose de deux portes métalliques avec verrouillage sécurisé."
+      },
+      {
+        "type": "Crépi façade extérieure",
+        "prix": "80$",
+        "heure": "17:00",
+        "image": "images/crepi_facade.jpg",
+        "alt": "Façade crépie avec finition lisse",
+        "description": "Application du crépi sur les murs extérieurs pour finition esthétique."
+      }
+    ]
+  }
+}

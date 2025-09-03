@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       data.menuseries.forEach(item => {
         const card = document.createElement('div');
-        card.className = 'card';
+        card.className = 'catalogue-menuiserie';
 
         const features = item.features.map(f => `<li>${f}</li>`).join('');
         const options = item.options.map(opt => `

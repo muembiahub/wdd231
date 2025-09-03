@@ -1,78 +1,88 @@
 {
   "categories": [
-     {
+    {
       "logo": "images/beaute.webp",
-      "category": "Beaute",
+      "category": "Beauté",
+      "description": "Services et produits liés aux soins du corps, coiffure, esthétique et bien-être.",
       "page_url": "categories/beaute.html"
     },
     {
       "logo": "images/menuiserie.webp",
       "category": "Menuiserie",
+      "description": "Travaux de bois, fabrication de meubles, portes, fenêtres et structures artisanales.",
       "page_url": "categories/menuiserie.html"
     },
     {
       "logo": "images/construction.webp",
-      "category": "Construction",
+      "category": "Construction & Réparation",
+      "description": "Bâtiments, réparations, maçonnerie, et projets d’infrastructure résidentielle ou commerciale.",
       "page_url": "categories/construction-reparation.html"
-    }
-    ,
+    },
     {
       "logo": "images/manifestation-et-ceremonie.webp",
-      "category": "Manifestation et Ceremonies",
+      "category": "Manifestations & Cérémonies",
+      "description": "Organisation d’événements, mariages, fêtes, décorations et logistique festive.",
       "page_url": "categories/fetes.html"
     },
-     {
+    {
       "logo": "images/mecanique.webp",
       "category": "Mécanique",
+      "description": "Réparation et entretien de véhicules, moteurs, machines et équipements mécaniques.",
       "page_url": "categories/mecanique.html"
     },
-     {
+    {
       "logo": "images/electricite.webp",
-      "category": "Electricité",
+      "category": "Électricité",
+      "description": "Installation, dépannage et maintenance de systèmes électriques résidentiels ou industriels.",
       "page_url": "categories/electricite.html"
-    }
-    ,
+    },
     {
       "logo": "images/formation.webp",
       "category": "Formation",
+      "description": "Programmes éducatifs, ateliers, cours techniques et développement de compétences.",
       "page_url": "categories/formation.html"
     },
     {
       "logo": "images/mode.webp",
       "category": "Mode",
+      "description": "Vêtements, accessoires, design vestimentaire et tendances culturelles.",
       "page_url": "categories/mode.html"
     },
     {
       "logo": "images/restaurantion.webp",
-      "category": "Hôtels & Restaurants",
+      "category": "Hôtellerie & Restauration",
+      "description": "Services de restauration, hébergement, gastronomie et hospitalité locale.",
       "page_url": "categories/hotels-restaurants.html"
     },
     {
       "logo": "images/sante.webp",
       "category": "Santé",
+      "description": "Soins médicaux, pharmacies, cliniques, bien-être et accompagnement sanitaire.",
       "page_url": "categories/sante.html"
     },
     {
       "logo": "images/immobilier.webp",
       "category": "Immobilier",
+      "description": "Vente, location, gestion de biens immobiliers et projets fonciers.",
       "page_url": "categories/immobilier.html"
     },
     {
       "logo": "images/animaux.webp",
       "category": "Animaux",
+      "description": "Élevage, soins vétérinaires, alimentation et accessoires pour animaux.",
       "page_url": "categories/animaux.html"
     },
-     {
+    {
       "logo": "images/agriculture.webp",
       "category": "Agriculture",
+      "description": "Cultures, élevage, agro-transformation et services agricoles durables.",
       "page_url": "categories/agriculture.html"
-    }
-    ,
-     {
+    },
+    {
       "logo": "images/autre-blog.webp",
       "category": "Autres Blogs",
+      "description": "Articles divers, témoignages, projets communautaires et initiatives locales.",
       "page_url": "categories/autres.html"
     }
-
   ]
 }

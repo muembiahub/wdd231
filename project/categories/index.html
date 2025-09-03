@@ -20,14 +20,13 @@
         <link rel="icon" href="/project/images/favicon.ico" type="image/x-icon" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-        <script src="scripts/construction-reparation.js" defer></script>
-        <title>Kazidomo Confiance beaute Page </title>
-        <link rel="stylesheet" href="/project/styles/base.css">
-        <link rel="stylesheet" href="/project/styles/mobile.css">
-        <link rel="stylesheet" href="/project/styles/desktop.css">
-        <link rel="stylesheet" href="/project/styles/tablets.css">
+        <script src="scripts/index.js" defer></script>
+        <title>Kazidomo Confiance Home Page </title>
+        <link rel="stylesheet" href="styles/base.css">
+        <link rel="stylesheet" href="styles/mobile.css">
+        <link rel="stylesheet" href="styles/desktop.css">
+        <link rel="stylesheet" href="styles/tablets.css">
 
        
     </head>
@@ -35,73 +34,52 @@
         <header>
           <nav class="navbar">
       <div class="navbar-container container">
-          <input type="checkbox" name="" id="menu-toggle" aria-label="Menu">
           <div class="hamburger-lines">
               <span class="line line1"></span>
               <span class="line line2"></span>
               <span class="line line3"></span>
           </div>
           <ul class="menu-items">
-              <li><a href="../index.html" title="Home">Acceuil</a></li>
+              <li><a href="index.html" title="Home">Acceuil</a></li>
 		          <li><a href="#" title="Service">Nos Produits</a></li>
 		          <li><a href="#" title="Contact">Contactez-nous </a></li>
           </ul>
-          <h1 class="logo">
-                        <img src="../images/logo.jpg" alt="Kazidomo Logo">
-                        <span>Kazidomo Confiance || RDCongo</span>
-          </h1>
+          <h1 class="logo"><img src="images/logo.jpg" alt="Kazidomo Logo"> Kazidomo Confiance ||RDCongo </h1>
       </div>
   </nav>
    </header>
-   <main>      
-       <!-- 📦 Catalogue dynamique -->
-        <section>
-    <h2>Plomberie</h2>
-    <div id="plomberie-container"></div>
-  </section>
+   <main>
+    <section class="showcase-area" id="showcase">
+      <div class="showcase-container">
+        <h1 class="main-title" id="home">Bienvenue chez Kazidomo Confiance</h1>
+                   <p>Découvrez les services conçus pour vous et votre communauté.
+                    Que vous cherchiez un professionnel passionné ou une entreprise de proximité, notre annuaire vous guide.
+                    Chez Kazidomo, nous croyons que le talent ne se mesure pas à un diplôme — mais à l’impact réel.
+                    Nous facilitons les connexions entre savoir-faire authentique et opportunités concrètes.
+                    Kazidomo, c’est plus qu’un label : c’est un lien de confiance, de personne à personne.
+                    </p>
+                    <a href="#food-menu" class="btn btn-primary">Menu</a>
+      </div>
+    </section>
+    <h1 class="about-title">NOS CATÉGORIES</h1>
 
-  <section>
-    <h2>Construction</h2>
-    <div id="construction-container"></div>
-  </section>
-
-  <section id="catalogue-construction-reparation"></section>  
-
-  <!-- 💬 Modal de contact -->
-  <div id="contactModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3>Contacter un agent</h3>
-
-      <form>
-        <label for="name">Nom Complet :</label>
-        <input type="text" id="name" name="name" required>
-
-        <div class="gps-section">
-  <label for="gps">Ma position :</labe>
-  <input type="text" id="gps" readonly placeholder="Coordonnées GPS">
-  <button id="detectGPS" type="button">📍 Détecter la position</button>
-    </div>
-
-        <label for="message">Message :</label><br>
-        <textarea id="message" rows="8" cols="50" placeholder="Votre message ici..."></textarea>
-
-        <!-- 🔗 Liens d’envoi dynamiques -->
-        <div class="send-links">
-          <button type="button" id="sendWhatsApp">WhatsApp</button>
-          <button type="button" id="sendEmail">Email</button>
-
-        </div>
-      </form>
-    </div>
+  <div class="carousel-container">
+    <button class="nav-arrow left">‹</button>
+    <div class="carousel-track" id="carouselTrack"></div>
+    <button class="nav-arrow right">›</button>
   </div>
-</main>
-       <footer>
 
-       </footer>
+  <div class="dots" id="dotContainer"></div>
+
+
+
+</main>
+  <!-- Ton contenu ici -->
+
+  <footer> </footer>
 
   <script>
-    fetch("../footer.html", { cache: "no-store" })
+    fetch("footer.html", { cache: "no-store" })
   .then(res => res.text())
   .then(data => {
     document.querySelector("footer").innerHTML = data;
@@ -112,6 +90,6 @@
     if (modifiedSpan) modifiedSpan.textContent = document.lastModified;
   });
   </script>
-  
-    </body>
+ 
+</body>
 </html>
