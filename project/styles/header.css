@@ -1,3 +1,10 @@
+/* desktop mode............/// */
+header{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 .top-banner {
   background-color: white;
   padding: 10px;
@@ -7,16 +14,75 @@
   z-index: 1000;
   display: flex;
   justify-content: center;
+  font-size: 1.2rem;
+  
 }
-
 .top-banner img {
   height: 20px;
   vertical-align: middle;
 }
+.navbar input[type="checkbox"],
+.navbar .hamburger-lines {
+  display: none;
+}
+
+.navbar {
+  box-shadow: 0px 5px 10px 0px #aaa;
+  width: 100%;
+  background: #0ebde0;
+  color: #000;
+  opacity: 0.85;
+  height: 50px;
+  z-index: 12;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  height: 64px;
+  align-items: center;
+}
+
+.menu-items {
+  order: 2;
+  display: flex;
+}
+
+.menu-items li {
+  list-style: none;
+  margin-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.menu-items a {
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.menu-items a:hover {
+  color: #117964;
+  transition: color 0.3s ease-in-out;
+}
+
+.logo {
+  order: 1;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ............//// Showcase styling ////......... */
 
 
 
- .navbar {
+
+
+/* ......../ media query /.......... */
+
+@media (max-width: 768px) {
+  .navbar {
     opacity: 0.95;
   }
 
@@ -36,8 +102,8 @@
     display: block;
     height: 32px;
     width: 30px;
-    top: 20px;
-    left: 20px;
+    top: 2%;
+    left: 1%;
     z-index: 5;
     opacity: 0;
   }
@@ -47,8 +113,8 @@
     height: 23px;
     width: 35px;
     position: absolute;
-    top: 17px;
-    left: 20px;
+    top: 1%;
+    left: 5%;
     z-index: 2;
     display: flex;
     flex-direction: column;
@@ -100,7 +166,7 @@
   .logo {
     position: absolute;
     top: 5px;
-    right: 15px;
+    right: 18%;
     font-size: 1rem;
   }
 
@@ -119,3 +185,41 @@
   .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
     transform: rotate(-35deg);
   }
+
+  
+@media (max-width: 500px) {
+  html {
+    font-size: 65%;
+  }
+
+  .navbar .menu-items li{
+      font-size: 1rem;
+  }
+
+  
+
+  .logo {
+    position: absolute;
+    top: 2%;
+    right: 30%;
+    font-size: 1.5rem;
+  }
+
+  .navbar .menu-items li {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .img-container h3 {
+    font-size: 1.5rem;
+  }
+
+  .img-container .btn {
+    font-size: 0.7rem;
+  }
+}
+
+}

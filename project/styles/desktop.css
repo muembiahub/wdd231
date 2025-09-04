@@ -1,8 +1,4 @@
 @media (min-width: 1200px) {
-  .navbar input[type="checkbox"],
-.navbar .hamburger-lines {
-  display: none;
-}
 .showcase-area {
    height: 70vh;
   background: linear-gradient(

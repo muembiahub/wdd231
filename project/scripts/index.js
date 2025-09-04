@@ -1,3 +1,6 @@
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const track = document.getElementById("carouselTrack");
   const dotContainer = document.getElementById("dotContainer");
