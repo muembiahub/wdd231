@@ -1,28 +1,29 @@
 <header>
-  <div class="top-banner">
-    <div class="logo">
-      <img src="images/logo.jpg" alt="Kazidomo Confiance">
-      <span>Kazidomo Confiance | RDCongo</span>
-    </div>
+<!-- Top Banner -->
+<div class="top-banner">
+  <img src="https://raw.githubusercontent.com/muembiahub/wdd231/main/project/images/logo.jpg" alt="Kazidomo Confiance" onerror="this.src='/assets/img/fallback-logo.png';">
+  <span>Bienvenue sur Kazidomo Confiance</span>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="navbar-container">
+
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="hamburger-lines">
+      <span class="line line1"></span>
+      <span class="line line2"></span>
+      <span class="line line3"></span>
+    </label>
+
+   <ul class="menu-items">
+  <li><a href="https://muembiahub.github.io/wdd231/project/index.html">🏠 Accueil</a></li>
+  <li><a href="https://muembiahub.github.io/wdd231/project/about.html">📘 À propos</a></li>
+  <li><a href="https://muembiahub.github.io/wdd231/project/services.html">🛠️ Services</a></li>
+  <li><a href="https://muembiahub.github.io/wdd231/project/contact.html">📞 Contact</a></li>
+</ul>
   </div>
-
-  <nav class="navbar">
-    <div class="navbar-container container">
-      <label for="menu-toggle" class="visually-hidden">Toggle navigation menu</label>
-      <input type="checkbox" id="menu-toggle">
-      <label for="menu-toggle" class="hamburger-lines">
-        <span class="line line1"></span>
-        <span class="line line2"></span>
-        <span class="line line3"></span>
-      </label>
-
-     <ul class="menu-items">
-  <li><a href="#home">Accueil</a></li>
-  <li><a href="#about">À propos</a></li>
-  <li><a href="#testimonials">Témoignages</a></li>
-  <li><a href="#contact">Contact</a></li>
-     </ul>
-    </div>
+</nav>
 </header>
 <style>
 .visually-hidden {

@@ -1,89 +1,82 @@
-/* Base reset */
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-/* Header fixed */
-header {
+/* === Top Banner === */
+header{
   position: fixed;
+  top: 0;
   width: 100%;
-  top: 0;
   z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
-/* Top banner */
 .top-banner {
+  position: relative;
+  width: 100%;
   background-color: #fff;
-  padding: 10px;
-  top: 0;
+  padding: 10px 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1rem;
   flex-wrap: wrap;
   text-align: center;
+  z-index: 101;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .top-banner img {
   height: 30px;
-  margin-right: 1px;
+  margin-right: 8px;
 }
 
-/* Navbar */
+/* === Navbar === */
 .navbar {
   background: #0ebde0;
   color: #000;
-  opacity: 0.9;
+  opacity: 0.95;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 100;
 }
 
+/* === Container === */
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 64px;
   padding: 0 1rem;
-  position: relative;
 }
 
+/* === Logo === */
 .logo {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: bold;
+  color: #fff;
 }
 
-/* Menu items */
+/* === Menu Items (desktop) === */
 .menu-items {
-  display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  gap: 1.5rem;
 }
 
 .menu-items li {
-  margin-left: 1rem;
+  margin: 0;
 }
 
 .menu-items a {
   text-decoration: none;
-  color: #444;
+  color: #fff;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .menu-items a:hover {
-  color: #117964;
+  color: #044d5c;
 }
 
-/* Hamburger menu */
+/* === Hamburger Icon === */
 .hamburger-lines {
   display: none;
   flex-direction: column;
@@ -96,66 +89,82 @@ header {
 .hamburger-lines .line {
   height: 4px;
   width: 100%;
-  background: #333;
+  background: #fff;
   border-radius: 2px;
   transition: transform 0.3s ease;
 }
 
+/* === Hidden Checkbox Toggle === */
 #menu-toggle {
   display: none;
 }
 
-/* Responsive styles */
+/* === Responsive Styles === */
+
+/* === Medium Screens === */
 @media (max-width: 768px) {
+  
+
   .hamburger-lines {
     display: flex;
+  }
+  .top-banner {
+    font-size: 0.8rem;
+    padding: 8px;
   }
 
   .menu-items {
     position: absolute;
     top: 64px;
-    left: 0.1%;
-    background: #fff;
+    left: 0;
     flex-direction: column;
-    width: auto;
-    transform: translateX(-130%);
-    transition: transform 0.6s ease;
-    z-index: 10;
-    padding: 1rem;
+    background: #fff;
+    width: 100%;
+    height: calc(100vh - 64px);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in-out;
+    padding: 2rem;
+    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 99;
   }
 
   .menu-items li {
     margin: 1rem 0;
-    font-size: 1rem;
   }
 
-  #menu-toggle:checked~.menu-items {
+  .menu-items a {
+    color: #444;
+  }
+
+  #menu-toggle:checked ~ .menu-items {
     transform: translateX(0);
   }
 
-  #menu-toggle:checked~.hamburger-lines .line1 {
+  #menu-toggle:checked ~ .hamburger-lines .line1 {
     transform: rotate(45deg) translate(5px, 5px);
   }
 
-  #menu-toggle:checked~.hamburger-lines .line2 {
+  #menu-toggle:checked ~ .hamburger-lines .line2 {
     opacity: 0;
   }
 
-  #menu-toggle:checked~.hamburger-lines .line3 {
+  #menu-toggle:checked ~ .hamburger-lines .line3 {
     transform: rotate(-45deg) translate(5px, -5px);
   }
 }
 
-/* Ultra small screens */
+/* === Ultra Small Screens === */
 @media (max-width: 320px) {
   .top-banner {
-    font-size: 0.9rem;
-    padding: 3px;
+    font-size: 0.5rem;
+    padding: 6px;
   }
 
-  .logo {
-    font-size: 1rem;
+  .top-banner img {
+    height: 24px;
+    margin-right: 4px;
   }
+
 
   .menu-items li {
     font-size: 1rem;
