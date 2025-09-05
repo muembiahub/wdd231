@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<lang="en-US">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,34 +17,28 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="default">
         <meta name="keywords" content="Kazidomo, mobile application, service providers, geolocation, digital contracts, payment options, economic autonomy">
         <meta name="theme-color" content="#ffffff">
-        <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/project/images/favicon.ico" type="image/x-icon" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-        <script src="../scripts/index.js" defer></script>
         <script src="scripts/agriculture.js" defer></script>
-        <title>Kazidomo Confiance Agriculture page </title>
-        <link rel="stylesheet" href="styles/form-style.css">
-        <link rel="stylesheet" href="styles/categories.css">
+        <script src="../scripts/header.js" defer></script>
+        <title>Kazidomo Confiance Agriculture Page </title>
+        <link rel="stylesheet" href="styles/base.css">
+        <link rel="stylesheet" href="styles/desktop.css">
+        <link rel="stylesheet" href="styles/tablets.css">
+        <link rel="stylesheet" href="styles/mobile.css">
+        <link rel="stylesheet" href="../styles/header.css">
+       
     </head>
     <body>
-         <header class="header-content">
-                <div class="logo-title">
-                        <div class="logo">
-                            <img src="../images/logo.jpg" alt=" Kazidomo Logo" width= "1" height="1">
-                        </div>
-                               <span>Kazidomo Confiance || DRCongo</span>
-                </div>
-                                <button type="button" id="menu"></button>
-                            <nav>
-	                            <ul class="navigation">
-		                            <li><a href="../index.html" title="Home">Acceuil</a></li>
-		                            <li><a href="directory.html" title="Service">Nos Produits</a></li>
-		                            <li><a href="Discover.html" title="Contact">Contactez-nous </a></li>
-	                            </ul>
-                            </nav>
-        </header>
-<main>       <!-- 📦 Catalogue dynamique -->
+        <header>
+         <div id="header"></div>
+  </nav>
+   </header>
+   <main>      
+       <!-- 📦 Catalogue dynamique -->
   <section id="catalogue-coiffure"></section>  
 
   <!-- 💬 Modal de contact -->
@@ -68,15 +62,13 @@
 
         <!-- 🔗 Liens d’envoi dynamiques -->
         <div class="send-links">
-          <button id="sendWhatsApp">WhatsApp</button>
-          <button id="sendEmail">Email</button>
+          <button type="button" id="sendWhatsApp">WhatsApp</button>
+          <button type="button" id="sendEmail">Email</button>
 
         </div>
       </form>
     </div>
   </div>
-</body>
-
 </main>
        <footer>
 
