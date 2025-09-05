@@ -1,6 +1,6 @@
 @media (min-width: 1200px) {
   .showcase-area {
-    height: 80vh;
+    height: 70vh;
     background: linear-gradient(rgba(240, 240, 240, 0.144),
         rgba(255, 255, 255, 0.336)),
       url("https://img.freepik.com/photos-gratuite/personne-au-bureau-pendant-journee-travail_23-2150690165.jpg");
@@ -40,8 +40,45 @@
   .showcase-container {
     animation: fadeInUp 1.2s ease-out forwards;
   }
-
-
+.category-card {
+  display: grid;
+  grid-template-areas:
+    "image title"
+    "image text"
+    "image button";
+    overflow: hidden;
+    border: rgb(14, 15, 15) solid 1px;
+    margin: 2em 0.5em;
+    padding: 1em 2;
+    border-radius: 8px;
+    
+}
+.category-card img {
+  width: 300px;
+  height: 250px;
+  grid-area: image;
+}
+.category-card h3 {
+  grid-area: title;
+  margin: 0.5em 0.5em 0 0.5em;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.category-card p {
+  grid-area: text;
+  font-size: 1.2rem;
+  margin: 0.5em 0.5em 0 0.5em;
+}
+.category-card .btn {
+  grid-area: button;
+  margin: 1em 0;
+  
+}
+.categories-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+}
 
 
 }

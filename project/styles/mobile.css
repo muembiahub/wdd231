@@ -41,6 +41,40 @@
   .showcase-container {
     animation: fadeInUp 1.2s ease-out forwards;
   }
-
-
+  .category-card {
+  display: grid;
+  grid-template-areas:
+    "image"
+    "title"
+    "text"
+    "button";
+    overflow: hidden;
+    border: rgb(14, 15, 15) solid 1px;
+    margin: 2em 0.5em;
+    padding: 1em 2;
+    border-radius: 8px;
+    
+}
+.category-card img {
+  width: 500px;
+  height: 250px;
+  grid-area: image;
+  margin: auto;
+}
+.category-card h3 {
+  grid-area: title;
+  margin: 0.5em 0.5em 0 0.5em;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.category-card p {
+  grid-area: text;
+  font-size: 1.2rem;
+  margin: 0.5em 0.5em 0 0.5em;
+}
+.category-card .btn {
+  grid-area: button;
+  margin: 1em auto;
+  
+}
 }
