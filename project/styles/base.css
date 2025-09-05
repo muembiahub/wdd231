@@ -10,7 +10,7 @@ body {
 }
 
 main {
-  padding-top: 120px;
+  padding-top: 150px;
   /* même valeur que la hauteur du header */
 }
 
@@ -117,14 +117,7 @@ main {
   margin-bottom: 1rem;
 }
 
-.categories-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
-  justify-items: center;
-  align-items: stretch;
-}
+
 
 .view-button {
   padding: 0.6rem 1.2rem;
