@@ -1,72 +1,46 @@
 @media (min-width: 768px) and (max-width: 1199px) {
   /* Styles pour tablettes portrait et paysage */
 
-.showcase-area {
+  .showcase-area {
+    height: 80vh;
+    background: linear-gradient(rgba(240, 240, 240, 0.144),
+        rgba(255, 255, 255, 0.336)),
+      url("https://img.freepik.com/photos-gratuite/personne-au-bureau-pendant-journee-travail_23-2150690165.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 1rem;
+    text-align: center;
+  }
 
-  background: linear-gradient(
-      rgba(240, 240, 240, 0.144),
-      rgba(255, 255, 255, 0.336)
-    ),
-    url("https://i.postimg.cc/wT3TQS3V/header-image2.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 1rem;
-  text-align: center;
+  .showcase-area h1 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .showcase-area p {
+    font-size: 1.5rem;
+    color: rgb(10, 15, 171);
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    to {
+      opacity: 3;
+      transform: translateY(0);
+    }
+  }
+
+  .showcase-container {
+    animation: fadeInUp 1.2s ease-out forwards;
+  }
+
 }
-.showcase-area h1 {
-  color: #333;
-  margin-bottom: 1rem;
-  font-size: 2rem;
-}
-
-
-.about-title {
-  font-size: 3rem;
-  font-weight: 90;
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  pointer-events: none;
-  white-space: nowrap;
-  font-family: "Arial Black", "Arial Bold", Arial, sans-serif;
-  background: linear-gradient(270deg, #cb041b 35%, #ffffff00 76%);
-  /*background: linear-gradient(to bottom, rgb(8 42 123 / 35%) 30%, rgb(255 255 255 / 0%) 76%);*/
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: gradientShift 6s ease infinite;
-  background-size: 400% 400%;
-}
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-  .carousel-track {
-    transform: scaleX(1.4);
-  }
-
-  .card {
-    width: 200px;
-    height: 280px;
-  }
-
-  .card.left-2 {
-    transform: translateX(-250px) scale(0.8) translateZ(-300px);
-  }
-
-  .card.left-1 {
-    transform: translateX(-120px) scale(0.9) translateZ(-100px);
-  }
-
-  .card.right-1 {
-    transform: translateX(120px) scale(0.9) translateZ(-100px);
-  }
-
-  .card.right-2 {
-    transform: translateX(250px) scale(0.8) translateZ(-300px);
-  }
-   }
