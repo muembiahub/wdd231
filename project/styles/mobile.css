@@ -78,3 +78,29 @@
   
 }
 }
+/* 📱 Mobile-first adjustments */
+@media (max-width: 480px) {
+  .category-card {
+    margin: 1em 0.5em;
+    padding: 1em;
+    max-width: 300px;
+  }
+
+  .category-card h3 {
+    font-size: 1rem;
+  }
+
+  .category-card p {
+    font-size: 0.5rem;
+  }
+  .category-card img {
+    width: 90%;
+    height: auto;
+  }
+
+  .category-card .btn {
+    font-size: 0.85rem;
+    padding: 0.5em 1em;
+  }
+ 
+}
