@@ -84,13 +84,13 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1em;
 }
-#catalogue-coiffure {
+#catalogue-coiffure,#catalogue-menuiserie {
     justify-content: flex-start;
     gap: 32px;
     padding: 40px;
   }
 
-  .coiffure-card {
+  .card {
     width: 300px;
     padding: 24px;
     border-radius: 20px;
@@ -104,12 +104,12 @@
     margin-bottom: 16px;
   }
 
-  .coiffure-card h3 {
+  .card h3 {
     font-size: 1.4em;
     margin-bottom: 10px;
   }
 
-  .coiffure-card p {
+  .card p {
     font-size: 1em;
     margin-bottom: 14px;
   }
@@ -123,7 +123,7 @@
     font-size: 1em;
     padding: 12px 20px;
   }
-  .coiffure-card:hover {
+  .card:hover {
     transform: translateY(-8px);
   }
   }

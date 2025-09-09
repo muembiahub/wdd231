@@ -1,148 +1,116 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Charger le JSON et injecter les cartes
+  // 1. Charger le JSON des catégories construction et réparation
   fetch('data/construction-reparation.json')
-    .then(response => {
-      if (!response.ok) throw new Error("Fichier JSON introuvable");
-      return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
-      const travaux = data.travaux;
-      afficherTravaux(travaux.plomberie, 'plomberie-container');
-      afficherTravaux(travaux.construction, 'construction-container');
-    })
-    .catch(error => {
-      console.error("❌ Erreur JSON :", error);
-    });
+      const container = document.getElementById('catalogue-construction-reparation');
 
-  // 2. Références du modal
+      data.categories.forEach(cat => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.dataset.category = cat.category;
+        card.dataset.price = cat.price;
+
+        card.innerHTML = `
+  <img src="${cat.logo}" alt="${cat.category}" class="category-logo" />
+  <h3>${cat.category}</h3>
+  <p>${cat.description}</p>
+  <div class="card-bottom">
+    <p><strong id="price">À partir de ${cat.price.toFixed(2)} $</strong></p>
+    <button class="open-modal"
+            data-category="${cat.category}"
+            data-price="${cat.price}">
+      Contacter un agent
+    </button>
+  </div>
+      `;
+container.appendChild(card);
+      });
+    })
+    .catch(error => console.error("❌ Erreur lors du chargement du JSON :", error));
+
+  // 2. Modal de contact
   const modal = document.getElementById('contactModal');
-  const messageField = modal?.querySelector('#message');
+  const messageField = modal.querySelector('#message');
   const sendWhatsAppBtn = document.getElementById('sendWhatsApp');
   const sendEmailBtn = document.getElementById('sendEmail');
-  const sendLinks = modal?.querySelector('.send-links');
-  const gpsInput = modal?.querySelector('#gps');
-  const detectBtn = modal?.querySelector('#detectGPS');
-  const mapLink = modal?.querySelector('#mapLink');
+  const sendLinks = modal.querySelector('.send-links');
+  const gpsInput = modal.querySelector('#gps');
+  const detectBtn = document.getElementById('detectGPS');
 
   // 3. Détection GPS
-  detectBtn?.addEventListener('click', () => {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(position => {
-        const lat = position.coords.latitude.toFixed(6);
-        const lon = position.coords.longitude.toFixed(6);
-        const gpsCoords = `${lat}, ${lon}`;
-        const mapURL = `https://www.google.com/maps?q=${lat},${lon}`;
+  if (detectBtn) {
+    detectBtn.addEventListener('click', () => {
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(position => {
+          const lat = position.coords.latitude.toFixed(6);
+          const lon = position.coords.longitude.toFixed(6);
+          const gpsCoords = `${lat}, ${lon}`;
+          const mapURL = `https://www.google.com/maps?q=${lat},${lon}`;
 
-        if (gpsInput) gpsInput.value = gpsCoords;
+          if (gpsInput) gpsInput.value = gpsCoords;
 
-        if (messageField) {
-          const gpsText = `📍 Localisation : ${gpsCoords}\n🗺️ Carte : ${mapURL}\n\n`;
-          messageField.value = gpsText + messageField.value;
-        }
+          if (messageField) {
+            const gpsText = `📍 Ma Localisation : ${gpsCoords}\n🗺️ Carte : ${mapURL}\n\n`;
+            messageField.value = gpsText + messageField.value;
+          }
 
-        detectBtn.disabled = true;
-        detectBtn.textContent = "✅ Position détectée";
-      }, () => {
-        alert("⚠️ Impossible d'obtenir la position.");
-      });
-    } else {
-      alert("🛑 GPS non pris en charge par votre navigateur.");
-    }
-  });
+          detectBtn.disabled = true;
+          detectBtn.textContent = "✅ Position détectée";
+        }, error => {
+          alert("⚠️ Impossible d'obtenir la position.");
+        });
+      } else {
+        alert("🛑 GPS non pris en charge par votre navigateur.");
+      }
+    });
+  }
 
   // 4. Ouvrir le modal avec message personnalisé
   document.addEventListener('click', e => {
     if (e.target.classList.contains('open-modal')) {
       const btn = e.target;
-      const produit = btn.dataset.produit || "Produit";
-      const category = btn.dataset.title || "Catégorie";
-      const price = btn.dataset.price || "N/A";
-      const dimensions = btn.dataset.dimensions || "N/A";
-      const custom = btn.dataset.custom === "true" ? "Oui" : "Non";
+      const category = btn.dataset.category;
+      const price = btn.dataset.price;
 
-      const message = `Bonjour, je suis intéressé par "${produit}" dans la catégorie "${category}".\n\n` +
-                      `Prix : ${price} €\nDimensions : ${dimensions}\nPersonnalisable : ${custom}\n\n` +
+      const message = `Bonjour, je suis intéressé par la catégorie "${category}".\n\n` +
+                      `Prix estimatif : ${price} $\n\n` +
                       `Merci de me fournir plus d'informations.`;
 
       if (messageField) messageField.value = message;
-      sendLinks?.classList.add('visible');
-      if (modal) modal.style.display = 'block';
+      sendLinks.classList.add('visible');
+      modal.style.display = 'block';
     }
   });
 
   // 5. Envoi WhatsApp
-  sendWhatsAppBtn?.addEventListener('click', () => {
-    const message = encodeURIComponent(messageField?.value.trim() || "");
+  sendWhatsAppBtn.addEventListener('click', () => {
+    const message = encodeURIComponent(messageField.value.trim());
     const url = `https://wa.me/243825267122?text=${message}`;
     window.open(url, '_blank');
-    if (modal) modal.style.display = 'none';
+    modal.style.display = 'none';
   });
 
   // 6. Envoi Email
-  sendEmailBtn?.addEventListener('click', () => {
-    const message = encodeURIComponent(messageField?.value.trim() || "");
-    const subject = encodeURIComponent("Demande d'assistance");
+  sendEmailBtn.addEventListener('click', () => {
+    const message = encodeURIComponent(messageField.value.trim());
+    const subject = encodeURIComponent("Demande d'information");
     const mailtoURL = `mailto:jonathanmuembia3@gmail.com?subject=${subject}&body=${message}`;
     window.location.href = mailtoURL;
 
     const gmailURL = `https://mail.google.com/mail/?view=cm&to=jonathanmuembia3@gmail.com&su=${subject}&body=${message}`;
     window.open(gmailURL, '_blank');
-    if (modal) modal.style.display = 'none';
+    modal.style.display = 'none';
   });
 
-  // 7. Fermer le modal avec le bouton
-  document.querySelector('.close')?.addEventListener('click', () => {
-    if (modal) modal.style.display = 'none';
+  // 7. Fermer le modal
+  document.querySelector('.close').addEventListener('click', () => {
+    modal.style.display = 'none';
   });
 
-  // 8. Fermer le modal par clic à l’extérieur
   window.addEventListener('click', e => {
     if (e.target === modal) {
       modal.style.display = 'none';
     }
   });
 });
-
-/**
- * Injecte les travaux dans le conteneur HTML spécifié
- * @param {Array} liste - Liste des travaux
- * @param {string} containerId - ID du conteneur HTML
- */
-function afficherTravaux(liste, containerId) {
-  const container = document.getElementById(containerId);
-  if (!container) {
-    console.warn(`⚠️ Conteneur #${containerId} introuvable.`);
-    return;
-  }
-
-  container.innerHTML = '';
-
-  liste.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'carte-travail';
-
-    const type = item.type || 'Travail';
-    const prix = item.prix || 'N/A';
-    const heure = item.heure || 'N/A';
-    const image = item.image || 'images/default.jpg';
-    const alt = item.alt || 'Image';
-    const description = item.description || 'Pas de description.';
-
-    card.innerHTML = `
-      <h3>${type}</h3>
-      <p><strong>Prix :</strong> ${prix} | <strong>Heure :</strong> ${heure}</p>
-      <img src="${image}" alt="${alt}" style="max-width:200px; margin-top:10px;" />
-      <p>${description}</p>
-      <button class="open-modal"
-              data-produit="${type}"
-              data-title="${containerId === 'plomberie-container' ? 'Plomberie' : 'Construction'}"
-              data-price="${prix.replace('$', '')}"
-              data-dimensions="Standard"
-              data-custom="true">
-        Contacter un agent
-      </button>
-    `;
-
-    container.appendChild(card);
-  });
-}

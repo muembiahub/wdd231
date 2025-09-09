@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       data.categories.forEach(cat => {
         const card = document.createElement('div');
-        card.className = 'coiffure-card';
+        card.className = 'card';
         card.dataset.category = cat.category;
         card.dataset.price = cat.price;
 
@@ -23,9 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
       Contacter un agent
     </button>
   </div>
-`;
-
-        container.appendChild(card);
+      `;
+container.appendChild(card);
       });
     })
     .catch(error => console.error("❌ Erreur lors du chargement du JSON :", error));

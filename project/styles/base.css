@@ -21,7 +21,7 @@ main {
 
 
 /* Conteneur principal */
-#catalogue-coiffure {
+#catalogue-coiffure,#catalogue-menuiserie {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
@@ -30,7 +30,7 @@ main {
 }
 
 /* Carte individuelle */
-.coiffure-card {
+.card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

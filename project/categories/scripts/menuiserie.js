@@ -1,100 +1,80 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Charger les données JSON et générer les cartes pour menuiserie page 
+  // 1. Charger le JSON des catégories beauté
   fetch('data/menuiserie.json')
     .then(response => response.json())
     .then(data => {
       const container = document.getElementById('catalogue-menuiserie');
 
-      data.menuseries.forEach(item => {
+      data.categories.forEach(cat => {
         const card = document.createElement('div');
-        card.className = 'catalogue-menuiserie';
-
-        const features = item.features.map(f => `<li>${f}</li>`).join('');
-        const options = item.options.map(opt => `
-          <li>
-            <strong>${opt.name}</strong><br />
-            Prix : ${opt.price.toFixed(2)} €<br />
-            Dimensions : ${opt.dimensions}<br />
-            Personnalisable : ${opt.customizable ? "Oui" : "Non"}<br />
-            Stock : ${opt.stock}<br />
-            <button class="open-modal"
-                    data-produit="${opt.name}"
-                    data-title="${item.title}"
-                    data-price="${opt.price}"
-                    data-dimensions="${opt.dimensions}"
-                    data-custom="${opt.customizable}">
-              Contacter un agent
-            </button>
-          </li>
-        `).join('');
+        card.className = 'card';
+        card.dataset.category = cat.category;
+        card.dataset.price = cat.price;
 
         card.innerHTML = `
-          <h2>${item.title}</h2>
-          <p><strong>Résumé :</strong> ${item.summary}</p>
-          <img src="../${item.image}" alt="${item.title}" />
-          <p><strong>Détails :</strong> ${item.details}</p>
-          <div><strong>Caractéristiques :</strong><ul>${features}</ul></div>
-          <div><strong>Options disponibles :</strong><ul>${options}</ul></div>
-        `;
-
-        container.appendChild(card);
+  <img src="${cat.logo}" alt="${cat.category}" class="category-logo" />
+  <h3>${cat.category}</h3>
+  <p>${cat.description}</p>
+  <div class="card-bottom">
+    <p><strong id="price">À partir de ${cat.price.toFixed(2)} $</strong></p>
+    <button class="open-modal"
+            data-category="${cat.category}"
+            data-price="${cat.price}">
+      Contacter un agent
+    </button>
+  </div>
+      `;
+container.appendChild(card);
       });
     })
     .catch(error => console.error("❌ Erreur lors du chargement du JSON :", error));
 
-  // 2. Références du modal
+  // 2. Modal de contact
   const modal = document.getElementById('contactModal');
   const messageField = modal.querySelector('#message');
   const sendWhatsAppBtn = document.getElementById('sendWhatsApp');
   const sendEmailBtn = document.getElementById('sendEmail');
   const sendLinks = modal.querySelector('.send-links');
   const gpsInput = modal.querySelector('#gps');
-  const detectBtn = modal.querySelector('#detectGPS');
-  const mapLink = modal.querySelector('#mapLink');
+  const detectBtn = document.getElementById('detectGPS');
 
-  // 3. Détection GPS + Lien Google Maps
-if (detectBtn) {
-  detectBtn.addEventListener('click', () => {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(position => {
-        const lat = position.coords.latitude.toFixed(6);
-        const lon = position.coords.longitude.toFixed(6);
-        const gpsCoords = `${lat}, ${lon}`;
-        const mapURL = `https://www.google.com/maps?q=${lat},${lon}`;
+  // 3. Détection GPS
+  if (detectBtn) {
+    detectBtn.addEventListener('click', () => {
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(position => {
+          const lat = position.coords.latitude.toFixed(6);
+          const lon = position.coords.longitude.toFixed(6);
+          const gpsCoords = `${lat}, ${lon}`;
+          const mapURL = `https://www.google.com/maps?q=${lat},${lon}`;
 
-        if (gpsInput) gpsInput.value = gpsCoords;
+          if (gpsInput) gpsInput.value = gpsCoords;
 
-        if (messageField) {
-          const gpsText = `📍 Localisation : ${gpsCoords}\n🗺️ Carte : ${mapURL}\n\n`;
-          messageField.value = gpsText + messageField.value;
-        }
+          if (messageField) {
+            const gpsText = `📍 Ma Localisation : ${gpsCoords}\n🗺️ Carte : ${mapURL}\n\n`;
+            messageField.value = gpsText + messageField.value;
+          }
 
-        // ✅ Désactiver le bouton après détection
-        detectBtn.disabled = true;
-        detectBtn.textContent = "✅ Position détectée";
-
-      }, error => {
-        alert("⚠️ Impossible d'obtenir la position.");
-      });
-    } else {
-      alert("🛑 GPS non pris en charge par votre navigateur.");
-    }
-  });
-}
-
+          detectBtn.disabled = true;
+          detectBtn.textContent = "✅ Position détectée";
+        }, error => {
+          alert("⚠️ Impossible d'obtenir la position.");
+        });
+      } else {
+        alert("🛑 GPS non pris en charge par votre navigateur.");
+      }
+    });
+  }
 
   // 4. Ouvrir le modal avec message personnalisé
   document.addEventListener('click', e => {
     if (e.target.classList.contains('open-modal')) {
       const btn = e.target;
-      const produit = btn.dataset.produit;
-      const category = btn.dataset.title;
+      const category = btn.dataset.category;
       const price = btn.dataset.price;
-      const dimensions = btn.dataset.dimensions;
-      const custom = btn.dataset.custom === "true" ? "Oui" : "Non";
 
-      const message = `Bonjour, je suis intéressé par "${produit}" dans la catégorie "${category}".\n\n` +
-                      `Prix : ${price} €\nDimensions : ${dimensions}\nPersonnalisable : ${custom}\n\n` +
+      const message = `Bonjour, je suis intéressé par la catégorie "${category}".\n\n` +
+                      `Prix estimatif : ${price} $\n\n` +
                       `Merci de me fournir plus d'informations.`;
 
       if (messageField) messageField.value = message;
@@ -114,7 +94,7 @@ if (detectBtn) {
   // 6. Envoi Email
   sendEmailBtn.addEventListener('click', () => {
     const message = encodeURIComponent(messageField.value.trim());
-    const subject = encodeURIComponent("Demande d'assistance");
+    const subject = encodeURIComponent("Demande d'information");
     const mailtoURL = `mailto:jonathanmuembia3@gmail.com?subject=${subject}&body=${message}`;
     window.location.href = mailtoURL;
 
@@ -123,21 +103,14 @@ if (detectBtn) {
     modal.style.display = 'none';
   });
 
-  // 7. Fermer le modal avec le bouton
+  // 7. Fermer le modal
   document.querySelector('.close').addEventListener('click', () => {
     modal.style.display = 'none';
   });
 
-  // 8. Fermer le modal par clic à l’extérieur
   window.addEventListener('click', e => {
     if (e.target === modal) {
       modal.style.display = 'none';
     }
   });
 });
-
-
-
-
-
- 

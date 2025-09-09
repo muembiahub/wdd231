@@ -1,84 +1,282 @@
+
 {
-  "menuseries": [
+  "categories": [
     {
-      "id": "portes",
-      "title": "Portes",
-      "summary": "Portes en bois massif, vitrées ou personnalisées",
-      "details": "Portes intérieures et extérieures combinant esthétique, robustesse et isolation",
-      "options": [
-        {
-          "name": "Porte standard",
-          "price": 120.00,
-          "dimensions": "80x200 cm",
-          "image": "categories/images/porte.webp"
-        },
-        {
-          "name": "Porte vitrée",
-          "price": 145.00,
-          "dimensions": "85x205 cm",
-          "image": "categories/images/porte_vitree.webp"
-        }
-      ]
+      "logo": "categories/images/porte.webp",
+      "category": "Portes",
+      "description": "Portes en bois massif, vitrées ou personnalisées. Intérieures et extérieures.",
+      "price": 120.00
     },
     {
-      "id": "fenetres",
-      "title": "Fenêtres",
-      "summary": "Fenêtres sur mesure avec vitrage simple ou double",
-      "details": "Fenêtres bois adaptées à tous bâtis, avec options de finition et sécurité",
-      "options": [
-        {
-          "name": "Fenêtre simple",
-          "price": 90.00,
-          "dimensions": "60x100 cm",
-          "image": "categories/images/fenetre_simple.webp"
-        },
-        {
-          "name": "Fenêtre double vitrage",
-          "price": 130.00,
-          "dimensions": "80x120 cm",
-          "image": "categories/images/fenetre_double.webp"
-        }
-      ]
+      "logo": "categories/images/porte_vitree.webp",
+      "category": "Porte vitrée",
+      "description": "Porte en bois avec vitrage, idéale pour laisser passer la lumière.",
+      "price": 145.00
+    },
+    {
+      "logo": "categories/images/porte_entree.webp",
+      "category": "Portes d’entrée",
+      "description": "Portes robustes et sécurisées pour l’extérieur, en bois, acier ou aluminium.",
+      "price": 180.00
+    },
+    {
+      "logo": "categories/images/porte_interieure.webp",
+      "category": "Portes intérieures",
+      "description": "Portes décoratives pour les pièces, en bois massif ou stratifié.",
+      "price": 120.00
+    },
+    {
+      "logo": "categories/images/porte_vitree.webp",
+      "category": "Portes vitrées",
+      "description": "Portes avec vitrage trempé ou sablé, pour plus de lumière et d’élégance.",
+      "price": 145.00
+    },
+    {
+      "logo": "categories/images/porte_coulissante.webp",
+      "category": "Portes coulissantes",
+      "description": "Portes sur rail ou encastrées, idéales pour optimiser l’espace.",
+      "price": 160.00
+    },
+    {
+      "logo": "categories/images/porte_pliante.webp",
+      "category": "Portes pliantes",
+      "description": "Portes en accordéon pour petits espaces, pratiques et esthétiques.",
+      "price": 135.00
+    },
+    {
+      "logo": "categories/images/porte_pivotante.webp",
+      "category": "Portes pivotantes",
+      "description": "Portes design à rotation centrale, effet moderne garanti.",
+      "price": 190.00
+    },
+    {
+      "logo": "categories/images/porte_blindee.webp",
+      "category": "Portes blindées",
+      "description": "Portes haute sécurité avec serrure multipoints, pour une protection maximale.",
+      "price": 250.00
+    },
+    {
+      "logo": "categories/images/porte_acoustique.webp",
+      "category": "Portes acoustiques",
+      "description": "Portes isolantes pour studios, bureaux ou espaces sensibles au bruit.",
+      "price": 210.00
+    },
+    {
+      "logo": "categories/images/porte_garage.webp",
+      "category": "Portes de garage",
+      "description": "Portes sectionnelles ou basculantes, robustes et motorisables.",
+      "price": 300.00
+    },
+    {
+      "logo": "categories/images/porte_mixte.webp",
+      "category": "Portes bois + verre",
+      "description": "Combinaison élégante de bois naturel et vitrage décoratif.",
+      "price": 170.00
+    },
+    {
+      "logo": "categories/images/fenetre_simple.webp",
+      "category": "Fenêtres",
+      "description": "Fenêtres bois sur mesure avec vitrage simple ou double. Finitions personnalisées.",
+      "price": 90.00
+    },
+    {
+      "logo": "categories/images/fenetre_battante.webp",
+      "category": "Fenêtres battantes",
+      "description": "Fenêtres classiques à vantaux, idéales pour l’aération et l’isolation.",
+      "price": 95.00
+    },
+    {
+      "logo": "categories/images/fenetre_coulissante.webp",
+      "category": "Fenêtres coulissantes",
+      "description": "Panneaux glissants sur rail, parfaits pour les vues dégagées et les petits espaces.",
+      "price": 125.00
+    },
+    {
+      "logo": "categories/images/fenetre_fixe.webp",
+      "category": "Fenêtres fixes",
+      "description": "Fenêtres sans ouverture, pour maximiser la lumière et la vue extérieure.",
+      "price": 80.00
+    },
+    {
+      "logo": "categories/images/fenetre_oscillo_battante.webp",
+      "category": "Fenêtres oscillo-battantes",
+      "description": "Double ouverture pratique pour ventilation et sécurité, très polyvalente.",
+      "price": 135.00
+    },
+    {
+      "logo": "categories/images/fenetre_soufflet.webp",
+      "category": "Fenêtres à soufflet",
+      "description": "Ouverture basculante vers l’intérieur, idéale pour les pièces étroites.",
+      "price": 90.00
+    },
+    {
+      "logo": "categories/images/fenetre_basculante.webp",
+      "category": "Fenêtres basculantes",
+      "description": "Châssis pivotant horizontalement, pour une ventilation douce et continue.",
+      "price": 110.00
+    },
+    {
+      "logo": "categories/images/fenetre_galandage.webp",
+      "category": "Fenêtres à galandage",
+      "description": "Panneaux coulissants disparaissant dans les murs, pour une ouverture totale.",
+      "price": 160.00
+    },
+    {
+      "logo": "categories/images/fenetre_guillotine.webp",
+      "category": "Fenêtres à guillotine",
+      "description": "Ouverture verticale sur rails, style classique et gain de place.",
+      "price": 140.00
+    },
+    {
+      "logo": "categories/images/porte_fenetre.webp",
+      "category": "Portes-fenêtres",
+      "description": "Baies vitrées offrant lumière et accès extérieur, parfaites pour les salons.",
+      "price": 185.00
+    }
+    ,
+    {
+      "logo": "categories/images/chaise_classique.webp",
+      "category": "Chaises Salle à Manger",
+      "description": "Chaises élégantes et robustes assorties aux tables. Confort et durabilité.",
+      "price": 75.00
+    },
+    {
+      "logo": "categories/images/fauteuil_lounge.webp",
+      "category": "Chaises Salon",
+      "description": "Chaises décoratives et relaxantes pour le salon. Design et ambiance.",
+      "price": 130.00
     },
      {
-      "id": "chaises_salle_manger",
-      "title": "Chaises Salle à Manger",
-      "summary": "Chaises élégantes et robustes pour vos repas",
-      "details": "Sélection de chaises assorties aux tables, conçues pour le confort et la durabilité",
-      "options": [
-        {
-          "name": "Chaise classique bois",
-          "price": 75.00,
-          "dimensions": "45x90 cm",
-          "image": "categories/images/chaise_classique.webp"
-        },
-        {
-          "name": "Chaise avec coussin",
-          "price": 95.00,
-          "dimensions": "47x92 cm",
-          "image": "categories/images/chaise_coussin.webp"
-        }
-      ]
+      "logo": "categories/images/chaise_classique.webp",
+      "category": "Chaise classique",
+      "description": "Chaise en bois massif avec dossier droit, idéale pour salle à manger ou bureau.",
+      "price": 75.00
     },
     {
-      "id": "chaises_salon",
-      "title": "Chaises Salon",
-      "summary": "Chaises confortables et décoratives pour le salon",
-      "details": "Modèles variés alliant design et relaxation, parfaits pour l’ambiance du salon",
-      "options": [
-        {
-          "name": "Fauteuil lounge",
-          "price": 130.00,
-          "dimensions": "60x95 cm",
-          "image": "categories/images/fauteuil_lounge.webp"
-        },
-        {
-          "name": "Chaise d’appoint",
-          "price": 85.00,
-          "dimensions": "50x90 cm",
-          "image": "categories/images/chaise_appoint.webp"
-        }
-      ]
-    }
-  ]
+      "logo": "categories/images/chaise_coussin.webp",
+      "category": "Chaise avec coussin",
+      "description": "Chaise rembourrée pour plus de confort, parfaite pour les repas prolongés.",
+      "price": 95.00
+    },
+    {
+      "logo": "categories/images/fauteuil_lounge.webp",
+      "category": "Fauteuil lounge",
+      "description": "Siège large et relaxant, conçu pour le salon ou les espaces détente.",
+      "price": 130.00
+    },
+    {
+      "logo": "categories/images/chaise_appoint.webp",
+      "category": "Chaise d’appoint",
+      "description": "Chaise légère et mobile, idéale pour les invités ou les petits espaces.",
+      "price": 85.00
+    },
+    {
+      "logo": "categories/images/chaise_bar.webp",
+      "category": "Chaise de bar",
+      "description": "Chaise haute avec repose-pieds, parfaite pour les comptoirs et cuisines ouvertes.",
+      "price": 110.00
+    },
+    {
+      "logo": "categories/images/chaise_pliante.webp",
+      "category": "Chaise pliante",
+      "description": "Chaise compacte et facile à ranger, idéale pour les événements ou pique-niques.",
+      "price": 60.00
+    },
+    {
+      "logo": "categories/images/chaise_empilable.webp",
+      "category": "Chaise empilable",
+      "description": "Chaise pratique pour les salles d’attente ou les cafés, empilable et résistante.",
+      "price": 70.00
+    },
+    {
+      "logo": "categories/images/chaise_enfant.webp",
+      "category": "Chaise enfant",
+      "description": "Chaise adaptée à la morphologie des enfants, sécurisée et colorée.",
+      "price": 55.00
+    },
+    {
+      "logo": "categories/images/fauteuil_direction.webp",
+      "category": "Fauteuil de direction",
+      "description": "Siège ergonomique haut de gamme, idéal pour bureau ou espace exécutif.",
+      "price": 250.00
+    },
+    {
+  "logo": "categories/images/table.webp",
+  "category": "Tables",
+  "description": "Tables en bois massif ou stratifié, pour salle à manger, bureau ou salon.",
+  "price": 180.00
+},
+{
+  "logo": "categories/images/etagere.webp",
+  "category": "Étagères",
+  "description": "Étagères murales ou sur pied, modulables et décoratives.",
+  "price": 95.00
+},
+{
+  "logo": "categories/images/bibliotheque.webp",
+  "category": "Bibliothèques",
+  "description": "Meubles de rangement pour livres et objets, personnalisables.",
+  "price": 220.00
+},
+{
+  "logo": "categories/images/commode.webp",
+  "category": "Commodes",
+  "description": "Meubles à tiroirs pour chambre ou salon, design et fonctionnels.",
+  "price": 160.00
+},
+{
+  "logo": "categories/images/cloison.webp",
+  "category": "Cloisons en bois",
+  "description": "Séparations intérieures esthétiques, fixes ou mobiles.",
+  "price": 140.00
+},
+{
+  "logo": "categories/images/plafond.webp",
+  "category": "Plafonds bois",
+  "description": "Revêtements de plafond en lambris ou panneaux décoratifs.",
+  "price": 110.00
+},
+{
+  "logo": "categories/images/revetement_mural.webp",
+  "category": "Revêtements muraux",
+  "description": "Panneaux bois pour habillage mural, ambiance chaleureuse garantie.",
+  "price": 125.00
+},
+{
+  "logo": "categories/images/penderie.webp",
+  "category": "Penderies",
+  "description": "Armoires et dressings sur mesure, avec portes coulissantes ou battantes.",
+  "price": 240.00
+},
+{
+  "logo": "categories/images/meuble_tv.webp",
+  "category": "Meubles TV",
+  "description": "Supports pour écran et rangements multimédia, design épuré.",
+  "price": 150.00
+},
+{
+  "logo": "categories/images/boite_rangement.webp",
+  "category": "Boîtes de rangement",
+  "description": "Coffres et caissons en bois pour organiser vos espaces.",
+  "price": 65.00
+},
+{
+  "logo": "categories/images/pergola.webp",
+  "category": "Pergolas",
+  "description": "Structures bois pour terrasse ou jardin, ombrage naturel.",
+  "price": 350.00
+},
+{
+  "logo": "categories/images/abri_jardin.webp",
+  "category": "Abris de jardin",
+  "description": "Petites constructions bois pour outils, loisirs ou détente.",
+  "price": 480.00
+},
+{
+  "logo": "categories/images/banc_exterieur.webp",
+  "category": "Bancs extérieurs",
+  "description": "Assises en bois pour jardin ou cour, robustes et esthétiques.",
+  "price": 130.00
+}
+]
 }
