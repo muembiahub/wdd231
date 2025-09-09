@@ -21,7 +21,7 @@ main {
 
 
 /* Conteneur principal */
-#catalogue {
+#category {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;

@@ -11,7 +11,7 @@ fetch(jsonPath)
   .then(data => renderCatalogue(data))
   .catch(error => {
     console.error("Erreur de chargement :", error);
-    document.querySelector("#catalogue").innerHTML = `<p>Contenu indisponible pour cette page.</p>`;
+    document.querySelector("#category").innerHTML = `<p>Contenu indisponible pour cette page.</p>`;
   });
 
 // Fonction de rendu universel
@@ -42,7 +42,7 @@ function renderSimpleCard(item) {
       <strong>${item.price} $</strong>
     </div>
   `;
-  document.querySelector("#catalogue").innerHTML += card;
+  document.querySelector("#category").innerHTML += card;
 }
 
 // Carte menuiserie avec options
@@ -59,7 +59,7 @@ function renderMenuiserieCard(item) {
       `).join("")}
     </div>
   `;
-  document.querySelector("#catalogue").innerHTML += card;
+  document.querySelector("#category").innerHTML += card;
 }
 
 // Carte service : type + image + description + price
@@ -72,5 +72,5 @@ function renderServiceCard(item) {
       <strong>${item.price} $</strong>
     </div>
   `;
-  document.querySelector("#catalogue").innerHTML += card;
+  document.querySelector("#category").innerHTML += card;
 }
