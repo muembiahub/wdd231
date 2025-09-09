@@ -72,7 +72,7 @@ function renderServiceCard(item) {
       <h3>${item.type}</h3>
       <p>${item.description}</p>
       <strong>${item.price} $</strong>
-      <button onclick="open-modal('${item.type}', ${item.price})">Contacter un agent</button>
+      <button class="open-modal" data-category="${item.type}" data-price="${item.price}">Contacter un agent</button>
     </div>
   `;
   document.querySelector("#category").innerHTML += card;
