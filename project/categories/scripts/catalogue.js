@@ -40,7 +40,7 @@ function renderSimpleCard(item) {
       <h3>${item.category}</h3>
       <p>${item.description}</p>
       <strong>${item.price} $</strong>
-      <button onclick="openContactForm('${item.category}', ${item.price})">Contacter un agent</button>
+      <button onclick="open-modal('${item.category}', ${item.price})">Contacter un agent</button>
     </div>
   `;
   document.querySelector("#category").innerHTML += card;
@@ -56,7 +56,7 @@ function renderMenuiserieCard(item) {
         <div class="option">
           <img src="${opt.image}" alt="${opt.name}">
           <p>${opt.name} — ${opt.dimensions} — ${opt.price} $</p>
-          <button onclick="openContactForm('${opt.name}', ${opt.price})">Contacter un agent</button>
+          <button onclick="open-modal('${opt.name}', ${opt.price})">Contacter un agent</button>
         </div>
       `).join("")}
     </div>
@@ -72,7 +72,7 @@ function renderServiceCard(item) {
       <h3>${item.type}</h3>
       <p>${item.description}</p>
       <strong>${item.price} $</strong>
-      <button onclick="openContactForm('${item.type}', ${item.price})">Contacter un agent</button>
+      <button onclick="open-modal('${item.type}', ${item.price})">Contacter un agent</button>
     </div>
   `;
   document.querySelector("#category").innerHTML += card;
