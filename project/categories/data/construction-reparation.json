@@ -1,5 +1,5 @@
 {
-  "reparation": [
+  "categories": [
     {
       "type": "Réparation lavabo",
       "price": 20.00,
@@ -36,9 +36,7 @@
       "image": "images/fuite_evier.jpg",
       "alt": "Fuite sous évier détectée",
       "description": "Inspection visuelle et test de pression pour localiser une fuite sous l’évier."
-    }
-  ],
-  "construction": [
+    },
     {
       "type": "Coulage dalle béton",
       "price": 120.00,
@@ -78,9 +76,7 @@
       "image": "images/crepi_facade.jpg",
       "alt": "Façade crépie avec finition lisse",
       "description": "Application du crépi sur les murs extérieurs pour finition esthétique."
-    }
-  ],
-  "categories": [
+    },
     {
       "logo": "categories/images/beton.webp",
       "category": "Béton",

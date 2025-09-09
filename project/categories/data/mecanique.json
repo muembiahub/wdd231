@@ -1,0 +1,106 @@
+{
+  "categories": [
+    {
+      "logo": "categories/images/vidange.webp",
+      "category": "Vidange moteur",
+      "description": "Remplacement de l’huile moteur et du filtre pour assurer la longévité du moteur.",
+      "price": 35.00
+    },
+    {
+      "logo": "categories/images/freinage.webp",
+      "category": "Réparation freinage",
+      "description": "Remplacement des plaquettes, disques et purge du liquide de frein.",
+      "price": 60.00
+    },
+    {
+      "logo": "categories/images/climatisation.webp",
+      "category": "Entretien climatisation",
+      "description": "Recharge du gaz, détection de fuites et nettoyage du circuit de climatisation.",
+      "price": 55.00
+    },
+    {
+      "logo": "categories/images/transmission.webp",
+      "category": "Réparation transmission",
+      "description": "Diagnostic et réparation des boîtes de vitesses manuelles ou automatiques.",
+      "price": 120.00
+    },
+    {
+      "logo": "categories/images/pneumatique.webp",
+      "category": "Changement de pneus",
+      "description": "Montage, équilibrage et contrôle de la pression des pneus.",
+      "price": 25.00
+    },
+    {
+      "logo": "categories/images/moteur.webp",
+      "category": "Diagnostic moteur",
+      "description": "Analyse électronique et mécanique du moteur pour détecter les anomalies.",
+      "price": 40.00
+    },
+    {
+      "logo": "categories/images/batterie.webp",
+      "category": "Remplacement batterie",
+      "description": "Test de charge et installation d’une batterie neuve adaptée au véhicule.",
+      "price": 50.00
+    },
+    {
+      "logo": "categories/images/suspension.webp",
+      "category": "Réparation suspension",
+      "description": "Contrôle et remplacement des amortisseurs, ressorts et bras de suspension.",
+      "price": 85.00
+    },
+    {
+      "logo": "categories/images/machine_industrielle.webp",
+      "category": "Maintenance machine industrielle",
+      "description": "Entretien préventif et curatif des équipements mécaniques en atelier ou usine.",
+      "price": 150.00
+    },
+    {
+      "logo": "categories/images/generateur.webp",
+      "category": "Réparation groupe électrogène",
+      "description": "Révision du moteur, alternateur et système de démarrage du générateur.",
+      "price": 110.00
+    },
+    {
+      "logo": "categories/images/mecanique_agricole.webp",
+      "category": "Mécanique agricole",
+      "description": "Réparation de tracteurs, motoculteurs et équipements de culture.",
+      "price": 130.00
+    },
+    {
+      "logo": "categories/images/soudure.webp",
+      "category": "Soudure mécanique",
+      "description": "Assemblage ou réparation de pièces métalliques par soudure à l’arc ou MIG.",
+      "price": 70.00
+    },
+    {
+      "logo": "categories/images/alignement.webp",
+      "category": "Alignement laser",
+      "description": "Alignement précis d’équipements rotatifs pour réduire vibrations et usure.",
+      "price": 95.00
+    },
+    {
+      "logo": "categories/images/usinage.webp",
+      "category": "Usinage de précision",
+      "description": "Fabrication ou retouche de pièces mécaniques sur tour ou fraiseuse.",
+      "price": 160.00
+    },
+    {
+      "logo": "categories/images/retro_ingenierie.webp",
+      "category": "Rétro-ingénierie",
+      "description": "Reconstruction de plans et modèles 3D à partir de pièces existantes.",
+      "price": 190.00
+    },
+    {
+      "logo": "categories/images/robotique.webp",
+      "category": "Maintenance robotique",
+      "description": "Entretien et calibration de bras robotisés et systèmes automatisés.",
+      "price": 210.00
+    },
+    {
+      "logo": "categories/images/electromecanique.webp",
+      "category": "Électromécanique",
+      "description": "Intervention sur systèmes combinant moteurs électriques et composants mécaniques.",
+      "price": 175.00
+    }
+  ]
+}
