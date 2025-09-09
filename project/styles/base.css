@@ -21,11 +21,7 @@ main {
 
 
 /* Conteneur principal */
-#catalogue-coiffure,#catalogue-menuiserie,#catalogue-construction-reparation,#catalogue-manifestations-ceremonies 
-,#catalogue-mecanique
-
-
-{
+#catalogue {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
