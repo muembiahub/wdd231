@@ -1,207 +1,34 @@
 {
-  "coiffure": [
+  "categories": [
     {
-      "id": "cat001",
-      "title": "Coupes",
-      "summary": "Coupes stylées pour hommes, femmes et enfants.",
-      "details": "Des coupes rapides et personnalisées, avec option de service à domicile selon le type de prestation.",
-      "features": [
-        "Adaptées à tout type de cheveux",
-        "Disponible pour tous les âges",
-        "Service mobile pour certaines options"
-      ],
-      "options": [
-        {
-          "id": "srv001",
-          "name": "Coupe Homme",
-          "duration": "30min",
-          "price": 20,
-          "homeService": true,
-          "image": "categories/images/coupe-homme.webp"
-        },
-        {
-          "id": "srv002",
-          "name": "Coupe Femme",
-          "duration": "45min",
-          "price": 8,
-          "homeService": true,
-          "image": "categories/images/coupe-femme.webp"
-        },
-        {
-          "id": "srv003",
-          "name": "Coupe enfant",
-          "duration": "25min",
-          "price": 4,
-          "homeService": true,
-          "image": "categories/images/coupe-enfant.webp"
-        }
-      ],
-      "image": "categories/images/coupe-femme-homme-enfant.webp"
+      "logo": "images/coupe-femme-homme-enfant.webp",
+      "category": "Coupes",
+      "description": "Coupes stylées pour hommes, femmes et enfants. Rapides et personnalisées.",
+      "price": 10.67
     },
     {
-      "id": "cat002",
-      "title": "Tissage & Tresses",
-      "summary": "Tissage & Tresses africaines modernes et traditionnelles.",
-      "details": "Des tresses réalisées avec soin, adaptées à tous les types de cheveux et occasions. Possibilité d'ajouter des rajouts.",
-      "features": [
-        "Style durable",
-        "Rajouts optionnels",
-        "Disponible pour enfants et adultes"
-      ],
-      "services": [
-        {
-          "id": "srv004",
-          "name": "Tissage",
-          "duration": "90min",
-          "price": 35,
-          "homeService": true,
-          "image": "categories/images/tissage.webp"
-        },
-        {
-          "id": "srv005",
-          "name": "Pose perrique",
-          "duration": "120min",
-          "price": 40,
-          "homeService": true,
-          "image": "categories/images/pose-perique.webp"
-        },
-        {
-          "id": "srv006",
-          "name": "Afro",
-          "duration": "60min",
-          "price": 35,
-          "homeService": true,
-          "image": "categories/images/afro.webp"
-        }
-      ]
-      ,
-      "image": "categories/images/tresses.webp"
+      "logo": "categories/images/tresses.webp",
+      "category": "Tissage & Tresses",
+      "description": "Tresses africaines modernes et traditionnelles, avec ou sans rajouts.",
+      "price": 35.71
     },
     {
-      "id": "cat003",
-      "title": "Soins capillaires",
-      "summary": "Traitements pour renforcer ou sublimer vos cheveux.",
-      "details": "Des soins ciblés pour défriser, nourrir, ou colorer les cheveux avec des produits professionnels.",
-      "features": [
-        "Soins adaptés à tout type de cheveux",
-        "Produits professionnels",
-        "Disponible à domicile selon le service"
-      ],
-      "services": [
-        {
-          "id": "srv007",
-          "name": "Défrisage",
-          "duration": "75min",
-          "price": 20,
-          "homeService": true,
-          "image": "categories/images/defrisage-complet.webp"
-        },
-        {
-          "id": "srv008",
-          "name": "Tong",
-          "duration": "60min",
-          "price": 35,
-          "homeService": true,
-          "image": "categories/images/tong.webp"
-        },
-        {
-          "id": "srv009",
-          "name": "Broching simple  broching plus lisage ",
-          "duration": "40min",
-          "price": 10,
-          "homeService": true,
-          "image": "categories/images/broching-simple-broching-plus-lisage.webp"
-        }
-        
-      ]
-      ,
-      "image": "categories/images/soins-capillaires.webp"
+      "logo": "categories/images/soins-capillaires.webp",
+      "category": "Soins capillaires",
+      "description": "Défrisage, coloration, broching et soins nourrissants pour tous types de cheveux.",
+      "price": 22.14
     },
     {
-      "id": "cat004",
-      "title": "Coiffure événementielle",
-      "summary": "Mise en beauté pour vos plus beaux jours.",
-      "details": "Des coiffures et maquillages pensés pour les mariages, cérémonies et événements spéciaux.",
-      "features": [
-        "Coiffure professionnelle et élégante",
-        "Maquillage doux inclus",
-        "Service mobile pour faciliter la préparation"
-      ],
-      "services": [
-        {
-          "id": "srv010",
-          "name": "Coiffure Mariage",
-          "duration": "90min",
-          "price": 30,
-          "homeService": true,
-          "image": "categories/images/coiffure-mariage.webp"
-        },
-        {
-          "id": "srv011",
-          "name": "Maquillage léger",
-          "duration": "45min",
-          "price": 12,
-          "homeService": true,
-          "image": "categories/images/coiffure-mariage-african.webp"
-        },
-        {
-          "id": "srv012",
-          "name": "Micro shading et shindig ",
-          "duration": "45min",
-          "price": 100,
-          "homeService": true,
-          "image": "categories/images/micro-shading-et-shindig.webp"
-        }
-      ]
-      ,
-       "image": "categories/images/coiffure-evenementielle.webp"
+      "logo": "categories/images/coiffure-evenementielle.webp",
+      "category": "Coiffure événementielle",
+      "description": "Coiffures et maquillages pour mariages, cérémonies et événements spéciaux.",
+      "price": 47.40
     },
-  {
-  "id": "cat005",
-  "title": "Soins des Ongles",
-  "summary": "Des mains impeccables pour toutes les occasions.",
-  "details": "Des prestations variées pour embellir, protéger et sublimer vos ongles.",
-  "features": [
-    "Manucure professionnelle et personnalisée",
-    "Pose de vernis classique ou semi-permanent",
-    "Soins nourrissants et réparateurs pour ongles fragiles"
-                ],
-            "services": [
-                    {
-                        "id": "srv012",
-                        "name": "Manucure Classique",
-                        "duration": "30min",
-                        "price": 15,
-                        "homeService": true,
-                         "image": "categories/images/manucure-classique.webp"
-                        },
-                        {    
-                             "id": "srv013",
-                            "name": "Manucure Semi-permanente",
-                            "duration": "45min",
-                            "price": 25,
-                            "homeService": true,
-                            "image": "categories/images/manucure-semi.webp"
-                            },
-                            {
-                             "id": "srv014",
-                             "name": "Soin Réparateur Ongles",
-                             "duration": "20min",
-                             "price": 18,
-                             "homeService": true,
-                             "image": "categories/images/soin-ongles.webp"
-                            },
-                            {
-                                "id": "srv015",
-                                "name": "Pose de Faux Ongles",
-                                "duration": "60min",
-                                "price": 35,
-                                "homeService": true,
-                                "image": "categories/images/faux-ongles.webp"
-                            }
-                        ],
-    "image": "categories/images/soins-des-ongles.webp"
-     }
-
+    {
+      "logo": "categories/images/soins-des-ongles.webp",
+      "category": "Soins des Ongles",
+      "description": "Manucure, faux ongles, nail art et soins réparateurs pour des mains impeccables.",
+      "price": 20.63
+    }
   ]
- }
+}

@@ -5,97 +5,80 @@
       "title": "Portes",
       "summary": "Portes en bois massif, vitrées ou personnalisées",
       "details": "Portes intérieures et extérieures combinant esthétique, robustesse et isolation",
-      "features": ["Bois massif", "Design personnalisé", "Isolation thermique"],
       "options": [
         {
           "name": "Porte standard",
           "price": 120.00,
-          "dimensions": "90x210 cm",
-          "customizable": true,
-          "stock": 8
+          "dimensions": "80x200 cm",
+          "image": "categories/images/porte.webp"
         },
         {
           "name": "Porte vitrée",
           "price": 145.00,
           "dimensions": "85x205 cm",
-          "customizable": true,
-          "stock": 5
+          "image": "categories/images/porte_vitree.webp"
         }
-      ],
-      "image": "categories/images/porte.webp"
+      ]
     },
     {
       "id": "fenetres",
       "title": "Fenêtres",
       "summary": "Fenêtres sur mesure avec vitrage simple ou double",
       "details": "Fenêtres bois adaptées à tous bâtis, avec options de finition et sécurité",
-      "features": ["Double vitrage", "Cadre bois traité", "Verrouillage sécurisé"],
-      
       "options": [
         {
           "name": "Fenêtre simple",
           "price": 90.00,
           "dimensions": "60x100 cm",
-          "customizable": false,
-          "stock": 12
+          "image": "categories/images/fenetre_simple.webp"
         },
         {
           "name": "Fenêtre double vitrage",
           "price": 130.00,
           "dimensions": "80x120 cm",
-          "customizable": true,
-          "stock": 6
+          "image": "categories/images/fenetre_double.webp"
         }
-      ],
-      "image": "categories/images/fenetre-en-bois.webp"
+      ]
     },
      {
       "id": "chaises_salle_manger",
       "title": "Chaises Salle à Manger",
       "summary": "Chaises élégantes et robustes pour vos repas",
       "details": "Sélection de chaises assorties aux tables, conçues pour le confort et la durabilité",
-      "features": ["Bois massif", "Assise rembourrée", "Finition vernie"],
       "options": [
         {
           "name": "Chaise classique bois",
           "price": 75.00,
           "dimensions": "45x90 cm",
-          "customizable": true,
-          "stock": 10
+          "image": "categories/images/chaise_classique.webp"
         },
         {
           "name": "Chaise avec coussin",
           "price": 95.00,
           "dimensions": "47x92 cm",
-          "customizable": true,
-          "stock": 6
+          "image": "categories/images/chaise_coussin.webp"
         }
-      ],
-      "image": "categories/images/chaises_salle.webp"
+      ]
     },
     {
       "id": "chaises_salon",
       "title": "Chaises Salon",
       "summary": "Chaises confortables et décoratives pour le salon",
       "details": "Modèles variés alliant design et relaxation, parfaits pour l’ambiance du salon",
-      "features": ["Design moderne", "Assise large", "Bois et tissu"],
       "options": [
         {
           "name": "Fauteuil lounge",
           "price": 130.00,
           "dimensions": "60x95 cm",
-          "customizable": false,
-          "stock": 4
+          "image": "categories/images/fauteuil_lounge.webp"
         },
         {
           "name": "Chaise d’appoint",
           "price": 85.00,
           "dimensions": "50x90 cm",
-          "customizable": true,
-          "stock": 8
+          "image": "categories/images/chaise_appoint.webp"
         }
-      ],
-      "image": "images/chaises_salon.webp"
+      ]
     }
   ]
 }

@@ -11,12 +11,91 @@ body {
 
 main {
   padding-top: 100px;
+  padding-bottom: 5px;
   /* même valeur que la hauteur du header */
 }
 
 
 
 /* ............//// Showcase styling ////......... */
+
+
+/* Conteneur principal */
+#catalogue-coiffure {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Carte individuelle */
+.coiffure-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 280px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  border: 1px solid #eee;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+/* Logo en haut */
+.category-logo {
+  object-fit: contain;
+  margin: 0 auto 2px;
+}
+
+/* Titre et description */
+.coiffure-card h3 {
+  font-size: 1.2em;
+  text-align: center;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.coiffure-card p {
+  font-size: 0.95em;
+  text-align: center;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+/* Section bas de carte */
+.coiffure-card .card-bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Prix */
+#price {
+  font-weight: bold;
+  color: #2a7;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Bouton */
+.open-modal {
+  padding: 10px 16px;
+  background-color: #2a7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.open-modal:hover {
+  background-color: #1e5;
+}
 
 
 /*    Showcase description */
@@ -381,3 +460,28 @@ a {
 }
 
 /* footer section end */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -74,11 +74,70 @@
   margin: 1em 0;
   
 }
-.categories-container {
+
+
+
+
+
+.categories-container, .catalogue-coiffure {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1em;
 }
+#catalogue-coiffure {
+    justify-content: flex-start;
+    gap: 32px;
+    padding: 40px;
+  }
+
+  .coiffure-card {
+    width: 300px;
+    padding: 24px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+  }
+
+  .category-logo {
+    width: 300px;
+    height: 200px;
+    margin-bottom: 16px;
+  }
+
+  .coiffure-card h3 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+  }
+
+  .coiffure-card p {
+    font-size: 1em;
+    margin-bottom: 14px;
+  }
+
+  #price {
+    font-size: 1.05em;
+    margin-bottom: 12px;
+  }
+
+  .open-modal {
+    font-size: 1em;
+    padding: 12px 20px;
+  }
+  .coiffure-card:hover {
+    transform: translateY(-8px);
+  }
+  }
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
