@@ -48,29 +48,31 @@
     <span class="close">&times;</span>
     <h3>Contacter un agent</h3>
 
-    <form id="contactForm">
-      <label for="name">Nom Complet :</label>
-      <input type="text" id="name" name="name" required>
+   <form name="Demandes-services-kazidomo" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contactForm">
+  <input type="hidden" name="form-name" value="Demandes-services-kazidomo">
+  <input type="hidden" name="bot-field">
 
-      <div class="gps-section">
-        <label for="gps">Ma position :</label>
-        <input type="text" id="gps" readonly placeholder="Coordonnées GPS">
-        <button id="detectGPS" type="button">📍 Détecter la position</button>
-      </div>
+      <label for="name">Nom Complet :</label>
+      <input type="text" name="name" id="name" required>
 
       <label for="clientEmail">Email :</label>
-      <input type="email" id="clientEmail" required>
+      <input type="email" name="clientEmail" id="clientEmail" required>
 
       <label for="clientWhatsApp">WhatsApp :</label>
-      <input type="text" id="clientWhatsApp" required>
+      <input type="text" name="clientWhatsApp" id="clientWhatsApp" required>
+
+      <label for="gps">Ma position :</label>
+      <input type="text" name="gps" id="gps" readonly placeholder="Coordonnées GPS">
+      <button type="button" id="detectGPS">📍 Détecter ma position</button>
 
       <label for="message">Message :</label>
-      <textarea id="message" rows="6" placeholder="Votre message ici..."></textarea>
+      <textarea name="message" id="message" rows="5" required></textarea>
 
-      <div class="send-links">
-        <button id="sendToDatabase" type="button">📥 Enregistrer dans la base</button>
-      </div>
+      <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
     </form>
+    <divdiv class="confirmation-message" id="confirmationMessage">
+      <h3>Merci pour votre demande!</h3>
+      <p>Nous avons bien reçu votre message et vous contacterons sous peu.</p>
   </div>
 </div>
     </div>
