@@ -3,10 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const pageName = getPageName();
   const jsonPath = `data/${pageName}.json`;
 
-  loadCards(jsonPath);
-  setupModal();
-  setupGPS();
-  setupFormValidation();
+  injectForm();        // Injecte le formulaire dans le DOM
+  loadCards(jsonPath); // Charge les cartes dynamiques
+  setupModal();        // Gère l’ouverture du modal
+  setupGPS();          // Active la détection GPS
+  setupFormValidation(); // Valide le formulaire
 });
 
 // === 2. Fonctions utilitaires ===
@@ -18,7 +19,49 @@ function $(selector) {
   return document.querySelector(selector);
 }
 
-// === 3. Chargement des cartes ===
+// === 3. Injection du formulaire ===
+function injectForm() {
+  const formContainer = document.createElement("div");
+  formContainer.innerHTML = `
+    <div id="contactModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h3>Contacter un agent</h3>
+
+        <form name="Demandes-services-kazidomo" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contactForm">
+          <input type="hidden" name="form-name" value="Demandes-services-kazidomo">
+          <input type="hidden" name="bot-field">
+
+          <label for="name">Nom Complet :</label>
+          <input type="text" name="name" id="name" required>
+
+          <label for="clientEmail">Email :</label>
+          <input type="email" name="clientEmail" id="clientEmail" required>
+
+          <label for="clientWhatsApp">WhatsApp :</label>
+          <input type="text" name="clientWhatsApp" id="clientWhatsApp" required>
+
+          <label for="gps">Ma position :</label>
+          <input type="text" name="gps" id="gps" readonly placeholder="Coordonnées GPS">
+          <button type="button" id="detectGPS">📍 Détecter ma position</button>
+
+          <label for="message">Message :</label>
+          <textarea name="message" id="message" rows="5" required></textarea>
+
+          <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
+        </form>
+
+        <div class="confirmation-message" id="confirmationMessage" style="display: none;">
+          <h3>Merci pour votre demande!</h3>
+          <p>Nous avons bien reçu votre message et vous contacterons sous peu.</p>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(formContainer);
+}
+
+// === 4. Chargement des cartes ===
 function loadCards(jsonPath) {
   fetch(jsonPath)
     .then(res => res.ok ? res.json() : Promise.reject(`Fichier introuvable : ${jsonPath}`))
@@ -52,10 +95,10 @@ function createCard(item) {
   `;
 }
 
-// === 4. Gestion du modal ===
+// === 5. Gestion du modal ===
 function setupModal() {
   const modal = $("#contactModal");
-  const closeBtn = modal?.querySelector(".close");
+  const closeBtn = $("#closeModal");
   const messageField = $("#message");
 
   document.addEventListener("click", e => {
@@ -76,7 +119,7 @@ function setupModal() {
   });
 }
 
-// === 5. Détection GPS ===
+// === 6. Détection GPS ===
 function setupGPS() {
   const detectBtn = $("#detectGPS");
   const gpsInput = $("#gps");
@@ -95,9 +138,10 @@ function setupGPS() {
   });
 }
 
-// === 6. Validation du formulaire ===
+// === 7. Validation du formulaire ===
 function setupFormValidation() {
   const form = $("#contactForm");
+  const confirmation = $("#confirmationMessage");
   const requiredFields = ["#name", "#clientEmail", "#clientWhatsApp", "#message"].map($);
 
   form?.addEventListener("submit", e => {
@@ -109,6 +153,6 @@ function setupFormValidation() {
       return;
     }
 
-    form.insertAdjacentHTML("beforeend", `<p class="confirmation">✅ Demande envoyée avec succès !</p>`);
+    confirmation.style.display = "block";
   });
 }
