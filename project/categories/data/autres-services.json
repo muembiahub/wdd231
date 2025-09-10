@@ -1,0 +1,38 @@
+[
+  {
+    "logo": "images/transport.webp",
+    "category": "Transport & Logistique",
+    "description": "Services de transport de personnes, marchandises, déménagements et livraisons locales.",
+    "price": "10000"
+  },
+  {
+    "logo": "images/cleaning.webp",
+    "category": "Nettoyage & Entretien",
+    "description": "Entretien de bureaux, maisons, espaces publics et services de désinfection.",
+    "price": "8000"
+  },
+  {
+    "logo": "images/event-services.webp",
+    "category": "Événementiel",
+    "description": "Organisation d’événements, location de matériel, décoration et coordination logistique.",
+    "price": "15000"
+  },
+  {
+    "logo": "images/printing.webp",
+    "category": "Impression & Signalétique",
+    "description": "Conception et impression de flyers, affiches, banderoles, badges et supports personnalisés.",
+    "price": "5000"
+  },
+  {
+    "logo": "images/repair-services.webp",
+    "category": "Réparations diverses",
+    "description": "Réparation d’équipements électroniques, électroménagers, meubles et installations domestiques.",
+    "price": "7000"
+  },
+  {
+    "logo": "images/legal-support.webp",
+    "category": "Appui juridique & administratif",
+    "description": "Assistance pour documents légaux, démarches administratives, conseils et médiation.",
+    "price": "12000"
+  }
+]

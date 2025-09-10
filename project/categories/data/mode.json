@@ -1,0 +1,26 @@
+[
+  {
+    "logo": "images/clothing.webp",
+    "category": "Vêtements",
+    "description": "Création, vente et personnalisation de tenues traditionnelles, modernes et professionnelles.",
+    "price": "15000"
+  },
+  {
+    "logo": "images/accessories.webp",
+    "category": "Accessoires",
+    "description": "Confection et vente de bijoux, sacs, ceintures, lunettes et autres éléments de style.",
+    "price": "5000"
+  },
+  {
+    "logo": "images/fashion-design.webp",
+    "category": "Design vestimentaire",
+    "description": "Conception de modèles originaux, croquis, patronage et accompagnement créatif.",
+    "price": "20000"
+  },
+  {
+    "logo": "images/cultural-trends.webp",
+    "category": "Tendances culturelles",
+    "description": "Valorisation des styles locaux, défilés, expositions et documentation des influences vestimentaires.",
+    "price": "0"
+  }
+]

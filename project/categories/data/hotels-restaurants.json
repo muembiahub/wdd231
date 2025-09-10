@@ -1,0 +1,26 @@
+[
+  {
+    "logo": "images/restaurant-services.webp",
+    "category": "Services de restauration",
+    "description": "Préparation et service de repas, traiteur, cantines communautaires et restauration mobile.",
+    "price": "8000"
+  },
+  {
+    "logo": "images/hospitality.webp",
+    "category": "Hébergement",
+    "description": "Chambres d’hôtes, auberges, hôtels et accueil personnalisé pour voyageurs et visiteurs.",
+    "price": "25000"
+  },
+  {
+    "logo": "images/gastronomy.webp",
+    "category": "Gastronomie",
+    "description": "Cuisine locale et fusion, plats traditionnels, dégustations et événements culinaires.",
+    "price": "12000"
+  },
+  {
+    "logo": "images/local-hospitality.webp",
+    "category": "Hospitalité locale",
+    "description": "Accueil communautaire, guides locaux, services d’accompagnement et expériences culturelles.",
+    "price": "0"
+  }
+]

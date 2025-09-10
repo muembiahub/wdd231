@@ -1,0 +1,38 @@
+[
+  {
+    "logo": "images/electric-installation.webp",
+    "category": "Installation électrique",
+    "description": "Installation de réseaux électriques domestiques ou industriels, tableaux de distribution, et compteurs.",
+    "price": "0"
+  },
+  {
+    "logo": "images/maintenance-repair.webp",
+    "category": "Maintenance & Réparation",
+    "description": "Diagnostic et réparation de pannes, remplacement de câblage, révision de tableaux et groupes électrogènes.",
+    "price": "15000"
+  },
+  {
+    "logo": "images/lighting.webp",
+    "category": "Éclairage & Ambiance",
+    "description": "Installation de luminaires, éclairage solaire, détecteurs de mouvement et systèmes d’ambiance.",
+    "price": "10000"
+  },
+  {
+    "logo": "images/solar-energy.webp",
+    "category": "Énergies renouvelables",
+    "description": "Installation de panneaux solaires, batteries, onduleurs et systèmes hybrides.",
+    "price": "0"
+  },
+  {
+    "logo": "images/security-automation.webp",
+    "category": "Sécurité & Automatisation",
+    "description": "Installation de disjoncteurs, domotique, alarmes et vidéosurveillance alimentée électriquement.",
+    "price": "20000"
+  },
+  {
+    "logo": "images/consulting.webp",
+    "category": "Études & Conseil",
+    "description": "Audits énergétiques, plans électriques, optimisation de consommation et conformité aux normes.",
+    "price": "25000"
+  }
+]

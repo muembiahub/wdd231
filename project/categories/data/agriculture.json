@@ -1,0 +1,26 @@
+[
+  {
+    "logo": "images/crop-production.webp",
+    "category": "Cultures",
+    "description": "Production de céréales, légumes, fruits et plantes médicinales selon les saisons et les sols.",
+    "price": "10000"
+  },
+  {
+    "logo": "images/agricultural-breeding.webp",
+    "category": "Élevage",
+    "description": "Élevage de volailles, bovins, caprins et autres animaux pour consommation ou reproduction.",
+    "price": "20000"
+  },
+  {
+    "logo": "images/agro-processing.webp",
+    "category": "Agro-transformation",
+    "description": "Transformation de produits agricoles en biens consommables : farine, jus, huiles, conserves.",
+    "price": "15000"
+  },
+  {
+    "logo": "images/sustainable-agriculture.webp",
+    "category": "Services agricoles durables",
+    "description": "Conseil, irrigation, compostage, semences améliorées et accompagnement agroécologique.",
+    "price": "5000"
+  }
+]

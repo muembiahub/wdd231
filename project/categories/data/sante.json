@@ -1,0 +1,32 @@
+[
+  {
+    "logo": "images/medical-care.webp",
+    "category": "Soins médicaux",
+    "description": "Consultations, soins de base, urgences et suivi médical assuré par des professionnels.",
+    "price": "10000"
+  },
+  {
+    "logo": "images/pharmacy.webp",
+    "category": "Pharmacies",
+    "description": "Dispensation de médicaments, conseils pharmaceutiques et gestion des ordonnances.",
+    "price": "5000"
+  },
+  {
+    "logo": "images/clinic.webp",
+    "category": "Cliniques",
+    "description": "Structures de santé offrant des services spécialisés, diagnostics et traitements.",
+    "price": "15000"
+  },
+  {
+    "logo": "images/wellness.webp",
+    "category": "Bien-être",
+    "description": "Massothérapie, relaxation, nutrition, hygiène de vie et accompagnement holistique.",
+    "price": "8000"
+  },
+  {
+    "logo": "images/health-support.webp",
+    "category": "Accompagnement sanitaire",
+    "description": "Sensibilisation, suivi communautaire, visites à domicile et soutien aux personnes vulnérables.",
+    "price": "0"
+  }
+]

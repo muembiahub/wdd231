@@ -1,0 +1,26 @@
+[
+  {
+    "logo": "images/education-program.webp",
+    "category": "Programmes éducatifs",
+    "description": "Modules pédagogiques pour tous niveaux, incluant alphabétisation, sciences, et culture générale.",
+    "price": "0"
+  },
+  {
+    "logo": "images/workshop.webp",
+    "category": "Ateliers pratiques",
+    "description": "Sessions interactives sur l’électricité, la menuiserie, l’agriculture, et les compétences communautaires.",
+    "price": "10000"
+  },
+  {
+    "logo": "images/technical-course.webp",
+    "category": "Cours techniques",
+    "description": "Formations certifiantes en électricité, informatique, maintenance, et gestion de projet.",
+    "price": "15000"
+  },
+  {
+    "logo": "images/skills-development.webp",
+    "category": "Développement de compétences",
+    "description": "Accompagnement personnalisé pour renforcer les compétences professionnelles, sociales et numériques.",
+    "price": "5000"
+  }
+]

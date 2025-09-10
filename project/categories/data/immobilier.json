@@ -1,0 +1,26 @@
+[
+  {
+    "logo": "images/property-sale.webp",
+    "category": "Vente immobilière",
+    "description": "Commercialisation de terrains, maisons, immeubles et espaces commerciaux.",
+    "price": "0"
+  },
+  {
+    "logo": "images/property-rental.webp",
+    "category": "Location immobilière",
+    "description": "Mise en location de logements, bureaux, boutiques et espaces événementiels.",
+    "price": "30000"
+  },
+  {
+    "logo": "images/property-management.webp",
+    "category": "Gestion de biens",
+    "description": "Suivi locatif, entretien, encaissement et valorisation des actifs immobiliers.",
+    "price": "15000"
+  },
+  {
+    "logo": "images/land-projects.webp",
+    "category": "Projets fonciers",
+    "description": "Études, lotissements, viabilisation et accompagnement pour projets de développement.",
+    "price": "0"
+  }
+]
