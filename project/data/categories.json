@@ -82,7 +82,8 @@
   "logo": "images/autres-services.webp",
   "category": "Autres Services",
   "description": "Services variés incluant accompagnement communautaire, initiatives locales, témoignages et projets transversaux.",
-  "price": "0"
+  "price": "0",
+  "page_url": "categories/autres-services.html"
 }
   ]
 }
