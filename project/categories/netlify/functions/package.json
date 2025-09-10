@@ -1,0 +1,13 @@
+{
+  "name": "kazidomo-functions",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "netlify dev"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.4",
+    "twilio": "^4.0.0"
+  }
+}
