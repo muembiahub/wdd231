@@ -22,13 +22,13 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-        <script src="scripts/beaute.js" defer></script>
+        <script src="scripts/catalogue.js" defer></script>
         <script src="../scripts/header.js" defer></script>
         <title>Kazidomo Confiance beaute Page </title>
-        <link rel="stylesheet" href="styles/base.css">
-        <link rel="stylesheet" href="styles/desktop.css">
-        <link rel="stylesheet" href="styles/tablets.css">
-        <link rel="stylesheet" href="styles/mobile.css">
+        <link rel="stylesheet" href="../styles/base.css">
+        <link rel="stylesheet" href="../styles/desktop.css">
+        <link rel="stylesheet" href="../styles/tablets.css">
+        <link rel="stylesheet" href="../styles/mobile.css">
         <link rel="stylesheet" href="../styles/header.css">
        
     </head>
@@ -39,36 +39,8 @@
    </header>
    <main>      
        <!-- 📦 Catalogue dynamique -->
-  <section id="catalogue-coiffure"></section>  
+  <section id="category"></section>  
 
-  <!-- 💬 Modal de contact -->
-  <div id="contactModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3>Contacter un agent</h3>
-
-      <form>
-        <label for="name">Nom Complet :</label>
-        <input type="text" id="name" name="name" required>
-
-        <div class="gps-section">
-  <label for="gps">Ma position :</labe>
-  <input type="text" id="gps" readonly placeholder="Coordonnées GPS">
-  <button id="detectGPS" type="button">📍 Détecter la position</button>
-    </div>
-
-        <label for="message">Message :</label><br>
-        <textarea id="message" rows="8" cols="50" placeholder="Votre message ici..."></textarea>
-
-        <!-- 🔗 Liens d’envoi dynamiques -->
-        <div class="send-links">
-          <button type="button" id="sendWhatsApp">WhatsApp</button>
-          <button type="button" id="sendEmail">Email</button>
-
-        </div>
-      </form>
-    </div>
-  </div>
 </main>
        <footer>
 
