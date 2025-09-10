@@ -6,15 +6,10 @@ const jsonPath = `data/${pageName}.json`;
 fetch(jsonPath)
   .then(res => res.ok ? res.json() : Promise.reject(`Fichier introuvable : ${jsonPath}`))
   .then(data => {
-    for (const key in data) {
-      const section = data[key];
-      if (Array.isArray(section)) {
-        section.forEach(item => {
-          const card = createCard(item);
-          document.querySelector("#category").innerHTML += card;
-        });
-      }
-    }
+    Object.values(data).flat().forEach(item => {
+      const card = createCard(item);
+      document.querySelector("#category").insertAdjacentHTML("beforeend", card);
+    });
   })
   .catch(err => {
     console.error("Erreur :", err);
@@ -42,28 +37,26 @@ function createCard(item) {
 
 // 4. Références du formulaire
 const modal = document.getElementById('contactModal');
-const messageField = modal.querySelector('#message');
-const sendBtn = document.getElementById('sendToDatabase');
-const gpsInput = modal.querySelector('#gps');
+const contactForm = document.getElementById('contactForm');
+const nameInput = document.getElementById('name');
+const gpsInput = document.getElementById('gps');
 const detectBtn = document.getElementById('detectGPS');
 const emailInput = document.getElementById('clientEmail');
 const whatsappInput = document.getElementById('clientWhatsApp');
+const messageField = document.getElementById('message');
+const sendBtn = document.getElementById('sendToDatabase');
 
 // 5. Détection GPS
 detectBtn?.addEventListener('click', () => {
-  if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition(pos => {
-      const lat = pos.coords.latitude.toFixed(6);
-      const lon = pos.coords.longitude.toFixed(6);
-      const coords = `${lat}, ${lon}`;
-      gpsInput.value = coords;
-      messageField.value = `📍 Localisation : ${coords}\n🗺️ Carte : https://www.google.com/maps?q=${coords}\n\n` + messageField.value;
-      detectBtn.disabled = true;
-      detectBtn.textContent = "✅ Position détectée";
-    }, () => alert("⚠️ Position non détectée."));
-  } else {
-    alert("🛑 GPS non pris en charge.");
-  }
+  if (!navigator.geolocation) return alert("🛑 GPS non pris en charge.");
+
+  navigator.geolocation.getCurrentPosition(pos => {
+    const coords = `${pos.coords.latitude.toFixed(6)}, ${pos.coords.longitude.toFixed(6)}`;
+    gpsInput.value = coords;
+    messageField.value = `📍 Localisation : ${coords}\n🗺️ Carte : https://www.google.com/maps?q=${coords}\n\n` + messageField.value;
+    detectBtn.disabled = true;
+    detectBtn.textContent = "✅ Position détectée";
+  }, () => alert("⚠️ Position non détectée."));
 });
 
 // 6. Ouverture du modal avec message prérempli
@@ -76,48 +69,62 @@ document.addEventListener('click', e => {
   }
 });
 
-// 7. Envoi des données vers Netlify Function
-sendBtn.addEventListener('click', () => {
-  const category = messageField.value.match(/"(.+?)"/)?.[1] || "Service";
-  const price = messageField.value.match(/Prix estimatif : (.+?) \$\n/)?.[1] || "—";
-  const gps = gpsInput.value.trim();
-  const message = messageField.value.trim();
-  const clientEmail = emailInput.value.trim();
-  const clientWhatsApp = whatsappInput.value.trim();
+// 7. Empêche le formulaire de se soumettre automatiquement
+contactForm.addEventListener('submit', e => e.preventDefault());
 
-  if (!clientEmail || !clientWhatsApp) {
-    alert("📌 Email et WhatsApp sont requis.");
+// 8. Envoi des données vers Google Sheets via Apps Script
+sendBtn.addEventListener('click', () => {
+  const name = nameInput?.value.trim();
+  const gps = gpsInput?.value.trim();
+  const message = messageField?.value.trim();
+  const clientEmail = emailInput?.value.trim();
+  const clientWhatsApp = whatsappInput?.value.trim();
+
+  if (!name || !clientEmail || !clientWhatsApp) {
+    alert("📌 Tous les champs requis doivent être remplis.");
     return;
   }
 
-  fetch('/.netlify/functions/contact', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ category, price, message, gps, clientEmail, clientWhatsApp })
+  const payload = {
+    page: pageName,
+    name,
+    gps,
+    message,
+    clientEmail,
+    clientWhatsApp
+  };
+
+  console.log("📤 Envoi en cours :", payload);
+
+  fetch("https://script.google.com/macros/s/AKfycbznHpE1ihrFGFgxNNqUbClT1295wt8YC_EpdA6RF9AHqPs4FR0fTmTPXJ6F1YGpeY5dSQ/exec", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
   })
   .then(res => res.json())
   .then(() => {
-    showConfirmation("✅ Demande enregistrée avec succès !");
-    modal.style.display = 'none';
+    showConfirmation("✅ Demande enregistrée et notifications envoyées !");
+    modal.style.display = "none";
+    contactForm.reset();
+    detectBtn.disabled = false;
+    detectBtn.textContent = "📍 Détecter la position";
   })
   .catch(err => {
-    console.error("Erreur :", err);
+    console.error("❌ Erreur d’envoi :", err);
     showConfirmation("❌ Échec de l'enregistrement.");
   });
 });
 
-// 8. Message de confirmation visuel
+// 9. Message de confirmation visuel
 function showConfirmation(text) {
   const msg = document.createElement("div");
   msg.className = "confirmation-message";
   msg.textContent = text;
   document.body.appendChild(msg);
   setTimeout(() => msg.remove(), 4000);
-  
 }
 
-
-// 9. Fermeture du modal
+// 10. Fermeture du modal
 document.querySelector('.close')?.addEventListener('click', () => modal.style.display = 'none');
 window.addEventListener('click', e => {
   if (e.target === modal) modal.style.display = 'none';

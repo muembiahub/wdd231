@@ -209,7 +209,8 @@ main {
   color: #0ebde0;
   min-width: 20px;
 }
-.confirmation {
+
+.confirmation-message {
   margin-top: 2rem;
   padding: 1rem;
   background-color: #e6f9f9;

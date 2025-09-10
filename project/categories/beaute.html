@@ -43,31 +43,36 @@
  
 
   <!-- 💬 Modal de contact -->
-  <div id="contactModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3>Contacter un agent</h3>
+ <div id="contactModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Contacter un agent</h3>
 
-      <form>
-        <label for="name">Nom Complet :</label>
-        <input type="text" id="name" name="name" required>
+    <form id="contactForm">
+      <label for="name">Nom Complet :</label>
+      <input type="text" id="name" name="name" required>
 
-        <div class="gps-section">
-  <label for="gps">Ma position :</labe>
-  <input type="text" id="gps" readonly placeholder="Coordonnées GPS">
-  <button id="detectGPS" type="button">📍 Détecter la position</button>
-    </div>
+      <div class="gps-section">
+        <label for="gps">Ma position :</label>
+        <input type="text" id="gps" readonly placeholder="Coordonnées GPS">
+        <button id="detectGPS" type="button">📍 Détecter la position</button>
+      </div>
 
-        <label for="message">Message :</label><br>
-        <textarea id="message" rows="8" cols="50" placeholder="Votre message ici..."></textarea>
+      <label for="clientEmail">Email :</label>
+      <input type="email" id="clientEmail" required>
 
-        <!-- 🔗 Liens d’envoi dynamiques -->
-        <div class="send-links">
-           <button id="sendToDatabase">📥 Enregistrer dans la base</button>
+      <label for="clientWhatsApp">WhatsApp :</label>
+      <input type="text" id="clientWhatsApp" required>
 
+      <label for="message">Message :</label>
+      <textarea id="message" rows="6" placeholder="Votre message ici..."></textarea>
 
-        </div>
-      </form>
+      <div class="send-links">
+        <button id="sendToDatabase" type="button">📥 Enregistrer dans la base</button>
+      </div>
+    </form>
+  </div>
+</div>
     </div>
   </div>
 </main>
