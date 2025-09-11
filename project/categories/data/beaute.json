@@ -7,25 +7,25 @@
       "price": 10.67
     },
     {
-      "logo": "categories/images/tresses.webp",
+      "logo": "images/tresses.webp",
       "category": "Tissage & Tresses",
       "description": "Tresses africaines modernes et traditionnelles, avec ou sans rajouts.",
       "price": 35.71
     },
     {
-      "logo": "categories/images/soins-capillaires.webp",
+      "logo": "images/soins-capillaires.webp",
       "category": "Soins capillaires",
       "description": "Défrisage, coloration, broching et soins nourrissants pour tous types de cheveux.",
       "price": 22.14
     },
     {
-      "logo": "categories/images/coiffure-evenementielle.webp",
+      "logo": "images/coiffure-evenementielle.webp",
       "category": "Coiffure événementielle",
       "description": "Coiffures et maquillages pour mariages, cérémonies et événements spéciaux.",
       "price": 47.40
     },
     {
-      "logo": "categories/images/soins-des-ongles.webp",
+      "logo": "images/soins-des-ongles.webp",
       "category": "Soins des Ongles",
       "description": "Manucure, faux ongles, nail art et soins réparateurs pour des mains impeccables.",
       "price": 20.63
