@@ -1,14 +1,13 @@
 {
   "categories": [
     {
-      "type": "Réparation lavabo",
+      "category": "Réparation lavabo",
       "price": 20.00,
-      "image": "images/reparation_lavabo.jpg",
-      "alt": "Lavabo en cours de réparation",
+      "logo": "images/reparation_lavabo.jpg",
       "description": "Remplacement du siphon et resserrage des joints sous le lavabo de la salle de bain."
     },
     {
-      "type": "Réparation mélangeur cuisine",
+      "category": "Réparation mélangeur cuisine",
       "price": 20.00,
       "image": "images/melangeur_cuisine.jpg",
       "alt": "Mélangeur de cuisine démonté",
@@ -46,15 +45,14 @@
       "description": "Préparation du coffrage et coulage de la dalle pour fondation."
     },
     {
-      "type": "Montage mur en briques",
+      "category": "Montage mur en briques",
       "price": 95.00,
-      "heure": "10:15",
       "image": "images/mur_briques.jpg",
       "alt": "Mur en briques en cours de montage",
       "description": "Élévation du mur porteur avec briques rouges et mortier."
     },
     {
-      "type": "Pose charpente bois",
+      "category": "Pose charpente bois",
       "price": 150.00,
       "heure": "13:00",
       "image": "images/charpente_bois.jpg",
@@ -62,7 +60,7 @@
       "description": "Assemblage et fixation de la structure en bois pour toiture."
     },
     {
-      "type": "Installation portes métalliques",
+      "category": "Installation portes métalliques",
       "price": 60.00,
       "heure": "15:30",
       "image": "images/portes_metal.jpg",
@@ -70,7 +68,7 @@
       "description": "Pose de deux portes métalliques avec verrouillage sécurisé."
     },
     {
-      "type": "Crépi façade extérieure",
+      "category": "Crépi façade extérieure",
       "price": 80.00,
       "heure": "17:00",
       "image": "images/crepi_facade.jpg",
@@ -78,79 +76,79 @@
       "description": "Application du crépi sur les murs extérieurs pour finition esthétique."
     },
     {
-      "logo": "categories/images/beton.webp",
+      "logo": "images/beton.webp",
       "category": "Béton",
       "description": "Matériau de base pour fondations, dalles et structures portantes.",
       "price": 65.00
     },
     {
-      "logo": "categories/images/briques.webp",
+      "logo": "images/briques.webp",
       "category": "Briques & blocs",
       "description": "Éléments de maçonnerie pour murs, cloisons et façades.",
       "price": 0.45
     },
     {
-      "logo": "categories/images/bois_charpente.webp",
+      "logo": "images/bois_charpente.webp",
       "category": "Bois de charpente",
       "description": "Poutres, chevrons et planchers pour structures solides.",
       "price": 12.00
     },
     {
-      "logo": "categories/images/acier.webp",
+      "logo": "images/acier.webp",
       "category": "Acier & fer",
       "description": "Armatures et structures métalliques pour construction durable.",
       "price": 18.50
     },
     {
-      "logo": "categories/images/verre.webp",
+      "logo": "images/verre.webp",
       "category": "Verre & vitrage",
       "description": "Vitrages simples ou doubles pour fenêtres, cloisons et façades.",
       "price": 22.00
     },
     {
-      "logo": "categories/images/pvc.webp",
+      "logo": "images/pvc.webp",
       "category": "PVC & composites",
       "description": "Matériaux légers pour tuyauterie, menuiserie et revêtements.",
       "price": 9.80
     },
     {
-      "logo": "categories/images/mortier_reparation.webp",
+      "logo": "images/mortier_reparation.webp",
       "category": "Mortier de réparation",
       "description": "Rebouchage et reconstitution de surfaces endommagées.",
       "price": 14.90
     },
     {
-      "logo": "categories/images/resine_epoxy.webp",
+      "logo": "images/resine_epoxy.webp",
       "category": "Résine époxy",
       "description": "Scellement, collage et imperméabilisation haute performance.",
       "price": 28.00
     },
     {
-      "logo": "categories/images/enduit.webp",
+      "logo": "images/enduit.webp",
       "category": "Enduit plastique",
       "description": "Protection contre fissures et humidité, finition lisse.",
       "price": 11.50
     },
     {
-      "logo": "categories/images/anticorrosion.webp",
+      "logo": "images/anticorrosion.webp",
       "category": "Produit anticorrosion",
       "description": "Protection des armatures métalliques contre l’oxydation.",
       "price": 19.75
     },
     {
-      "logo": "categories/images/equipement_chantier.webp",
+      "logo": "images/equipement_chantier.webp",
       "category": "Équipement de chantier",
       "description": "Machines et outils pour excavation, levage et nivellement.",
       "price": 350.00
     },
     {
-      "logo": "categories/images/echafaudage.webp",
+      "logo": "images/echafaudage.webp",
       "category": "Échafaudage",
       "description": "Structure temporaire pour travaux en hauteur sécurisés.",
       "price": 120.00
     },
     {
-      "logo": "categories/images/isolation.webp",
+      "logo": "images/isolation.webp",
       "category": "Isolation thermique",
       "description": "Matériaux pour confort intérieur et économie d’énergie.",
       "price": 45.00
