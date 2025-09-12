@@ -67,31 +67,25 @@
       "description": "Matériau de base pour fondations, dalles et structures portantes."
     },
     {
-      "category": "Briques & blocs",
+      "category": "Briques et blocs",
       "price": 0.45,
       "logo": "images/briques.webp",
       "description": "Éléments de maçonnerie pour murs, cloisons et façades."
     },
     {
-      "category": "Bois de charpente",
-      "price": 12.00,
-      "logo": "images/bois_charpente.webp",
-      "description": "Poutres, chevrons et planchers pour structures solides."
-    },
-    {
-      "category": "Acier & fer",
+      "category": "Acier et fer",
       "price": 18.50,
       "logo": "images/acier.webp",
       "description": "Armatures et structures métalliques pour construction durable."
     },
     {
-      "category": "Verre & vitrage",
+      "category": "Verre et vitrage",
       "price": 22.00,
       "logo": "images/verre.webp",
       "description": "Vitrages simples ou doubles pour fenêtres, cloisons et façades."
     },
     {
-      "category": "PVC & composites",
+      "category": "PVC et composites",
       "price": 9.80,
       "logo": "images/pvc.webp",
       "description": "Matériaux légers pour tuyauterie, menuiserie et revêtements."
