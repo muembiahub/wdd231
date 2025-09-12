@@ -57,8 +57,8 @@ fs.readdir(dossierImages, (err, fichiers) => {
       // Conversion + redimensionnement fixe
       sharp(ancienChemin)
         .resize({
- 		 width: 400,
- 		 height: 300,
+ 		 width: 300,
+ 		 height: 200,
  		 fit: "contain",
  		 background: { r: 255, g: 255, b: 255, alpha: 1 } // fond blanc
 		})
