@@ -97,7 +97,7 @@ function createCard(item) {
       <img src="${image}" alt="${alt}">
       <h3>${title}</h3>
       <p>${description}</p>
-      <p id="price"><strong>${price} $</strong></p>
+      <p id="price"><strong> A partir de : ${price} $</strong></p>
       <button class="open-modal" data-category="${title}" data-price="${price}">Contacter un agent</button>
     </div>
   `;
