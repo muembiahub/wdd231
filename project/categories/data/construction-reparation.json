@@ -9,161 +9,146 @@
     {
       "category": "Réparation mélangeur cuisine",
       "price": 20.00,
-      "image": "images/melangeur_cuisine.jpg",
-      "alt": "Mélangeur de cuisine démonté",
+      "logo": "images/melangeur_cuisine.jpg",
       "description": "Réparation du mécanisme de mélange eau chaude/froide dans la cuisine."
     },
     {
-      "type": "Débouchage WC",
+      "category": "Débouchage WC",
       "price": 25.00,
-      "image": "images/debouchage_wc.jpg",
-      "alt": "Technicien débouchant un WC",
+      "logo": "images/debouchage_wc.jpg",
       "description": "Utilisation d’un furet manuel pour déboucher les toilettes obstruées."
     },
     {
-      "type": "Remplacement robinet salle de bain",
+      "category": "Remplacement robinet salle de bain",
       "price": 30.00,
-      "heure": "23:22",
-      "image": "images/robinet_sdb.jpg",
-      "alt": "Nouveau robinet installé",
+      "logo": "images/robinet_sdb.jpg",
       "description": "Installation d’un robinet moderne avec économiseur d’eau dans la salle de bain."
     },
     {
-      "type": "Inspection fuite sous évier",
+      "category": "Inspection fuite sous évier",
       "price": 15.00,
-      "heure": "23:35",
-      "image": "images/fuite_evier.jpg",
-      "alt": "Fuite sous évier détectée",
+      "logo": "images/fuite_evier.jpg",
       "description": "Inspection visuelle et test de pression pour localiser une fuite sous l’évier."
     },
     {
-      "type": "Coulage dalle béton",
+      "category": "Coulage dalle béton",
       "price": 120.00,
-      "heure": "08:30",
-      "image": "images/dalle_beton.jpg",
-      "alt": "Ouvriers coulant une dalle en béton",
+      "logo": "images/dalle_beton.jpg",
       "description": "Préparation du coffrage et coulage de la dalle pour fondation."
     },
     {
       "category": "Montage mur en briques",
       "price": 95.00,
-      "image": "images/mur_briques.jpg",
-      "alt": "Mur en briques en cours de montage",
+      "logo": "images/mur_briques.jpg",
       "description": "Élévation du mur porteur avec briques rouges et mortier."
     },
     {
       "category": "Pose charpente bois",
       "price": 150.00,
-      "heure": "13:00",
-      "image": "images/charpente_bois.jpg",
-      "alt": "Charpente en bois installée sur le toit",
+      "logo": "images/charpente_bois.jpg",
       "description": "Assemblage et fixation de la structure en bois pour toiture."
     },
     {
       "category": "Installation portes métalliques",
       "price": 60.00,
-      "heure": "15:30",
-      "image": "images/portes_metal.jpg",
-      "alt": "Portes métalliques posées sur chantier",
+      "logo": "images/portes_metal.jpg",
       "description": "Pose de deux portes métalliques avec verrouillage sécurisé."
     },
     {
       "category": "Crépi façade extérieure",
       "price": 80.00,
-      "heure": "17:00",
-      "image": "images/crepi_facade.jpg",
-      "alt": "Façade crépie avec finition lisse",
+      "logo": "images/crepi_facade.jpg",
       "description": "Application du crépi sur les murs extérieurs pour finition esthétique."
     },
     {
-      "logo": "images/beton.webp",
       "category": "Béton",
-      "description": "Matériau de base pour fondations, dalles et structures portantes.",
-      "price": 65.00
+      "price": 65.00,
+      "logo": "images/beton.webp",
+      "description": "Matériau de base pour fondations, dalles et structures portantes."
     },
     {
-      "logo": "images/briques.webp",
       "category": "Briques & blocs",
-      "description": "Éléments de maçonnerie pour murs, cloisons et façades.",
-      "price": 0.45
+      "price": 0.45,
+      "logo": "images/briques.webp",
+      "description": "Éléments de maçonnerie pour murs, cloisons et façades."
     },
     {
-      "logo": "images/bois_charpente.webp",
       "category": "Bois de charpente",
-      "description": "Poutres, chevrons et planchers pour structures solides.",
-      "price": 12.00
+      "price": 12.00,
+      "logo": "images/bois_charpente.webp",
+      "description": "Poutres, chevrons et planchers pour structures solides."
     },
     {
-      "logo": "images/acier.webp",
       "category": "Acier & fer",
-      "description": "Armatures et structures métalliques pour construction durable.",
-      "price": 18.50
+      "price": 18.50,
+      "logo": "images/acier.webp",
+      "description": "Armatures et structures métalliques pour construction durable."
     },
     {
-      "logo": "images/verre.webp",
       "category": "Verre & vitrage",
-      "description": "Vitrages simples ou doubles pour fenêtres, cloisons et façades.",
-      "price": 22.00
+      "price": 22.00,
+      "logo": "images/verre.webp",
+      "description": "Vitrages simples ou doubles pour fenêtres, cloisons et façades."
     },
     {
-      "logo": "images/pvc.webp",
       "category": "PVC & composites",
-      "description": "Matériaux légers pour tuyauterie, menuiserie et revêtements.",
-      "price": 9.80
+      "price": 9.80,
+      "logo": "images/pvc.webp",
+      "description": "Matériaux légers pour tuyauterie, menuiserie et revêtements."
     },
     {
-      "logo": "images/mortier_reparation.webp",
       "category": "Mortier de réparation",
-      "description": "Rebouchage et reconstitution de surfaces endommagées.",
-      "price": 14.90
+      "price": 14.90,
+      "logo": "images/mortier_reparation.webp",
+      "description": "Rebouchage et reconstitution de surfaces endommagées."
     },
     {
-      "logo": "images/resine_epoxy.webp",
       "category": "Résine époxy",
-      "description": "Scellement, collage et imperméabilisation haute performance.",
-      "price": 28.00
+      "price": 28.00,
+      "logo": "images/resine_epoxy.webp",
+      "description": "Scellement, collage et imperméabilisation haute performance."
     },
     {
-      "logo": "images/enduit.webp",
       "category": "Enduit plastique",
-      "description": "Protection contre fissures et humidité, finition lisse.",
-      "price": 11.50
+      "price": 11.50,
+      "logo": "images/enduit.webp",
+      "description": "Protection contre fissures et humidité, finition lisse."
     },
     {
-      "logo": "images/anticorrosion.webp",
       "category": "Produit anticorrosion",
-      "description": "Protection des armatures métalliques contre l’oxydation.",
-      "price": 19.75
+      "price": 19.75,
+      "logo": "images/anticorrosion.webp",
+      "description": "Protection des armatures métalliques contre l’oxydation."
     },
     {
-      "logo": "images/equipement_chantier.webp",
       "category": "Équipement de chantier",
-      "description": "Machines et outils pour excavation, levage et nivellement.",
-      "price": 350.00
+      "price": 350.00,
+      "logo": "images/equipement_chantier.webp",
+      "description": "Machines et outils pour excavation, levage et nivellement."
     },
     {
-      "logo": "images/echafaudage.webp",
       "category": "Échafaudage",
-      "description": "Structure temporaire pour travaux en hauteur sécurisés.",
-      "price": 120.00
+      "price": 120.00,
+      "logo": "images/echafaudage.webp",
+      "description": "Structure temporaire pour travaux en hauteur sécurisés."
     },
     {
-      "logo": "images/isolation.webp",
       "category": "Isolation thermique",
-      "description": "Matériaux pour confort intérieur et économie d’énergie.",
-      "price": 45.00
+      "price": 45.00,
+      "logo": "images/isolation.webp",
+      "description": "Matériaux pour confort intérieur et économie d’énergie."
     },
     {
-      "logo": "categories/images/etancheite.webp",
       "category": "Étanchéité",
-      "description": "Systèmes pour protéger contre l’humidité et les infiltrations.",
-      "price": 32.00
+      "price": 32.00,
+      "logo": "categories/images/etancheite.webp",
+      "description": "Systèmes pour protéger contre l’humidité et les infiltrations."
     },
     {
-      "logo": "categories/images/renforcement.webp",
       "category": "Renforcement structurel",
-      "description": "Techniques pour solidifier les éléments porteurs.",
-      "price": 75.00
+      "price": 75.00,
+      "logo": "categories/images/renforcement.webp",
+      "description": "Techniques pour solidifier les éléments porteurs."
     }
   ]
 }
