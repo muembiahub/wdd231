@@ -12,7 +12,12 @@
       "description": "Tresses africaines modernes et traditionnelles, avec ou sans rajouts.",
       "price": 35.71
     },
-    
+    {
+      "logo": "images/coloration.webp",
+      "category": "Coloration",
+      "description": "Coloration professionnelle pour cheveux, incluant mèches, balayage et ombré.",
+      "price": 28.99
+    },
     {
       "logo": "images/tissages.webp",
       "category": "Tissage",
