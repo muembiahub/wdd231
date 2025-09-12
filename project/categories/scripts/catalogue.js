@@ -81,7 +81,9 @@ function createCard(item) {
   const title = item.category || item.type || item.title || "Service";
   const description = item.description || item.summary || "";
   const price = item.price || "—";
-  const image = item.logo || item.image || "";
+const imageName = item.logo || item.image || 
+`${item.category?.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "_").replace(/[^\w-]/g, "")}.webp`;
+const image = `images/${imageName}`;
   const alt = item.alt || title;
 
   return `
