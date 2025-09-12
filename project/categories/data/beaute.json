@@ -8,10 +8,29 @@
     },
     {
       "logo": "images/tresses.webp",
-      "category": "Tissage & Tresses",
+      "category": "Tresses",
       "description": "Tresses africaines modernes et traditionnelles, avec ou sans rajouts.",
       "price": 35.71
     },
+    
+    {
+      "logo": "images/tissages.webp",
+      "category": "Tissage",
+      "description": "Pose de tissages naturels ou synthétiques, avec entretien et conseils personnalisés.",
+      "price": 40.00
+    },        
+    {
+      "logo": "images/soins-visage.webp",
+      "category": "Soins du visage",
+      "description": "Soins du visage personnalisés pour tous types de peau, incluant nettoyage et hydratation.",
+      "price": 25.00
+    },          
+    {
+      "logo": "images/maquillage.webp",
+      "category": "Maquillage",
+      "description": "Maquillage professionnel pour toutes occasions, y compris les mariages.",
+      "price": 30.50
+    },  
     {
       "logo": "images/soins-capillaires.webp",
       "category": "Soins capillaires",
