@@ -32,7 +32,7 @@
     },
     {
       "logo": "categories/images/animateur.webp",
-      "category": "Animation & présentateur",
+      "category": "Animation et présentateur",
       "description": "Animateurs professionnels pour dynamiser vos cérémonies et fêtes.",
       "price": 180.00
     },
@@ -50,7 +50,7 @@
     },
     {
       "logo": "categories/images/photographe.webp",
-      "category": "Photographe & vidéaste",
+      "category": "Photographe et vidéaste",
       "description": "Captation professionnelle de vos moments forts en photo et vidéo.",
       "price": 250.00
     },
@@ -74,7 +74,7 @@
     },
     {
       "logo": "categories/images/spectacle.webp",
-      "category": "Spectacle & performance",
+      "category": "Spectacle et performance",
       "description": "Artistes, danseurs, musiciens ou magiciens pour animer vos événements.",
       "price": 260.00
     },
