@@ -7,13 +7,13 @@
   },
   {
     "logo": "images/maintenance-repair.webp",
-    "category": "Maintenance & Réparation",
+    "category": "Maintenance et Réparation",
     "description": "Diagnostic et réparation de pannes, remplacement de câblage, révision de tableaux et groupes électrogènes.",
     "price": "15000"
   },
   {
     "logo": "images/lighting.webp",
-    "category": "Éclairage & Ambiance",
+    "category": "Éclairage et Ambiance",
     "description": "Installation de luminaires, éclairage solaire, détecteurs de mouvement et systèmes d’ambiance.",
     "price": "10000"
   },
@@ -25,13 +25,13 @@
   },
   {
     "logo": "images/security-automation.webp",
-    "category": "Sécurité & Automatisation",
+    "category": "Sécurité et Automatisation",
     "description": "Installation de disjoncteurs, domotique, alarmes et vidéosurveillance alimentée électriquement.",
     "price": "20000"
   },
   {
     "logo": "images/consulting.webp",
-    "category": "Études & Conseil",
+    "category": "Études et Conseil",
     "description": "Audits énergétiques, plans électriques, optimisation de consommation et conformité aux normes.",
     "price": "25000"
   }
