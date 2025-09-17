@@ -9,23 +9,46 @@ function injectAbout(data) {
   const section = document.getElementById("about-section");
 
   section.innerHTML = `
-    <h2>Plateforme communautaire et annuaire de services</h2>
-    <p><strong>${data.nom}</strong> est une application mobile et plateforme web qui met en relation les talents locaux avec leur communauté.</p>
-    <p>${data.description}</p>
-    <p><strong>Notre mission :</strong> ${data.mission}</p>
-    <p><strong>Notre philosophie :</strong> ${data.philosophie}</p>
-<p><strong>Localisation :</strong> ${data.localisation.ville}, ${data.localisation.province}, ${data.localisation.pays}</p>
-    <p><strong>Disponibilité :</strong> ${data.disponibilite}</p>
-    <p><strong>Nos valeurs :</strong></p>
-    <ul>
-      ${data.valeurs.map(val => `<li>${val}</li>`).join("")}
-    </ul>
+   <table>
+  <tr>
+    <th>Nom</th>
+    <td><strong>${data.nom}</strong> est une application mobile et plateforme web qui met en relation les talents locaux avec leur communauté.</td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td>${data.description}</td>
+  </tr>
+  <tr>
+    <th>Mission</th>
+    <td>${data.mission}</td>
+  </tr>
+  <tr>
+    <th>Philosophie</th>
+    <td>${data.philosophie}</td>
+  </tr>
+  <tr>
+    <th>Localisation</th>
+    <td>${data.localisation.ville}, ${data.localisation.province}, ${data.localisation.pays}</td>
+  </tr>
+  <tr>
+    <th>Disponibilité</th>
+    <td>${data.disponibilite}</td>
+  </tr>
+  <tr>
+    <th>Valeurs</th>
+    <td>
+      <ul>
+        ${data.valeurs.map(val => `<li>${val}</li>`).join("")}
+      </ul>
+    </td>
+  </tr>
+</table>
   `;
 }
 
 function injectServices(data) {
   const section = document.getElementById("services-section");
-  section.innerHTML = ``;
+  section.innerHTML = ` `;
   data.services.forEach(service => {
     const card = document.createElement("div");
     card.className = "card";
