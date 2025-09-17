@@ -21,7 +21,7 @@ main {
 
 
 /* Conteneur principal */
-#category {
+#category, #services-section {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<lang="en-US">
+<html lang="en-US">
 
   <head>
     <meta charset="UTF-8">
@@ -12,184 +12,57 @@
     <meta property="og:image" content="https://muembiahub.github.io/wdd231/chamber/images/facebook-tag.png" />
     <meta name="author" content="Jonathan M. Muembia">
     <meta name="description"
-      content="Kazidomo is a smart mobile application designed to enable anyone with a skill or trade—formal or informal—to offer their services in their neighborhood, city, or beyond.">
+    content="Kazidomo is a smart mobile application designed to enable anyone with a skill or trade—formal or informal—to offer their services in their neighborhood, city, or beyond.">
     <meta name="robots" content="index, follow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="application-name" content="Kazidomo">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="keywords"
       content="Kazidomo, mobile application, service providers, geolocation, digital contracts, payment options, economic autonomy">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="icon" href="/project/images/favicon.ico" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="scripts/index.js" defer></script>
+    <script src="scripts/about.js" defer></script>
     <script src="scripts/header.js" defer></script>
-    <title>Kazidomo Confiance Home Page </title>
+    <title>Kazidomo Confiance about Page </title>
+      <!-- FontAwesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles/base.css">
      <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/mobile.css">
      <link rel="stylesheet" href="styles/tablets.css">
-    <link rel="stylesheet" href="styles/desktop.css">
-   
-    
-   
+    <link rel="stylesheet" href="styles/desktop.css">   
   </head>
-
   <body>
     <header>
       <div id="header"></div>
-
     </header>
+    
     <main>
       <section class="showcase-area" id="showcase">
         <div class="showcase-container">
           <h1 class="main-title" id="home">Kazidomo Confiance</h1>
           <p>Le lien entre savoir-faire authentique et confiance locale.</p>
-
-
           <a href="#annuaire" class="btn btn-primary">Découvrir l’annuaire</a>
         </div>
       </section>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 2rem;
-      color: #333;
-    }
-    p {
-      line-height: 1.6;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-      text-align: justify;
-      color: #555;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-    }
-    .kazidomo-about h1  ,.kazidomo-about h2 {
-      text-align: center;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    #services
-  {
-        margin-top: 2rem;
-        font-size: 1.6rem;
-        text-align: justify;
-        color: #333;
-        font-weight: bold;
-        font-family: 'Segoe UI', sans-serif;
-      }
-    .kazidomo-about {
-      max-width: 800px;
-      margin: auto;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-    .kazidomo-about h1 {
-      font-size: 2rem;
-      color: #00796b;
-      margin-bottom: 0.5rem;
-    }
-    .kazidomo-about h2 {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      color: #444;
-    }
-    .kazidomo-about ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    .kazidomo-about ul li {
-      margin-bottom: 0.5rem;
-      padding-left: 1rem;
-      position: relative;
-    }
-    .kazidomo-about ul li::before {
-      content: "\f058";
-      font-family: "Font Awesome 6 Free";
-      font-weight: 900;
-      position: absolute;
-      left: 0;
-      color: #00796b;
-    }
-    .cta-button {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.6rem 1.2rem;
-      background-color: #00796b;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 4px;
-      transition: background 0.3s ease;
-    }
-    .cta-button:hover {
-      background-color: #004d40;
-    }
-  </style>
+      <h1 class="about-title">À PROPOS DE KAZIDOMO CONFIANCE</h1>
   <section class="kazidomo-about">
     <h1><i class="fas fa-handshake"></i> Kazidomo Confiance (RDC)</h1>
-    <h2>Plateforme communautaire et annuaire de services</h2>
-
-    <p>
-      <strong>Kazidomo Confiance</strong> est une application mobile et plateforme web qui met en relation les talents locaux avec leur communauté.
-      Elle permet à toute personne ayant un savoir-faire — qu’il soit formel ou informel — d’offrir ses services dans son quartier, sa ville, ou au-delà.
-      <br>
-      <strong>Kazidomo Confiance</strong> favorise l’autonomie économique en simplifiant la mise en relation entre prestataires et clients, grâce à la géolocalisation, des contrats numériques et des options de paiement sécurisées.<br>
-      La plateforme encourage la transparence, la confiance et la croissance locale, tout en offrant une vitrine moderne aux talents souvent sous-représentés.<br>
-      Que vous soyez artisan, professionnel ou passionné, <em>Kazidomo Confiance</em> vous aide à élargir votre clientèle et à valoriser votre savoir-faire dans un environnement sécurisé et convivial.
-    </p>
-    <p>
-      <strong>Notre mission :</strong> connecter les talents locaux avec leur communauté, en valorisant les savoir-faire authentiques et en favorisant l’autonomie économique.
-    </p>
-    <br>
-    <strong>Nos valeurs :</strong>
-    <ul>
-      <li>Confiance et transparence dans chaque échange</li>
-      <li>Respect et valorisation des talents locaux</li>
-        <li>Accessibilité pour tous, sans discrimination</li>
-        <li>Innovation au service de la communauté</li>
-      </ul>
-    </p>
-    <p id="services">
-      Nous valorisons les savoir-faire,
-      qu’ils soient formels ou informels dans des domaines comme :
-    </p>
-
-    <ul>
-      <li><i class="fas fa-hammer"></i> Menuiserie</li>
-      <li><i class="fas fa-spa"></i> Beauté</li>
-      <li><i class="fas fa-bolt"></i> Électricité</li>
-      <li><i class="fas fa-notes-medical"></i> Santé</li>
-      <li><i class="fas fa-book-open"></i> Éducation</li>
-      <li><i class="fas fa-seedling"></i> Agriculture</li>
-    </ul>
-
-    <p>
-      <strong >Notre philosophie :</strong> le talent ne se mesure pas à un diplôme, mais à l’impact réel. C’est un pont de confiance entre ceux qui offrent et ceux qui cherchent.
-    </p>
-
-    <p>
-      Le site est basé à <strong>Lubumbashi, Haut-Katanga</strong>, et fonctionne comme un annuaire interactif avec des services disponibles en ligne <strong>24h/24</strong>.
-    </p>
-
-    <a href="https://kazidomo.com/" target="_blank" class="cta-button">
-      <i class="fas fa-globe"></i> Explorer Kazidomo Confiance
+     <section id="about-section"></section>
+  <section id="services-section"></section>
+    <a href="https://kazidomo.com/" target="_blank" rel="noopener" class="cta-button">
+      Visitez notre site web
     </a>
   </section>
-
-
-
-
     </main>
-    <!-- Ton contenu ici -->
-
-    <footer> </footer>
+       <footer> </footer>
 
     <script>
       fetch("footer.html", { cache: "no-store" })
@@ -205,6 +78,6 @@
 
     </script>
 
-  </body>
-
+    </body>
+  
   </html>
