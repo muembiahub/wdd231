@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("categories");
+  const container = document.getElementById("category");
 
   fetch("data/categories.json")
     .then(response => response.json())
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       data.categories.forEach(item => {
         const card = document.createElement("div");
-        card.className = "category-card";
+        card.className = "card";
 
         card.innerHTML = `
           <img src="${item.logo}" alt="${item.category}">
