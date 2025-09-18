@@ -124,7 +124,7 @@ function setupModal() {
     if (e.target.classList.contains("open-modal")) {
       const category = e.target.dataset.category;
       const price = e.target.dataset.price;
-      messageField.value = `Bonjour, je suis intéressé par "${category}".\nPrix estimatif : ${price} $\n\nMerci de me recontacter.`;
+      messageField.value = `Kazidomo Confiance Bonjour,Je m'appeles "${nameField.value}", je suis intéressé par "${category}".\nPrix estimatif : ${price} $\n\nMerci de me recontacter.`;
       modal?.style && (modal.style.display = "block");
     }
   });
@@ -150,7 +150,7 @@ function setupGPS() {
     navigator.geolocation.getCurrentPosition(pos => {
       const coords = `${pos.coords.latitude.toFixed(6)}, ${pos.coords.longitude.toFixed(6)}`;
       gpsInput.value = coords;
-      messageField.value = `📍 Localisation : ${coords}\n🗺️ Carte : https://www.google.com/maps?q=${coords}\n\n` + messageField.value;
+      messageField.value = `${messageField.value} Et Ma 📍 Localisation : ${coords}\n🗺️ Carte : https://www.google.com/maps?q=${coords}\n\n` ;
       detectBtn.disabled = true;
       detectBtn.textContent = "✅ Position détectée";
     }, () => alert("⚠️ Position non détectée."));
