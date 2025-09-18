@@ -101,6 +101,21 @@
       "category": "Électromécanique",
       "description": "Intervention sur systèmes combinant moteurs électriques et composants mécaniques.",
       "price": 175.00
-    }
-  ]
+    },
+    {
+    "category": "Entretien Insectair poudre",
+    "description": "Entretien de Insectair 9 kg en poudre.",
+    "price": "0"
+  },
+  {
+    "category": "Entretien Insectair gaze",
+    "description": "Entretien de Insectair 9 kg à gaz.",
+    "price": "0"
+  },
+  {
+    "category": "Entretien Insectair gaz 250",
+    "description": "Entretien de Insectair 250 en gaz.",
+    "price": "0"
+  }
+]
 }

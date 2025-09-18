@@ -34,5 +34,50 @@
     "category": "Appui juridique & administratif",
     "description": "Assistance pour documents légaux, démarches administratives, conseils et médiation.",
     "price": "12000"
+  },
+  {
+    "category": "Services domestiques",
+    "description": "Entretien des jardins, taille, arrosage et mise en valeur des espaces verts.",
+    "price": "180"
+  },
+  {
+    "category": "Services domestiques",
+    "description": "Nettoyage complet par homme de ménage, pour un intérieur propre et soigné.",
+    "price": "180"
+  },
+  {
+    "category": "Services domestiques",
+    "description": "Nettoyage complet par femme de ménage, avec soin et discrétion.",
+    "price": "180"
+  },
+  {
+    "category": "Désinfection",
+    "description": "Traitement désinfectant pour maison de 3 pièces, contre bactéries et nuisibles.",
+    "price": "50"
+  },
+  {
+    "category": "Désinfection",
+    "description": "Traitement désinfectant pour maison de 4 pièces, hygiène renforcée.",
+    "price": "100"
+  },
+  {
+    "category": "Désinfection",
+    "description": "Traitement désinfectant pour maison de 5 pièces, protection complète.",
+    "price": "120"
+  },
+  {
+    "category": "Désinfection",
+    "description": "Traitement désinfectant pour maison de 6 pièces, efficacité maximale.",
+    "price": "150"
+  },
+  {
+    "category": "Désinfection",
+    "description": "Désinfection professionnelle du bureau, pour un environnement sain.",
+    "price": "80"
+  },
+  {
+    "category": "Désinfection",
+    "description": "Traitement désinfectant du dépôt, contre moisissures et nuisibles.",
+    "price": "150"
   }
 ]

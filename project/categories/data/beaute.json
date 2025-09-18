@@ -1,58 +1,183 @@
 {
   "categories": [
     {
-      "logo": "",
       "category": "Coupes",
       "description": "Coupes stylées pour hommes, femmes et enfants. Rapides et personnalisées.",
+      "logo": "",
       "price": 20
     },
     {
-      "logo": "images/tresses.webp",
       "category": "Tresses",
       "description": "Tresses africaines modernes et traditionnelles, avec ou sans rajouts.",
+      "logo": "images/tresses.webp",
       "price": 35.71
     },
     {
-      "logo": "images/coloration.webp",
       "category": "Coloration",
       "description": "Coloration professionnelle pour cheveux, incluant mèches, balayage et ombré.",
+      "logo": "images/coloration.webp",
       "price": 28.99
     },
     {
-      "logo": "images/tissages.webp",
       "category": "Tissage",
       "description": "Pose de tissages naturels ou synthétiques, avec entretien et conseils personnalisés.",
+      "logo": "images/tissages.webp",
       "price": 40.00
-    },        
+    },
     {
-      "logo": "images/soins-visage.webp",
       "category": "Soins du visage",
       "description": "Soins du visage personnalisés pour tous types de peau, incluant nettoyage et hydratation.",
+      "logo": "images/soins-visage.webp",
       "price": 25.00
-    },          
+    },
     {
-      "logo": "images/maquillage.webp",
       "category": "Maquillage",
       "description": "Maquillage professionnel pour toutes occasions, y compris les mariages.",
+      "logo": "images/maquillage.webp",
       "price": 30.50
-    },  
+    },
     {
-      "logo": "images/soins-capillaires.webp",
       "category": "Soins capillaires",
       "description": "Défrisage, coloration, broching et soins nourrissants pour tous types de cheveux.",
+      "logo": "images/soins-capillaires.webp",
       "price": 22.14
     },
     {
-      "logo": "images/coiffure-evenementielle.webp",
       "category": "Coiffure événementielle",
       "description": "Coiffures et maquillages pour mariages, cérémonies et événements spéciaux.",
+      "logo": "images/coiffure-evenementielle.webp",
       "price": 47.40
     },
     {
-      "logo": "images/soins-des-ongles.webp",
       "category": "Soins des Ongles",
       "description": "Manucure, faux ongles, nail art et soins réparateurs pour des mains impeccables.",
+      "logo": "images/soins-des-ongles.webp",
       "price": 20.63
+    },
+    {
+      "category": "Manucure — permanente classique",
+      "description": "Manucure permanente normale à domicile.",
+      "price": "20"
+    },
+    {
+      "category": "Manucure  gel",
+      "description": "Manucure gel à domicile.",
+      "price": "25"
+    },
+    {
+      "category": "Maquillage cérémonie",
+      "description": "Maquillage cérémonie — une séance à domicile.",
+      "price": "35"
+    },
+    {
+      "category": "Maquillage quotidien",
+      "description": "Maquillage normal à domicile.",
+      "price": "25"
+    },
+    {
+      "category": "Coiffure pose peric",
+      "description": "Pose peric à domicile.",
+      "price": "40"
+    },
+    {
+      "category": "Coiffure tissage ouvertet fermé",
+      "description": "Tissage ouvert ou fermé à domicile.",
+      "price": "35"
+    },
+    {
+      "category": "Coiffure  afrod",
+      "description": "Afrod à domicile.",
+      "price": "35"
+    },
+    {
+      "category": "Soin capillaire  bain d'huile",
+      "description": "Bain d'huile à domicile.",
+      "price": "25"
+    },
+    {
+      "category": "Soin capillaire  défrisage",
+      "description": "Défrisage complet à domicile.",
+      "price": "20"
+    },
+    {
+      "category": "Brushing  simple",
+      "description": "Brushing simple à domicile.",
+      "price": "10"
+    },
+    {
+      "category": "Brushing  lissage",
+      "description": "Brushing / lissage à domicile.",
+      "price": "20"
+    },
+    {
+      "category": "Soin capillaire  shampoing",
+      "description": "Shampoing ou bain de tête à domicile.",
+      "price": "10"
+    },
+    {
+      "category": "Coiffure  tong",
+      "description": "Tong à domicile.",
+      "price": "35"
+    },
+    {
+      "category": "Coiffure  babilise",
+      "description": "Babilise à domicile.",
+      "price": "15"
+    },
+    {
+      "category": "Coiffure  bigudi",
+      "description": "Bigudi à domicile.",
+      "price": "15"
+    },
+    {
+      "category": "Tresses  rasta ",
+      "description": "Rasta 1, 2, 3 à domicile.",
+      "price": "30"
+    },
+    {
+      "category": "Tresses coordelethe",
+      "description": "Coordelethe 1, 2, 3 à domicile.",
+      "price": "30"
+    },
+    {
+      "category": "Tresses  rasta ",
+      "description": "Rasta 4, 5, 6 à domicile.",
+      "price": "50"
+    },
+    {
+      "category": "Tresses  coordelethe ",
+      "description": "Coordelethe 4, 5, 6 à domicile.",
+      "price": "50"
+    },
+    {
+      "category": "Tresses  twiste",
+      "description": "Twiste à domicile.",
+      "price": "35"
+    },
+    {
+      "category": "Tresses  arabe ",
+      "description": "Tresse arabe 1, 2, 3 à domicile.",
+      "price": "30"
+    },
+    {
+      "category": "Tresses arabe ",
+      "description": "Tresse arabe 4, 5, 6 à domicile.",
+      "price": "50"
+    },
+    {
+      "category": "Tresses  cabelo",
+      "description": "Tresse cabelo à domicile.",
+      "price": "100"
+    },
+    {
+      "category": "Soin esthétique  micro shading",
+      "description": "Micro shading à domicile.",
+      "price": "100"
+    },
+    {
+      "category": "Soin esthétique  micro blading",
+      "description": "Micro blading à domicile.",
+      "price": "100"
     }
   ]
 }

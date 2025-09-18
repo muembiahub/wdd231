@@ -143,6 +143,66 @@
       "price": 75.00,
       "logo": "categories/images/renforcement.webp",
       "description": "Techniques pour solidifier les éléments porteurs."
-    }
+    },
+    {
+    "category": "Carrelage pose au mètre carré",
+    "description": "Pose de carreaux et faïence 1m².",
+    "price": "7"
+  },
+  {
+    "category": "Pavage pose au mètre carré",
+    "description": "Pose de pavés 1m².",
+    "price": "9"
+  },
+  {
+    "category": "Plomberie tuyauterie maison",
+    "description": "Installation de la tuyauterie d'une maison.",
+    "price": "150"
+  },
+  {
+    "category": "Plomberie installation complète 2 circuits",
+    "description": "Installation complète de plomberie pour maison avec 2 circuits.",
+    "price": "500"
+  },
+  {
+    "category": "Plomberie installation complète avec évacuation",
+    "description": "Installation de plomberie incluant tuyauterie, évacuation et raccordement.",
+    "price": "350"
+  },
+  {
+    "category": "Pompe forage immergé",
+    "description": "Plongée et installation de pompe immergée de forage.",
+    "price": "40"
+  },
+  {
+    "category": "Plomberie débouchage cuisine",
+    "description": "Débouchage du levier de cuisine.",
+    "price": "25"
+  },
+  {
+    "category": "Plomberie débouchage WC",
+    "description": "Débouchage de la cuve WC.",
+    "price": "70"
+  },
+  {
+    "category": "Plomberie réparation robinet cuisine",
+    "description": "Réparation du mélangeur de cuisine.",
+    "price": "25"
+  },
+  {
+    "category": "Plomberie réparation baignoire",
+    "description": "Réparation de baignoire ou douche.",
+    "price": "25"
+  },
+  {
+    "category": "Plomberie réparation citerne",
+    "description": "Réparation de la citerne d'eau.",
+    "price": "30"
+  },
+  {
+    "category": "Plomberie installation complète 1 circuit",
+    "description": "Installation de plomberie pour maison complète avec 1 circuit.",
+    "price": "300"
+  }
   ]
 }
