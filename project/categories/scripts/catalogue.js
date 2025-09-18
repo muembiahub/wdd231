@@ -192,7 +192,7 @@ async function sendToSupabase(formData) {
   const SUPABASE_URL = "https://eumdndwnxjqdolbpcyrp.supabase.co"; // ← remplace par ton URL
   const SUPABASE_KEY = "sb_publishable_PRp1AmuEtEsGhWnZktlK0Q_uJmipcrO"; // ← remplace par ta clé publique
 
-  const response = await fetch(`${SUPABASE_URL}/rest/v1/kazidomo_demandes_services`, {
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/kazidomo-demandes-services`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
