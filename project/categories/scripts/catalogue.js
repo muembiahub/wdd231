@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const pageName = getPageName();
   const jsonPath = `data/${pageName}.json`;
 
-  injectForm();
   injectFavicon();
+  injectForm();
   loadCards(jsonPath);
   setupModal();
   setupGPS();
@@ -19,6 +19,7 @@ function getPageName() {
 function $(selector) {
   return document.querySelector(selector);
 }
+
 function injectFavicon(path = "images/favicon.ico") {
   const existing = document.querySelector("link[rel='icon']");
   if (existing) existing.remove();
@@ -39,33 +40,27 @@ function injectForm() {
         <span class="close" id="closeModal">&times;</span>
         <h3>Contacter un agent</h3>
 
-        <form name="Demandes-services-kazidomo" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contactForm">
-          <input type="hidden" name="form-name" value="Demandes-services-kazidomo">
-          <input type="hidden" name="bot-field">
-
+        <form id="contactForm">
           <label for="name">Nom Complet :</label>
-          <input type="text" name="name" id="name" required>
+          <input type="text" id="name" required>
 
           <label for="clientEmail">Email :</label>
-          <input type="email" name="clientEmail" id="clientEmail" required>
+          <input type="email" id="clientEmail" required>
 
           <label for="clientWhatsApp">WhatsApp :</label>
-          <input type="text" name="clientWhatsApp" id="clientWhatsApp" required>
+          <input type="text" id="clientWhatsApp" required>
 
           <label for="gps">Ma position :</label>
-          <input type="text" name="gps" id="gps" readonly placeholder="Coordonnées GPS">
+          <input type="text" id="gps" readonly placeholder="Coordonnées GPS">
           <button type="button" id="detectGPS">📍 Détecter ma position</button>
 
           <label for="message">Message :</label>
-          <textarea name="message" id="message" rows="5" required></textarea>
+          <textarea id="message" rows="5" required></textarea>
 
           <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
         </form>
 
-        <div class="confirmation-message" id="confirmationMessage" style="display: none;">
-          <h3>Merci pour votre demande!</h3>
-          <p>Nous avons bien reçu votre message et vous contacterons sous peu.</p>
-        </div>
+        <div class="confirmation-message" id="confirmationMessage" style="display: none;"></div>
       </div>
     </div>
   `;
@@ -108,7 +103,7 @@ function createCard(item) {
       <img src="${image}" alt="${alt}">
       <h3>${title}</h3>
       <p>${description}</p>
-      <p id="price"><strong> A partir de : ${price} $</strong></p>
+      <p id="price"><strong> À partir de : ${price} $</strong></p>
       <button class="open-modal" data-category="${title}" data-price="${price}">Contacter un agent</button>
     </div>
   `;
@@ -125,7 +120,7 @@ function setupModal() {
       const category = e.target.dataset.category;
       const price = e.target.dataset.price;
       messageField.value = `Kazidomo Confiance Bonjour, je suis intéressé par "${category}".\nPrix estimatif : ${price} $`;
-      modal?.style && (modal.style.display = "block");
+      modal.style.display = "block";
     }
   });
 
@@ -150,28 +145,67 @@ function setupGPS() {
     navigator.geolocation.getCurrentPosition(pos => {
       const coords = `${pos.coords.latitude.toFixed(6)}, ${pos.coords.longitude.toFixed(6)}`;
       gpsInput.value = coords;
-     messageField.value = messageField.value + `\n\n Et Ma 📍 Localisation : ${coords}\n🗺️ Carte : https://www.google.com/maps?q=${coords}\n\n Merci de me recontacter pour plus d'informations.`;
+      messageField.value += `\n\n📍 Localisation : ${coords}\n🗺️ Carte : https://www.google.com/maps?q=${coords}\n\nMerci de me recontacter.`;
       detectBtn.disabled = true;
       detectBtn.textContent = "✅ Position détectée";
     }, () => alert("⚠️ Position non détectée."));
   });
 }
 
-// === 7. Validation du formulaire ===
+// === 7. Envoi vers Supabase + confirmation ===
 function setupFormValidation() {
   const form = $("#contactForm");
   const confirmation = $("#confirmationMessage");
   const requiredFields = ["#name", "#clientEmail", "#clientWhatsApp", "#message"].map($);
 
-  form?.addEventListener("submit", e => {
-    const missing = requiredFields.filter(field => !field?.value.trim());
+  form?.addEventListener("submit", async e => {
+    e.preventDefault();
 
+    const missing = requiredFields.filter(field => !field?.value.trim());
     if (missing.length > 0) {
-      e.preventDefault();
       alert("📌 Remplis tous les champs avant d’envoyer.");
       return;
     }
 
+    const formData = {
+      name: $("#name").value.trim(),
+      client_email: $("#clientEmail").value.trim(),
+      client_whatsapp: $("#clientWhatsApp").value.trim(),
+      gps: $("#gps").value.trim(),
+      message: $("#message").value.trim()
+    };
+
+    await sendToSupabase(formData);
+
+    confirmation.innerHTML = `
+      <h3>🙏 Merci pour votre demande !</h3>
+      <p>Votre message a été transmis avec succès.</p>
+      <p>Un agent KazidomoConfiance vous contactera sous peu.</p>
+    `;
     confirmation.style.display = "block";
+    form.reset();
   });
+}
+
+// === 8. Connexion à Supabase ===
+async function sendToSupabase(formData) {
+  const SUPABASE_URL = "https://eumdndwnxjqdolbpcyrp.supabase.co"; // ← remplace par ton URL
+  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV1bWRuZHdueGpxZG9sYnBjeXJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgyMjE4NjcsImV4cCI6MjA3Mzc5Nzg2N30.tcRLYK-2MI4hOr8zzg_hfBnxF0GWgcOP1uSo-ZRr5yw"; // ← remplace par ta clé publique
+
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/demandes_services`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "apikey": SUPABASE_KEY,
+      "Authorization": `Bearer ${SUPABASE_KEY}`
+    },
+    body: JSON.stringify(formData)
+  });
+
+  if (!response.ok) {
+    console.error("Erreur Supabase :", await response.text());
+    alert("❌ Échec de l'envoi vers Supabase.");
+  } else {
+    console.log("✅ Données envoyées à Supabase.");
+  }
 }
