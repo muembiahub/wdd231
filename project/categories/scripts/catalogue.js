@@ -152,7 +152,7 @@ function setupGPS() {
   });
 }
 
-// === 7. Envoi vers Supabase + confirmation ===
+// === 7. Validation et envoi vers Supabase ===
 function setupFormValidation() {
   const form = $("#contactForm");
   const confirmation = $("#confirmationMessage");
@@ -180,7 +180,7 @@ function setupFormValidation() {
     confirmation.innerHTML = `
       <h3>🙏 Merci pour votre demande !</h3>
       <p>Votre message a été transmis avec succès.</p>
-      <p>Un agent KazidomoConfiance vous contactera sous peu.</p>
+      <p>Un agent Kazidomo vous contactera sous peu.</p>
     `;
     confirmation.style.display = "block";
     form.reset();
@@ -192,20 +192,22 @@ async function sendToSupabase(formData) {
   const SUPABASE_URL = "https://eumdndwnxjqdolbpcyrp.supabase.co"; // ← remplace par ton URL
   const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV1bWRuZHdueGpxZG9sYnBjeXJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgyMjE4NjcsImV4cCI6MjA3Mzc5Nzg2N30.tcRLYK-2MI4hOr8zzg_hfBnxF0GWgcOP1uSo-ZRr5yw"; // ← remplace par ta clé publique
 
-  const response = await fetch(`${SUPABASE_URL}/rest/v1/demandes_services`, {
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/kazidomo_demandes_services`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "apikey": SUPABASE_KEY,
       "Authorization": `Bearer ${SUPABASE_KEY}`
     },
-    body: JSON.stringify(formData)
+    body: JSON.stringify([formData]) // tableau requis
   });
 
   if (!response.ok) {
-    console.error("Erreur Supabase :", await response.text());
-    alert("❌ Échec de l'envoi vers Supabase.");
+    const errorText = await response.text();
+    console.error("Erreur Supabase :", errorText);
+    alert(`❌ Échec Supabase : ${errorText}`);
   } else {
     console.log("✅ Données envoyées à Supabase.");
-  }
+  }  
 }
+
