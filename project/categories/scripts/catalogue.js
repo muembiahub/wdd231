@@ -190,7 +190,7 @@ function setupFormValidation() {
 // === 8. Connexion à Supabase ===
 async function sendToSupabase(formData) {
   const SUPABASE_URL = "https://eumdndwnxjqdolbpcyrp.supabase.co"; // ← remplace par ton URL
-  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV1bWRuZHdueGpxZG9sYnBjeXJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgyMjE4NjcsImV4cCI6MjA3Mzc5Nzg2N30.tcRLYK-2MI4hOr8zzg_hfBnxF0GWgcOP1uSo-ZRr5yw"; // ← remplace par ta clé publique
+  const SUPABASE_KEY = "sb_publishable_PRp1AmuEtEsGhWnZktlK0Q_uJmipcrO"; // ← remplace par ta clé publique
 
   const response = await fetch(`${SUPABASE_URL}/rest/v1/kazidomo_demandes_services`, {
     method: "POST",
