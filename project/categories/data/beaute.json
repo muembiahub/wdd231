@@ -55,7 +55,7 @@
       "price": 20.63
     },
     {
-      "category": "Manucure — permanente classique",
+      "category": "Manucure permanente classique",
       "description": "Manucure permanente normale à domicile.",
       "price": "20"
     },
@@ -80,7 +80,7 @@
       "price": "40"
     },
     {
-      "category": "Coiffure tissage ouvertet fermé",
+      "category": "Coiffure tissage ouvert et fermé",
       "description": "Tissage ouvert ou fermé à domicile.",
       "price": "35"
     },
