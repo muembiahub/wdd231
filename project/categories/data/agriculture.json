@@ -23,4 +23,11 @@
     "description": "Conseil, irrigation, compostage, semences améliorées et accompagnement agroécologique.",
     "price": "5000"
   }
+  ,
+  {
+    "logo": "images/sustainable-agriculture.webp",
+    "category": "Services agricoles durables",
+    "description": "Conseil, irrigation, compostage, semences améliorées et accompagnement agroécologique.",
+    "price": "5000"
+  }
 ]
