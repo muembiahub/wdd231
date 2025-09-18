@@ -3,55 +3,46 @@
     {
       "category": "Coupes",
       "description": "Coupes stylées pour hommes, femmes et enfants. Rapides et personnalisées.",
-      "logo": "",
       "price": 20
     },
     {
       "category": "Tresses",
       "description": "Tresses africaines modernes et traditionnelles, avec ou sans rajouts.",
-      "logo": "images/tresses.webp",
       "price": 35.71
     },
     {
       "category": "Coloration",
       "description": "Coloration professionnelle pour cheveux, incluant mèches, balayage et ombré.",
-      "logo": "images/coloration.webp",
       "price": 28.99
     },
     {
       "category": "Tissage",
       "description": "Pose de tissages naturels ou synthétiques, avec entretien et conseils personnalisés.",
-      "logo": "images/tissages.webp",
       "price": 40.00
     },
     {
       "category": "Soins du visage",
       "description": "Soins du visage personnalisés pour tous types de peau, incluant nettoyage et hydratation.",
-      "logo": "images/soins-visage.webp",
       "price": 25.00
     },
     {
       "category": "Maquillage",
       "description": "Maquillage professionnel pour toutes occasions, y compris les mariages.",
-      "logo": "images/maquillage.webp",
       "price": 30.50
     },
     {
       "category": "Soins capillaires",
       "description": "Défrisage, coloration, broching et soins nourrissants pour tous types de cheveux.",
-      "logo": "images/soins-capillaires.webp",
       "price": 22.14
     },
     {
       "category": "Coiffure événementielle",
       "description": "Coiffures et maquillages pour mariages, cérémonies et événements spéciaux.",
-      "logo": "images/coiffure-evenementielle.webp",
       "price": 47.40
     },
     {
       "category": "Soins des Ongles",
       "description": "Manucure, faux ongles, nail art et soins réparateurs pour des mains impeccables.",
-      "logo": "images/soins-des-ongles.webp",
       "price": 20.63
     },
     {
