@@ -124,7 +124,7 @@ function setupModal() {
     if (e.target.classList.contains("open-modal")) {
       const category = e.target.dataset.category;
       const price = e.target.dataset.price;
-      messageField.value = `Kazidomo Confiance Bonjour,Je m'appeles "${nameField.value}", je suis intéressé par "${category}".\nPrix estimatif : ${price} $\n\nMerci de me recontacter.`;
+      messageField.value = `Kazidomo Confiance Bonjour, je suis intéressé par "${category}".\nPrix estimatif : ${price} $\n\nMerci de me recontacter.`;
       modal?.style && (modal.style.display = "block");
     }
   });
