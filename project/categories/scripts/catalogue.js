@@ -150,7 +150,7 @@ function setupGPS() {
     navigator.geolocation.getCurrentPosition(pos => {
       const coords = `${pos.coords.latitude.toFixed(6)}, ${pos.coords.longitude.toFixed(6)}`;
       gpsInput.value = coords;
-      messageField.value = `${messageField.value} Et Ma 📍 Localisation : ${coords}\n🗺️ Carte : https://www.google.com/maps?q=${coords}\n\n` ;
+     messageField.value = messageField.value + `\n\n📍 Localisation : ${coords}\n🗺️ Carte : https://www.google.com/maps?q=${coords}`;
       detectBtn.disabled = true;
       detectBtn.textContent = "✅ Position détectée";
     }, () => alert("⚠️ Position non détectée."));
