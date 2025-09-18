@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const jsonPath = `data/${pageName}.json`;
 
   injectForm();
+  injectFavicon();
   loadCards(jsonPath);
   setupModal();
   setupGPS();
@@ -17,6 +18,16 @@ function getPageName() {
 
 function $(selector) {
   return document.querySelector(selector);
+}
+function injectFavicon(path = "images/favicon.ico") {
+  const existing = document.querySelector("link[rel='icon']");
+  if (existing) existing.remove();
+
+  const link = document.createElement("link");
+  link.rel = "icon";
+  link.href = path;
+  link.type = "image/x-icon";
+  document.head.appendChild(link);
 }
 
 // === 3. Injection du formulaire ===
