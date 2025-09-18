@@ -36,48 +36,53 @@
     "price": "12000"
   },
   {
-    "category": "Services domestiques",
-    "description": "Entretien des jardins, taille, arrosage et mise en valeur des espaces verts.",
-    "price": "180"
-  },
-  {
-    "category": "Services domestiques",
-    "description": "Nettoyage complet par homme de ménage, pour un intérieur propre et soigné.",
-    "price": "180"
-  },
-  {
-    "category": "Services domestiques",
-    "description": "Nettoyage complet par femme de ménage, avec soin et discrétion.",
-    "price": "180"
-  },
-  {
-    "category": "Désinfection",
-    "description": "Traitement désinfectant pour maison de 3 pièces, contre bactéries et nuisibles.",
-    "price": "50"
-  },
-  {
-    "category": "Désinfection",
-    "description": "Traitement désinfectant pour maison de 4 pièces, hygiène renforcée.",
-    "price": "100"
-  },
-  {
-    "category": "Désinfection",
-    "description": "Traitement désinfectant pour maison de 5 pièces, protection complète.",
-    "price": "120"
-  },
-  {
-    "category": "Désinfection",
-    "description": "Traitement désinfectant pour maison de 6 pièces, efficacité maximale.",
+    "category": "Services domestiques baby-sitting",
+    "description": "Baby-sitting — garde d’enfants à domicile avec activités ludiques et éducatives.",
     "price": "150"
   },
   {
-    "category": "Désinfection",
-    "description": "Désinfection professionnelle du bureau, pour un environnement sain.",
+    "category": "Services domestiques jardinier",
+    "description": "Jardinier — entretien, taille et mise en valeur des espaces verts.",
+    "price": "180"
+  },
+  {
+    "category": "Services domestiques homme de ménage",
+    "description": "Homme de ménage — nettoyage complet et entretien intérieur.",
+    "price": "180"
+  },
+  {
+    "category": "Services domestiques femme de ménage",
+    "description": "Femme de ménage — nettoyage méticuleux et soin du foyer.",
+    "price": "180"
+  },
+  {
+    "category": "Désinfection maison 3 pièces",
+    "description": "Désinfection de maison 3 pièces — traitement contre bactéries et nuisibles.",
+    "price": "50"
+  },
+  {
+    "category": "Désinfection maison 4 pièces",
+    "description": "Désinfection de maison 4 pièces — hygiène renforcée et protection durable.",
+    "price": "100"
+  },
+  {
+    "category": "Désinfection maison 5 pièces",
+    "description": "Désinfection de maison 5 pièces — couverture complète et efficacité renforcée.",
+    "price": "120"
+  },
+  {
+    "category": "Désinfection maison 6 pièces",
+    "description": "Désinfection de maison 6 pièces — traitement intensif pour grands espaces.",
+    "price": "150"
+  },
+  {
+    "category": "Désinfection bureau",
+    "description": "Désinfection du bureau — environnement de travail sain et sécurisé.",
     "price": "80"
   },
   {
-    "category": "Désinfection",
-    "description": "Traitement désinfectant du dépôt, contre moisissures et nuisibles.",
+    "category": "Désinfection dépôt",
+    "description": "Désinfection du dépôt — traitement contre moisissures et nuisibles.",
     "price": "150"
   }
 ]
