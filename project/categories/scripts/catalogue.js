@@ -159,24 +159,25 @@ function setupFormValidation() {
   const requiredFields = ["#name", "#clientEmail", "#clientWhatsApp", "#message"].map($);
 
   form?.addEventListener("submit", async e => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const missing = requiredFields.filter(field => !field?.value.trim());
-    if (missing.length > 0) {
-      alert("📌 Remplis tous les champs avant d’envoyer.");
-      return;
-    }
+  const missing = requiredFields.filter(field => !field?.value.trim());
+  if (missing.length > 0) {
+    alert("📌 Remplis tous les champs avant d’envoyer.");
+    return;
+  }
 
-    const formData = {
-      name: $("#name").value.trim(),
-      client_email: $("#clientEmail").value.trim(),
-      client_whatsapp: $("#clientWhatsApp").value.trim(),
-      gps: $("#gps").value.trim(),
-      message: $("#message").value.trim()
-    };
+  const formData = {
+    name: $("#name").value.trim(),
+    client_email: $("#clientEmail").value.trim(),
+    client_whatsapp: $("#clientWhatsApp").value.trim(),
+    gps: $("#gps").value.trim(),
+    message: $("#message").value.trim()
+  };
 
-    await sendToSupabase(formData);
+  const success = await sendToSupabase(formData);
 
+  if (success) {
     confirmation.innerHTML = `
       <h3>🙏 Merci pour votre demande !</h3>
       <p>Votre message a été transmis avec succès.</p>
@@ -184,13 +185,14 @@ function setupFormValidation() {
     `;
     confirmation.style.display = "block";
     form.reset();
-  });
+  }
+});
 }
 
 // === 8. Connexion à Supabase ===
 async function sendToSupabase(formData) {
-  const SUPABASE_URL = "https://eumdndwnxjqdolbpcyrp.supabase.co"; // ← remplace par ton URL
-  const SUPABASE_KEY = "sb_publishable_PRp1AmuEtEsGhWnZktlK0Q_uJmipcrO"; // ← remplace par ta clé publique
+  const SUPABASE_URL = "https://eumdndwnxjqdolbpcyrp.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_PRp1AmuEtEsGhWnZktlK0Q_uJmipcrO";
 
   const response = await fetch(`${SUPABASE_URL}/rest/v1/kazidomo-demandes-services`, {
     method: "POST",
@@ -199,15 +201,16 @@ async function sendToSupabase(formData) {
       "apikey": SUPABASE_KEY,
       "Authorization": `Bearer ${SUPABASE_KEY}`
     },
-    body: JSON.stringify([formData]) // tableau requis
+    body: JSON.stringify([formData])
   });
 
   if (!response.ok) {
     const errorText = await response.text();
     console.error("Erreur Supabase :", errorText);
     alert(`❌ Échec Supabase : ${errorText}`);
+    return false;
   } else {
     console.log("✅ Données envoyées à Supabase.");
-  }  
+    return true;
+  }
 }
-
