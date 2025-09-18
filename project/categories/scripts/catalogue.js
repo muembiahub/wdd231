@@ -31,7 +31,11 @@ function injectFavicon(path = "images/favicon.ico") {
   document.head.appendChild(link);
 }
 
-// === 3. Injection du formulaire ===
+// === 3. Variables globales pour le service sélectionné ===
+let selectedCategory = "";
+let selectedPrice = "";
+
+// === 4. Injection du formulaire ===
 function injectForm() {
   const formContainer = document.createElement("div");
   formContainer.innerHTML = `
@@ -67,7 +71,7 @@ function injectForm() {
   document.body.appendChild(formContainer);
 }
 
-// === 4. Chargement des cartes ===
+// === 5. Chargement des cartes ===
 function loadCards(jsonPath) {
   fetch(jsonPath)
     .then(res => res.ok ? res.json() : Promise.reject(`Fichier introuvable : ${jsonPath}`))
@@ -109,7 +113,7 @@ function createCard(item) {
   `;
 }
 
-// === 5. Gestion du modal ===
+// === 6. Gestion du modal ===
 function setupModal() {
   const modal = $("#contactModal");
   const closeBtn = $("#closeModal");
@@ -117,9 +121,10 @@ function setupModal() {
 
   document.addEventListener("click", e => {
     if (e.target.classList.contains("open-modal")) {
-      const category = e.target.dataset.category;
-      const price = e.target.dataset.price;
-      messageField.value = `Kazidomo Confiance Bonjour, je suis intéressé par "${category}".\nPrix estimatif : ${price} $`;
+      selectedCategory = e.target.dataset.category;
+      selectedPrice = e.target.dataset.price;
+
+      messageField.value = `Kazidomo Confiance Bonjour, je suis intéressé par "${selectedCategory}".\nPrix estimatif : ${selectedPrice} $`;
       modal.style.display = "block";
     }
   });
@@ -133,7 +138,7 @@ function setupModal() {
   });
 }
 
-// === 6. Détection GPS ===
+// === 7. Détection GPS ===
 function setupGPS() {
   const detectBtn = $("#detectGPS");
   const gpsInput = $("#gps");
@@ -152,48 +157,53 @@ function setupGPS() {
   });
 }
 
-// === 7. Validation et envoi vers Supabase ===
+// === 8. Validation et envoi vers Supabase ===
 function setupFormValidation() {
   const form = $("#contactForm");
   const confirmation = $("#confirmationMessage");
+  const modal = $("#contactModal");
   const requiredFields = ["#name", "#clientEmail", "#clientWhatsApp", "#message"].map($);
 
   form?.addEventListener("submit", async e => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const missing = requiredFields.filter(field => !field?.value.trim());
-  if (missing.length > 0) {
-    alert("📌 Remplis tous les champs avant d’envoyer.");
-    return;
-  }
+    const missing = requiredFields.filter(field => !field?.value.trim());
+    if (missing.length > 0) {
+      alert("📌 Remplis tous les champs avant d’envoyer.");
+      return;
+    }
 
-  const formData = {
-    name: $("#name").value.trim(),
-    client_email: $("#clientEmail").value.trim(),
-    client_whatsapp: $("#clientWhatsApp").value.trim(),
-    gps: $("#gps").value.trim(),
-    message: $("#message").value.trim()
-  };
+    const formData = {
+      name: $("#name").value.trim(),
+      client_email: $("#clientEmail").value.trim(),
+      client_whatsapp: $("#clientWhatsApp").value.trim(),
+      gps: $("#gps").value.trim(),
+      message: $("#message").value.trim(),
+      category: selectedCategory,
+      price: selectedPrice
+    };
 
-  const success = await sendToSupabase(formData);
+    const success = await sendToSupabase(formData);
 
-  if (success) {
-    confirmation.innerHTML = `
-      <h3>🙏 Merci pour votre demande !</h3>
-      <p>Votre message a été transmis avec succès.</p>
-      <p>Un agent Kazidomo vous contactera sous peu.</p>
-    `;
-    confirmation.style.display = "block";
-    form.reset();
-  }
-});
+    if (success) {
+      confirmation.innerHTML = `
+        <h3>🙏 Merci pour votre demande !</h3>
+        <p>Votre message a été transmis avec succès.</p>
+        <p>Un agent Kazidomo vous contactera sous peu.</p>
+      `;
+      confirmation.style.display = "block";
+      modal.style.display = "none";
+      form.reset();
+    }
+  });
 }
 
-// === 8. Connexion à Supabase ===
+// === 9. Connexion à Supabase ===
 async function sendToSupabase(formData) {
   const SUPABASE_URL = "https://eumdndwnxjqdolbpcyrp.supabase.co";
   const SUPABASE_KEY = "sb_publishable_PRp1AmuEtEsGhWnZktlK0Q_uJmipcrO";
 
+  // 1. Envoi vers la table Supabase
   const response = await fetch(`${SUPABASE_URL}/rest/v1/kazidomo-demandes-services`, {
     method: "POST",
     headers: {
@@ -209,8 +219,36 @@ async function sendToSupabase(formData) {
     console.error("Erreur Supabase :", errorText);
     alert(`❌ Échec Supabase : ${errorText}`);
     return false;
-  } else {
-    console.log("✅ Données envoyées à Supabase.");
-    return true;
   }
+
+  console.log("✅ Données envoyées à Supabase.");
+
+  // 2. Envoi de l'email de confirmation via Edge Function
+  try {
+    const emailResponse = await fetch(`${SUPABASE_URL}/functions/v1/send-confirmation`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${SUPABASE_KEY}`
+      },
+      body: JSON.stringify({
+        email: formData.client_email,
+        name: formData.name,
+        category: formData.category,
+        price: formData.price,
+        gps: formData.gps
+      })
+    });
+
+    if (!emailResponse.ok) {
+      const emailError = await emailResponse.text();
+      console.warn("⚠️ Email non envoyé :", emailError);
+    } else {
+      console.log("📧 Email de confirmation envoyé.");
+    }
+  } catch (err) {
+    console.error("Erreur lors de l'envoi de l'email :", err);
+  }
+
+  return true;
 }
