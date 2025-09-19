@@ -131,16 +131,6 @@
       "price": "30"
     },
     {
-      "category": "Tresses  rasta ",
-      "description": "Rasta 4, 5, 6 à domicile.",
-      "price": "50"
-    },
-    {
-      "category": "Tresses  coordelethe ",
-      "description": "Coordelethe 4, 5, 6 à domicile.",
-      "price": "50"
-    },
-    {
       "category": "Tresses  twiste",
       "description": "Twiste à domicile.",
       "price": "35"
@@ -151,11 +141,6 @@
       "price": "30"
     },
     {
-      "category": "Tresses arabe ",
-      "description": "Tresse arabe 4, 5, 6 à domicile.",
-      "price": "50"
-    },
-    {
       "category": "Tresses  cabelo",
       "description": "Tresse cabelo à domicile.",
       "price": "100"
@@ -163,11 +148,6 @@
     {
       "category": "Soin esthétique  micro shading",
       "description": "Micro shading à domicile.",
-      "price": "100"
-    },
-    {
-      "category": "Soin esthétique  micro blading",
-      "description": "Micro blading à domicile.",
       "price": "100"
     }
   ]
