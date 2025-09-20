@@ -59,7 +59,10 @@ function injectForm() {
           <input type="text" id="gps" readonly placeholder="Coordonnées GPS">
           <button type="button" id="detectGPS">📍 Détecter ma position</button>
 
-          <!-- Label supprimé ici -->
+           <!-- 👇 Conteneur de carte injecté dynamiquement -->
+          <div id="gpsMapContainer"></div>
+
+          <!-- message  -->
           <textarea id="message" rows="5" required placeholder="Exprimez votre besoin, votre bénédiction ou votre intention..."></textarea>
           <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
         </form>
@@ -191,29 +194,33 @@ function renderResponsiveMap(mapUrl, container) {
 }
 
 
-function setupGPS() {
-  const detectBtn = $("#detectGPS");
-  const gpsInput = $("#gps");
+function renderResponsiveMap(mapUrl, container) {
+  const existingMap = document.getElementById("gpsMap");
+  if (existingMap) existingMap.remove();
 
-  detectBtn?.addEventListener("click", () => {
-    if (!navigator.geolocation) return alert("🛑 GPS non pris en charge.");
+  const mapWrapper = document.createElement("div");
+  mapWrapper.id = "gpsMap";
+  mapWrapper.style.position = "relative";
+  mapWrapper.style.paddingBottom = "56.25%";
+  mapWrapper.style.height = "0";
+  mapWrapper.style.overflow = "hidden";
+  mapWrapper.style.marginTop = "1em";
+  mapWrapper.style.borderRadius = "8px";
+  mapWrapper.style.boxShadow = "0 2px 6px rgba(0,0,0,0.1)";
 
-    navigator.geolocation.getCurrentPosition(pos => {
-      const coords = {
-        latitude: pos.coords.latitude.toFixed(6),
-        longitude: pos.coords.longitude.toFixed(6),
-        map_url: `https://www.google.com/maps?q=${pos.coords.latitude},${pos.coords.longitude}`
-      };
+  const mapFrame = document.createElement("iframe");
+  mapFrame.src = `${mapUrl}&output=embed`;
+  mapFrame.style.position = "absolute";
+  mapFrame.style.top = "0";
+  mapFrame.style.left = "0";
+  mapFrame.style.width = "100%";
+  mapFrame.style.height = "100%";
+  mapFrame.style.border = "0";
+  mapFrame.loading = "lazy";
+  mapFrame.referrerPolicy = "no-referrer-when-downgrade";
 
-      gpsInput.value = `${coords.latitude}, ${coords.longitude}`;
-
-      // ✅ Injecte la carte Google Maps dans le DOM
-      renderResponsiveMap(coords.map_url, detectBtn.parentElement);
-
-      detectBtn.disabled = true;
-      detectBtn.textContent = "✅ Position détectée";
-    }, () => alert("⚠️ Position non détectée."));
-  });
+  mapWrapper.appendChild(mapFrame);
+  container.appendChild(mapWrapper);
 }
 
 
