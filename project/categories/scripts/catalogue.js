@@ -158,7 +158,6 @@ function setupModal() {
 
       // ❌ Supprimé : message.value = ...
       modal.style.display = "block";
-      document.querySelector("#category")?.style.display = "none";
    
  }
   });
