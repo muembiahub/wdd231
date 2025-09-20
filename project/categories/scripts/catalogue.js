@@ -39,8 +39,7 @@ let selectedPrice = "";
 // === 4. Injection du formulaire ===
 function injectForm() {
   const formContainer = document.createElement("div");
-  formContainer.innerHTML = `
-    <style>
+  formContainer.innerHTML = `  <style>
       #contactForm {
         display: flex;
         flex-direction: column;
