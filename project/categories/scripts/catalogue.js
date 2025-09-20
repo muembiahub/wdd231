@@ -176,10 +176,8 @@ function setupGPS() {
       };
 
       gpsInput.value = `${coords.latitude}, ${coords.longitude}`;
-      formData.gps = gpsInput.value;
-      formData.map_url = coords.map_url;
 
-      // 👇 Passe le conteneur dans lequel injecter la carte
+      // ✅ Injecte la carte Google Maps dans le DOM
       renderResponsiveMap(coords.map_url, detectBtn.parentElement);
 
       detectBtn.disabled = true;
@@ -187,34 +185,7 @@ function setupGPS() {
     }, () => alert("⚠️ Position non détectée."));
   });
 }
-function renderResponsiveMap(mapUrl, container) {
-  const existingMap = document.getElementById("gpsMap");
-  if (existingMap) existingMap.remove();
 
-  const mapWrapper = document.createElement("div");
-  mapWrapper.id = "gpsMap";
-  mapWrapper.style.position = "relative";
-  mapWrapper.style.paddingBottom = "56.25%";
-  mapWrapper.style.height = "0";
-  mapWrapper.style.overflow = "hidden";
-  mapWrapper.style.marginTop = "1em";
-  mapWrapper.style.borderRadius = "8px";
-  mapWrapper.style.boxShadow = "0 2px 6px rgba(0,0,0,0.1)";
-
-  const mapFrame = document.createElement("iframe");
-  mapFrame.src = `${mapUrl}&output=embed`;
-  mapFrame.style.position = "absolute";
-  mapFrame.style.top = "0";
-  mapFrame.style.left = "0";
-  mapFrame.style.width = "100%";
-  mapFrame.style.height = "100%";
-  mapFrame.style.border = "0";
-  mapFrame.loading = "lazy";
-  mapFrame.referrerPolicy = "no-referrer-when-downgrade";
-
-  mapWrapper.appendChild(mapFrame);
-  container.appendChild(mapWrapper); // ✅ Utilise le conteneur transmis
-}
 // === 9. Validation et envoi ===
 function setupFormValidation() {
   const form = $("#contactForm");
