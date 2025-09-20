@@ -262,13 +262,13 @@ function setupFormValidation() {
     const success = await sendToSupabase(formData);
 
     if (success) {
-         modal.style.display = "none";
+  modal.style.display = "none";
 
-    // ✅ Réinitialise le formulaire
-      form.reset();
+  // ✅ Réinitialise le formulaire
+  form.reset();
 
   // ✅ Affiche la bannière avec bouton de retour
-     banner.innerHTML = `
+  banner.innerHTML = `
     <h3>🙏 Merci pour votre demande !</h3>
     <p>Votre message a été transmis avec succès.</p>
     <p>Un agent Kazidomo vous contactera sous peu.</p>
@@ -291,7 +291,9 @@ function setupFormValidation() {
     document.querySelector("#category")?.style.display = "block";
   });
 }
+
   });
+}
 // === 9. Badge client ===
 function showClientBadge() {
   if (document.getElementById("clientBadge")) return; // évite les doublons
