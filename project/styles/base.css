@@ -27,7 +27,6 @@ main {
   justify-content:space-around;  
   padding: 1px;
   gap: 20px;
-  margin: 0 auto;
 }
 
 /* Carte individuelle */
@@ -376,7 +375,16 @@ select {
   color: #777777;
 }
 
-
+.social-icons a {
+  /* font-size: 18px; */
+  /* background: #ffffff; */
+  /* box-shadow: rgb(0 0 0 / 8%) 0px 4px 12px;
+    padding: 0.4rem 1rem 0.4rem 1rem;
+    border-radius: 3px;
+	color: #82074a; */
+  /* margin-right: 18px; */
+  color: #777777;
+}
 
 .social-icons a:hover {
   color: #000;
