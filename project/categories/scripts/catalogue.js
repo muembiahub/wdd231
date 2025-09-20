@@ -59,18 +59,25 @@ function injectForm() {
           <input type="text" id="gps" readonly placeholder="Coordonnées GPS">
           <button type="button" id="detectGPS">📍 Détecter ma position</button>
 
-           <!-- 👇 Conteneur de carte injecté dynamiquement -->
+          <!-- ✅ Champ caché pour stocker le lien Google Maps -->
+          <input type="hidden" id="mapUrl">
+
+          <!-- ✅ Conteneur pour afficher la carte -->
           <div id="gpsMapContainer"></div>
 
-          <!-- message  -->
-          <textarea id="message" rows="5"  placeholder="Exprimez votre besoin, votre bénédiction ou votre intention..."></textarea>
+          <label for="message">Message :</label>
+          <textarea id="message" rows="5" required></textarea>
+
           <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
         </form>
+
+        <div class="confirmation-message" id="confirmationBanner" style="display: none;"></div>
       </div>
     </div>
   `;
   document.body.appendChild(formContainer);
 }
+
 
 /// === 5. Injection de la bannière de confirmation ===
 function injectConfirmationBanner() {
@@ -220,8 +227,6 @@ function setupGPS() {
   });
 }
 
-
-// === 9. Validation et envoi ===
 function setupFormValidation() {
   const form = $("#contactForm");
   const modal = $("#contactModal");
@@ -242,6 +247,7 @@ function setupFormValidation() {
       client_email: $("#clientEmail").value.trim(),
       client_whatsapp: $("#clientWhatsApp").value.trim(),
       gps: $("#gps").value.trim(),
+      map_url: $("#mapUrl")?.value.trim(), // ✅ ajout du lien Google Maps
       message: $("#message").value.trim(),
       category: selectedCategory,
       price: selectedPrice
@@ -254,7 +260,7 @@ function setupFormValidation() {
     if (success) {
       modal.style.display = "none";
       banner.style.display = "block";
-      showClientBadge();
+      showClientBadge?.(); // ✅ sécurise l’appel si la fonction n’est pas définie
 
       setTimeout(() => {
         banner.style.display = "none";
@@ -262,6 +268,24 @@ function setupFormValidation() {
       }, 10000);
     }
   });
+}
+// === 9. Badge client ===
+function showClientBadge() {
+  if (document.getElementById("clientBadge")) return; // évite les doublons
+
+  const badge = document.createElement("div");
+  badge.id = "clientBadge";
+  badge.textContent = "✅ Client identifié";
+  badge.style.position = "fixed";
+  badge.style.top = "10px";
+  badge.style.right = "10px";
+  badge.style.padding = "10px 20px";
+  badge.style.backgroundColor = "#4CAF50";
+  badge.style.color = "white";
+  badge.style.borderRadius = "5px";
+  badge.style.zIndex = "1000";
+
+  document.body.appendChild(badge);
 }
 
 // === 10. Connexion à Supabase ===
