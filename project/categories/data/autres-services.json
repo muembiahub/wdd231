@@ -12,18 +12,6 @@
     "price": "8000"
   },
   {
-    "logo": "images/printing.webp",
-    "category": "Impression & Signalétique",
-    "description": "Conception et impression de flyers, affiches, banderoles, badges et supports personnalisés.",
-    "price": "5000"
-  },
-  {
-    "logo": "images/repair-services.webp",
-    "category": "Réparations diverses",
-    "description": "Réparation d’équipements électroniques, électroménagers, meubles et installations domestiques.",
-    "price": "7000"
-  },
-  {
     "logo": "images/legal-support.webp",
     "category": "Appui juridique et administratif",
     "description": "Assistance pour documents légaux, démarches administratives, conseils et médiation.",
