@@ -1,21 +1,15 @@
 [
   {
     "logo": "images/transport.webp",
-    "category": "Transport & Logistique",
+    "category": "Transport et Logistique",
     "description": "Services de transport de personnes, marchandises, déménagements et livraisons locales.",
     "price": "10000"
   },
   {
     "logo": "images/cleaning.webp",
-    "category": "Nettoyage & Entretien",
+    "category": "Nettoyage et Entretien",
     "description": "Entretien de bureaux, maisons, espaces publics et services de désinfection.",
     "price": "8000"
-  },
-  {
-    "logo": "images/event-services.webp",
-    "category": "Événementiel",
-    "description": "Organisation d’événements, location de matériel, décoration et coordination logistique.",
-    "price": "15000"
   },
   {
     "logo": "images/printing.webp",
@@ -31,7 +25,7 @@
   },
   {
     "logo": "images/legal-support.webp",
-    "category": "Appui juridique & administratif",
+    "category": "Appui juridique et administratif",
     "description": "Assistance pour documents légaux, démarches administratives, conseils et médiation.",
     "price": "12000"
   },
