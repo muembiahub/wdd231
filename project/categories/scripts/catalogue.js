@@ -59,9 +59,8 @@ function injectForm() {
           <input type="text" id="gps" readonly placeholder="Coordonnées GPS">
           <button type="button" id="detectGPS">📍 Détecter ma position</button>
 
-          <label for="message">Message :</label>
-          <textarea id="message" rows="5" required></textarea>
-
+          <!-- Label supprimé ici -->
+          <textarea id="message" rows="5" required placeholder="Exprimez votre besoin, votre bénédiction ou votre intention..."></textarea>
           <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
         </form>
       </div>
@@ -134,18 +133,19 @@ function createCard(item) {
   `;
 }
 
-// === 7. Gestion du modal ===
 function setupModal() {
   const modal = $("#contactModal");
   const closeBtn = $("#closeModal");
-  const messageField = $("#message");
+  const message = $("#message"); // Sélecteur pour le champ message
+
+  // === Badge client ===
 
   document.addEventListener("click", e => {
     if (e.target.classList.contains("open-modal")) {
       selectedCategory = e.target.dataset.category;
       selectedPrice = e.target.dataset.price;
 
-      messageField.value = `Kazidomo Confiance Bonjour, je suis intéressé par "${selectedCategory}".\nPrix estimatif : ${selectedPrice} $`;
+      // ❌ Supprimé : message.value = ...
       modal.style.display = "block";
     }
   });
@@ -159,23 +159,64 @@ function setupModal() {
   });
 }
 
-// === 8. Détection GPS ===
 function setupGPS() {
   const detectBtn = $("#detectGPS");
   const gpsInput = $("#gps");
-  const messageField = $("#message");
 
   detectBtn?.addEventListener("click", () => {
     if (!navigator.geolocation) return alert("🛑 GPS non pris en charge.");
 
     navigator.geolocation.getCurrentPosition(pos => {
-      const coords = `${pos.coords.latitude.toFixed(6)}, ${pos.coords.longitude.toFixed(6)}`;
-      gpsInput.value = coords;
-      messageField.value += `\n\n📍 Localisation : ${coords}\n🗺️ Carte : https://www.google.com/maps?q=${coords}\n\nMerci de me recontacter.`;
+      const coords = {
+        latitude: pos.coords.latitude.toFixed(6),
+        longitude: pos.coords.longitude.toFixed(6),
+        map_url: `https://www.google.com/maps?q=${pos.coords.latitude},${pos.coords.longitude}`
+      };
+
+      // Injecte dans le champ GPS
+      gpsInput.value = `${coords.latitude}, ${coords.longitude}`;
+
+      // Prépare les données pour Supabase
+      formData.gps = gpsInput.value;
+      formData.map_url = coords.map_url;
+
+      // Affiche la carte responsive
+      renderResponsiveMap(coords.map_url);
+
+      // Mise à jour du bouton
       detectBtn.disabled = true;
       detectBtn.textContent = "✅ Position détectée";
     }, () => alert("⚠️ Position non détectée."));
   });
+}
+// === Google Maps  et Carte responsive ===
+function renderResponsiveMap(mapUrl) {
+  const existingMap = document.getElementById("gpsMap");
+  if (existingMap) existingMap.remove();
+
+  const mapWrapper = document.createElement("div");
+  mapWrapper.id = "gpsMap";
+  mapWrapper.style.position = "relative";
+  mapWrapper.style.paddingBottom = "56.25%"; // Ratio 16:9
+  mapWrapper.style.height = "0";
+  mapWrapper.style.overflow = "hidden";
+  mapWrapper.style.marginTop = "1em";
+  mapWrapper.style.borderRadius = "8px";
+  mapWrapper.style.boxShadow = "0 2px 6px rgba(0,0,0,0.1)";
+
+  const mapFrame = document.createElement("iframe");
+  mapFrame.src = `${mapUrl}&output=embed`;
+  mapFrame.style.position = "absolute";
+  mapFrame.style.top = "0";
+  mapFrame.style.left = "0";
+  mapFrame.style.width = "100%";
+  mapFrame.style.height = "100%";
+  mapFrame.style.border = "0";
+  mapFrame.loading = "lazy";
+  mapFrame.referrerPolicy = "no-referrer-when-downgrade";
+
+  mapWrapper.appendChild(mapFrame);
+  detectBtn.parentElement.appendChild(mapWrapper); // Ajoute juste sous le bouton
 }
 
 // === 9. Validation et envoi ===
