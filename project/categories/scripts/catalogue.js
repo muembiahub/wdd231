@@ -40,6 +40,53 @@ let selectedPrice = "";
 function injectForm() {
   const formContainer = document.createElement("div");
   formContainer.innerHTML = `
+    <style>
+      #contactForm {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        padding: 1em;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      #contactForm input,
+      #contactForm textarea,
+      #contactForm button {
+        width: 100%;
+        padding: 0.75em;
+        font-size: 1em;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-sizing: border-box;
+      }
+
+      #contactForm button {
+        background-color: #00aa00;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      #contactForm button:hover {
+        background-color: #008800;
+      }
+
+      @media (max-width: 480px) {
+        #contactForm {
+          padding: 0.5em;
+        }
+
+        #contactForm input,
+        #contactForm textarea,
+        #contactForm button {
+          font-size: 0.95em;
+        }
+      }
+    </style>
     <div id="contactModal" class="modal">
       <div class="modal-content">
         <span class="close" id="closeModal">&times;</span>
@@ -149,8 +196,6 @@ function setupModal() {
   const modal = $("#contactModal");
   const closeBtn = $("#closeModal");
 
-  // === Badge client ===
-
   document.addEventListener("click", e => {
     if (e.target.classList.contains("open-modal")) {
       selectedCategory = e.target.dataset.category;
@@ -166,9 +211,15 @@ function setupModal() {
     modal.style.display = "none";
   });
 
-  window.addEventListener("click", e => {
-    if (e.target === modal) modal.style.display = "none";
-  });
+ window.addEventListener("keydown", e => {
+  if (e.key === "Escape") {
+    const modal = $("#contactModal");
+    if (modal?.style.display === "block") {
+      modal.style.display = "none";
+    }
+  }
+});
+
 }
 function renderResponsiveMap(mapUrl, container) {
   const existingMap = document.getElementById("gpsMap");
