@@ -240,18 +240,20 @@ function setupFormValidation() {
   form?.addEventListener("submit", async e => {
     e.preventDefault();
 
+    // Vérifie les champs obligatoires
     const missing = requiredFields.filter(field => !field?.value.trim());
     if (missing.length > 0) {
       alert("📌 Remplis tous les champs avant d’envoyer.");
       return;
     }
 
+    // Prépare les données à envoyer
     const formData = {
       name: $("#name").value.trim(),
       client_email: $("#clientEmail").value.trim(),
       client_whatsapp: $("#clientWhatsApp").value.trim(),
       gps: $("#gps").value.trim(),
-      map_url: $("#mapUrl")?.value.trim(), // ✅ ajout du lien Google Maps
+      map_url: $("#mapUrl")?.value.trim(),
       message: $("#message").value.trim(),
       category: selectedCategory,
       price: selectedPrice
@@ -259,41 +261,44 @@ function setupFormValidation() {
 
     console.log("📤 Données à envoyer :", formData);
 
+    // Envoie à Supabase
     const success = await sendToSupabase(formData);
 
     if (success) {
-  modal.style.display = "none";
+      // ✅ Masque le formulaire et la page Beauté
+      modal.style.display = "none";
+      document.querySelector("#category")?.style.display = "none";
 
-  // ✅ Réinitialise le formulaire
-  form.reset();
+      // ✅ Réinitialise le formulaire
+      form.reset();
 
-  // ✅ Affiche la bannière avec bouton de retour
-  banner.innerHTML = `
-    <h3>🙏 Merci pour votre demande !</h3>
-    <p>Votre message a été transmis avec succès.</p>
-    <p>Un agent Kazidomo vous contactera sous peu.</p>
-    <button id="returnBtn" style="
-      margin-top: 1em;
-      padding: 0.5em 1em;
-      background-color: #00aa00;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    ">🔙 Retour aux services Beauté</button>
-  `;
-  banner.style.display = "block";
+      // ✅ Affiche la bannière avec bouton de retour
+      banner.innerHTML = `
+        <h3>🙏 Merci pour votre demande !</h3>
+        <p>Votre message a été transmis avec succès.</p>
+        <p>Un agent Kazidomo vous contactera sous peu.</p>
+        <button id="returnBtn" style="
+          margin-top: 1em;
+          padding: 0.5em 1em;
+          background-color: #00aa00;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        ">🔙 Retour aux services Beauté</button>
+      `;
+      banner.style.display = "block";
 
-  // ✅ Action du bouton : réaffiche la page Beauté
-  const returnBtn = $("#returnBtn");
-  returnBtn?.addEventListener("click", () => {
-    banner.style.display = "none";
-    document.querySelector("#category")?.style.display = "block";
+      // ✅ Action du bouton : réaffiche la page Beauté
+      const returnBtn = $("#returnBtn");
+      returnBtn?.addEventListener("click", () => {
+        banner.style.display = "none";
+        document.querySelector("#category")?.style.display = "block";
+      });
+    }
   });
 }
 
-  });
-}
 // === 9. Badge client ===
 function showClientBadge() {
   if (document.getElementById("clientBadge")) return; // évite les doublons
