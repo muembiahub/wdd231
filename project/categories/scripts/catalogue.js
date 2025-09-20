@@ -66,7 +66,7 @@ function injectForm() {
           <div id="gpsMapContainer"></div>
 
           <label for="message">Message :</label>
-          <textarea id="message" rows="5" required></textarea>
+          <textarea id="message" rows="5" placeholder="Veuillez entrer votre message ici ou laisser votre préoccupation"></textarea>
 
           <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
         </form>
@@ -148,7 +148,6 @@ function createCard(item) {
 function setupModal() {
   const modal = $("#contactModal");
   const closeBtn = $("#closeModal");
-  const message = $("#message"); // Sélecteur pour le champ message
 
   // === Badge client ===
 
@@ -159,7 +158,9 @@ function setupModal() {
 
       // ❌ Supprimé : message.value = ...
       modal.style.display = "block";
-    }
+      document.querySelector("#category")?.style.display = "none";
+   
+ }
   });
 
   closeBtn?.addEventListener("click", () => {
@@ -170,7 +171,6 @@ function setupModal() {
     if (e.target === modal) modal.style.display = "none";
   });
 }
-
 function renderResponsiveMap(mapUrl, container) {
   const existingMap = document.getElementById("gpsMap");
   if (existingMap) existingMap.remove();
@@ -262,17 +262,36 @@ function setupFormValidation() {
     const success = await sendToSupabase(formData);
 
     if (success) {
-      modal.style.display = "none";
-      banner.style.display = "block";
-      showClientBadge?.(); // ✅ sécurise l’appel si la fonction n’est pas définie
+         modal.style.display = "none";
 
-      setTimeout(() => {
-        banner.style.display = "none";
-        form.reset();
-      }, 10000);
-    }
+    // ✅ Réinitialise le formulaire
+      form.reset();
+
+  // ✅ Affiche la bannière avec bouton de retour
+     banner.innerHTML = `
+    <h3>🙏 Merci pour votre demande !</h3>
+    <p>Votre message a été transmis avec succès.</p>
+    <p>Un agent Kazidomo vous contactera sous peu.</p>
+    <button id="returnBtn" style="
+      margin-top: 1em;
+      padding: 0.5em 1em;
+      background-color: #00aa00;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    ">🔙 Retour aux services Beauté</button>
+  `;
+  banner.style.display = "block";
+
+  // ✅ Action du bouton : réaffiche la page Beauté
+  const returnBtn = $("#returnBtn");
+  returnBtn?.addEventListener("click", () => {
+    banner.style.display = "none";
+    document.querySelector("#category")?.style.display = "block";
   });
 }
+  });
 // === 9. Badge client ===
 function showClientBadge() {
   if (document.getElementById("clientBadge")) return; // évite les doublons
