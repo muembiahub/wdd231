@@ -204,6 +204,7 @@ function renderResponsiveMap(mapUrl, container) {
 function setupGPS() {
   const detectBtn = $("#detectGPS");
   const gpsInput = $("#gps");
+  const mapUrlInput = $("#mapUrl"); // 👈 récupère le champ caché
 
   detectBtn?.addEventListener("click", () => {
     if (!navigator.geolocation) return alert("🛑 GPS non pris en charge.");
@@ -217,15 +218,18 @@ function setupGPS() {
 
       gpsInput.value = `${coords.latitude}, ${coords.longitude}`;
 
-      // ✅ Injecte la carte Google Maps dans le DOM
-      const mapContainer = document.getElementById("gpsMapContainer");
-      renderResponsiveMap(coords.map_url, mapContainer);
+      // ✅ ENREGISTRE le lien dans le champ caché
+      mapUrlInput.value = coords.map_url;
+
+      // ✅ Affiche la carte dans le conteneur prévu
+      renderResponsiveMap(coords.map_url, $("#gpsMapContainer"));
 
       detectBtn.disabled = true;
       detectBtn.textContent = "✅ Position détectée";
     }, () => alert("⚠️ Position non détectée."));
   });
 }
+
 
 function setupFormValidation() {
   const form = $("#contactForm");
