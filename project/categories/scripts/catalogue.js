@@ -1,3 +1,4 @@
+
 // === 1. Initialisation ===
 document.addEventListener("DOMContentLoaded", () => {
   const pageName = getPageName();
@@ -31,7 +32,7 @@ function injectFavicon(path = "images/favicon.ico") {
   document.head.appendChild(link);
 }
 
-// === 3. Variables globales pour le service sélectionné ===
+// === 3. Variables globales ===
 let selectedCategory = "";
 let selectedPrice = "";
 
@@ -157,7 +158,7 @@ function setupGPS() {
   });
 }
 
-// === 8. Validation et envoi vers Supabase ===
+// === 8. Validation et envoi ===
 function setupFormValidation() {
   const form = $("#contactForm");
   const confirmation = $("#confirmationMessage");
@@ -183,6 +184,8 @@ function setupFormValidation() {
       price: selectedPrice
     };
 
+    console.log("📤 Données à envoyer :", formData);
+
     const success = await sendToSupabase(formData);
 
     if (success) {
@@ -193,7 +196,8 @@ function setupFormValidation() {
       `;
       confirmation.style.display = "block";
       modal.style.display = "none";
-      form.reset();
+
+      setTimeout(() => form.reset(), 500);
     }
   });
 }
@@ -203,52 +207,55 @@ async function sendToSupabase(formData) {
   const SUPABASE_URL = "https://eumdndwnxjqdolbpcyrp.supabase.co";
   const SUPABASE_KEY = "sb_publishable_PRp1AmuEtEsGhWnZktlK0Q_uJmipcrO";
 
-  // 1. Envoi vers la table Supabase
-  const response = await fetch(`${SUPABASE_URL}/rest/v1/kazidomo-demandes-services`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "apikey": SUPABASE_KEY,
-      "Authorization": `Bearer ${SUPABASE_KEY}`
-    },
-    body: JSON.stringify([formData])
-  });
-
-  if (!response.ok) {
-    const errorText = await response.text();
-    console.error("Erreur Supabase :", errorText);
-    alert(`❌ Échec Supabase : ${errorText}`);
-    return false;
-  }
-
-  console.log("✅ Données envoyées à Supabase.");
-
-  // 2. Envoi de l'email de confirmation via Edge Function
   try {
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/kazidomo-demandes-services`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "apikey": SUPABASE_KEY,
+        "Authorization": `Bearer ${SUPABASE_KEY}`
+      },
+      body: JSON.stringify([formData])
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("❌ Erreur Supabase :", errorText);
+      alert(`Échec Supabase : ${errorText}`);
+      return false;
+    }
+
+    console.log("✅ Données envoyées à Supabase.");
+
+    // Envoi email
+    const emailPayload = {
+      email: formData.client_email,
+      name: formData.name,
+      category: formData.category,
+      price: formData.price,
+      gps: formData.gps
+    };
+
+    console.log("📧 Envoi email avec :", emailPayload);
+
     const emailResponse = await fetch(`${SUPABASE_URL}/functions/v1/send-confirmation`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${SUPABASE_KEY}`
       },
-      body: JSON.stringify({
-        email: formData.client_email,
-        name: formData.name,
-        category: formData.category,
-        price: formData.price,
-        gps: formData.gps
-      })
+      body: JSON.stringify(emailPayload)
     });
 
     if (!emailResponse.ok) {
       const emailError = await emailResponse.text();
       console.warn("⚠️ Email non envoyé :", emailError);
     } else {
-      console.log("📧 Email de confirmation envoyé.");
+      console.log("📨 Email de confirmation envoyé.");
     }
-  } catch (err) {
-    console.error("Erreur lors de l'envoi de l'email :", err);
+    return true;
+  } catch (error) {
+    console.error("❌ Erreur lors de l’envoi :", error);
+    return false;
   }
-
-  return true;
 }
