@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   injectFavicon();
   injectForm();
-  injectConfirmationBanner();
-  loadCards(jsonPath);
+  loadCards(jsonPath); // 👈 injecte #category
+  injectConfirmationBanner(); // 👈 maintenant il peut le trouver
   setupModal();
   setupGPS();
   setupFormValidation();
@@ -69,7 +69,7 @@ function injectForm() {
   document.body.appendChild(formContainer);
 }
 
-// === 5. Injection du message de confirmation hors modal ===
+/// === 5. Injection de la bannière de confirmation ===
 function injectConfirmationBanner() {
   const banner = document.createElement("div");
   banner.id = "confirmationBanner";
@@ -88,7 +88,9 @@ function injectConfirmationBanner() {
     <p>Votre message a été transmis avec succès.</p>
     <p>Un agent Kazidomo vous contactera sous peu.</p>
   `;
-  document.body.appendChild(banner);
+
+  const target = document.querySelector("#category") || document.body;
+  target.parentElement.insertBefore(banner, target); // 👈 insère avant les cartes
 }
 
 // === 6. Chargement des cartes ===
@@ -173,31 +175,26 @@ function setupGPS() {
         map_url: `https://www.google.com/maps?q=${pos.coords.latitude},${pos.coords.longitude}`
       };
 
-      // Injecte dans le champ GPS
       gpsInput.value = `${coords.latitude}, ${coords.longitude}`;
-
-      // Prépare les données pour Supabase
       formData.gps = gpsInput.value;
       formData.map_url = coords.map_url;
 
-      // Affiche la carte responsive
-      renderResponsiveMap(coords.map_url);
+      // 👇 Passe le conteneur dans lequel injecter la carte
+      renderResponsiveMap(coords.map_url, detectBtn.parentElement);
 
-      // Mise à jour du bouton
       detectBtn.disabled = true;
       detectBtn.textContent = "✅ Position détectée";
     }, () => alert("⚠️ Position non détectée."));
   });
 }
-// === Google Maps  et Carte responsive ===
-function renderResponsiveMap(mapUrl) {
+function renderResponsiveMap(mapUrl, container) {
   const existingMap = document.getElementById("gpsMap");
   if (existingMap) existingMap.remove();
 
   const mapWrapper = document.createElement("div");
   mapWrapper.id = "gpsMap";
   mapWrapper.style.position = "relative";
-  mapWrapper.style.paddingBottom = "56.25%"; // Ratio 16:9
+  mapWrapper.style.paddingBottom = "56.25%";
   mapWrapper.style.height = "0";
   mapWrapper.style.overflow = "hidden";
   mapWrapper.style.marginTop = "1em";
@@ -216,9 +213,8 @@ function renderResponsiveMap(mapUrl) {
   mapFrame.referrerPolicy = "no-referrer-when-downgrade";
 
   mapWrapper.appendChild(mapFrame);
-  detectBtn.parentElement.appendChild(mapWrapper); // Ajoute juste sous le bouton
+  container.appendChild(mapWrapper); // ✅ Utilise le conteneur transmis
 }
-
 // === 9. Validation et envoi ===
 function setupFormValidation() {
   const form = $("#contactForm");
