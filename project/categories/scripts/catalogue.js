@@ -298,7 +298,6 @@ function setupFormValidation() {
     }
   });
 }
-
 // === 9. Badge client ===
 function showClientBadge() {
   if (document.getElementById("clientBadge")) return; // évite les doublons
