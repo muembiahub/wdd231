@@ -63,7 +63,7 @@ function injectForm() {
           <div id="gpsMapContainer"></div>
 
           <!-- message  -->
-          <textarea id="message" rows="5" required placeholder="Exprimez votre besoin, votre bénédiction ou votre intention..."></textarea>
+          <textarea id="message" rows="5"  placeholder="Exprimez votre besoin, votre bénédiction ou votre intention..."></textarea>
           <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
         </form>
       </div>
