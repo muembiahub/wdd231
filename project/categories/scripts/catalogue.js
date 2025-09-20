@@ -1,4 +1,3 @@
-
 // === 1. Initialisation ===
 document.addEventListener("DOMContentLoaded", () => {
   const pageName = getPageName();
@@ -6,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   injectFavicon();
   injectForm();
+  injectConfirmationBanner();
   loadCards(jsonPath);
   setupModal();
   setupGPS();
@@ -64,15 +64,35 @@ function injectForm() {
 
           <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
         </form>
-
-        <div class="confirmation-message" id="confirmationMessage" style="display: none;"></div>
       </div>
     </div>
   `;
   document.body.appendChild(formContainer);
 }
 
-// === 5. Chargement des cartes ===
+// === 5. Injection du message de confirmation hors modal ===
+function injectConfirmationBanner() {
+  const banner = document.createElement("div");
+  banner.id = "confirmationBanner";
+  banner.style.display = "none";
+  banner.style.background = "#e6ffe6";
+  banner.style.border = "1px solid #00aa00";
+  banner.style.padding = "1em";
+  banner.style.textAlign = "center";
+  banner.style.margin = "1em auto";
+  banner.style.maxWidth = "600px";
+  banner.style.fontFamily = "sans-serif";
+  banner.style.borderRadius = "8px";
+  banner.style.boxShadow = "0 2px 6px rgba(0,0,0,0.1)";
+  banner.innerHTML = `
+    <h3>🙏 Merci pour votre demande !</h3>
+    <p>Votre message a été transmis avec succès.</p>
+    <p>Un agent Kazidomo vous contactera sous peu.</p>
+  `;
+  document.body.appendChild(banner);
+}
+
+// === 6. Chargement des cartes ===
 function loadCards(jsonPath) {
   fetch(jsonPath)
     .then(res => res.ok ? res.json() : Promise.reject(`Fichier introuvable : ${jsonPath}`))
@@ -114,7 +134,7 @@ function createCard(item) {
   `;
 }
 
-// === 6. Gestion du modal ===
+// === 7. Gestion du modal ===
 function setupModal() {
   const modal = $("#contactModal");
   const closeBtn = $("#closeModal");
@@ -139,7 +159,7 @@ function setupModal() {
   });
 }
 
-// === 7. Détection GPS ===
+// === 8. Détection GPS ===
 function setupGPS() {
   const detectBtn = $("#detectGPS");
   const gpsInput = $("#gps");
@@ -158,11 +178,11 @@ function setupGPS() {
   });
 }
 
-// === 8. Validation et envoi ===
+// === 9. Validation et envoi ===
 function setupFormValidation() {
   const form = $("#contactForm");
-  const confirmation = $("#confirmationMessage");
   const modal = $("#contactModal");
+  const banner = $("#confirmationBanner");
   const requiredFields = ["#name", "#clientEmail", "#clientWhatsApp", "#message"].map($);
 
   form?.addEventListener("submit", async e => {
@@ -189,20 +209,19 @@ function setupFormValidation() {
     const success = await sendToSupabase(formData);
 
     if (success) {
-      confirmation.innerHTML = `
-        <h3>🙏 Merci pour votre demande !</h3>
-        <p>Votre message a été transmis avec succès.</p>
-        <p>Un agent Kazidomo vous contactera sous peu.</p>
-      `;
-      confirmation.style.display = "block";
       modal.style.display = "none";
+      banner.style.display = "block";
+      showClientBadge();
 
-      setTimeout(() => form.reset(), 500);
+      setTimeout(() => {
+        banner.style.display = "none";
+        form.reset();
+      }, 10000);
     }
   });
 }
 
-// === 9. Connexion à Supabase ===
+// === 10. Connexion à Supabase ===
 async function sendToSupabase(formData) {
   const SUPABASE_URL = "https://eumdndwnxjqdolbpcyrp.supabase.co";
   const SUPABASE_KEY = "sb_publishable_PRp1AmuEtEsGhWnZktlK0Q_uJmipcrO";
@@ -227,35 +246,27 @@ async function sendToSupabase(formData) {
 
     console.log("✅ Données envoyées à Supabase.");
 
-    // Envoi email
     const emailPayload = {
       email: formData.client_email,
       name: formData.name,
       category: formData.category,
       price: formData.price,
-      gps: formData.gps
+      message: formData.message,
+      gps: formData.gps,
+      client_whatsapp: formData.client_whatsapp
     };
-
-    console.log("📧 Envoi email avec :", emailPayload);
-
-    const emailResponse = await fetch(`${SUPABASE_URL}/functions/v1/send-confirmation`, {
+    await fetch("https://formspree.io/f/mayvkwjd", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${SUPABASE_KEY}`
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(emailPayload)
     });
+    console.log("✅ Email envoyé via Formspree.");
 
-    if (!emailResponse.ok) {
-      const emailError = await emailResponse.text();
-      console.warn("⚠️ Email non envoyé :", emailError);
-    } else {
-      console.log("📨 Email de confirmation envoyé.");
-    }
     return true;
   } catch (error) {
+
     console.error("❌ Erreur lors de l’envoi :", error);
+    alert(`Erreur lors de l’envoi : ${error.message}`);
     return false;
   }
 }
