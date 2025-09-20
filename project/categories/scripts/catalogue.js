@@ -211,7 +211,8 @@ function setupGPS() {
       gpsInput.value = `${coords.latitude}, ${coords.longitude}`;
 
       // ✅ Injecte la carte Google Maps dans le DOM
-      renderResponsiveMap(coords.map_url, detectBtn.parentElement);
+      const mapContainer = document.getElementById("gpsMapContainer");
+      renderResponsiveMap(coords.map_url, mapContainer);
 
       detectBtn.disabled = true;
       detectBtn.textContent = "✅ Position détectée";
