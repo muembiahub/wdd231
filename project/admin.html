@@ -11,12 +11,24 @@
     <meta name="author" content="Jonathan M. Muembia" />
     <meta name="description" content="Admin login page for Kazidomo Confiance." />
     <meta name="robots" content="noindex, nofollow" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="application-name" content="Kazidomo confiance" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <title>Connexion Admin – Kazidomo</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="scripts/header.js" defer></script>
+    <link rel="stylesheet" href="styles/base.css">
+   <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/mobile.css">
+  <link rel="stylesheet" href="styles/tablets.css">
+  <link rel="stylesheet" href="styles/desktop.css">
+</head>
+
+<body>
+  <header>
+    <div id="header"></div>
+
+  </header> 
 
   <style>
     body {
@@ -27,31 +39,53 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
+      background-image: url('https://res.cloudinary.com/vacationscostarica-com/image/upload/v1654899857/fresh_water_fishing_in_cano_negro_river_overview_upala_a0f85ce012.jpg');
+      background-size: cover;
+      background-position: center;
     }
-    .login-box {
+    #login-box {
       background: white;
       padding: 2rem;
-      border-radius: 8px;
+      border: 8px solid #eee;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    input, button {
+    input{
       display: block;
       width: 100%;
       margin: 1rem 0;
       padding: 0.5rem;
       font-size: 1rem;
     }
+    button {
+      background: #5cb85c;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+       height: 7vh; 
+    }
+    button:hover {
+      background: #4cae4c;
+    }
     .message {
       margin-top: 1rem;
       color: #555;
     }
+    .banniere {
+      background: #5cb85c;
+      color: white;
+      padding: 1rem;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+    }
     #demandes-section {
       display: none;
     }
+   
   </style>
 </head>
 <body>
-  <div class="login-box">
+  <div id="login-box">
     <h1>🔐 Connexion Admin</h1>
    <form id="login-form">
   <input type="email" id="email" placeholder="admin@kazidomo.com" required />

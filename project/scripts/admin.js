@@ -13,11 +13,12 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
   if (error) {
     document.getElementById("login-message").textContent = "Erreur : " + error.message;
   } else {
-    document.getElementById("login-form").style.display = "none";
-    document.getElementById("login-message").innerHTML = `   <div class=banniere><h2> Bienvenue, gardien de la mémoire Kazidomo.</h2>
+    document.getElementById("login-box").style.display = "none";
+    document.getElementById("login-message").innerHTML = `<div class= banniere><h2> Bienvenue, gardien de la mémoire Kazidomo.</h2>
     <p><strong>Connexion réussie.</strong>  </p></div>`;
 
     document.getElementById("demandes-section").style.display = "block";
+
     afficherDemandes();
   }
 });
