@@ -47,7 +47,7 @@ function injectForm() {
         padding: 1em;
         box-sizing: border-box;
         width: 100%;
-        max-width: 600px;
+        max-width: 300px;
         margin: 0 auto;
       }
 
