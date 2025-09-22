@@ -326,7 +326,7 @@ select {
 .modal-content,
 #contactModal {
   background: white;
-  margin: 10vh auto;
+  margin: 5vh auto;
   border-radius: var(--radius);
   width: 90%;
   max-width: 500px;

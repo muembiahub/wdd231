@@ -44,10 +44,10 @@ function injectForm() {
         display: flex;
         flex-direction: column;
         gap: 1em;
-        padding: 1em;
+        padding: 0.2em;
         box-sizing: border-box;
         width: 100%;
-        max-width: 600px;
+        max-width: 500px;
         margin: 0 auto;
       }
 
@@ -76,10 +76,13 @@ function injectForm() {
 
       @media (max-width: 480px) {
         #contactForm {
-          padding: 0.5em;
-          gap: 0.75em;
-          max-width: 100%;
+          width: 75%;
         
+        }
+        
+        #contactModal{
+          width: 79%;
+
         }
 
         #contactForm input,
@@ -119,7 +122,6 @@ function injectForm() {
 
           <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
         </form>
-
         <div class="confirmation-message" id="confirmationBanner" style="display: none;"></div>
       </div>
     </div>
@@ -378,7 +380,7 @@ async function sendToSupabase(formData) {
       gps: formData.gps,
       client_whatsapp: formData.client_whatsapp
     };
-    await fetch("https://formspree.io/f/mayvkwjd", {
+    await fetch("https://formspree.io/f/mqayzdrb", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(emailPayload)

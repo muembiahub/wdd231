@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="Admin Login - Kazidomo" />
+    <meta property="og:description" content="Admin login page for Kazidomo Confiance." />
+    <meta property="og:url" content="https://muembiahub.github.io/wdd231/project/admin.html" />
+    <meta property="og:image" content="https://muembiahub.github.io/wdd231/project/images/logo.png" />
+    <meta property="og:site_name" content="Kazidomo" />
+    <meta name="author" content="Jonathan M. Muembia" />
+    <meta name="description" content="Admin login page for Kazidomo Confiance." />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="application-name" content="Kazidomo confiance" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>Connexion Admin – Kazidomo</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .login-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      display: block;
+      width: 100%;
+      margin: 1rem 0;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    .message {
+      margin-top: 1rem;
+      color: #555;
+    }
+    #demandes-section {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h1>🔐 Connexion Admin</h1>
+   <form id="login-form">
+  <input type="email" id="email" placeholder="admin@kazidomo.com" required />
+  <input type="password" id="password" placeholder="••••••••" required />
+  <button type="submit">Connexion</button>
+   </form>
+ </div>
+  <div id="login-message"></div>
+  <section id="demandes-section">
+  <!-- Section des demandes (cachée au départ) -->
+    <h2>Demandes reçues</h2>
+    <div id="demandes-container"></div>
+  </section>
+ 
+
+<script src="scripts/admin.js" defer></script>
+
+</body>
+</html>
