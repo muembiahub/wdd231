@@ -47,7 +47,7 @@ function injectForm() {
         padding: 1em;
         box-sizing: border-box;
         width: 100%;
-        max-width: 300px;
+        max-width: 600px;
         margin: 0 auto;
       }
 
@@ -77,6 +77,9 @@ function injectForm() {
       @media (max-width: 480px) {
         #contactForm {
           padding: 0.5em;
+          gap: 0.75em;
+          max-width: 100%;
+        
         }
 
         #contactForm input,
