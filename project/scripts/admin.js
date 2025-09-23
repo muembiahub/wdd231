@@ -13,25 +13,60 @@ const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 // 🧭 Connexion utilisateur
 document.getElementById("login-form").addEventListener("submit", async (e) => {
   e.preventDefault();
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
 
-  const { error } = await client.auth.signInWithPassword({ email, password });
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
 
-  if (error) {
-    afficherMessage("Erreur : " + error.message, true);
-  } else {
+  // Validation éditoriale
+  if (!email || !password) {
     afficherMessage(`
-      <div class="banniere">
-        <h2>Bienvenue, gardien de la mémoire Kazidomo.</h2>
-        <p><strong>Connexion réussie.</strong></p>
+      <div class="erreur">
+        <h3>Champs manquants</h3>
+        <p>Veuillez renseigner votre adresse email et votre mot de passe.</p>
       </div>
-    `);
-    document.getElementById("login-box").style.display = "none";
-    document.getElementById("demandes-section").style.display = "block";
-    afficherDemandes();
+    `, true);
+    return;
+  }
+
+  try {
+    const { error, data } = await client.auth.signInWithPassword({ email, password });
+
+    if (error) {
+      const message = error.message.includes("Invalid login credentials")
+        ? `
+          <div class="erreur">
+            <h3>Accès refusé</h3>
+            <p>Identifiants incorrects. Les portes de Kazidomo restent fermées.</p>
+          </div>
+        `
+        : `
+          <div class="erreur">
+            <h3>Erreur technique</h3>
+            <p>Impossible de vous connecter pour le moment. Veuillez réessayer plus tard.</p>
+          </div>
+        `;
+      afficherMessage(message, true);
+    } else {
+      afficherMessage(`
+        <div class="banniere">
+          <h2>Bienvenue, gardien de la mémoire Kazidomo.</h2>
+          <p><strong>Connexion réussie.</strong></p>
+        </div>
+      `);
+      document.getElementById("login-box").style.display = "none";
+      document.getElementById("demandes-section").style.display = "block";
+      afficherDemandes();
+    }
+  } catch (err) {
+    afficherMessage(`
+      <div class="erreur">
+        <h3>Échec inattendu</h3>
+        <p>Une erreur est survenue : ${err.message}</p>
+      </div>
+    `, true);
   }
 });
+
 
 // 🧾 Affichage des demandes
 async function afficherDemandes() {
