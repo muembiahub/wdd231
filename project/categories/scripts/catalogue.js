@@ -130,30 +130,28 @@ function injectForm() {
 }
 
 
-function injectConfirmationBannerDansCarte(demandeId) {
-  const card = document.querySelector(`.card[data-id="${demandeId}"]`);
-  if (!card) {
-    console.warn("Carte introuvable pour l'injection de la bannière.");
-    return;
-  }
-
+/// === 5. Injection de la bannière de confirmation ===
+function injectConfirmationBanner() {
   const banner = document.createElement("div");
   banner.id = "confirmationBanner";
+  banner.style.display = "none";
   banner.style.background = "#e6ffe6";
   banner.style.border = "1px solid #00aa00";
   banner.style.padding = "1em";
   banner.style.textAlign = "center";
-  banner.style.margin = "1em 0";
+  banner.style.margin = "1em auto";
+  banner.style.maxWidth = "600px";
+  banner.style.fontFamily = "sans-serif";
   banner.style.borderRadius = "8px";
   banner.style.boxShadow = "0 2px 6px rgba(0,0,0,0.1)";
-  banner.style.fontFamily = "sans-serif";
   banner.innerHTML = `
     <h3>🙏 Merci pour votre demande !</h3>
     <p>Votre message a été transmis avec succès.</p>
     <p>Un agent Kazidomo vous contactera sous peu.</p>
   `;
 
-  card.appendChild(banner); // 👈 injecte dans la carte concernée
+  const target = document.querySelector("#category") || document.body;
+  target.parentElement.insertBefore(banner, target); // 👈 insère avant les cartes
 }
 
 // === 6. Chargement des cartes ===
