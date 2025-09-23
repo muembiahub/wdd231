@@ -40,7 +40,7 @@ async function afficherDemandes() {
 
   try {
     const { data, error } = await client
-      .from("kazidomo-demandes-services")
+      .from("kazidomo_demandes_services")
       .select("*")
       .order("created_at", { ascending: false });
 
@@ -102,7 +102,7 @@ function creerCarteDemande(demande) {
 async function changerStatut(demandeId, nouveauStatut) {
   try {
     const { error } = await client
-      .from("kazidomo-demandes-services")
+      .from("kazidomo_demandes_services")
       .update({ statut: nouveauStatut })
       .eq("id", demandeId);
 
@@ -124,3 +124,38 @@ function afficherMessage(message, isError = false) {
 
 // 🚀 Initialisation
 document.addEventListener("DOMContentLoaded", afficherDemandes);
+
+
+
+// ------------------ Inscription d'un nouveau traitant ------------------
+
+// 🔐 Supabase client pour l'inscription
+document.getElementById("signup-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const category = document.getElementById("category").value;
+
+  const { data: signUpData, error: signUpError } = await client.auth.signUp({
+    email,
+    password,
+  });
+
+  if (signUpError) {
+    alert("Erreur : " + signUpError.message);
+    return;
+  }
+
+  const userId = signUpData.user.id;
+
+  // Enregistrer la catégorie choisie
+  await client.from("categories_traitants").insert([
+    {
+      category,
+      traitant_id: userId,
+    },
+  ]);
+
+  alert("Compte créé. En attente de validation par un administrateur.");
+});

@@ -14,9 +14,10 @@
     <meta name="application-name" content="Kazidomo confiance" />
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <title>Connexion Admin – Kazidomo</title>
+    <title>Connexion register – Kazidomo</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script src="scripts/header.js" defer></script>
+    <script src="scripts/admin.js" defer></script>
     <link rel="stylesheet" href="styles/base.css">
    <link rel="stylesheet" href="styles/header.css">
   <link rel="stylesheet" href="styles/mobile.css">
@@ -100,24 +101,31 @@
   </style>
 </head>
 <body>
-  <div id="login-box">
-    <h1>🔐 Connexion Admin</h1>
-   <form id="login-form">
-  <input type="email" id="email" placeholder="admin@kazidomo.com" required />
-  <input type="password" id="password" placeholder="••••••••" required />
-  <button type="submit">Connexion</button>
-  <div id="create-login"> Pas de compte chez Kazidomo? <a href="register.html">Créer un compte</a></div>
-   </form>
- </div>
-  <div id="login-message"></div>
-  <section id="demandes-section">
-  <!-- Section des demandes (cachée au départ) -->
-    <h2>Demandes reçues</h2>
-    <div id="demandes-container"></div>
-  </section>
- 
-
-<script src="scripts/admin.js" defer></script>
+ <form id="signup-form" >
+  <input type="email" id="email" required placeholder="Email" />
+  <input type="password" id="password" required placeholder="Mot de passe" />
+  <label for="category">Catégorie</label>
+  <select id="category" required>
+  <option value="">Choisir une catégorie</option>
+  <option value="Plomberie">Plomberie</option>
+  <option value="Électricité">Électricité</option>
+  <option value="Nettoyage">Nettoyage</option>
+  <option value="Menuiserie">Menuiserie</option>
+  <option value="Construction & Réparation">Construction & Réparation</option>
+  <option value="Manifestations & Cérémonies">Manifestations & Cérémonies</option>
+  <option value="Mécanique">Mécanique</option>
+  <option value="Formation">Formation</option>
+  <option value="Mode">Mode</option>
+  <option value="Beauté">Beauté</option>
+  <option value="Hôtels & Restaurants">Hôtels & Restaurants</option>
+  <option value="Santé">Santé</option>
+  <option value="Immobilier">Immobilier</option>
+  <option value="Animaux">Animaux</option>
+  <option value="Agriculture">Agriculture</option>
+  <option value="Autres Services">Autres Services</option>
+</select>
+  <button type="submit">Créer un compte</button>
+</form>
 
 </body>
 </html>
