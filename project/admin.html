@@ -81,6 +81,21 @@
     #demandes-section {
       display: none;
     }
+    .statut-traite {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+    }
+
+    button.statut-traite {
+  background-color: #e0ffe0;
+  color: rgb(128, 150, 128);
+  cursor: default;
+  border: 2px solid green;
+  padding: 5px 10px;
+  font-weight: bold;
+  margin-top: 10px;
+}
    
   </style>
 </head>
@@ -91,6 +106,7 @@
   <input type="email" id="email" placeholder="admin@kazidomo.com" required />
   <input type="password" id="password" placeholder="••••••••" required />
   <button type="submit">Connexion</button>
+  <div id="create-login"> Pas de compte chez Kazidomo? <a href="#register.html">Créer un compte</a></div>
    </form>
  </div>
   <div id="login-message"></div>
