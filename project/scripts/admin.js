@@ -1,10 +1,16 @@
-const sonValidation = new Audio("project/media/sonvalidation.mp3");
+// 🔊 Audio de validation
+const sonValidation = new Audio("/media/sonvalidation.mp3");
+sonValidation.onerror = () => {
+  console.warn("Son de validation introuvable.");
+  showBanner("Le son n’a pas été trouvé. Le silence aussi peut être une réponse.");
+};
+
+// 🔐 Supabase client
 const SUPABASE_URL = "https://eumdndwnxjqdolbpcyrp.supabase.co";
 const SUPABASE_KEY = "sb_publishable_PRp1AmuEtEsGhWnZktlK0Q_uJmipcrO";
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-
-// Connexion
+// 🧭 Connexion utilisateur
 document.getElementById("login-form").addEventListener("submit", async (e) => {
   e.preventDefault();
   const email = document.getElementById("email").value;
@@ -13,63 +19,21 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
   const { error } = await client.auth.signInWithPassword({ email, password });
 
   if (error) {
-    document.getElementById("login-message").textContent = "Erreur : " + error.message;
+    afficherMessage("Erreur : " + error.message, true);
   } else {
+    afficherMessage(`
+      <div class="banniere">
+        <h2>Bienvenue, gardien de la mémoire Kazidomo.</h2>
+        <p><strong>Connexion réussie.</strong></p>
+      </div>
+    `);
     document.getElementById("login-box").style.display = "none";
-    document.getElementById("login-message").innerHTML = `<div class= banniere><h2> Bienvenue, gardien de la mémoire Kazidomo.</h2>
-    <p><strong>Connexion réussie.</strong>  </p></div>`;
-
     document.getElementById("demandes-section").style.display = "block";
-
     afficherDemandes();
   }
 });
 
-
-// Fonction principale : afficher toutes les demandes
-async function afficherDemandes() {
-  const { data, error } = await client
-    .from("kazidomo-demandes-services")
-    .select("*")
-    .order("created_at", { ascending: false });
-
-  const container = document.getElementById("demandes-container");
-  container.innerHTML = "";
-
-  if (error) {
-    container.innerHTML = `<p class="erreur">Erreur : ${error.message}</p>`;
-    return;
-  }
-
-  data.forEach(demande => {
-    const card = document.createElement("div");
-    card.className = "card";
-
-    // Style conditionnel si la demande est déjà traitée
-    if (demande.statut === "traité") {
-      card.classList.add("traitee");
-    }
-
-    card.innerHTML = `
-      <h4>${demande.name}</h4>
-      <p><strong>Catégorie :</strong> ${demande.category}</p>
-      <p><strong>Prix :</strong> ${demande.price}$</p>
-      <p><strong>Téléphone :</strong> ${demande.client_whatsapp}</p>
-      <p><strong>Email :</strong> ${demande.client_email}</p>
-      <p><strong>Soumis le :</strong> ${new Date(demande.created_at).toLocaleString()}</p>
-      <p><strong>GPS :</strong> ${demande.gps}</p>
-      <p><strong>Map URL :</strong> <a href="${demande.map_url}" target="_blank">Voir la localisation</a></p>
-      <p><strong>Message :</strong> ${demande.message}</p>
-      ${demande.statut !== "traité" ? `
-        <button onclick="changerStatut('${demande.id}', 'traité')">Marquer comme traité</button>
-      ` : `<p class="statut-traite">✅ Déjà traité</p>`}
-    `;
-
-    container.appendChild(card);
-  });
-}
-
-// Fonction pour afficher toutes les demandes
+// 🧾 Affichage des demandes
 async function afficherDemandes() {
   const container = document.getElementById("demandes-container");
   container.innerHTML = "";
@@ -82,62 +46,59 @@ async function afficherDemandes() {
 
     if (error) throw error;
 
-    data.forEach(demande => {
-      const card = document.createElement("div");
-      card.className = "card";
-
-      if (demande.statut === "traité") {
-        card.classList.add("traitee");
-      }
-
-      card.innerHTML = `
-        <h4><span>Nom du Client :</span> ${demande.name}</h4>
-        <p><strong>Catégorie :</strong> ${demande.category}</p>
-        <p><strong>Prix :</strong> ${demande.price} $</p>
-        <p><strong>Téléphone :</strong> ${demande.client_whatsapp}</p>
-        <p><strong>Email :</strong> ${demande.client_email}</p>
-        <p><strong>Soumis le :</strong> ${new Date(demande.created_at).toLocaleString()}</p>
-        <p><strong>GPS :</strong> ${demande.gps}</p>
-        <p><strong>Map URL :</strong> <a href="${demande.map_url}" target="_blank">Voir la localisation</a></p>
-        <p><strong>Message :</strong> ${demande.message}</p>
-      `;
-
-      // Ajout du bouton ou du message "Déjà traité"
-      if (demande.statut !== "traité") {
-        const button = document.createElement("button");
-        button.textContent = "Marquer comme traité";
-        button.addEventListener("click", async () => {
-          button.disabled = true;
-          button.textContent = "Traitement...";
-
-          const success = await changerStatut(demande.id, "traité");
-          if (success) {
-            sonValidation.play();
-            button.textContent = "✅ Déjà traité";
-            button.classList.add("statut-traite");
-          } else {
-            button.disabled = false;
-            button.textContent = "Marquer comme traité";
-          }
-        });
-        card.appendChild(button);
-      } else {
-        const statut = document.createElement("p");
-        statut.className = "statut-traite";
-        statut.textContent = "✅ Déjà traité";
-
-        card.appendChild(statut);
-      }
-
-      container.appendChild(card);
-    });
+    data.forEach(demande => container.appendChild(creerCarteDemande(demande)));
   } catch (err) {
     container.innerHTML = `<p class="erreur">Erreur : ${err.message}</p>`;
     console.error("Erreur lors de l'affichage :", err);
   }
 }
 
-// Fonction pour changer le statut d'une demande
+// 🧩 Création d’une carte demande
+function creerCarteDemande(demande) {
+  const card = document.createElement("div");
+  card.className = "card";
+  if (demande.statut === "traité") card.classList.add("traitee");
+
+  card.innerHTML = `
+    <h4><span>Nom du Client :</span> ${demande.name}</h4>
+    <p><strong>Catégorie :</strong> ${demande.category}</p>
+    <p><strong>Prix :</strong> ${demande.price} $</p>
+    <p><strong>Téléphone :</strong> ${demande.client_whatsapp}</p>
+    <p><strong>Email :</strong> ${demande.client_email}</p>
+    <p><strong>Soumis le :</strong> ${new Date(demande.created_at).toLocaleString()}</p>
+    <p><strong>GPS :</strong> ${demande.gps}</p>
+    <p><strong>Map URL :</strong> <a href="${demande.map_url}" target="_blank">Voir la localisation</a></p>
+    <p><strong>Message :</strong> ${demande.message}</p>
+  `;
+
+  if (demande.statut !== "traité") {
+    const button = document.createElement("button");
+    button.textContent = "Marquer comme traité";
+    button.addEventListener("click", async () => {
+      button.disabled = true;
+      button.textContent = "Traitement...";
+      const success = await changerStatut(demande.id, "traité");
+      if (success) {
+        sonValidation.play();
+        button.textContent = "✅ Déjà traité";
+        button.classList.add("statut-traite");
+      } else {
+        button.disabled = false;
+        button.textContent = "Marquer comme traité";
+      }
+    });
+    card.appendChild(button);
+  } else {
+    const statut = document.createElement("p");
+    statut.className = "statut-traite";
+    statut.textContent = "✅ Déjà traité";
+    card.appendChild(statut);
+  }
+
+  return card;
+}
+
+// 🔄 Changement de statut
 async function changerStatut(demandeId, nouveauStatut) {
   try {
     const { error } = await client
@@ -154,5 +115,12 @@ async function changerStatut(demandeId, nouveauStatut) {
   }
 }
 
-// Initialisation
+// 🪞 Affichage de message
+function afficherMessage(message, isError = false) {
+  const container = document.getElementById("login-message");
+  container.innerHTML = message;
+  container.className = isError ? "erreur" : "message";
+}
+
+// 🚀 Initialisation
 document.addEventListener("DOMContentLoaded", afficherDemandes);
