@@ -21,7 +21,7 @@ main {
 
 
 /* Conteneur principal */
-#category, #services-section{
+#category, #services-section, #demandes-container{
   display: flex;
   flex-wrap: wrap;
   justify-content:space-around;  
