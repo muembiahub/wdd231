@@ -1,4 +1,4 @@
-const sonValidation = new Audio("media/sonvalidation.mp3");
+const sonValidation = new Audio("project/media/sonvalidation.mp3");
 const SUPABASE_URL = "https://eumdndwnxjqdolbpcyrp.supabase.co";
 const SUPABASE_KEY = "sb_publishable_PRp1AmuEtEsGhWnZktlK0Q_uJmipcrO";
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
