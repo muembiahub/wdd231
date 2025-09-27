@@ -3,30 +3,138 @@
     "logo": "images/medical-care.webp",
     "category": "Soins médicaux",
     "description": "Consultations, soins de base, urgences et suivi médical assuré par des professionnels.",
-    "price": "10000"
+    "price": "100"
   },
   {
     "logo": "images/pharmacy.webp",
     "category": "Pharmacies",
     "description": "Dispensation de médicaments, conseils pharmaceutiques et gestion des ordonnances.",
-    "price": "5000"
+    "price": "50"
   },
   {
     "logo": "images/clinic.webp",
     "category": "Cliniques",
     "description": "Structures de santé offrant des services spécialisés, diagnostics et traitements.",
-    "price": "15000"
+    "price": "200"
   },
   {
     "logo": "images/wellness.webp",
     "category": "Bien-être",
     "description": "Massothérapie, relaxation, nutrition, hygiène de vie et accompagnement holistique.",
-    "price": "8000"
+    "price": "40"
   },
   {
     "logo": "images/health-support.webp",
     "category": "Accompagnement sanitaire",
     "description": "Sensibilisation, suivi communautaire, visites à domicile et soutien aux personnes vulnérables.",
-    "price": "0"
+    "price": "50"
+  },
+  {
+    "logo": "images/pathologie.webp",
+    "category": "Endométriose",
+    "description": "Affection gynécologique chronique où le tissu endométrial se développe en dehors de l’utérus.",
+    "price": "15"
+  },
+  {
+    "logo": "images/pathologie.webp",
+    "category": "Infertilité",
+    "description": "Incapacité à concevoir après un an de rapports sexuels réguliers sans contraception.",
+    "price": "15"
+  },
+  {
+    "logo": "images/pathologie.webp",
+    "category": "Asthernospermie",
+    "description": "Trouble de la mobilité des spermatozoïdes, affectant la fertilité masculine.",
+    "price": "15"
+  },
+  {
+    "logo": "images/pathologie.webp",
+    "category": "Azoospermie",
+    "description": "Absence de spermatozoïdes dans le sperme, cause fréquente d’infertilité masculine.",
+    "price": "15"
+  },
+  {
+    "logo": "images/pathologie.webp",
+    "category": "Cancer de la prostate",
+    "description": "Tumeur maligne affectant la glande prostatique, fréquente chez les hommes âgés.",
+    "price": "15"
+  },
+  {
+    "logo": "images/pathologie.webp",
+    "category": "Cancer du col",
+    "description": "Cancer du col de l’utérus, souvent lié au papillomavirus humain (HPV).",
+    "price": "15"
+  },
+  {
+    "logo": "images/pathologie.webp",
+    "category": "Cancer du sein",
+    "description": "Tumeur maligne des tissus mammaires, pouvant toucher femmes et hommes.",
+    "price": "15"
+  },
+  {
+    "logo": "images/pathologie.webp",
+    "category": "Douleurs et gonflement des testicules",
+    "description": "Symptômes pouvant indiquer une infection, une torsion ou une inflammation testiculaire.",
+    "price": "15"
+  },
+  {
+    "logo": "images/pathologie.webp",
+    "category": "Fausses couches en répétition et avortement",
+    "description": "Perte de grossesse fréquente ou involontaire, nécessitant un suivi médical approfondi.",
+    "price": "15"
+  },
+  {
+    "logo": "images/pathologie.webp",
+    "category": "Kystes",
+    "description": "Formations bénignes ou malignes dans les organes reproducteurs ou ailleurs.",
+    "price": "15"
+  },
+  {
+    "logo": "images/pathologie.webp",
+    "category": "Manque de glaire cervicale",
+    "description": "Insuffisance de sécrétions cervicales, pouvant gêner la fécondation.",
+    "price": "15"
+  },
+  {
+    "logo": "images/pathologie.webp",
+    "category": "Myomes (fibromes)",
+    "description": "Tumeurs bénignes de l’utérus, souvent responsables de douleurs ou de saignements.",
+    "price": "15"
+  },
+  {
+    "logo": "images/pathologie.webp",
+    "category": "Oligospermie",
+    "description": "Faible concentration de spermatozoïdes dans le sperme, réduisant la fertilité.",
+    "price": "30"
+  },
+  {
+    "logo": "images/pathologie.webp",
+    "category": "Prostatite",
+    "description": "Inflammation de la prostate, souvent douloureuse et liée à une infection.",
+    "price": "30"
+  },
+  {
+    "logo": "images/pathologie.webp",
+    "category": "Teratospermie",
+    "description": "Anomalies morphologiques des spermatozoïdes, affectant leur capacité à féconder.",
+    "price": "15"
+  },
+  {
+    "logo": "images/pathologie.webp",
+    "category": "Trompes bouchées",
+    "description": "Obstruction des trompes de Fallope, empêchant la rencontre entre ovule et spermatozoïde.",
+    "price": "15"
+  },
+  {
+    "logo": "images/pathologie.webp",
+    "category": "Troubles de la ménopause",
+    "description": "Symptômes liés à la transition hormonale chez la femme, tels que bouffées de chaleur ou insomnie.",
+    "price": "20"
+  },
+  {
+    "logo": "images/pathologie.webp",
+    "category": "Troubles de menstrues",
+    "description": "Règles irrégulières, abondantes ou absentes, pouvant signaler un déséquilibre hormonal.",
+    "price": "20"
   }
 ]
