@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const pageName = getPageName();
   const jsonPath = `data/${pageName}.json`;
-
+  injectTitle();
   injectFavicon();
   injectForm();
   loadCards(jsonPath); // 👈 injecte #category
@@ -30,6 +30,15 @@ function injectFavicon(path = "images/favicon.ico") {
   link.href = path;
   link.type = "image/x-icon";
   document.head.appendChild(link);
+}
+function injectTitle() {
+  const title = document.createElement("title");
+  title.textContent = getPageName();
+  document.head.appendChild(title);
+  if ($("#pageTitle")) {
+    $("#pageTitle").textContent = getPageName();
+  }
+
 }
 
 // === 3. Variables globales ===
