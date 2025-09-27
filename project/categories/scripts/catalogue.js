@@ -229,7 +229,7 @@ function setupModal() {
 
  window.addEventListener("keydown", e => {
   if (e.key === "Escape") {
-    const modal = $("#contactModal");
+    const modal = $("#contactAgentModal");
     if (modal?.style.display === "block") {
       modal.style.display = "none";
     }
