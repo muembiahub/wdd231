@@ -36,7 +36,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
         ? `
           <div class="erreur">
             <h3>Accès refusé</h3>
-            <p>Identifiants incorrects. Les portes de Kazidomo restent fermées.</p>
+            <p><strong>Identifiants incorrects. Les portes de Kazidomo restent fermées.<></p>
           </div>
         `
         : `
@@ -91,7 +91,7 @@ async function afficherDemandes() {
 // 🧩 Création d’une carte demande
 function creerCarteDemande(demande) {
   const card = document.createElement("div");
-  card.className = "card";
+  card.className = "demande-card";
   if (demande.statut === "traité") card.classList.add("traitee");
 
   card.innerHTML = `
