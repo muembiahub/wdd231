@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupFormValidation();
 });
 
-// === 2. Fonctions utilitaires ===
+// === 2. Fonctions utilitaires trouver la pages selon son URL ===
 function getPageName() {
   return window.location.pathname.split("/").pop().replace(".html", "");
 }
@@ -20,7 +20,7 @@ function getPageName() {
 function $(selector) {
   return document.querySelector(selector);
 }
-
+// === Injection du favicon a chaque pages connecter sur catalogue.js ===
 function injectFavicon(path = "images/favicon.ico") {
   const existing = document.querySelector("link[rel='icon']");
   if (existing) existing.remove();
@@ -31,6 +31,7 @@ function injectFavicon(path = "images/favicon.ico") {
   link.type = "image/x-icon";
   document.head.appendChild(link);
 }
+// === Injection du titre  a chaque pages selon son contenu ===
 function injectTitle() {
   const title = document.createElement("title");
   title.textContent = getPageName();
@@ -73,7 +74,7 @@ function injectForm() {
 
       #contactForm button {
         background-color: #00aa00;
-        color: white;
+        color: black;
         border: none;
         cursor: pointer;
         transition: background-color 0.3s ease;
@@ -85,7 +86,7 @@ function injectForm() {
 
       @media (max-width: 480px) {
         #contactForm {
-          width: 75%;
+          width: 65%;
         
         }
         
