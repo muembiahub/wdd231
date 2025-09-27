@@ -115,7 +115,7 @@ main {
 .open-modal {
   padding: 10px 16px;
   background-color: #2a7;
-  color: white;
+  color: rgb(15, 14, 14);
   border: none;
   border-radius: 8px;
   cursor: pointer;

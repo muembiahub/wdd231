@@ -77,6 +77,8 @@ function injectForm() {
         color: black;
         border: none;
         cursor: pointer;
+        max-width: 200px;
+        align-self: center;
         transition: background-color 0.3s ease;
       }
 
@@ -86,7 +88,7 @@ function injectForm() {
 
       @media (max-width: 480px) {
         #contactForm {
-          width: 65%;
+          width: 75%;
         
         }
         
