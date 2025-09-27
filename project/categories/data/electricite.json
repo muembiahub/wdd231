@@ -3,7 +3,7 @@
   {
     "category": "Installation électrique",
     "description": "Installation de réseaux électriques domestiques ou industriels, tableaux de distribution, et compteurs.",
-    "price": "0"
+    "price": "50"
   },
   {
     "category": "Maintenance et Réparation",
@@ -13,17 +13,17 @@
   {
     "category": "Éclairage et Ambiance",
     "description": "Installation de luminaires, éclairage solaire, détecteurs de mouvement et systèmes d’ambiance.",
-    "price": "10000"
+    "price": "500"
   },
   {
     "category": "Énergies renouvelables",
     "description": "Installation de panneaux solaires, batteries, onduleurs et systèmes hybrides.",
-    "price": "0"
+    "price": "un paneaux a partir de 5"
   },
   {
     "category": "Sécurité et Automatisation",
     "description": "Installation de disjoncteurs, domotique, alarmes et vidéosurveillance alimentée électriquement.",
-    "price": "20000"
+    "price": "1000"
   },
   {
     "category": "Études et Conseil",
@@ -58,7 +58,7 @@
   {
     "category": "Électricité maison simple",
     "description": "Installation électrique d'une maison simple avec devis.",
-    "price": "950"
+    "price": "400"
   },
   {
     "category": "Mise à terre complète",
@@ -73,7 +73,7 @@
   {
     "category": "Caméras surveillance installation",
     "description": "Installation de toute sorte de caméras de surveillance.",
-    "price": "500"
+    "price": "250"
   },
   {
     "category": "Caméras surveillance réparation",
@@ -103,12 +103,12 @@
   {
     "category": "Groupe électrogène installation",
     "description": "Installation de groupe électrogène.",
-    "price": "600"
+    "price": "50"
   },
   {
     "category": "Parafoudre installation",
     "description": "Installation de parafoudre à terre.",
-    "price": "400"
+    "price": "300"
   },
   {
     "category": "Chauffe bain installation",
@@ -153,22 +153,40 @@
   {
     "category": "Moteur monophasé installation",
     "description": "Installation de moteur monophasé.",
-    "price": "500"
+    "price": "35"
   },
   {
     "category": "Moteur pression installation",
     "description": "Installation de moteur pression.",
-    "price": "500"
+    "price": "30"
   },
   {
     "category": "Moteur broyeur installation",
     "description": "Installation de moteur broyeur.",
-    "price": "500"
+    "price": "35"
   },
   {
     "category": "Schéma électrique industriel",
     "description": "Plan d'un schéma électrique industriel.",
     "price": "1000"
+  },
+  {
+    "logo": "images/porte-metal.webp",
+    "category": "Remplacement de serrure de porte métallique",
+    "description": "Intervention pour le changement de serrures sur portes métalliques, assurant sécurité et fiabilité.",
+    "price": "45"
+  },
+  {
+    "logo": "images/electricite-complete.webp",
+    "category": "Réparation électrique et remplacement d’accessoires",
+    "description": "Service complet incluant le remplacement d’ampoules, prises, interrupteurs et autres accessoires électriques simples.",
+    "price": "120"
+  },
+  {
+    "logo": "images/electricite-simple.webp",
+    "category": "Réparation de courant simple",
+    "description": "Intervention rapide pour résoudre les pannes électriques de base dans les habitations ou locaux.",
+    "price": "50"
   }
   ]
   

@@ -22,5 +22,77 @@
     "category": "Accessoires pour animaux",
     "description": "Colliers, cages, jouets, produits d’hygiène et équipements pour le confort animal.",
     "price": "3000"
+  },
+  {
+    "logo": "images/berger-allemand.webp",
+    "category": "Berger Allemand Adulte",
+    "description": "Chien adulte de race Berger Allemand, reconnu pour sa loyauté et sa capacité de garde.",
+    "price": "500"
+  },
+  {
+    "logo": "images/berger-allemand.webp",
+    "category": "Berger Allemand Chiot",
+    "description": "Chiot Berger Allemand, idéal pour dressage précoce et compagnie.",
+    "price": "270"
+  },
+  {
+    "logo": "images/boerboel.webp",
+    "category": "Boerboel Adulte",
+    "description": "Chien adulte Boerboel, robuste et protecteur, adapté à la sécurité domestique.",
+    "price": "500"
+  },
+  {
+    "logo": "images/boerboel.webp",
+    "category": "Boerboel Chiot",
+    "description": "Chiot Boerboel, à fort potentiel de dressage et de socialisation.",
+    "price": "280"
+  },
+  {
+    "logo": "images/pitbull.webp",
+    "category": "Pit Bull Adulte",
+    "description": "Chien adulte Pit Bull, énergique et fidèle, nécessite un encadrement ferme.",
+    "price": "400"
+  },
+  {
+    "logo": "images/pitbull.webp",
+    "category": "Pit Bull Chiot",
+    "description": "Chiot Pit Bull, idéal pour un dressage en douceur dès le jeune âge.",
+    "price": "220"
+  },
+  {
+    "logo": "images/poodle.webp",
+    "category": "Poodle Adulte",
+    "description": "Chien adulte Poodle, élégant et intelligent, parfait pour la compagnie.",
+    "price": "200"
+  },
+  {
+    "logo": "images/poodle.webp",
+    "category": "Poodle Chiot",
+    "description": "Chiot Poodle, affectueux et facile à éduquer.",
+    "price": "150"
+  },
+  {
+    "logo": "images/dressage-agressivite.webp",
+    "category": "Dressage de l’agressivité",
+    "description": "Programme de 1 mois pour corriger les comportements agressifs chez le chien.",
+    "price": "150"
+  },
+  {
+    "logo": "images/dressage-obéissance.webp",
+    "category": "Dressage de l’obéissance",
+    "description": "Programme de 1 mois pour renforcer l’écoute et la discipline du chien.",
+    "price": "100"
+  }
+  ,{
+    "logo": "images/dressage-proprete.webp",
+    "category": "Dressage de la propreté",
+    "description": "Programme de 1 mois pour apprendre la propreté à votre chiot ou chien adulte.",
+    "price": "80"
+  },
+  {
+    "logo": "images/dressage-travail.webp",
+    "category": "Dressage au travail",
+    "description": "Programme de 1 mois pour former votre chien à des tâches spécifiques (garde, chasse, etc.).",
+    "price": "200"
   }
  ]
