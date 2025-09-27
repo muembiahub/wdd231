@@ -22,5 +22,49 @@
     "category": "Accessoires pour animaux",
     "description": "Colliers, cages, jouets, produits d’hygiène et équipements pour le confort animal.",
     "price": "3000"
-  }
-]
+  },
+{
+  "chiens": [
+    {
+      "race": "Berger Allemand",
+      "offres": [
+        { "type": "Adulte", "prix": 500 },
+        { "type": "Chiot", "prix": 270 }
+      ]
+    },
+    {
+      "race": "Boerboel",
+      "offres": [
+        { "type": "Adulte", "prix": 500 },
+        { "type": "Chiot", "prix": 280 }
+      ]
+    },
+    {
+      "race": "Pit Bull",
+      "offres": [
+        { "type": "Adulte", "prix": 400 },
+        { "type": "Chiot", "prix": 220 }
+      ]
+    },
+    {
+      "race": "Poodle",
+      "offres": [
+        { "type": "Adulte", "prix": 200 },
+        { "type": "Chiot", "prix": 150 }
+      ]
+    }
+  ],
+  "services_dressage": [
+    {
+      "type": "Dressage de l'agressivité",
+      "durée": "1 mois",
+      "prix": 150
+    },
+    {
+      "type": "Dressage de l'obéissance",
+      "durée": "1 mois",
+      "prix": 100
+    }
+  ]
+}
+ ]
