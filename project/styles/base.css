@@ -76,17 +76,11 @@ main {
 }
 
 /* Section bas de carte */
-.card-bottom {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 /* Prix */
 #price {
   font-weight: bold;
-  color: #2a7;
+  color: rgb(5, 5, 227);
   margin-bottom: 10px;
   text-align: center;
 }
@@ -295,21 +289,6 @@ select {
   box-sizing: border-box;
 }
 
-/* -------- Boutons -------- */
-.open-modal {
-  background-color: #28a745;
-  color: black;
-  padding: 0.6em 1.2em;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
-
-.open-modal:hover {
-  background-color: #3a8edb;
-}
 
 /* -------- Modale -------- */
 #contactModal {
