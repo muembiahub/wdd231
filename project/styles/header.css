@@ -1,10 +1,26 @@
 /* === Top Banner === */
+/* Styles pour la page admin */
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+main {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 header{
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+body{
+  margin-top: 160px; /* Adjust based on header height */
 }
 .top-banner {
   position: relative;

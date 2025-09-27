@@ -51,6 +51,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
         <div class="banniere">
           <h2>Bienvenue, gardien de la mémoire Kazidomo.</h2>
           <p><strong>Connexion réussie.</strong></p>
+          <h3>Vous pouvez désormais gérer les demandes de services.</h3>
         </div>
       `);
       document.getElementById("login-box").style.display = "none";
@@ -91,12 +92,12 @@ async function afficherDemandes() {
 // 🧩 Création d’une carte demande
 function creerCarteDemande(demande) {
   const card = document.createElement("div");
-  card.className = "demande-card";
+  card.className = "service-card";
   if (demande.statut === "traité") card.classList.add("traitee");
 
   card.innerHTML = `
     <h4><span>Nom du Client :</span> ${demande.name}</h4>
-    <p><strong>Catégorie :</strong> ${demande.category}</p>
+    <h5><strong>Catégorie :</strong> ${demande.category}</h5>
     <p><strong>Prix :</strong> ${demande.price} $</p>
     <p><strong>Téléphone :</strong> ${demande.client_whatsapp}</p>
     <p><strong>Email :</strong> ${demande.client_email}</p>
@@ -105,6 +106,7 @@ function creerCarteDemande(demande) {
     <p><strong>Map URL :</strong> <a href="${demande.map_url}" target="_blank">Voir la localisation</a></p>
     <p><strong>Message :</strong> ${demande.message}</p>
   `;
+  // Bouton de traitement
 
   if (demande.statut !== "traité") {
     const button = document.createElement("button");
@@ -159,6 +161,8 @@ function afficherMessage(message, isError = false) {
 
 // 🚀 Initialisation
 document.addEventListener("DOMContentLoaded", afficherDemandes);
+
+
 
 
 

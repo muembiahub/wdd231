@@ -17,11 +17,8 @@
     <title>Connexion Admin – Kazidomo</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script src="scripts/header.js" defer></script>
-    <link rel="stylesheet" href="styles/base.css">
-   <link rel="stylesheet" href="styles/header.css">
-  <link rel="stylesheet" href="styles/mobile.css">
-  <link rel="stylesheet" href="styles/tablets.css">
-  <link rel="stylesheet" href="styles/desktop.css">
+    <link rel="stylesheet" href="styles/admin.css" />
+    <link rel="stylesheet" href="styles/header.css">
 </head>
 
 <body>
@@ -29,77 +26,10 @@
     <div id="header"></div>
 
   </header> 
-
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f4f4f4;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background-image: url('https://res.cloudinary.com/vacationscostarica-com/image/upload/v1654899857/fresh_water_fishing_in_cano_negro_river_overview_upala_a0f85ce012.jpg');
-      background-size: cover;
-      background-position: center;
-    }
-    #login-box {
-      background: white;
-      padding: 2rem;
-      border: 8px solid #eee;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    input{
-      display: block;
-      width: 100%;
-      margin: 1rem 0;
-      padding: 0.5rem;
-      font-size: 1rem;
-    }
-    button {
-      background: #5cb85c;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-       height: 7vh; 
-    }
-    button:hover {
-      background: #4cae4c;
-    }
-    .message {
-      margin-top: 1rem;
-      color: #555;
-    }
-    .banniere {
-      background: #5cb85c;
-      color: white;
-      padding: 1rem;
-      border-radius: 5px;
-      margin-bottom: 1rem;
-    }
-    #demandes-section {
-      display: none;
-    }
-    .statut-traite {
-  color: green;
-  font-weight: bold;
-  margin-top: 10px;
-    }
-
-    button.statut-traite {
-  background-color: #e0ffe0;
-  color: rgb(128, 150, 128);
-  cursor: default;
-  border: 2px solid green;
-  padding: 5px 10px;
-  font-weight: bold;
-  margin-top: 10px;
-}
-   
-  </style>
-</head>
 <body>
+  <main>
+
+ 
   <div id="login-box">
     <h1>🔐 Connexion Admin</h1>
    <form id="login-form">
@@ -112,12 +42,14 @@
   <div id="login-message"></div>
   <section id="demandes-section">
   <!-- Section des demandes (cachée au départ) -->
-    <h2>Demandes reçues</h2>
     <div id="demandes-container"></div>
   </section>
+  </main>
+ 
  
 
-<script src="scripts/admin.js" defer></script>
+<script src="scripts/admin.js" defer></script> 
+
 
 </body>
 </html>

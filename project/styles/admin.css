@@ -1,0 +1,173 @@
+/* Styles pour la page admin */
+
+    body {
+      font-family: sans-serif;
+      background-color: #f4f4f4;
+      background-image: url('https://res.cloudinary.com/vacationscostarica-com/image/upload/v1654899857/fresh_water_fishing_in_cano_negro_river_overview_upala_a0f85ce012.jpg');
+      background-size: cover;
+      background-position: fixed;
+    }
+    #login-box {
+      background: white;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 2rem;
+      border: 8px solid #eee;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+    }
+    input{
+      display: block;
+      width: 100%;
+      margin: 1rem 0;
+
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    button {
+      background: #42d942;
+      color: rgb(19, 16, 16);
+      border: none;
+      border-radius: 50px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+       height: 7vh; 
+    }
+    button:hover {
+      background: #4cae4c;
+    }
+    .message {
+      margin-top: 1rem;
+      color: #555;
+    }
+    .banniere {
+      color: rgb(28, 27, 27);
+      padding: 1rem;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+      text-align: center;
+      border-bottom: 1px solid #333;
+    }
+    #demandes-section {
+      display: none;
+    }
+    .statut-traite {
+  color: rgb(234, 9, 9);
+  font-weight: bold;
+  margin-top: 10px;
+    }
+
+    button.statut-traite {
+  background-color: #e0ffe0;
+  color: rgb(128, 150, 128);
+  cursor: default;
+  border: 2px solid green;
+  padding: 5px 10px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+
+
+
+
+
+#demandes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 4fr));
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+
+
+
+
+
+
+.service-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 15px auto;
+  max-width: 400px;
+  font-family: 'Segoe UI', sans-serif;
+  transition: transform 0.2s ease;
+}
+
+.service-card:hover {
+  transform: scale(1.02);
+}
+
+.service-card h5 {
+  margin-top: 0;
+  font-size: 17px;
+  color: #333;
+}
+.service-card h4 {
+  margin: 0 0 10px 0;
+  font-size: 22px;
+  color: #222;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 5px;
+  text-align: center;
+}
+.service-card p {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #140c0c;
+}
+
+.service-status {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.service-status.pending {
+  background-color: #ffe58f;
+  color: #8c6d1f;
+}
+
+.service-status.approved {
+  background-color: #b7eb8f;
+  color: #389e0d;
+}
+
+.service-status.rejected {
+  background-color: #ffa39e;
+  color: #a8071a;
+}
+
+/* 📱 Responsive pour les petits écrans */
+@media screen and (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+  .service-card {
+    padding: 15px;
+    margin: 20px;
+    max-width: 100%;
+    box-shadow: none;
+    border-radius: 4px;
+  }
+
+  .service-card h3 {
+    font-size: 18px;
+  }
+
+  .service-card p {
+    font-size: 13px;
+  }
+
+  .service-status {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+}
