@@ -203,7 +203,7 @@ function createCard(item) {
       <h3>${title}</h3>
       <p>${description}</p>
       <p id="price"><strong> À partir de : ${price} $</strong></p>
-      <button class="open-modal" data-category="${title}" data-price="${price}">Contacter un agent</button>
+      <button class="open-modal" data-category="${title}" data-price="${price}"><i class="fas fa-envelope"></i>Contacter un agent</button>
     </div>
   `;
 }
