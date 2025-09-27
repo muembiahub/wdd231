@@ -21,7 +21,7 @@ main {
 
 
 /* Conteneur principal */
-#category, #services-section, #demandes-container{
+#category, #services-section{
   display: flex;
   flex-wrap: wrap;
   justify-content:space-around;  
@@ -115,7 +115,7 @@ main {
 .open-modal {
   padding: 10px 16px;
   background-color: #2a7;
-  color: rgb(15, 14, 14);
+  color: black;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -203,6 +203,7 @@ main {
   gap: 1rem;
 }
 
+/* Form elements */
 .contact-form label,
 .contact-form fieldset {
   display: flex;
@@ -297,7 +298,7 @@ select {
 /* -------- Boutons -------- */
 .open-modal {
   background-color: #28a745;
-  color: white;
+  color: black;
   padding: 0.6em 1.2em;
   border: none;
   border-radius: 6px;
