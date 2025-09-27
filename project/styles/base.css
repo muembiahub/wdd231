@@ -107,14 +107,13 @@ main {
 
 /* Bouton */
 .open-modal {
-  padding: 10px 16px;
-  background-color: #2a7;
-  color: black;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+        background-color: #00aa00;
+        color: black;
+        border: none;
+        cursor: pointer;
+        max-width: 200px;
+        align-self: center;
+        transition: background-color 0.3s ease;
 }
 
 .open-modal:hover {
