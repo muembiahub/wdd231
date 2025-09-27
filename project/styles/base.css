@@ -290,20 +290,20 @@ select {
 
 
 /* -------- Modale -------- */
-#contactModal {
+#contactAgentModal {
   display: none;
   position: fixed;
   z-index: 1000;
   top: 0;
-  left: 20%;
+  left: 1%;
   width: 70%;
-  height: 70%;
+  height: 50%;
   background: rgba(0, 0, 0, 0.5);
   overflow-y: auto;
 }
 
 .modal-content,
-#contactModal {
+#contactAgentModal {
   background: white;
   margin: 5vh auto;
   border-radius: var(--radius);

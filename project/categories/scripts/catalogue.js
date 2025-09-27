@@ -54,10 +54,10 @@ function injectForm() {
         display: flex;
         flex-direction: column;
         gap: 1em;
-        padding: 0.2em;
+        padding: 1em;
         box-sizing: border-box;
         width: 100%;
-        max-width: 500px;
+        max-width: 400px;
         margin: 0 auto;
       }
 
@@ -104,7 +104,7 @@ function injectForm() {
         }
       }
     </style>
-    <div id="contactModal" class="modal">
+    <div id="contactAgentModal" class="modal">
       <div class="modal-content">
         <span class="close" id="closeModal">&times;</span>
         <h3>Contacter un agent</h3>
@@ -203,13 +203,13 @@ function createCard(item) {
       <h3>${title}</h3>
       <p>${description}</p>
       <p id="price"><strong> À partir de : ${price} $</strong></p>
-      <button class="open-modal" data-category="${title}" data-price="${price}"><i class="fas fa-envelope"></i>Contacter un agent</button>
+      <button class="open-modal" data-category="${title}" data-price="${price}"><i class="fas fa-envelope"></i> Contacter un agent</button>
     </div>
   `;
 }
 
 function setupModal() {
-  const modal = $("#contactModal");
+  const modal = $("#contactAgentModal");
   const closeBtn = $("#closeModal");
 
   document.addEventListener("click", e => {
@@ -299,7 +299,7 @@ function setupGPS() {
 
 function setupFormValidation() {
   const form = $("#contactForm");
-  const modal = $("#contactModal");
+  const modal = $("#contactAgentModal");
   const banner = $("#confirmationBanner");
   const requiredFields = ["#name", "#clientEmail", "#clientWhatsApp", "#message"].map($);
 
