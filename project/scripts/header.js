@@ -1,9 +1,4 @@
-(function injectHeader() {
-  const targetId = 'header';
-  const filename = 'header.html';
-  const maxDepth = 5; // nombre maximum de niveaux à tester
-  let attempt = 0;
-
+function injectHeader(targetId = 'header', filename = 'header.html', maxDepth = 5) {
   function tryPath(depth) {
     const prefix = '../'.repeat(depth);
     const path = `${prefix}${filename}`;
@@ -13,16 +8,21 @@
         return response.text();
       })
       .then(html => {
-        document.getElementById(targetId).innerHTML = html;
+        const target = document.getElementById(targetId);
+        if (target) {
+          target.innerHTML = html;
+        } else {
+          console.warn(`Élément #${targetId} introuvable pour injecter le header.`);
+        }
       })
       .catch(() => {
         if (depth < maxDepth) {
-          tryPath(depth + 1); // essaie un niveau plus haut
+          tryPath(depth + 1);
         } else {
           console.error(`Échec du chargement de ${filename} après ${maxDepth} tentatives.`);
         }
       });
   }
 
-  tryPath(0); // commence dans le dossier courant
-})();
+  tryPath(0);
+}

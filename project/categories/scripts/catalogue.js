@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const jsonPath = `data/${pageName}.json`;
 
   injectTitle();
-  injectFavicon();
+  injectFavicon(); // injecte Favicon
+  injectHeader(); // injecte dans #header depuis header.html
   injectForm();
   loadCards(jsonPath); // injecte les services ou catégories
   injectConfirmationBanner();
@@ -46,76 +47,164 @@ function injectTitle() {
   }
 }
 
+// === 5. Injecte la barre de recherche dans le header ===
 // === Barre de recherche limitée à la page ===
 function injectPageSearch(pageName) {
+  // Crée le conteneur principal
   const wrapper = document.createElement("div");
+  wrapper.className = "search-wrapper";
   wrapper.style.cssText = `
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 9vh;
+    right: 10px;
     z-index: 9999;
     display: flex;
-    gap: 8px;
-    background: white;
-    padding: 1em;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: 5px;
+    padding: 0.5em;
     align-items: center;
-    max-width: 90%;
   `;
 
+  // Champ de recherche
   const input = document.createElement("input");
   input.type = "text";
   input.placeholder = `🔍 Rechercher dans ${pageName}...`;
   input.style.cssText = `
-    padding: 0.75em;
+    padding: 0.5em;
     font-size: 1em;
     border: 1px solid #ccc;
-    border-radius: 6px;
-    flex: 1 1 300px;
-    min-width: 200px;
+    border-radius: 3px;
+    flex: 1;
   `;
 
+  // Bouton pour effacer
   const clearBtn = document.createElement("button");
   clearBtn.textContent = "❌";
   clearBtn.style.cssText = `
-    font-size: 1.2em;
+    font-size: 1em;
     cursor: pointer;
     background: none;
     border: none;
-    padding: 0.5em;
   `;
 
-  clearBtn.addEventListener("click", () => {
-    input.value = "";
-    resetHighlights();
-  });
+  // Message "aucun résultat"
+  const message = document.createElement("div");
+  message.textContent = "Aucun résultat trouvé.";
+  message.style.cssText = `
+    position: fixed;
+    top: calc(9vh + 50px);
+    right: 10px;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 0.5em 1em;
+    border: 1px solid #f5c6cb;
+    border-radius: 6px;
+    font-size: 0.9em;
+    display: none;
+    z-index: 9999;
+  `;
 
+  // Ajoute les éléments au DOM
   wrapper.appendChild(input);
   wrapper.appendChild(clearBtn);
   document.body.appendChild(wrapper);
+  document.body.appendChild(message);
 
+  // Événement de recherche
   input.addEventListener("input", () => {
     const query = input.value.toLowerCase();
     const targets = document.querySelectorAll(`[data-page="${pageName}"]`);
+    let found = false;
 
     targets.forEach(el => {
       const text = el.textContent.toLowerCase();
-      el.style.display = text.includes(query) ? "" : "none";
-      el.style.backgroundColor = text.includes(query) ? "#ffffcc" : "";
+      const match = text.includes(query);
+      el.style.display = match ? "" : "none";
+      el.style.backgroundColor = match ? "#1a7ec0ff" : "";
+      if (match) found = true;
     });
+
+    message.style.display = query && !found ? "block" : "none";
   });
 
+  // Bouton pour réinitialiser
+  clearBtn.addEventListener("click", () => {
+    input.value = "";
+    resetHighlights();
+    message.style.display = "none";
+  });
+
+  // Fonction pour réinitialiser les styles
   function resetHighlights() {
     document.querySelectorAll(`[data-page="${pageName}"]`).forEach(el => {
       el.style.display = "";
       el.style.backgroundColor = "";
     });
   }
+
+  // Style responsive injecté
+  const style = document.createElement("style");
+  style.textContent = `
+    @media (max-width: 600px) {
+      .search-wrapper {
+        top: 5vh !important;
+        right: 1px;
+
+        flex-direction: row;
+        align-items: stretch;
+      }
+    }
+  `;
+  document.head.appendChild(style);
 }
+
+// === 6. Chargement des cartes depuis JSON ===
+function loadCards(jsonPath) {
+  const pageName = getPageName();
+
+  fetch(jsonPath)
+    .then(res => res.ok ? res.json() : Promise.reject(`Fichier introuvable : ${jsonPath}`))
+    .then(data => {
+      Object.values(data).flat().forEach(item => {
+        const cardHTML = createCard(item, pageName);
+        $("#category").insertAdjacentHTML("beforeend", cardHTML);
+      });
+    })
+    .catch(err => {
+      console.error("Erreur :", err);
+      $("#category").innerHTML = `<p>Contenu indisponible pour cette page.</p>`;
+    });
+}
+
+// === 7. Génération HTML d’une carte ===
+function createCard(item, pageName) {
+  const title = item.category || item.type || item.title || "Service";
+  const description = item.description || item.summary || "";
+  const price = item.price || "—";
+  const alt = item.alt || title;
+
+  const imageName = title
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "_")
+    .replace(/[^\w-]/g, "") + ".webp";
+
+  const image = `images/${imageName}`;
+
+  return `
+    <div class="card searchable" data-page="${pageName}">
+      <img src="${image}" alt="${alt}">
+      <h3>${title}</h3>
+      <p>${description}</p>
+      <p id="price"><strong> À partir de : ${price} $</strong></p>
+      <button class="open-modal" data-category="${title}" data-price="${price}">
+        <i class="fas fa-envelope"></i> Contacter un agent
+      </button>
+    </div>
+  `;
+}
+
+
 
 // === 3. Variables globales ===
 let selectedCategory = "";
