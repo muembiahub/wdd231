@@ -16,79 +16,79 @@
       "logo": "categories/images/ceremonie_religieuse.webp",
       "category": "Cérémonie religieuse",
       "description": "Préparation et mise en scène de cérémonies spirituelles ou traditionnelles.",
-      "price": 300.00
+      "price": false
     },
     {
       "logo": "categories/images/decoration_evenement.webp",
       "category": "Décoration événementielle",
       "description": "Décoration florale, lumineuse et thématique pour tout type d’événement.",
-      "price": 150.00
+      "price": false
     },
     {
       "logo": "categories/images/logistique_festive.webp",
       "category": "Logistique festive",
       "description": "Gestion du matériel, des installations, de la sonorisation et de l’éclairage.",
-      "price": 275.00
+      "price": false
     },
     {
       "logo": "categories/images/animateur.webp",
       "category": "Animation et présentateur",
       "description": "Animateurs professionnels pour dynamiser vos cérémonies et fêtes.",
-      "price": 180.00
+      "price": false
     },
     {
       "logo": "categories/images/location_salle.webp",
       "category": "Location de salle",
       "description": "Espaces adaptés pour mariages, conférences, fêtes et cérémonies.",
-      "price": 350.00
+      "price": false
     },
     {
       "logo": "categories/images/traiteur.webp",
       "category": "Service traiteur",
       "description": "Buffets, repas servis, cocktails et menus personnalisés pour vos événements.",
-      "price": 400.00
+      "price": false
     },
     {
       "logo": "categories/images/photographe.webp",
       "category": "Photographe et vidéaste",
       "description": "Captation professionnelle de vos moments forts en photo et vidéo.",
-      "price": 250.00
+      "price": false
     },
     {
       "logo": "categories/images/tenue_ceremonie.webp",
       "category": "Tenues de cérémonie",
       "description": "Location ou confection de tenues traditionnelles et modernes pour les invités.",
-      "price": 90.00
+      "price": false
     },
     {
       "logo": "categories/images/scenographie.webp",
       "category": "Scénographie",
       "description": "Conception artistique de l’espace, mise en lumière et ambiance immersive.",
-      "price": 320.00
+      "price": false
     },
     {
       "logo": "categories/images/mobilier_evenement.webp",
       "category": "Mobilier événementiel",
       "description": "Location de chaises, tables, podiums et structures modulables.",
-      "price": 180.00
+      "price": false
     },
     {
       "logo": "categories/images/spectacle.webp",
       "category": "Spectacle et performance",
       "description": "Artistes, danseurs, musiciens ou magiciens pour animer vos événements.",
-      "price": 260.00
+      "price": false
     },
     {
       "logo": "categories/images/atelier_creatif.webp",
       "category": "Atelier créatif",
       "description": "Activités participatives : peinture, parfum, artisanat ou calligraphie.",
-      "price": 140.00
+      "price": false
     },
     {
       "logo": "categories/images/ceremonie_familiale.webp",
       "category": "Cérémonie familiale",
       "description": "Organisation de baptêmes, funérailles, hommages et rites de passage.",
-      "price": 210.00
+      "price": false
     }
   ]
 }
