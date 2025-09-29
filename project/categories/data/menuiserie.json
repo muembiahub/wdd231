@@ -23,7 +23,7 @@
       "logo": "images/porte_interieure.webp",
       "category": "Portes intérieures",
       "description": "Portes décoratives pour les pièces, en bois massif ou stratifié.",
-      "price": 120.00
+      "price": 170.00
     },
     {
       "logo": "images/porte_vitree.webp",
@@ -41,25 +41,19 @@
       "logo": "images/porte_pliante.webp",
       "category": "Portes pliantes",
       "description": "Portes en accordéon pour petits espaces, pratiques et esthétiques.",
-      "price": 135.00
+      "price": false
     },
     {
       "logo": "images/porte_pivotante.webp",
       "category": "Portes pivotantes",
       "description": "Portes design à rotation centrale, effet moderne garanti.",
-      "price": 190.00
-    },
-    {
-      "logo": "images/porte_blindee.webp",
-      "category": "Portes blindées",
-      "description": "Portes haute sécurité avec serrure multipoints, pour une protection maximale.",
-      "price": 250.00
+      "price": false
     },
     {
       "logo": "images/porte_acoustique.webp",
       "category": "Portes acoustiques",
       "description": "Portes isolantes pour studios, bureaux ou espaces sensibles au bruit.",
-      "price": 210.00
+      "price": false
     },
     {
       "logo": "images/porte_garage.webp",
@@ -136,15 +130,15 @@
     ,
     {
       "logo": "images/chaise_classique.webp",
-      "category": "Chaises Salle à Manger",
+      "category": "Chaises Salle à Manger 6 pcs",
       "description": "Chaises élégantes et robustes assorties aux tables. Confort et durabilité.",
-      "price": 75.00
+      "price": 900.00
     },
     {
       "logo": "images/fauteuil_lounge.webp",
       "category": "Chaises Salon",
       "description": "Chaises décoratives et relaxantes pour le salon. Design et ambiance.",
-      "price": 130.00
+      "price": false
     },
      {
       "logo": "images/chaise_classique.webp",
@@ -162,7 +156,7 @@
       "logo": "images/fauteuil_lounge.webp",
       "category": "Fauteuil lounge",
       "description": "Siège large et relaxant, conçu pour le salon ou les espaces détente.",
-      "price": 130.00
+      "price": false
     },
     {
       "logo": "images/chaise_appoint.webp",
@@ -180,25 +174,13 @@
       "logo": "images/chaise_pliante.webp",
       "category": "Chaise pliante",
       "description": "Chaise compacte et facile à ranger, idéale pour les événements ou pique-niques.",
-      "price": 60.00
-    },
-    {
-      "logo": "images/chaise_empilable.webp",
-      "category": "Chaise empilable",
-      "description": "Chaise pratique pour les salles d’attente ou les cafés, empilable et résistante.",
-      "price": 70.00
-    },
-    {
-      "logo": "images/chaise_enfant.webp",
-      "category": "Chaise enfant",
-      "description": "Chaise adaptée à la morphologie des enfants, sécurisée et colorée.",
-      "price": 55.00
+      "price": false
     },
     {
   "logo": "images/etagere.webp",
   "category": "Étagères",
   "description": "Étagères murales ou sur pied, modulables et décoratives.",
-  "price": 0
+  "price": false
 },
 {
   "logo": "images/commode.webp",
@@ -219,40 +201,34 @@
   "price": false
 },
 {
-  "logo": "images/revetement_mural.webp",
-  "category": "Revêtements muraux",
-  "description": "Panneaux bois pour habillage mural, ambiance chaleureuse garantie.",
-  "price": 125.00
-},
-{
   "logo": "images/penderie.webp",
   "category": "Penderies",
   "description": "Armoires et dressings sur mesure, avec portes coulissantes ou battantes.",
-  "price": 240.00
+  "price": false
 },
 {
   "logo": "images/meuble_tv.webp",
   "category": "Meubles TV",
   "description": "Supports pour écran et rangements multimédia, design épuré.",
-  "price": 150.00
+  "price": false 
 },
 {
   "logo": "images/boite_rangement.webp",
   "category": "Boîtes de rangement",
   "description": "Coffres et caissons en bois pour organiser vos espaces.",
-  "price": 65.00
+  "price": false
 },
 {
   "logo": "images/pergola.webp",
   "category": "Pergolas",
   "description": "Structures bois pour terrasse ou jardin, ombrage naturel.",
-  "price": 350.00
+  "price": false
 },
 {
   "logo": "images/abri_jardin.webp",
   "category": "Abris de jardin",
   "description": "Petites constructions bois pour outils, loisirs ou détente.",
-  "price": 480.00
+  "price": false
 },
 {
   "logo": "images/banc_exterieur.webp",

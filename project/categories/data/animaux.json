@@ -9,19 +9,13 @@
     "logo": "images/veterinary-care.webp",
     "category": "Soins vétérinaires",
     "description": "Consultations, vaccinations, traitements et suivi sanitaire des animaux.",
-    "price": "10000"
+    "price": false
   },
   {
     "logo": "images/animal-food.webp",
     "category": "Alimentation",
     "description": "Vente de nourriture animale adaptée à chaque espèce : granulés, fourrage, compléments.",
     "price": "5000"
-  },
-  {
-    "logo": "images/animal-accessories.webp",
-    "category": "Accessoires pour animaux",
-    "description": "Colliers, cages, jouets, produits d’hygiène et équipements pour le confort animal.",
-    "price": "3000"
   },
   {
     "logo": "images/berger-allemand.webp",

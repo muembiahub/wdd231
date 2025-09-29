@@ -3,24 +3,18 @@
     "logo": "images/transport.webp",
     "category": "Transport et Logistique",
     "description": "Services de transport de personnes, marchandises, déménagements et livraisons locales.",
-    "price": "10000"
-  },
-  {
-    "logo": "images/cleaning.webp",
-    "category": "Nettoyage et Entretien",
-    "description": "Entretien de bureaux, maisons, espaces publics et services de désinfection.",
-    "price": "8000"
+    "price": false
   },
   {
     "logo": "images/legal-support.webp",
     "category": "Appui juridique et administratif",
     "description": "Assistance pour documents légaux, démarches administratives, conseils et médiation.",
-    "price": "12000"
+    "price": 50
   },
   {
     "category": "Services domestiques baby-sitting",
     "description": "Baby-sitting — garde d’enfants à domicile avec activités ludiques et éducatives.",
-    "price": "150"
+    "price": 150
   },
   {
     "category": "Services domestiques jardinier",

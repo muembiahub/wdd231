@@ -4,13 +4,13 @@
       "logo": "categories/images/organisation_mariage.webp",
       "category": "Organisation de mariage",
       "description": "Planification complète du mariage : lieu, décoration, traiteur, musique et coordination.",
-      "price": 480.00
+      "price": false
     },
     {
       "logo": "categories/images/fete_anniversaire.webp",
       "category": "Fête d’anniversaire",
       "description": "Organisation d’anniversaires personnalisés avec animations, gâteaux et décorations.",
-      "price": 220.00
+      "price": false
     },
     {
       "logo": "categories/images/ceremonie_religieuse.webp",
