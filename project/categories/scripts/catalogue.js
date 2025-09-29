@@ -1,18 +1,20 @@
-// === 1. Initialisation ===
+// intialisation
 document.addEventListener("DOMContentLoaded", () => {
   const pageName = getPageName();
   const jsonPath = `data/${pageName}.json`;
+
   injectTitle();
   injectFavicon();
   injectForm();
-  loadCards(jsonPath); // 👈 injecte #category
-  injectConfirmationBanner(); // 👈 maintenant il peut le trouver
+  loadCards(jsonPath); // injecte les services ou catégories
+  injectConfirmationBanner();
   setupModal();
   setupGPS();
   setupFormValidation();
+  injectPageSearch(pageName); // barre de recherche limitée à cette page
 });
 
-// === 2. Fonctions utilitaires trouver la pages selon son URL ===
+// === Fonctions utilitaires ===
 function getPageName() {
   return window.location.pathname.split("/").pop().replace(".html", "");
 }
@@ -20,7 +22,8 @@ function getPageName() {
 function $(selector) {
   return document.querySelector(selector);
 }
-// === Injection du favicon a chaque pages connecter sur catalogue.js ===
+
+// === Favicon dynamique ===
 function injectFavicon(path = "images/favicon.ico") {
   const existing = document.querySelector("link[rel='icon']");
   if (existing) existing.remove();
@@ -31,15 +34,69 @@ function injectFavicon(path = "images/favicon.ico") {
   link.type = "image/x-icon";
   document.head.appendChild(link);
 }
-// === Injection du titre  a chaque pages selon son contenu ===
+
+// === Titre dynamique ===
 function injectTitle() {
   const title = document.createElement("title");
   title.textContent = getPageName();
   document.head.appendChild(title);
+
   if ($("#pageTitle")) {
     $("#pageTitle").textContent = getPageName();
   }
+}
 
+// === Barre de recherche limitée à la page ===
+function injectPageSearch(pageName) {
+  const wrapper = document.createElement("div");
+  wrapper.style.cssText = `
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 9999;
+    display: flex;
+    gap: 5px;
+    background: white;
+    padding: 0.5em;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  `;
+
+  const input = document.createElement("input");
+  input.type = "text";
+  input.placeholder = `🔍 Rechercher dans ${pageName}...`;
+  input.style.cssText = `padding: 0.5em; font-size: 1em; border: 1px solid #ccc; border-radius: 6px;`;
+
+  const clearBtn = document.createElement("button");
+  clearBtn.textContent = "❌";
+  clearBtn.style.cssText = `font-size: 1em; cursor: pointer; background: none; border: none;`;
+
+  clearBtn.addEventListener("click", () => {
+    input.value = "";
+    resetHighlights();
+  });
+
+  wrapper.appendChild(input);
+  wrapper.appendChild(clearBtn);
+  document.body.appendChild(wrapper);
+
+  input.addEventListener("input", () => {
+    const query = input.value.toLowerCase();
+    const targets = document.querySelectorAll(`[data-page="${pageName}"]`);
+
+    targets.forEach(el => {
+      const text = el.textContent.toLowerCase();
+      el.style.display = text.includes(query) ? "" : "none";
+      el.style.backgroundColor = text.includes(query) ? "#ffffcc" : "";
+    });
+  });
+
+  function resetHighlights() {
+    document.querySelectorAll(`[data-page="${pageName}"]`).forEach(el => {
+      el.style.display = "";
+      el.style.backgroundColor = "";
+    });
+  }
 }
 
 // === 3. Variables globales ===
@@ -168,12 +225,14 @@ function injectConfirmationBanner() {
 
 // === 6. Chargement des cartes ===
 function loadCards(jsonPath) {
+  const pageName = getPageName(); // 👈 récupère le nom de la page
+
   fetch(jsonPath)
     .then(res => res.ok ? res.json() : Promise.reject(`Fichier introuvable : ${jsonPath}`))
     .then(data => {
       Object.values(data).flat().forEach(item => {
-        const card = createCard(item);
-        $("#category").insertAdjacentHTML("beforeend", card);
+        const cardHTML = createCard(item, pageName); // 👈 passe pageName
+        $("#category").insertAdjacentHTML("beforeend", cardHTML);
       });
     })
     .catch(err => {
@@ -182,7 +241,7 @@ function loadCards(jsonPath) {
     });
 }
 
-function createCard(item) {
+function createCard(item, pageName) {
   const title = item.category || item.type || item.title || "Service";
   const description = item.description || item.summary || "";
   const price = item.price || "—";
@@ -198,12 +257,14 @@ function createCard(item) {
   const image = `images/${imageName}`;
 
   return `
-    <div class="card">
+    <div class="card searchable" data-page="${pageName}">
       <img src="${image}" alt="${alt}">
       <h3>${title}</h3>
       <p>${description}</p>
       <p id="price"><strong> À partir de : ${price} $</strong></p>
-      <button class="open-modal" data-category="${title}" data-price="${price}"><i class="fas fa-envelope"></i> Contacter un agent</button>
+      <button class="open-modal" data-category="${title}" data-price="${price}">
+        <i class="fas fa-envelope"></i> Contacter un agent
+      </button>
     </div>
   `;
 }
