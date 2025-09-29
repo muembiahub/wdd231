@@ -195,46 +195,28 @@
       "price": 55.00
     },
     {
-      "logo": "images/fauteuil_direction.webp",
-      "category": "Fauteuil de direction",
-      "description": "Siège ergonomique haut de gamme, idéal pour bureau ou espace exécutif.",
-      "price": 250.00
-    },
-    {
-  "logo": "images/table.webp",
-  "category": "Tables",
-  "description": "Tables en bois massif ou stratifié, pour salle à manger, bureau ou salon.",
-  "price": 180.00
-},
-{
   "logo": "images/etagere.webp",
   "category": "Étagères",
   "description": "Étagères murales ou sur pied, modulables et décoratives.",
-  "price": 95.00
-},
-{
-  "logo": "images/bibliotheque.webp",
-  "category": "Bibliothèques",
-  "description": "Meubles de rangement pour livres et objets, personnalisables.",
-  "price": 220.00
+  "price": 0
 },
 {
   "logo": "images/commode.webp",
   "category": "Commodes",
   "description": "Meubles à tiroirs pour chambre ou salon, design et fonctionnels.",
-  "price": 160.00
+  "price": false
 },
 {
   "logo": "images/cloison.webp",
   "category": "Cloisons en bois",
   "description": "Séparations intérieures esthétiques, fixes ou mobiles.",
-  "price": 140.00
+  "price": false
 },
 {
   "logo": "images/plafond.webp",
   "category": "Plafonds bois",
   "description": "Revêtements de plafond en lambris ou panneaux décoratifs.",
-  "price": 110.00
+  "price": false
 },
 {
   "logo": "images/revetement_mural.webp",
