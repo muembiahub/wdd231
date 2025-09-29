@@ -51,8 +51,8 @@ function injectPageSearch(pageName) {
   const wrapper = document.createElement("div");
   wrapper.style.cssText = `
     position: fixed;
-    top: 10px;
-    right: 10px;
+    top: 1%;
+    right: 1%;
     z-index: 9999;
     display: flex;
     gap: 5px;
@@ -65,7 +65,7 @@ function injectPageSearch(pageName) {
   const input = document.createElement("input");
   input.type = "text";
   input.placeholder = `🔍 Rechercher dans ${pageName}...`;
-  input.style.cssText = `padding: 0.5em; font-size: 1em; border: 1px solid #ccc; border-radius: 6px;`;
+  input.style.cssText = `padding: 0.5em; font-size: 0.5em; border: 1px solid #ccc; border-radius: 6px;`;
 
   const clearBtn = document.createElement("button");
   clearBtn.textContent = "❌";
