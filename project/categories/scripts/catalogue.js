@@ -51,25 +51,43 @@ function injectPageSearch(pageName) {
   const wrapper = document.createElement("div");
   wrapper.style.cssText = `
     position: fixed;
-    top: 1%;
-    right: 1%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 9999;
     display: flex;
-    gap: 5px;
+    gap: 8px;
     background: white;
-    padding: 0.5em;
-    border-radius: 6px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    padding: 1em;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 90%;
   `;
 
   const input = document.createElement("input");
   input.type = "text";
   input.placeholder = `🔍 Rechercher dans ${pageName}...`;
-  input.style.cssText = `padding: 0.5em; font-size: 0.5em; border: 1px solid #ccc; border-radius: 6px;`;
+  input.style.cssText = `
+    padding: 0.75em;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    flex: 1 1 300px;
+    min-width: 200px;
+  `;
 
   const clearBtn = document.createElement("button");
   clearBtn.textContent = "❌";
-  clearBtn.style.cssText = `font-size: 1em; cursor: pointer; background: none; border: none;`;
+  clearBtn.style.cssText = `
+    font-size: 1.2em;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0.5em;
+  `;
 
   clearBtn.addEventListener("click", () => {
     input.value = "";
