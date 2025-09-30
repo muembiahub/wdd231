@@ -177,7 +177,112 @@ function loadCards(jsonPath) {
     });
 }
 
+// === 7. Génération HTML d’une carte ===
+function createCard(item, pageName) {
+  const title = item.category || item.type || item.title || "Service";
+  const description = item.description || item.summary || "";
+  const price = item.price || "—";
+  const alt = item.alt || title;
 
+  const imageName = title
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "_")
+    .replace(/[^\w-]/g, "") + ".webp";
+
+  const image = `images/${imageName}`;
+
+  return `
+    <div class="card searchable" data-page="${pageName}">
+      <img src="${image}" alt="${alt}">
+      <h3>${title}</h3>
+      <p>${description}</p>
+      <p id="price"><strong> À partir de : ${price} $</strong></p>
+      <button class="open-modal" data-category="${title}" data-price="${price}">
+        <i class="fas fa-envelope"></i> Contacter un agent
+      </button>
+    </div>
+  `;
+}
+
+
+
+// === 3. Variables globales ===
+let selectedCategory = "";
+let selectedPrice = "";
+
+
+
+/// === 5. Injection de la bannière de confirmation ===
+function injectConfirmationBanner() {
+  const banner = document.createElement("div");
+  banner.id = "confirmationBanner";
+  banner.style.display = "none";
+  banner.style.background = "#e6ffe6";
+  banner.style.border = "1px solid #00aa00";
+  banner.style.padding = "1em";
+  banner.style.textAlign = "center";
+  banner.style.margin = "1em auto";
+  banner.style.maxWidth = "600px";
+  banner.style.fontFamily = "sans-serif";
+  banner.style.borderRadius = "8px";
+  banner.style.boxShadow = "0 2px 6px rgba(0,0,0,0.1)";
+  banner.innerHTML = `
+    <h3>🙏 Merci pour votre demande !</h3>
+    <p>Votre message a été transmis avec succès.</p>
+    <p>Un agent Kazidomo vous contactera sous peu.</p>
+  `;
+
+  const target = document.querySelector("#category") || document.body;
+  target.parentElement.insertBefore(banner, target); // 👈 insère avant les cartes
+}
+
+// === 6. Chargement des cartes ===
+function loadCards(jsonPath) {
+  const pageName = getPageName(); // 👈 récupère le nom de la page
+
+  fetch(jsonPath)
+    .then(res => res.ok ? res.json() : Promise.reject(`Fichier introuvable : ${jsonPath}`))
+    .then(data => {
+      Object.values(data).flat().forEach(item => {
+        const cardHTML = createCard(item, pageName); // 👈 passe pageName
+        $("#category").insertAdjacentHTML("beforeend", cardHTML);
+      });
+    })
+    .catch(err => {
+      console.error("Erreur :", err);
+      $("#category").innerHTML = `<p>Contenu indisponible pour cette page.</p>`;
+    });
+}
+
+function createCard(item, pageName) {
+  const title = item.category || item.type || item.title || "Service";
+  const description = item.description || item.summary || "";
+  const price = item.price || "—";
+  const alt = item.alt || title;
+
+  const imageName = title
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "_")
+    .replace(/[^\w-]/g, "") + ".webp";
+
+  const image = `images/${imageName}`;
+
+  return `
+    <div class="card searchable" data-page="${pageName}">
+      <img src="${image}" alt="${alt}">
+      <h3>${title}</h3>
+      <p>${description}</p>
+      <p id="price"><strong> À partir de : ${price} $</strong></p>
+      <button class="open-modal" data-category="${title}" data-price="${price}">
+        <i class="fas fa-envelope"></i> Contacter un agent
+      </button>
+    </div>
+  `;
+}
 
 
 
