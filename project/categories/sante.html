@@ -23,8 +23,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
         <script src="scripts/catalogue.js" defer></script>
-        <script src="../scripts/header.js" defer></script>
-        <title>Kazidomo Confiance beaute Page </title>
+        <script src="../scripts/function.js" defer></script>
+        <title>Kazidomo Confiance Mécanique Page </title>
         <link rel="stylesheet" href="../styles/base.css">
         <link rel="stylesheet" href="../styles/desktop.css">
         <link rel="stylesheet" href="../styles/tablets.css">
@@ -42,22 +42,9 @@
   <section id="category"></section>  
 
 </main>
-       <footer>
+       <footer id="footer">
 
        </footer>
 
-  <script>
-    fetch("../footer.html", { cache: "no-store" })
-  .then(res => res.text())
-  .then(data => {
-    document.querySelector("footer").innerHTML = data;
-
-    const yearSpan = document.getElementById("currentyear");
-    const modifiedSpan = document.getElementById("last-modified");
-    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-    if (modifiedSpan) modifiedSpan.textContent = document.lastModified;
-  });
-  </script>
-  
     </body>
 </html>
