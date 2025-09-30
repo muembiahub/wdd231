@@ -31,7 +31,7 @@ function injectHeader(targetId = 'header', filename = 'header.html', maxDepth = 
 
 
 // function pour injecter CategoryCards sur Home page  sur Kazidomo.com
-function loadCategoryCards(jsonPath = "../project/data/categories.json", containerId = "categoryHomepage") {
+function injectHomePageCard(jsonPath = "../project/data/categories.json", containerId = "categoryHomepage") {
   const container = document.getElementById(containerId);
   if (!container) {
     console.warn(`Conteneur #${containerId} introuvable.`);
@@ -76,57 +76,10 @@ function loadCategoryCards(jsonPath = "../project/data/categories.json", contain
 }
 
 
-
-
-// == Function poour  Injection du formulaire de Contact Agent sur categories ===
-function injectForm() {
-  const formContainer = document.createElement("div");
-  formContainer.innerHTML = ` 
-    <div id="contactAgentModal" class="modal">
-      <div class="modal-content">
-      <div id="case">
-       <div id="modalHeader">Déplacer ici</div>
-       <button class="close-modal">Fermer</button>
-      </div>
-        <h3>Contacter un agent</h3>
-
-        <form id="contactAgentForm">
-          <label for="name">Nom Complet :</label>
-          <input type="text" id="name" required>
-
-          <label for="clientEmail">Email :</label>
-          <input type="email" id="clientEmail" required>
-
-          <label for="clientWhatsApp">WhatsApp :</label>
-          <input type="text" id="clientWhatsApp" required>
-
-          <label for="gps">Ma position :</label>
-          <input type="text" id="gps" readonly placeholder="Coordonnées GPS">
-          <button type="button" id="detectGPS">📍 Détecter ma position</button>
-
-          <!-- ✅ Champ caché pour stocker le lien Google Maps -->
-          <input type="hidden" id="mapUrl">
-
-          <!-- ✅ Conteneur pour afficher la carte -->
-          <div id="gpsMapContainer"></div>
-
-          <label for="message">Message :</label>
-          <textarea id="message" rows="5" placeholder="Veuillez entrer votre message ici ou laisser votre préoccupation"></textarea>
-
-          <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
-        </form>
-        <div class="confirmation-message" id="confirmationBanner" style="display: none;"></div>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(formContainer);
-}
-
-// function pour Open Modal Contact Agent Forma
-
-
+// 
 function setupModal() {
   const modal = $("#contactAgentModal");
+  
   const dragHandle = $("#modalHeader"); // Assure-toi que cet élément existe dans ton HTML
 
   let isDragging = false;
@@ -173,12 +126,6 @@ document.querySelectorAll(".close-modal").forEach(btn => {
     }
   });
 }
-
-
-
-// function 
-
-
 
 
 

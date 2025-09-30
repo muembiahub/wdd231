@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   injectFavicon(); // injecte Favicon
   injectHeader(); // injecte dans #header depuis header.html
   injectFooter()
+  injectHomePageCard()
   injectForm();
   loadCards(jsonPath); // injecte les services ou catégories
   injectConfirmationBanner();
@@ -214,64 +215,13 @@ let selectedPrice = "";
 // === 4. Injection du formulaire ===
 function injectForm() {
   const formContainer = document.createElement("div");
-  formContainer.innerHTML = `  <style>
-      #contactForm {
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-        padding: 1em;
-        box-sizing: border-box;
-        width: 100%;
-        max-width: 400px;
-        margin: 0 auto;
-      }
-
-      #contactForm input,
-      #contactForm textarea,
-      #contactForm button {
-        width: 100%;
-        padding: 0.75em;
-        font-size: 1em;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        box-sizing: border-box;
-      }
-
-      #contactForm button {
-        background-color: #00aa00;
-        color: black;
-        border: none;
-        cursor: pointer;
-        max-width: 200px;
-        align-self: center;
-        transition: background-color 0.3s ease;
-      }
-
-      #contactForm button:hover {
-        background-color: #008800;
-      }
-
-      @media (max-width: 480px) {
-        #contactForm {
-          width: 75%;
-        
-        }
-        
-        #contactModal{
-          width: 79%;
-
-        }
-
-        #contactForm input,
-        #contactForm textarea,
-        #contactForm button {
-          font-size: 0.95em;
-        }
-      }
-    </style>
-    <div id="contactAgentModal" class="modal">
+  formContainer.innerHTML = `
+     <div id="contactAgentModal" class="modal">
       <div class="modal-content">
-        <span class="close" id="closeModal">&times;</span>
+      <div id="case">
+       <div id="modalHeader">Déplacer ici</div>
+       <button class="close-modal">Fermer</button>
+      </div>
         <h3>Contacter un agent</h3>
 
         <form id="contactForm">
@@ -377,35 +327,6 @@ function createCard(item, pageName) {
   `;
 }
 
-function setupModal() {
-  const modal = $("#contactAgentModal");
-  const closeBtn = $("#closeModal");
-
-  document.addEventListener("click", e => {
-    if (e.target.classList.contains("open-modal")) {
-      selectedCategory = e.target.dataset.category;
-      selectedPrice = e.target.dataset.price;
-
-      // ❌ Supprimé : message.value = ...
-      modal.style.display = "block";
-   
- }
-  });
-
-  closeBtn?.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
-
- window.addEventListener("keydown", e => {
-  if (e.key === "Escape") {
-    const modal = $("#contactAgentModal");
-    if (modal?.style.display === "block") {
-      modal.style.display = "none";
-    }
-  }
-});
-
-}
 function renderResponsiveMap(mapUrl, container) {
   const existingMap = document.getElementById("gpsMap");
   if (existingMap) existingMap.remove();

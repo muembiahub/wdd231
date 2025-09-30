@@ -338,19 +338,19 @@ select {
       }
 
       @media (max-width: 480px) {
-        #contactForm {
+        #contactAgentForm {
           width: 75%;
         
         }
         
-        #contactModal{
+        #contactAgentModal{
           width: 79%;
 
         }
 
-        #contactForm input,
-        #contactForm textarea,
-        #contactForm button {
+        #contactAgentForm input,
+        #contactAgentForm textarea,
+        #contactAgentForm button {
           font-size: 0.95em;
         }
       }
