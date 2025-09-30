@@ -1,15 +1,15 @@
-// function pour injecter Header sur toutes les pages sur Kazidomo.com
-
-function injectHeader(targetId = 'header', filename = 'header.html', maxDepth = 5) {
-  loadFile(targetId, filename, maxDepth);
+// Helper function for querySelector
+function $(selector) {
+  return document.querySelector(selector);
 }
 
-// function pour injecter footer sur toutes les pages sur Kazidomo.com
-function injectFooter(targetId = 'footer', filename = 'footer.html', maxDepth = 5) {
-  loadFile(targetId, filename, maxDepth);
+// Helper function for querySelectorAll
+function $$(selector) {
+  return document.querySelectorAll(selector);
 }
 
-function loadFile(targetId, filename, maxDepth) {
+// Function to load a file and inject its content into a target element
+function loadFile(targetId, filename, maxDepth = 5) {
   function tryPath(depth) {
     const prefix = '../'.repeat(depth);
     const path = `${prefix}${filename}`;
@@ -19,11 +19,11 @@ function loadFile(targetId, filename, maxDepth) {
         return response.text();
       })
       .then(html => {
-        const target = document.getElementById(targetId);
+        const target = $(`#${targetId}`);
         if (target) {
           target.innerHTML = html;
         } else {
-          console.warn(`Élément #${targetId} introuvable pour injecter le header.`);
+          console.warn(`Élément #${targetId} introuvable pour injecter le contenu de ${filename}.`);
         }
       })
       .catch(() => {
@@ -38,10 +38,19 @@ function loadFile(targetId, filename, maxDepth) {
   tryPath(0);
 }
 
+// Function to inject the header
+function injectHeader(targetId = 'header', filename = 'header.html', maxDepth = 5) {
+  loadFile(targetId, filename, maxDepth);
+}
 
-// function pour injecter CategoryCards sur Home page  sur Kazidomo.com
+// Function to inject the footer
+function injectFooter(targetId = 'footer', filename = 'footer.html', maxDepth = 5) {
+  loadFile(targetId, filename, maxDepth);
+}
+
+// Function to load category cards from a JSON file
 function loadCategoryCards(jsonPath = "../project/data/categories.json", containerId = "categoryHomepage") {
-  const container = document.getElementById(containerId);
+  const container = $(`#${containerId}`);
   if (!container) {
     console.warn(`Conteneur #${containerId} introuvable.`);
     return;
@@ -55,94 +64,65 @@ function loadCategoryCards(jsonPath = "../project/data/categories.json", contain
       }
 
       data.categories.forEach((item, index) => {
-      const card = document.createElement("div");
-       card.className = "card";
-
-      card.innerHTML = `
-         <img src="${item.logo}" alt="${item.category}">
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${item.logo}" alt="${item.category}">
           <h3>${item.category}</h3>
           <p>${item.description}</p>
           <a href="${item.page_url}" class="view-button">Consulter</a>
-  `;
+        `;
 
-  card.style.opacity = "0";
-  card.style.transform = "translateY(20px)";
-  card.style.filter = "blur(4px)";
-  card.style.transition = "opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease";
+        // Add animation
+        card.style.opacity = "0";
+        card.style.transform = "translateY(20px)";
+        card.style.filter = "blur(4px)";
+        card.style.transition = "opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease";
 
-  container.appendChild(card);
+        container.appendChild(card);
 
-  setTimeout(() => {
-    card.style.opacity = "1";
-    card.style.transform = "translateY(0)";
-    card.style.filter = "blur(0)";
-  }, index * 1050); // décalage progressif
-});
+        setTimeout(() => {
+          card.style.opacity = "1";
+          card.style.transform = "translateY(0)";
+          card.style.filter = "blur(0)";
+        }, index * 1050); // Staggered delay
+      });
     })
     .catch(error => {
       console.error("Erreur lors du chargement du JSON :", error);
     });
 }
 
-
-
-
-// == Function poour  Injection du formulaire de Contact Agent sur categories ===
-function injectForm() {
-  const formContainer = document.createElement("div");
-  formContainer.innerHTML = ` 
-    <div id="contactAgentModal" class="modal">
-      <div class="modal-content">
-      <div id="case">
-       <div id="modalHeader">Déplacer ici</div>
-       <button class="close-modal">Fermer</button>
-      </div>
-        <h3>Contacter un agent</h3>
-
-        <form id="contactAgentForm">
-          <label for="name">Nom Complet :</label>
-          <input type="text" id="name" required>
-
-          <label for="clientEmail">Email :</label>
-          <input type="email" id="clientEmail" required>
-
-          <label for="clientWhatsApp">WhatsApp :</label>
-          <input type="text" id="clientWhatsApp" required>
-
-          <label for="gps">Ma position :</label>
-          <input type="text" id="gps" readonly placeholder="Coordonnées GPS">
-          <button type="button" id="detectGPS">📍 Détecter ma position</button>
-
-          <!-- ✅ Champ caché pour stocker le lien Google Maps -->
-          <input type="hidden" id="mapUrl">
-
-          <!-- ✅ Conteneur pour afficher la carte -->
-          <div id="gpsMapContainer"></div>
-
-          <label for="message">Message :</label>
-          <textarea id="message" rows="5" placeholder="Veuillez entrer votre message ici ou laisser votre préoccupation"></textarea>
-
-          <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
-        </form>
-        <div class="confirmation-message" id="confirmationBanner" style="display: none;"></div>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(formContainer);
+// Function to inject the contact agent form
+function injectForm(formPath = "contact-form.html") {
+  fetch(formPath)
+    .then(response => response.text())
+    .then(html => {
+      const formContainer = document.createElement("div");
+      formContainer.innerHTML = html;
+      document.body.appendChild(formContainer);
+      setupModal(); // Call setupModal after injecting the form
+    })
+    .catch(error => {
+      console.error("Erreur lors du chargement du formulaire :", error);
+    });
 }
 
-// function pour Open Modal Contact Agent Forma
-
-
+// Function to set up the modal
 function setupModal() {
   const modal = $("#contactAgentModal");
-  const dragHandle = $("#modalHeader"); // Assure-toi que cet élément existe dans ton HTML
+  const dragHandle = $("#modalHeader");
+
+  if (!modal || !dragHandle) {
+    console.error("Modal or drag handle not found.");
+    return;
+  }
 
   let isDragging = false;
   let offsetX = 0;
   let offsetY = 0;
 
-  dragHandle?.addEventListener("mousedown", e => {
+  dragHandle.addEventListener("mousedown", e => {
     isDragging = true;
     const rect = modal.getBoundingClientRect();
     offsetX = e.clientX - rect.left;
@@ -170,61 +150,15 @@ function setupModal() {
     }
   });
 
-document.querySelectorAll(".close-modal").forEach(btn => {
-  btn.addEventListener("click", () => {
-    modal.style.display = "none";
+  $$(".close-modal").forEach(btn => {
+    btn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
   });
-});
 
   window.addEventListener("keydown", e => {
-    if (e.key === "Escape" && modal?.style.display === "block") {
+    if (e.key === "Escape" && modal.style.display === "block") {
       modal.style.display = "none";
     }
   });
-}
-
-
-
-// function 
-
-
-
-
-
-
-
-
-
-
-
-
-// function pour injecter footer sur toutes les pages sur Kazidomo.com
-function injectFooter (targetId = 'footer', filename = 'footer.html', maxDepth = 5){
-   function tryPath(depth) {
-    const prefix = '../'.repeat(depth);
-    const path = `${prefix}${filename}`;
-    fetch(path)
-      .then(response => {
-        if (!response.ok) throw new Error('Not found');
-        return response.text();
-      })
-      .then(html => {
-        const target = document.getElementById(targetId);
-        if (target) {
-          target.innerHTML = html;
-        } else {
-          console.warn(`Élément #${targetId} introuvable pour injecter le header.`);
-        }
-      })
-      .catch(() => {
-        if (depth < maxDepth) {
-          tryPath(depth + 1);
-        } else {
-          console.error(`Échec du chargement de ${filename} après ${maxDepth} tentatives.`);
-        }
-      });
-  }
-
-  tryPath(0);
-
 }
