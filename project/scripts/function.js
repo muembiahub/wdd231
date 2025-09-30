@@ -1,7 +1,15 @@
-
 // function pour injecter Header sur toutes les pages sur Kazidomo.com
 
 function injectHeader(targetId = 'header', filename = 'header.html', maxDepth = 5) {
+  loadFile(targetId, filename, maxDepth);
+}
+
+// function pour injecter footer sur toutes les pages sur Kazidomo.com
+function injectFooter(targetId = 'footer', filename = 'footer.html', maxDepth = 5) {
+  loadFile(targetId, filename, maxDepth);
+}
+
+function loadFile(targetId, filename, maxDepth) {
   function tryPath(depth) {
     const prefix = '../'.repeat(depth);
     const path = `${prefix}${filename}`;
