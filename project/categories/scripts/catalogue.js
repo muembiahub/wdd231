@@ -238,53 +238,6 @@ function injectConfirmationBanner() {
   target.parentElement.insertBefore(banner, target); // 👈 insère avant les cartes
 }
 
-// === 6. Chargement des cartes ===
-function loadCards(jsonPath) {
-  const pageName = getPageName(); // 👈 récupère le nom de la page
-
-  fetch(jsonPath)
-    .then(res => res.ok ? res.json() : Promise.reject(`Fichier introuvable : ${jsonPath}`))
-    .then(data => {
-      Object.values(data).flat().forEach(item => {
-        const cardHTML = createCard(item, pageName); // 👈 passe pageName
-        $("#category").insertAdjacentHTML("beforeend", cardHTML);
-      });
-    })
-    .catch(err => {
-      console.error("Erreur :", err);
-      $("#category").innerHTML = `<p>Contenu indisponible pour cette page.</p>`;
-    });
-}
-
-function createCard(item, pageName) {
-  const title = item.category || item.type || item.title || "Service";
-  const description = item.description || item.summary || "";
-  const price = item.price || "—";
-  const alt = item.alt || title;
-
-  const imageName = title
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/\s+/g, "_")
-    .replace(/[^\w-]/g, "") + ".webp";
-
-  const image = `images/${imageName}`;
-
-  return `
-    <div class="card searchable" data-page="${pageName}">
-      <img src="${image}" alt="${alt}">
-      <h3>${title}</h3>
-      <p>${description}</p>
-      <p id="price"><strong> À partir de : ${price} $</strong></p>
-      <button class="open-modal" data-category="${title}" data-price="${price}">
-        <i class="fas fa-envelope"></i> Contacter un agent
-      </button>
-    </div>
-  `;
-}
-
-
 
 
 function renderResponsiveMap(mapUrl, container) {
