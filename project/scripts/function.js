@@ -54,14 +54,82 @@ function injectTitle() {
 }
 
 
+// === 1. Déduction du nom de la page ===
+function getPageName() {
+  const path = window.location.pathname;
+  const file = path.split("/").pop();
+  const name = file.replace(".html", "");
+  return name || "index"; // fallback si vide
+}
 
-// function pour injecter CategoryCards sur Home page  sur Kazidomo.com
-function injectHomePageCard(jsonPath = "../project/data/categories.json", containerId = "categoryHomepage") {
+// === 2. Sélecteur simplifié ===
+function $(selector) {
+  return document.querySelector(selector);
+}
+
+// === 3. Génération du nom d’image ===
+function generateImageName(title) {
+  return title
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "_")
+    .replace(/[^\w-]/g, "") + ".webp";
+}
+
+// === 4. Génération HTML d’une carte pour les pages hors accueil ===
+function createCard(item, pageName) {
+  const title = item.category || item.type || item.title || "Service";
+  const description = item.description || item.summary || "Description indisponible.";
+  const price = item.price || "—";
+  const alt = item.alt || title;
+  const image = `images/${generateImageName(title)}`;
+
+  return `
+    <div class="card searchable" data-page="${pageName}">
+      <img src="${image}" alt="${alt}">
+      <h3>${title}</h3>
+      <p>${description}</p>
+      <p id="price"><strong> À partir de : ${price} $</strong></p>
+      <button class="open-modal" data-category="${title}" data-price="${price}">
+        <i class="fas fa-envelope"></i> Contacter un agent
+      </button>
+    </div>
+  `;
+}
+
+// === 5. Génération HTML d’une carte pour la page d’accueil ===
+function createHomeCard(item) {
+  const logo = item.logo || "images/default.webp";
+  const category = item.category || "Service";
+  const description = item.description || "Description indisponible.";
+  const pageUrl = item.page_url || "#";
+
+  return `
+    <div class="card">
+      <img src="${logo}" alt="${category}">
+      <h3>${category}</h3>
+      <p>${description}</p>
+      <a href="${pageUrl}" class="view-button">Consulter</a>
+    </div>
+  `;
+}
+
+// === 6. Injection dynamique des cartes selon la page ===
+function injectCardsForPage() {
+  const pageName = getPageName();
+  const isHomePage = pageName === "index" || pageName === "home";
+
+  const containerId = isHomePage ? "categoryHomepage" : "category";
   const container = document.getElementById(containerId);
   if (!container) {
     console.warn(`⚠️ Conteneur #${containerId} introuvable.`);
     return;
   }
+
+  const jsonPath = isHomePage
+    ? "data/categories.json"
+    : `data/${pageName}.json`;
 
   fetch(jsonPath)
     .then(response => {
@@ -71,31 +139,30 @@ function injectHomePageCard(jsonPath = "../project/data/categories.json", contai
       return response.json();
     })
     .then(data => {
-      const categories = data.categories;
-      if (!Array.isArray(categories)) {
-        throw new Error("Le fichier JSON doit contenir un tableau 'categories'.");
-      }
+      const items = isHomePage
+        ? data.categories
+        : Array.isArray(data.categories)
+          ? data.categories
+          : Object.values(data).flat();
 
-      if (categories.length === 0) {
-        container.innerHTML = `<p class="fallback">Aucune catégorie disponible pour le moment.</p>`;
+      if (!Array.isArray(items) || items.length === 0) {
+        container.innerHTML = `
+          <div class="empty-message">
+            <p>🌿 Aucun contenu disponible pour cette page.</p>
+            <p style="font-style: italic;">Elle attend encore ses premières cartes…</p>
+          </div>
+        `;
         return;
       }
 
-      categories.forEach((item, index) => {
-        const card = document.createElement("div");
-        card.className = "card";
+      items.forEach((item, index) => {
+        const cardHTML = isHomePage
+          ? createHomeCard(item)
+          : createCard(item, pageName);
 
-        const logo = item.logo || "images/default.webp";
-        const category = item.category || "Service";
-        const description = item.description || "Description indisponible.";
-        const pageUrl = item.page_url || "#";
-
-        card.innerHTML = `
-          <img src="${logo}" alt="${category}">
-          <h3>${category}</h3>
-          <p>${description}</p>
-          <a href="${pageUrl}" class="view-button">Consulter</a>
-        `;
+        const wrapper = document.createElement("div");
+        wrapper.innerHTML = cardHTML;
+        const card = wrapper.firstElementChild;
 
         card.style.opacity = "0";
         card.style.transform = "translateY(20px)";
@@ -115,61 +182,13 @@ function injectHomePageCard(jsonPath = "../project/data/categories.json", contai
       console.error("💥 Erreur lors du chargement du JSON :", error);
       container.innerHTML = `
         <div class="error-message">
-          <p>📦 Le contenu de la page d’accueil est temporairement indisponible.</p>
-          <p style="font-style: italic;">Veuillez vérifier le fichier JSON ou réessayer plus tard.</p>
+          <p>📦 Le contenu est temporairement indisponible.</p>
+          <p style="font-style: italic;">Vérifiez le fichier JSON ou réessayez plus tard.</p>
         </div>
       `;
     });
 }
 
-// === 6. Chargement des cartes depuis JSON ===
-function loadCards(jsonPath) {
-  const pageName = getPageName();
-
-  fetch(jsonPath)
-    .then(res => res.ok ? res.json() : Promise.reject(`Fichier introuvable : ${jsonPath}`))
-    .then(data => {
-      Object.values(data).flat().forEach(item => {
-        const cardHTML = createCard(item, pageName);
-        $("#category").insertAdjacentHTML("beforeend", cardHTML);
-      });
-    })
-    .catch(err => {
-      console.error("Erreur :", err);
-      $("#category").innerHTML = `<p>Contenu indisponible pour cette page.</p>`;
-    });
-}
-
-
-
-// === 7. Génération HTML d’une carte ===
-function createCard(item, pageName) {
-  const title = item.category || item.type || item.title || "Service";
-  const description = item.description || item.summary || "";
-  const price = item.price || "—";
-  const alt = item.alt || title;
-
-  const imageName = title
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/\s+/g, "_")
-    .replace(/[^\w-]/g, "") + ".webp";
-
-  const image = `images/${imageName}`;
-
-  return `
-    <div class="card searchable" data-page="${pageName}">
-      <img src="${image}" alt="${alt}">
-      <h3>${title}</h3>
-      <p>${description}</p>
-      <p id="price"><strong> À partir de : ${price} $</strong></p>
-      <button class="open-modal" data-category="${title}" data-price="${price}">
-        <i class="fas fa-envelope"></i> Contacter un agent
-      </button>
-    </div>
-  `;
-}
 
 // 
 // === 4. Injection du formulaire ===
@@ -184,7 +203,7 @@ function injectForm() {
       </div>
         <h3>Contacter un agent</h3>
 
-        <form id="contactForm">
+        <form id="contactAgentForm">
           <label for="name">Nom Complet :</label>
           <input type="text" id="name" required>
 

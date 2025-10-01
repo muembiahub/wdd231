@@ -1,30 +1,21 @@
 // intialisation
+// === 7. Appel principal au chargement de la page ===
 document.addEventListener("DOMContentLoaded", () => {
   const pageName = getPageName();
-  const jsonPath = `data/${pageName}.json`;
 
   injectTitle();
-  injectFavicon(); // injecte Favicon
-  injectHeader(); // injecte dans #header depuis header.html
-  injectHomePageCard();
+  injectFavicon();
+  injectHeader();
+  injectCardsForPage(); // ← appel unique, logique fusionnée
   injectFooter();
   injectForm();
-  loadCards(jsonPath); // injecte les services ou catégories
   injectConfirmationBanner();
   setupModal();
   setupGPS();
   setupFormValidation();
-  injectPageSearch(pageName); // barre de recherche limitée à cette page
+  injectPageSearch(pageName);
 });
 
-// === Fonctions utilitaires ===
-function getPageName() {
-  return window.location.pathname.split("/").pop().replace(".html", "");
-}
-
-function $(selector) {
-  return document.querySelector(selector);
-}
 
 
 
