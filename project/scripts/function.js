@@ -125,18 +125,34 @@ function injectHomePageCard(jsonPath = "../project/data/categories.json", contai
 // === 6. Chargement des cartes depuis JSON ===
 function loadCards(jsonPath) {
   const pageName = getPageName();
+  const container = $("#category");
+  if (!container) {
+    console.warn("⚠️ Conteneur #category introuvable.");
+    return;
+  }
 
   fetch(jsonPath)
     .then(res => res.ok ? res.json() : Promise.reject(`Fichier introuvable : ${jsonPath}`))
     .then(data => {
-      Object.values(data).flat().forEach(item => {
+      const cards = Array.isArray(data.categories) ? data.categories : Object.values(data).flat();
+      if (cards.length === 0) {
+        container.innerHTML = `<p>Aucun contenu disponible pour cette page.</p>`;
+        return;
+      }
+
+      cards.forEach(item => {
         const cardHTML = createCard(item, pageName);
-        $("#category").insertAdjacentHTML("beforeend", cardHTML);
+        container.insertAdjacentHTML("beforeend", cardHTML);
       });
     })
     .catch(err => {
-      console.error("Erreur :", err);
-      $("#category").innerHTML = `<p>Contenu indisponible pour cette page.</p>`;
+      console.error("💥 Erreur :", err);
+      container.innerHTML = `
+        <div class="error-message">
+          <p>📦 Contenu indisponible pour cette page.</p>
+          <p style="font-style: italic;">Vérifiez le fichier JSON ou réessayez plus tard.</p>
+        </div>
+      `;
     });
 }
 

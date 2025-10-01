@@ -1,16 +1,18 @@
 // intialisation
 document.addEventListener("DOMContentLoaded", () => {
   const pageName = getPageName();
-  const jsonPath = `data/${pageName}.json`;
 
   injectTitle();
   injectFavicon();
   injectHeader();
 
-  if (pageName === "index") {
-    injectHomePageCard(); // uniquement sur la page d’accueil
+  if (pageName === "index" || pageName === "home") {
+    // Page d’accueil → injecte les cartes depuis categories.json
+    injectHomePageCard("data/categories.json", "categoryHomepage");
   } else {
-    loadCards(jsonPath); // uniquement sur les autres pages
+    // Autres pages → injecte les cartes depuis data/pageName.json
+    const jsonPath = `data/${pageName}.json`;
+    loadCards(jsonPath);
   }
 
   injectFooter();
@@ -24,13 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // === Fonctions utilitaires ===
 function getPageName() {
-  return window.location.pathname.split("/").pop().replace(".html", "");
+  const path = window.location.pathname;
+  const file = path.split("/").pop();
+  const name = file.replace(".html", "");
+  return name || "index"; // fallback si vide
 }
-
-function $(selector) {
-  return document.querySelector(selector);
-}
-
 
 
 
