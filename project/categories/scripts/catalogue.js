@@ -4,17 +4,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const jsonPath = `data/${pageName}.json`;
 
   injectTitle();
-  injectFavicon(); // injecte Favicon
-  injectHeader(); // injecte dans #header depuis header.html
-  injectHomePageCard();
+  injectFavicon();
+  injectHeader();
+
+  if (pageName === "index") {
+    injectHomePageCard(); // uniquement sur la page d’accueil
+  } else {
+    loadCards(jsonPath); // uniquement sur les autres pages
+  }
+
   injectFooter();
   injectForm();
-  loadCards(jsonPath); // injecte les services ou catégories
   injectConfirmationBanner();
   setupModal();
   setupGPS();
   setupFormValidation();
-  injectPageSearch(pageName); // barre de recherche limitée à cette page
+  injectPageSearch(pageName);
 });
 
 // === Fonctions utilitaires ===
