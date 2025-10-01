@@ -44,11 +44,20 @@ function injectFavicon(path = "images/favicon.ico") {
 
 function injectTitle() {
   const pageName = getPageName();
-  document.title = pageName; // modifie le <title> existant
 
+  // Supprimer tous les <title> existants
+  const existingTitles = document.head.querySelectorAll("title");
+  existingTitles.forEach(t => t.remove());
+
+  // Créer et injecter un nouveau <title>
+  const newTitle = document.createElement("title");
+  newTitle.textContent = pageName;
+  document.head.appendChild(newTitle);
+
+  // Mettre à jour l’élément visible dans le corps de la page
   const pageTitleElement = $("#pageTitle");
   if (pageTitleElement) {
-    pageTitleElement.textContent = pageName;
+    pageTitleElement.textContent = "kazidomo Confiance - " + pageName;
   }
 }
 
