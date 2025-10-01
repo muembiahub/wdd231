@@ -26,30 +26,9 @@ function $(selector) {
   return document.querySelector(selector);
 }
 
-// === Favicon dynamique ===
-function injectFavicon(path = "images/favicon.ico") {
-  const existing = document.querySelector("link[rel='icon']");
-  if (existing) existing.remove();
 
-  const link = document.createElement("link");
-  link.rel = "icon";
-  link.href = path;
-  link.type = "image/x-icon";
-  document.head.appendChild(link);
-}
 
-// === Titre dynamique ===
-function injectTitle() {
-  const title = document.createElement("title");
-  title.textContent = getPageName();
-  document.head.appendChild(title);
 
-  if ($("#pageTitle")) {
-    $("#pageTitle").textContent = getPageName();
-  }
-}
-
-// === 5. Injecte la barre de recherche dans le header ===
 // === Barre de recherche limitée à la page ===
 function injectPageSearch(pageName) {
   // Crée le conteneur principal
@@ -159,52 +138,7 @@ function injectPageSearch(pageName) {
   document.head.appendChild(style);
 }
 
-// === 6. Chargement des cartes depuis JSON ===
-function loadCards(jsonPath) {
-  const pageName = getPageName();
 
-  fetch(jsonPath)
-    .then(res => res.ok ? res.json() : Promise.reject(`Fichier introuvable : ${jsonPath}`))
-    .then(data => {
-      Object.values(data).flat().forEach(item => {
-        const cardHTML = createCard(item, pageName);
-        $("#category").insertAdjacentHTML("beforeend", cardHTML);
-      });
-    })
-    .catch(err => {
-      console.error("Erreur :", err);
-      $("#category").innerHTML = `<p>Contenu indisponible pour cette page.</p>`;
-    });
-}
-
-// === 7. Génération HTML d’une carte ===
-function createCard(item, pageName) {
-  const title = item.category || item.type || item.title || "Service";
-  const description = item.description || item.summary || "";
-  const price = item.price || "—";
-  const alt = item.alt || title;
-
-  const imageName = title
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/\s+/g, "_")
-    .replace(/[^\w-]/g, "") + ".webp";
-
-  const image = `images/${imageName}`;
-
-  return `
-    <div class="card searchable" data-page="${pageName}">
-      <img src="${image}" alt="${alt}">
-      <h3>${title}</h3>
-      <p>${description}</p>
-      <p id="price"><strong> À partir de : ${price} $</strong></p>
-      <button class="open-modal" data-category="${title}" data-price="${price}">
-        <i class="fas fa-envelope"></i> Contacter un agent
-      </button>
-    </div>
-  `;
-}
 
 
 
@@ -212,49 +146,7 @@ function createCard(item, pageName) {
 let selectedCategory = "";
 let selectedPrice = "";
 
-// === 4. Injection du formulaire ===
-function injectForm() {
-  const formContainer = document.createElement("div");
-  formContainer.innerHTML = `
-     <div id="contactAgentModal" class="modal">
-      <div class="modal-content">
-      <div id="case">
-       <div id="modalHeader">Déplacer ici</div>
-       <button class="close-modal">Fermer</button>
-      </div>
-        <h3>Contacter un agent</h3>
 
-        <form id="contactForm">
-          <label for="name">Nom Complet :</label>
-          <input type="text" id="name" required>
-
-          <label for="clientEmail">Email :</label>
-          <input type="email" id="clientEmail" required>
-
-          <label for="clientWhatsApp">WhatsApp :</label>
-          <input type="text" id="clientWhatsApp" required>
-
-          <label for="gps">Ma position :</label>
-          <input type="text" id="gps" readonly placeholder="Coordonnées GPS">
-          <button type="button" id="detectGPS">📍 Détecter ma position</button>
-
-          <!-- ✅ Champ caché pour stocker le lien Google Maps -->
-          <input type="hidden" id="mapUrl">
-
-          <!-- ✅ Conteneur pour afficher la carte -->
-          <div id="gpsMapContainer"></div>
-
-          <label for="message">Message :</label>
-          <textarea id="message" rows="5" placeholder="Veuillez entrer votre message ici ou laisser votre préoccupation"></textarea>
-
-          <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
-        </form>
-        <div class="confirmation-message" id="confirmationBanner" style="display: none;"></div>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(formContainer);
-}
 
 
 /// === 5. Injection de la bannière de confirmation ===
