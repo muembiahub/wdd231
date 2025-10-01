@@ -42,17 +42,15 @@ function injectFavicon(path = "images/favicon.ico") {
   document.head.appendChild(link);
 }
 
-// === Titre dynamique ===
 function injectTitle() {
-  const title = document.createElement("title");
-  title.textContent = getPageName();
-  document.head.appendChild(title);
+  const pageName = getPageName();
+  document.title = pageName; // modifie le <title> existant
 
-  if ($("#pageTitle")) {
-    $("#pageTitle").textContent = getPageName();
+  const pageTitleElement = $("#pageTitle");
+  if (pageTitleElement) {
+    pageTitleElement.textContent = pageName;
   }
 }
-
 
 // === 1. Déduction du nom de la page ===
 function getPageName() {
