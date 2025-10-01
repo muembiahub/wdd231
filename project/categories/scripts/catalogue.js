@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   injectTitle();
   injectFavicon(); // injecte Favicon
   injectHeader(); // injecte dans #header depuis header.html
-  injectHomePageCard() 
-  injectFooter()
+  injectHomePageCard();
+  injectFooter();
   injectForm();
   loadCards(jsonPath); // injecte les services ou catégories
   injectConfirmationBanner();
