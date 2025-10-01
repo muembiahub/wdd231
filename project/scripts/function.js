@@ -59,27 +59,43 @@ function injectTitle() {
 function injectHomePageCard(jsonPath = "../project/data/categories.json", containerId = "categoryHomepage") {
   const container = document.getElementById(containerId);
   if (!container) {
-    console.warn(`Conteneur #${containerId} introuvable.`);
+    console.warn(`⚠️ Conteneur #${containerId} introuvable.`);
     return;
   }
 
   fetch(jsonPath)
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Fichier JSON introuvable : ${jsonPath}`);
+      }
+      return response.json();
+    })
     .then(data => {
-      if (!Array.isArray(data.categories)) {
+      const categories = data.categories;
+      if (!Array.isArray(categories)) {
         throw new Error("Le fichier JSON doit contenir un tableau 'categories'.");
       }
 
-      data.categories.forEach((item, index) => {
+      if (categories.length === 0) {
+        container.innerHTML = `<p class="fallback">Aucune catégorie disponible pour le moment.</p>`;
+        return;
+      }
+
+      categories.forEach((item, index) => {
         const card = document.createElement("div");
         card.className = "card";
 
+        const logo = item.logo || "images/default.webp";
+        const category = item.category || "Service";
+        const description = item.description || "Description indisponible.";
+        const pageUrl = item.page_url || "#";
+
         card.innerHTML = `
-         <img src="${item.logo}" alt="${item.category}">
-          <h3>${item.category}</h3>
-          <p>${item.description}</p>
-          <a href="${item.page_url}" class="view-button">Consulter</a>
-  `;
+          <img src="${logo}" alt="${category}">
+          <h3>${category}</h3>
+          <p>${description}</p>
+          <a href="${pageUrl}" class="view-button">Consulter</a>
+        `;
 
         card.style.opacity = "0";
         card.style.transform = "translateY(20px)";
@@ -92,11 +108,17 @@ function injectHomePageCard(jsonPath = "../project/data/categories.json", contai
           card.style.opacity = "1";
           card.style.transform = "translateY(0)";
           card.style.filter = "blur(0)";
-        }, index * 1050); // décalage progressif
+        }, index * 1050);
       });
     })
     .catch(error => {
-      console.error("Erreur lors du chargement du JSON :", error);
+      console.error("💥 Erreur lors du chargement du JSON :", error);
+      container.innerHTML = `
+        <div class="error-message">
+          <p>📦 Le contenu de la page d’accueil est temporairement indisponible.</p>
+          <p style="font-style: italic;">Veuillez vérifier le fichier JSON ou réessayer plus tard.</p>
+        </div>
+      `;
     });
 }
 
