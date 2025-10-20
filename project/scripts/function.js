@@ -30,6 +30,7 @@ function injectHeader(targetId = 'header', filename = 'header.html', maxDepth = 
 }
 
 
+
 // function pour injecter CategoryCards sur Home page  sur Kazidomo.com
 function injectHomePageCard(jsonPath = "../project/data/categories.json", containerId = "categoryHomepage") {
   const container = document.getElementById(containerId);
@@ -79,7 +80,7 @@ function injectHomePageCard(jsonPath = "../project/data/categories.json", contai
 // 
 function setupModal() {
   const modal = $("#contactAgentModal");
-  
+
   const dragHandle = $("#modalHeader"); // Assure-toi que cet élément existe dans ton HTML
 
   let isDragging = false;

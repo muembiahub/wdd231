@@ -224,7 +224,7 @@ function injectForm() {
       </div>
         <h3>Contacter un agent</h3>
 
-        <form id="contactForm">
+        <form id="contactAgentForm">
           <label for="name">Nom Complet :</label>
           <input type="text" id="name" required>
 
@@ -345,7 +345,7 @@ function setupGPS() {
 
 
 function setupFormValidation() {
-  const form = $("#contactForm");
+  const form = $("#contactAgentForm");
   const modal = $("#contactAgentModal");
   const banner = $("#confirmationBanner");
   const requiredFields = ["#name", "#clientEmail", "#clientWhatsApp", "#message"].map($);
