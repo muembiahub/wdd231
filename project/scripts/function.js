@@ -31,53 +31,218 @@ function injectHeader(targetId = 'header', filename = 'header.html', maxDepth = 
 
 
 
-// function pour injecter CategoryCards sur Home page  sur Kazidomo.com
-function injectHomePageCard(jsonPath = "../project/data/categories.json", containerId = "categoryHomepage") {
+// === Favicon dynamique ===
+function injectFavicon(path = "images/favicon.ico") {
+  const existing = document.querySelector("link[rel='icon']");
+  if (existing) existing.remove();
+
+  const link = document.createElement("link");
+  link.rel = "icon";
+  link.href = path;
+  link.type = "image/x-icon";
+  document.head.appendChild(link);
+}
+
+function injectTitle() {
+  const pageName = getPageName();
+
+  // Supprimer tous les <title> existants
+  const existingTitles = document.head.querySelectorAll("title");
+  existingTitles.forEach(t => t.remove());
+
+  // Créer et injecter un nouveau <title>
+  const newTitle = document.createElement("title");
+  newTitle.textContent = pageName;
+  document.head.appendChild(newTitle);
+
+  // Mettre à jour l’élément visible dans le corps de la page
+  const pageTitleElement = $("#pageTitle");
+  if (pageTitleElement) {
+    pageTitleElement.textContent = "kazidomo Confiance - " + pageName;
+  }
+}
+
+// === 1. Déduction du nom de la page ===
+function getPageName() {
+  const path = window.location.pathname;
+  const file = path.split("/").pop();
+  const name = file.replace(".html", "");
+  return name || "index"; // fallback si vide
+}
+
+// === 2. Sélecteur simplifié ===
+function $(selector) {
+  return document.querySelector(selector);
+}
+
+// === 3. Génération du nom d’image ===
+function generateImageName(title) {
+  return title
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "_")
+    .replace(/[^\w-]/g, "") + ".webp";
+}
+
+// === 4. Génération HTML d’une carte pour les pages hors accueil ===
+function createCard(item, pageName) {
+  const title = item.category || item.type || item.title || "Service";
+  const description = item.description || item.summary || "Description indisponible.";
+  const price = item.price || "—";
+  const alt = item.alt || title;
+  const image = `images/${generateImageName(title)}`;
+
+  return `
+    <div class="card searchable" data-page="${pageName}">
+      <img src="${image}" alt="${alt}">
+      <h3>${title}</h3>
+      <p>${description}</p>
+      <p id="price"><strong> À partir de : ${price} $</strong></p>
+      <button class="open-modal" data-category="${title}" data-price="${price}">
+        <i class="fas fa-envelope"></i> Contacter un agent
+      </button>
+    </div>
+  `;
+}
+
+// === 5. Génération HTML d’une carte pour la page d’accueil ===
+function createHomeCard(item) {
+  const logo = item.logo || "images/default.webp";
+  const category = item.category || "Service";
+  const description = item.description || "Description indisponible.";
+  const pageUrl = item.page_url || "#";
+
+  return `
+    <div class="card">
+      <img src="${logo}" alt="${category}">
+      <h3>${category}</h3>
+      <p>${description}</p>
+      <a href="${pageUrl}" class="view-button">Consulter</a>
+    </div>
+  `;
+}
+
+// === 6. Injection dynamique des cartes selon la page ===
+function injectCardsForPage() {
+  const pageName = getPageName();
+  const isHomePage = pageName === "index" || pageName === "home";
+
+  const containerId = isHomePage ? "categoryHomepage" : "category";
   const container = document.getElementById(containerId);
   if (!container) {
-    console.warn(`Conteneur #${containerId} introuvable.`);
+    console.warn(`⚠️ Conteneur #${containerId} introuvable.`);
     return;
   }
 
+  const jsonPath = isHomePage
+    ? "data/categories.json"
+    : `data/${pageName}.json`;
+
   fetch(jsonPath)
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Fichier JSON introuvable : ${jsonPath}`);
+      }
+      return response.json();
+    })
     .then(data => {
-      if (!Array.isArray(data.categories)) {
-        throw new Error("Le fichier JSON doit contenir un tableau 'categories'.");
+      const items = isHomePage
+        ? data.categories
+        : Array.isArray(data.categories)
+          ? data.categories
+          : Object.values(data).flat();
+
+      if (!Array.isArray(items) || items.length === 0) {
+        container.innerHTML = `
+          <div class="empty-message">
+            <p>🌿 Aucun contenu disponible pour cette page.</p>
+            <p style="font-style: italic;">Elle attend encore ses premières cartes…</p>
+          </div>
+        `;
+        return;
       }
 
-      data.categories.forEach((item, index) => {
-      const card = document.createElement("div");
-       card.className = "card";
+      items.forEach((item, index) => {
+        const cardHTML = isHomePage
+          ? createHomeCard(item)
+          : createCard(item, pageName);
 
-      card.innerHTML = `
-         <img src="${item.logo}" alt="${item.category}">
-          <h3>${item.category}</h3>
-          <p>${item.description}</p>
-          <a href="${item.page_url}" class="view-button">Consulter</a>
-  `;
+        const wrapper = document.createElement("div");
+        wrapper.innerHTML = cardHTML;
+        const card = wrapper.firstElementChild;
 
-  card.style.opacity = "0";
-  card.style.transform = "translateY(20px)";
-  card.style.filter = "blur(4px)";
-  card.style.transition = "opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease";
+        card.style.opacity = "0";
+        card.style.transform = "translateY(20px)";
+        card.style.filter = "blur(4px)";
+        card.style.transition = "opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease";
 
-  container.appendChild(card);
+        container.appendChild(card);
 
-  setTimeout(() => {
-    card.style.opacity = "1";
-    card.style.transform = "translateY(0)";
-    card.style.filter = "blur(0)";
-  }, index * 1050); // décalage progressif
-});
+        setTimeout(() => {
+          card.style.opacity = "1";
+          card.style.transform = "translateY(0)";
+          card.style.filter = "blur(0)";
+        }, index * 1050);
+      });
     })
     .catch(error => {
-      console.error("Erreur lors du chargement du JSON :", error);
+      console.error("💥 Erreur lors du chargement du JSON :", error);
+      container.innerHTML = `
+        <div class="error-message">
+          <p>📦 Le contenu est temporairement indisponible.</p>
+          <p style="font-style: italic;">Vérifiez le fichier JSON ou réessayez plus tard.</p>
+        </div>
+      `;
     });
 }
 
 
 // 
+// === 4. Injection du formulaire ===
+function injectForm() {
+  const formContainer = document.createElement("div");
+  formContainer.innerHTML = `
+     <div id="contactAgentModal" class="modal">
+      <div class="modal-content">
+      <div id="case">
+       <div id="modalHeader">Déplacer ici</div>
+       <button class="close-modal">Fermer</button>
+      </div>
+        <h3>Contacter un agent</h3>
+
+        <form id="contactAgentForm">
+          <label for="name">Nom Complet :</label>
+          <input type="text" id="name" required>
+
+          <label for="clientEmail">Email :</label>
+          <input type="email" id="clientEmail" required>
+
+          <label for="clientWhatsApp">WhatsApp :</label>
+          <input type="text" id="clientWhatsApp" required>
+
+          <label for="gps">Ma position :</label>
+          <input type="text" id="gps" readonly placeholder="Coordonnées GPS">
+          <button type="button" id="detectGPS">📍 Détecter ma position</button>
+
+          <!-- ✅ Champ caché pour stocker le lien Google Maps -->
+          <input type="hidden" id="mapUrl">
+
+          <!-- ✅ Conteneur pour afficher la carte -->
+          <div id="gpsMapContainer"></div>
+
+          <label for="message">Message :</label>
+          <textarea id="message" rows="5" placeholder="Veuillez entrer votre message ici ou laisser votre préoccupation"></textarea>
+
+          <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
+        </form>
+        <div class="confirmation-message" id="confirmationBanner" style="display: none;"></div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(formContainer);
+}
+
 function setupModal() {
   const modal = $("#contactAgentModal");
 
@@ -115,11 +280,11 @@ function setupModal() {
     }
   });
 
-document.querySelectorAll(".close-modal").forEach(btn => {
-  btn.addEventListener("click", () => {
-    modal.style.display = "none";
+  document.querySelectorAll(".close-modal").forEach(btn => {
+    btn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
   });
-});
 
   window.addEventListener("keydown", e => {
     if (e.key === "Escape" && modal?.style.display === "block") {
@@ -138,8 +303,8 @@ document.querySelectorAll(".close-modal").forEach(btn => {
 
 
 // function pour injecter footer sur toutes les pages sur Kazidomo.com
-function injectFooter (targetId = 'footer', filename = 'footer.html', maxDepth = 5){
-   function tryPath(depth) {
+function injectFooter(targetId = 'footer', filename = 'footer.html', maxDepth = 5) {
+  function tryPath(depth) {
     const prefix = '../'.repeat(depth);
     const path = `${prefix}${filename}`;
     fetch(path)

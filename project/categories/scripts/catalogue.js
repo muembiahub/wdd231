@@ -1,55 +1,25 @@
 // intialisation
+// === 7. Appel principal au chargement de la page ===
 document.addEventListener("DOMContentLoaded", () => {
   const pageName = getPageName();
-  const jsonPath = `data/${pageName}.json`;
 
   injectTitle();
-  injectFavicon(); // injecte Favicon
-  injectHeader(); // injecte dans #header depuis header.html
-  injectHomePageCard() 
-  injectFooter()
+  injectFavicon();
+  injectHeader();
+  injectCardsForPage(); // ← appel unique, logique fusionnée
+  injectFooter();
   injectForm();
-  loadCards(jsonPath); // injecte les services ou catégories
   injectConfirmationBanner();
   setupModal();
   setupGPS();
   setupFormValidation();
-  injectPageSearch(pageName); // barre de recherche limitée à cette page
+  injectPageSearch(pageName);
 });
 
-// === Fonctions utilitaires ===
-function getPageName() {
-  return window.location.pathname.split("/").pop().replace(".html", "");
-}
 
-function $(selector) {
-  return document.querySelector(selector);
-}
 
-// === Favicon dynamique ===
-function injectFavicon(path = "images/favicon.ico") {
-  const existing = document.querySelector("link[rel='icon']");
-  if (existing) existing.remove();
 
-  const link = document.createElement("link");
-  link.rel = "icon";
-  link.href = path;
-  link.type = "image/x-icon";
-  document.head.appendChild(link);
-}
 
-// === Titre dynamique ===
-function injectTitle() {
-  const title = document.createElement("title");
-  title.textContent = getPageName();
-  document.head.appendChild(title);
-
-  if ($("#pageTitle")) {
-    $("#pageTitle").textContent = getPageName();
-  }
-}
-
-// === 5. Injecte la barre de recherche dans le header ===
 // === Barre de recherche limitée à la page ===
 function injectPageSearch(pageName) {
   // Crée le conteneur principal
@@ -159,52 +129,7 @@ function injectPageSearch(pageName) {
   document.head.appendChild(style);
 }
 
-// === 6. Chargement des cartes depuis JSON ===
-function loadCards(jsonPath) {
-  const pageName = getPageName();
 
-  fetch(jsonPath)
-    .then(res => res.ok ? res.json() : Promise.reject(`Fichier introuvable : ${jsonPath}`))
-    .then(data => {
-      Object.values(data).flat().forEach(item => {
-        const cardHTML = createCard(item, pageName);
-        $("#category").insertAdjacentHTML("beforeend", cardHTML);
-      });
-    })
-    .catch(err => {
-      console.error("Erreur :", err);
-      $("#category").innerHTML = `<p>Contenu indisponible pour cette page.</p>`;
-    });
-}
-
-// === 7. Génération HTML d’une carte ===
-function createCard(item, pageName) {
-  const title = item.category || item.type || item.title || "Service";
-  const description = item.description || item.summary || "";
-  const price = item.price || "—";
-  const alt = item.alt || title;
-
-  const imageName = title
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/\s+/g, "_")
-    .replace(/[^\w-]/g, "") + ".webp";
-
-  const image = `images/${imageName}`;
-
-  return `
-    <div class="card searchable" data-page="${pageName}">
-      <img src="${image}" alt="${alt}">
-      <h3>${title}</h3>
-      <p>${description}</p>
-      <p id="price"><strong> À partir de : ${price} $</strong></p>
-      <button class="open-modal" data-category="${title}" data-price="${price}">
-        <i class="fas fa-envelope"></i> Contacter un agent
-      </button>
-    </div>
-  `;
-}
 
 
 

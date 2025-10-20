@@ -1,141 +1,146 @@
 <!DOCTYPE html>
-<lang="en-US">
+<html lang="en-US">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:title" content="Directory">
-    <meta property="og:description"
-      content="Kazidomo is a smart mobile application designed to enable anyone with a skill or trade—formal or informal—to offer their services in their neighborhood, city, or beyond.">
-    <meta property="og:url" content="https://muembiahub.github.io/wdd231/chamber">
-    <meta property="og:site_name" content="Kazidomo">
-    <meta property="og:image" content="https://muembiahub.github.io/wdd231/chamber/images/facebook-tag.png" />
-    <meta name="author" content="Jonathan M. Muembia">
-    <meta name="description"
-      content="Kazidomo is a smart mobile application designed to enable anyone with a skill or trade—formal or informal—to offer their services in their neighborhood, city, or beyond.">
-    <meta name="robots" content="index, follow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="application-name" content="Kazidomo">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="keywords"content="Kazidomo, mobile application, service providers, geolocation, digital contracts, payment options, economic autonomy">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="scripts/function.js"></script>
-    <script src="../project/categories/scripts/catalogue.js" defer></script>
-    <link rel="stylesheet" href="styles/base.css">
-     <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet" href="styles/mobile.css">
-     <link rel="stylesheet" href="styles/tablets.css">
-    <link rel="stylesheet" href="styles/desktop.css">
-   
-    
-   
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Directory">
+  <meta property="og:description"
+    content="Kazidomo is a smart mobile application designed to enable anyone with a skill or trade—formal or informal—to offer their services in their neighborhood, city, or beyond.">
+  <meta property="og:url" content="https://muembiahub.github.io/wdd231/chamber">
+  <meta property="og:site_name" content="Kazidomo">
+  <meta property="og:image" content="https://muembiahub.github.io/wdd231/chamber/images/facebook-tag.png" />
+  <meta name="author" content="Jonathan M. Muembia">
+  <meta name="description"
+    content="Kazidomo is a smart mobile application designed to enable anyone with a skill or trade—formal or informal—to offer their services in their neighborhood, city, or beyond.">
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="application-name" content="Kazidomo">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="keywords"
+    content="Kazidomo, mobile application, service providers, geolocation, digital contracts, payment options, economic autonomy">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-  <body>
-    <header>
-      <div id="header"></div>
-
-    </header>
-    <main>
-      <section class="showcase-area" id="showcase">
-        <div class="showcase-container">
-          <h1 class="main-title" id="home">Kazidomo Confiance</h1>
-          <p>Le lien entre savoir-faire authentique et confiance locale.</p>
+  <script src="scripts/function.js"></script>
+  <script src="./categories/scripts/catalogue.js" defer></script>
+  <title>Kazidomo Confiance Home Page </title>
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/mobile.css">
+  <link rel="stylesheet" href="styles/tablets.css">
+  <link rel="stylesheet" href="styles/desktop.css">
 
 
-          <a href="#annuaire" class="btn btn-primary">Découvrir l’annuaire</a>
-        </div>
-      </section>
-      <h1 class="about-title">CONTACTEZ-NOUS</h1>
-      <!-- Inclure Font Awesome dans le <head> -->
+
+</head>
+
+<body>
+  <header>
+    <div id="header"></div>
+
+  </header>
+  <main>
+    <section class="showcase-area" id="showcase">
+      <div class="showcase-container">
+        <h1 class="main-title" id="home">Kazidomo Confiance</h1>
+        <p>Le lien entre savoir-faire authentique et confiance locale.</p>
 
 
-<form name="contact-kazidomo" method="POST" data-netlify="true" class="contact-form">
-  <h2><i class="fas fa-envelope-open-text"></i> Formulaire de contact</h2>
-
-  <!-- Nom -->
-  <label>
-    <i class="fas fa-user"></i>
-    <input type="text" name="name" placeholder="Votre nom" required>
-  </label>
-
-  <!-- Email -->
-  <label>
-    <i class="fas fa-envelope"></i>
-    <input type="email" name="email" placeholder="Votre adresse e-mail" required>
-  </label>
-
-  <!-- Téléphone -->
-  <label>
-    <i class="fas fa-phone"></i>
-    <input type="tel" name="phone" placeholder="Votre numéro de téléphone">
-  </label>
-
-  <!-- Sujet -->
-  <label>
-    <i class="fas fa-comment-dots"></i>
-    <select name="subject" required>
-      <option value="">Choisissez un sujet</option>
-      <option value="collaboration">Collaboration</option>
-      <option value="support">Support technique</option>
-      <option value="formation">Formation / Guide</option>
-      <option value="autre">Autre</option>
-    </select>
-  </label>
-
-  <!-- Type de visiteur -->
-  <fieldset>
-    <legend><i class="fas fa-users"></i> Type de visiteur</legend>
-    <label><input type="radio" name="visitor-type" value="individuel" required> Visiteur individuel</label>
-    <label><input type="radio" name="visitor-type" value="communautaire"> Représentant communautaire</label>
-  </fieldset>
-
-  <!-- Langue préférée -->
-  <label>
-    <i class="fas fa-language"></i>
-    <select name="lang" required>
-      <option value="">Langue préférée</option>
-      <option value="fr">🇫🇷 Français</option>
-      <option value="ln">🇱🇺 Lingala</option>
-      <option value="sw">🇨🇩 Swahili</option>
-      <option value="lu">🇨🇩 Tshiluba</option>
-    </select>
-  </label>
-
-  <!-- Message -->
-  <label>
-    <i class="fas fa-pencil-alt"></i>
-    <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
-  </label>
-
-  <!-- Consentement -->
-  <label>
-    <input type="checkbox" name="consent" required>
-    <i class="fas fa-shield-alt"></i> J’accepte les conditions de confiance Kazidomo
-  </label>
-
-  <!-- Bouton -->
-  <button type="submit">
-    <i class="fas fa-paper-plane"></i> Envoyer
-  </button>
-</form>
-<div id="confirmation-message" class="confirmation hidden">
-  <i class="fas fa-check-circle"></i> Merci pour votre message. Nous vous répondrons bientôt.
-</div>
+        <a href="#annuaire" class="btn btn-primary">Découvrir l’annuaire</a>
+      </div>
+    </section>
+    <h1 class="about-title">CONTACTEZ-NOUS</h1>
+    <!-- Inclure Font Awesome dans le <head> -->
 
 
-    </main>
-    <!-- Ton contenu ici -->
+    <form name="contact-kazidomo" method="POST" data-netlify="true" class="contact-form">
+      <h2><i class="fas fa-envelope-open-text"></i> Formulaire de contact</h2>
 
-    <footer id="footer"> </footer>
+      <!-- Nom -->
+      <label>
+        <i class="fas fa-user"></i>
+        <input type="text" name="name" placeholder="Votre nom" required>
+      </label>
 
-    
+      <!-- Email -->
+      <label>
+        <i class="fas fa-envelope"></i>
+        <input type="email" name="email" placeholder="Votre adresse e-mail" required>
+      </label>
 
-  </body>
+      <!-- Téléphone -->
+      <label>
+        <i class="fas fa-phone"></i>
+        <input type="tel" name="phone" placeholder="Votre numéro de téléphone">
+      </label>
 
-  </html>
+      <!-- Sujet -->
+      <label>
+        <i class="fas fa-comment-dots"></i>
+        <select name="subject" required>
+          <option value="">Choisissez un sujet</option>
+          <option value="collaboration">Collaboration</option>
+          <option value="support">Support technique</option>
+          <option value="formation">Formation / Guide</option>
+          <option value="autre">Autre</option>
+        </select>
+      </label>
+
+      <!-- Type de visiteur -->
+      <fieldset>
+        <legend><i class="fas fa-users"></i> Type de visiteur</legend>
+        <label><input type="radio" name="visitor-type" value="individuel" required> Visiteur individuel</label>
+        <label><input type="radio" name="visitor-type" value="communautaire"> Représentant communautaire</label>
+      </fieldset>
+
+      <!-- Langue préférée -->
+      <label>
+        <i class="fas fa-language"></i>
+        <select name="lang" required>
+          <option value="">Langue préférée</option>
+          <option value="fr">🇫🇷 Français</option>
+          <option value="ln">🇱🇺 Lingala</option>
+          <option value="sw">🇨🇩 Swahili</option>
+          <option value="lu">🇨🇩 Tshiluba</option>
+        </select>
+      </label>
+
+      <!-- Message -->
+      <label>
+        <i class="fas fa-pencil-alt"></i>
+        <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+      </label>
+
+      <!-- Consentement -->
+      <label>
+        <input type="checkbox" name="consent" required>
+        <i class="fas fa-shield-alt"></i> J’accepte les conditions de confiance Kazidomo
+      </label>
+
+      <!-- Bouton -->
+      <button type="submit">
+        <i class="fas fa-paper-plane"></i> Envoyer
+      </button>
+    </form>
+    <div id="confirmation-message" class="confirmation hidden">
+      <i class="fas fa-check-circle"></i> Merci pour votre message. Nous vous répondrons bientôt.
+    </div>
+
+
+  </main>
+  <!-- Ton contenu ici -->
+
+  <footer id="footer"> </footer>
+
+
+
+</body>
+
+</html>
