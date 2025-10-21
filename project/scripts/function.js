@@ -373,7 +373,7 @@ function injectForm() {
 
         <label for="gps">Ma position :</label>
         <input type="text" id="gps" readonly placeholder="Coordonnées GPS">
-        <button type="button" id="detectGPS">📍 Détecter ma position actuel </button>
+        <button type="button" id="detectGPS">📍 Détecter ma position  </button>
 
         <input type="hidden" id="mapUrl">
         <div id="gpsMapContainer"></div>
