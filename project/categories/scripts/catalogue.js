@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   injectHeader();
   injectCardsForPage(); // ← appel unique, logique fusionnée
   injectFooter();
-  injectPageSearch(pageName);
+  injectElegantSearchBar(pageName);
 });
 
 
@@ -16,67 +16,81 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // === Barre de recherche limitée à la page ===
-function injectPageSearch(pageName) {
-  // Crée le conteneur principal
-  const wrapper = document.createElement("div");
-  wrapper.className = "search-wrapper";
-  wrapper.style.cssText = `
-    position: fixed;
-    top: 9vh;
-    right: 10px;
-    z-index: 9999;
+function injectElegantSearchBar(pageName) {
+  if (document.getElementById(`search-${pageName}`)) return;
+
+  const container = document.createElement("div");
+  container.id = `search-${pageName}`;
+  container.className = "elegant-search-bar";
+  container.style.cssText = `
+    width: 100%;
+    padding: 1em;
+    background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+    border-bottom: 1px solid #ccc;
     display: flex;
-    gap: 5px;
-    padding: 0.5em;
     align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   `;
 
-  // Champ de recherche
+  const icon = document.createElement("span");
+  icon.innerHTML = " <i class='fas fa-search'></i> ";
+  icon.style.cssText = `
+    font-size: 1.2em;
+    color: #00796b;
+  `;
+
   const input = document.createElement("input");
   input.type = "text";
-  input.placeholder = `🔍 Rechercher dans ${pageName}...`;
+  input.placeholder = `Rechercher dans ${pageName}...`;
   input.style.cssText = `
-    padding: 0.5em;
+    flex: 1;
+    max-width: 400px;
+    padding: 0.6em 1em;
     font-size: 1em;
     border: 1px solid #ccc;
-    border-radius: 3px;
-    flex: 1;
+    border-radius: 20px;
+    background: #fff;
+    transition: box-shadow 0.3s ease;
   `;
+  input.onfocus = () => input.style.boxShadow = "0 0 6px #00796b";
+  input.onblur = () => input.style.boxShadow = "none";
 
-  // Bouton pour effacer
   const clearBtn = document.createElement("button");
-  clearBtn.textContent = "❌";
+  clearBtn.textContent = "✖";
+  clearBtn.title = "Effacer";
   clearBtn.style.cssText = `
-    font-size: 1em;
-    cursor: pointer;
     background: none;
     border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    color: #555;
   `;
 
-  // Message "aucun résultat"
   const message = document.createElement("div");
   message.textContent = "Aucun résultat trouvé.";
   message.style.cssText = `
-    position: fixed;
-    top: calc(9vh + 50px);
-    right: 10px;
-    background-color: #f8d7da;
-    color: #721c24;
-    padding: 0.5em 1em;
-    border: 1px solid #f5c6cb;
-    border-radius: 6px;
+    margin-top: 0.5em;
+    text-align: center;
+    color: #c62828;
     font-size: 0.9em;
     display: none;
-    z-index: 9999;
   `;
 
-  // Ajoute les éléments au DOM
-  wrapper.appendChild(input);
-  wrapper.appendChild(clearBtn);
-  document.body.appendChild(wrapper);
-  document.body.appendChild(message);
+  container.appendChild(icon);
+  container.appendChild(input);
+  container.appendChild(clearBtn);
 
-  // Événement de recherche
+  const header = document.querySelector("header");
+  if (header) {
+    header.insertAdjacentElement("afterend", container);
+  } else {
+    document.body.insertBefore(container, document.body.firstChild);
+  }
+
+  container.insertAdjacentElement("afterend", message);
+
   input.addEventListener("input", () => {
     const query = input.value.toLowerCase();
     const targets = document.querySelectorAll(`[data-page="${pageName}"]`);
@@ -86,44 +100,26 @@ function injectPageSearch(pageName) {
       const text = el.textContent.toLowerCase();
       const match = text.includes(query);
       el.style.display = match ? "" : "none";
-      el.style.backgroundColor = match ? "#1a7ec0ff" : "";
+      el.style.backgroundColor = match ? "#c8e6c9" : "";
       if (match) found = true;
     });
 
     message.style.display = query && !found ? "block" : "none";
   });
 
-  // Bouton pour réinitialiser
   clearBtn.addEventListener("click", () => {
     input.value = "";
     resetHighlights();
     message.style.display = "none";
   });
 
-  // Fonction pour réinitialiser les styles
   function resetHighlights() {
     document.querySelectorAll(`[data-page="${pageName}"]`).forEach(el => {
       el.style.display = "";
       el.style.backgroundColor = "";
     });
   }
-
-  // Style responsive injecté
-  const style = document.createElement("style");
-  style.textContent = `
-    @media (max-width: 600px) {
-      .search-wrapper {
-        top: 5vh !important;
-        right: 1px;
-
-        flex-direction: row;
-        align-items: stretch;
-      }
-    }
-  `;
-  document.head.appendChild(style);
 }
-
 
 
 
