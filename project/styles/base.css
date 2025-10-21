@@ -39,7 +39,7 @@ main {
   background: #fff;
   box-shadow: 0 8px 16px rgba(0,0,0,0.1);
   border: 1px solid #eee;
-  transition: transform 0.3s ease;
+  transition: transform 0.1s ease;
   position: relative;
 }
 .card:hover {
@@ -105,20 +105,6 @@ main {
     padding-left: 20px;
   }
 
-/* Bouton */
-.open-modal {
-        background-color: #00aa00;
-        color: black;
-        border: none;
-        cursor: pointer;
-        max-width: 200px;
-        align-self: center;
-        transition: background-color 0.3s ease;
-}
-
-.open-modal:hover {
-  background-color: #1e5;
-}
 
 
 /*    Showcase description */
@@ -214,7 +200,7 @@ main {
   border-radius: 6px;
 }
 
-.contact-form button {
+.contact-form button{
   align-self: flex-start;
   padding: 0.6rem 1.2rem;
   background: #0ebde0;
@@ -315,8 +301,7 @@ select {
       }
 
       #contactAgentForm input,
-      #contactAgentForm textarea,
-      #contactAgentForm button {
+      #contactAgentForm textarea,#contactAgentBtn  {
         width: 100%;
         padding: 0.75em;
         font-size: 1em;
@@ -324,12 +309,8 @@ select {
         border-radius: 6px;
         box-sizing: border-box;
       }
-      @keyframes dropConfetti {
-  0% { top: -10px; opacity: 1; }
-  100% { top: 100%; opacity: 0; }
-}
-
-      #contactAgentForm button {
+     
+      #contactAgentForm button, #contactAgentBtn  {
         background-color: #00aa00;
         color: black;
         border: none;
@@ -339,7 +320,7 @@ select {
         transition: background-color 0.3s ease;
       }
 
-      #contactForm button:hover {
+      #contactAgentForm button:hover, #contactAgentBtn:hover {
         background-color: #008800;
       }
 

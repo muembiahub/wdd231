@@ -99,7 +99,7 @@ function createCard(item, pageName) {
       <h3>${title}</h3>
       <p>${description}</p>
       <p id="price"><strong> À partir de : ${price} $</strong></p>
-     <button onclick="loadContactView('${encodeURIComponent(title)}', '${encodeURIComponent(price)}')">
+     <button onclick="loadContactView('${encodeURIComponent(title)}', '${encodeURIComponent(price)}')" id="contactAgentBtn">
   <i class="fas fa-envelope"></i> Contacter un agent
 </button>
     </div>
@@ -191,7 +191,7 @@ function createReturnToServicesButton() {
     border-radius: 6px;
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    transition: background 0.3s ease;
+    transition: background 3s ease;
   `;
 
   const banner = document.getElementById("confirmationBanner");
@@ -299,7 +299,7 @@ function injectCardsForPage() {
         card.style.opacity = "0";
         card.style.transform = "translateY(20px)";
         card.style.filter = "blur(4px)";
-        card.style.transition = "opacity 0.2s ease, transform 0.2s ease, filter 0.2s ease";
+        card.style.transition = "opacity 0.1s ease, transform 0.1s ease, filter 0.1s ease";
 
         container.appendChild(card);
 
