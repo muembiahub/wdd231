@@ -299,7 +299,7 @@ function injectCardsForPage() {
         card.style.opacity = "0";
         card.style.transform = "translateY(20px)";
         card.style.filter = "blur(4px)";
-        card.style.transition = "opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease";
+        card.style.transition = "opacity 0.2s ease, transform 0.2s ease, filter 0.2s ease";
 
         container.appendChild(card);
 
