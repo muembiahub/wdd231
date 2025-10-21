@@ -181,7 +181,7 @@ function createReturnToServicesButton() {
   btn.id = "returnToServicesBtn";
   btn.textContent = "↩ Retour aux services";
   btn.style.cssText = `
-    margin: 1em auto;
+    margin: 2em auto 1em auto; 
     display: block;
     padding: 0.8em 1.2em;
     font-size: 1em;
@@ -199,8 +199,7 @@ function createReturnToServicesButton() {
 
   setupReturnToServicesButton("returnToServicesBtn");
 }
-// cre
-
+// === 4. Configuration du bouton de retour aux services ===
 
 function setupReturnToServicesButton(buttonId = "returnToServicesBtn") {
   const btn = document.getElementById(buttonId);
@@ -226,6 +225,7 @@ function setupReturnToServicesButton(buttonId = "returnToServicesBtn") {
 
     window.scrollTo({ top: previousScrollY || 0, behavior: "smooth" });
      btn.remove(); // ✅ ca supprime le bouton après retour
+     
 
   });
 }
