@@ -262,6 +262,20 @@ main {
 }
 
 /* Formulaire */
+.form-view {
+  max-width: 400px;
+  margin: 2em auto;
+  padding: 1em;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+.form-view h2 {
+  text-align: center;
+  margin-bottom: 1em;
+  color: #c50c0c;
+}
+
 label {
   display: block;
   margin-top: 15px;
@@ -289,18 +303,6 @@ select {
 }
 
 
-/* -------- Modale -------- */
-#contactAgentModal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  top: 13%;
-  left: 1%;
-  width: 70%;
-  height: 50%;
-  background: rgba(164, 105, 105, 0.5);
-  overflow-y: auto;
-}
    #contactAgentForm {
         display: flex;
         flex-direction: column;
@@ -322,6 +324,10 @@ select {
         border-radius: 6px;
         box-sizing: border-box;
       }
+      @keyframes dropConfetti {
+  0% { top: -10px; opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
 
       #contactAgentForm button {
         background-color: #00aa00;
@@ -342,45 +348,9 @@ select {
           width: 75%;
         
         }
-        
-        #contactAgentModal{
-          width: 79%;
-
-        }
-
-        #contactAgentForm input,
-        #contactAgentForm textarea,
-        #contactAgentForm button {
-          font-size: 0.95em;
-        }
       }
 
-.modal-content,
-#contactAgentModal {
-  margin: 5vh auto;
-  border-radius: var(--radius);
-  width: 90%;
 
-  max-width: 500px;
-  animation: fadeIn 0.6s ease-in-out;
-  padding: var(--spacing);
-}
-#modalHeader {
-  cursor: move;
-  background-color: #eee;
-  padding: 10px;
-  font-weight: bold;
-  max-width: 100px;
-  color: #00aa00;
-
-}
-#case{
- display: flex;
-  justify-content:space-around;  
-  padding: 1px;
-  gap: 200px;
- 
-}
 
 
 /* footer section start */

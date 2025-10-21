@@ -99,11 +99,135 @@ function createCard(item, pageName) {
       <h3>${title}</h3>
       <p>${description}</p>
       <p id="price"><strong> À partir de : ${price} $</strong></p>
-      <button class="open-modal" data-category="${title}" data-price="${price}">
-        <i class="fas fa-envelope"></i> Contacter un agent
-      </button>
+     <button onclick="loadContactView('${encodeURIComponent(title)}', '${encodeURIComponent(price)}')">
+  <i class="fas fa-envelope"></i> Contacter un agent
+</button>
     </div>
   `;
+}
+// function sendToSupabase(formData) 
+
+function sanitizeFormData(form) {
+  const get = (selector) => form.querySelector(selector)?.value.trim() || "";
+
+  const rawPrice = get("#servicePrice");
+  const price = rawPrice ? parseFloat(rawPrice) : null;
+
+  return {
+    name: get("#clientName"),
+    client_email: get("#clientEmail"),
+    client_whatsapp: get("#countryCode") + get("#clientWhatsApp"),
+    category: get("#serviceCategory"),
+    price: price,
+    message: get("#clientMessage"),
+    gps: get("#gpsField")
+  };
+}
+
+
+function loadContactView(title, price) {
+  selectedCategory = decodeURIComponent(title);
+  selectedPrice = decodeURIComponent(price);
+
+  previousScrollY = window.scrollY;
+  previousPageName = getPageName();
+
+  const main = document.querySelector("main") || document.body;
+  main.innerHTML = "";
+
+  injectForm();
+  populateCountryCodes();
+  setupGPS();
+  if (typeof setupFormValidation === "function") {
+    setupFormValidation();
+  }
+
+  setupReturnToServicesButton("backToServices"); // bouton statique si présent
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+  const form = document.getElementById("contactAgentForm");
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const btn = document.getElementById("submitBtn");
+    const originalHTML = btn?.innerHTML;
+
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = `<span class="spinner"></span> <span>Envoi en cours…</span>`;
+    }
+
+    const formData = sanitizeFormData(form);
+    const success = await sendToSupabase(formData);
+
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = originalHTML;
+    }
+    const formView = document.querySelector(".form-view");
+    if (formView) {
+    formView.style.display = "none";
+    showConfirmationBanner();
+    createReturnToServicesButton();
+  }
+  });
+}
+// 
+function createReturnToServicesButton() {
+  if (document.getElementById("returnToServicesBtn")) return;
+
+  const btn = document.createElement("button");
+  btn.id = "returnToServicesBtn";
+  btn.textContent = "↩ Retour aux services";
+  btn.style.cssText = `
+    margin: 1em auto;
+    display: block;
+    padding: 0.8em 1.2em;
+    font-size: 1em;
+    background: #00aa00;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: background 0.3s ease;
+  `;
+
+  const banner = document.getElementById("confirmationBanner");
+  banner?.insertAdjacentElement("afterend", btn);
+
+  setupReturnToServicesButton("returnToServicesBtn");
+}
+// cre
+
+
+function setupReturnToServicesButton(buttonId = "returnToServicesBtn") {
+  const btn = document.getElementById(buttonId);
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    const main = document.querySelector("main") || document.body;
+    main.innerHTML = "";
+
+    const pageName = previousPageName || getPageName();
+    const isHomePage = pageName === "index" || pageName === "home";
+    const containerId = isHomePage ? "categoryHomepage" : "category";
+
+    const container = document.createElement("div");
+    container.id = containerId;
+    main.appendChild(container);
+
+    if (typeof injectCardsForPage === "function") {
+      injectCardsForPage();
+    } else {
+      console.error("⚠️ injectCardsForPage non définie.");
+    }
+
+    window.scrollTo({ top: previousScrollY || 0, behavior: "smooth" });
+     btn.remove(); // ✅ ca supprime le bouton après retour
+
+  });
 }
 
 // === 5. Génération HTML d’une carte pour la page d’accueil ===
@@ -197,101 +321,78 @@ function injectCardsForPage() {
     });
 }
 
+// populate country codes in the select element
+function populateCountryCodes() {
+  fetch("data/countries.json")
+    .then(response => response.json())
+    .then(data => {
+      const select = document.getElementById("countryCode");
+      const flagDisplay = document.getElementById("flagDisplay");
 
-// 
+      data.forEach(entry => {
+        const option = document.createElement("option");
+        option.value = entry.dial_code;
+        option.textContent = `${entry.country} (${entry.dial_code})`;
+        option.dataset.iso = entry.iso.toLowerCase(); // important pour le lien
+        select.appendChild(option);
+      });
+
+      // Met à jour le drapeau au changement
+      select.addEventListener("change", () => {
+        const iso = select.selectedOptions[0].dataset.iso;
+        flagDisplay.src = `https://flagcdn.com/${iso}.svg`;
+      });
+
+      // Initialise le drapeau
+      const initialISO = select.options[0].dataset.iso;
+      flagDisplay.src = `https://flagcdn.com/${initialISO}.svg`;
+    })
+    .catch(error => {
+      console.error("💥 Erreur lors du chargement des indicatifs :", error);
+    });
+}
+
 // === 4. Injection du formulaire ===
 function injectForm() {
   const formContainer = document.createElement("div");
   formContainer.innerHTML = `
-     <div id="contactAgentModal" class="modal">
-      <div class="modal-content">
-      <div id="case">
-       <div id="modalHeader">Déplacer ici</div>
-       <button class="close-modal">Fermer</button>
-      </div>
-        <h3>Contacter un agent</h3>
+    <div class="form-view">
+      <h2>Contacter un agent</h2>
+      <form id="contactAgentForm">
+        <label for="name">Nom Complet :</label>
+        <input type="text" id="name" placeholder="Saisissez votre nom complet" required>
 
-        <form id="contactAgentForm">
-          <label for="name">Nom Complet :</label>
-          <input type="text" id="name" required>
+        <label for="clientEmail">Email :</label>
+        <input type="email" id="clientEmail" placeholder="Saisissez votre email" required>
+        <label for="clientWhatsApp">Numéro WhatsApp :</label>
+         <div style="display: flex; align-items: center; gap: 0.2em;">
+            <img id="flagDisplay" src="" alt="Drapeau" style="width: 24px; height: 18px;">
+              <select id="countryCode" required></select>
+                <input type="text" id="clientWhatsApp" placeholder="Saisissez votre numéro WhatsApp" required>
+          </div>
 
-          <label for="clientEmail">Email :</label>
-          <input type="email" id="clientEmail" required>
+        <label for="gps">Ma position :</label>
+        <input type="text" id="gps" readonly placeholder="Coordonnées GPS">
+        <button type="button" id="detectGPS">📍 Détecter ma position actuel </button>
 
-          <label for="clientWhatsApp">WhatsApp :</label>
-          <input type="text" id="clientWhatsApp" required>
+        <input type="hidden" id="mapUrl">
+        <div id="gpsMapContainer"></div>
 
-          <label for="gps">Ma position :</label>
-          <input type="text" id="gps" readonly placeholder="Coordonnées GPS">
-          <button type="button" id="detectGPS">📍 Détecter ma position</button>
+        <label for="message">Message :</label>
+        <textarea id="message" rows="5" placeholder="Votre message ou préoccupation"></textarea>
 
-          <!-- ✅ Champ caché pour stocker le lien Google Maps -->
-          <input type="hidden" id="mapUrl">
+        <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
+      </form>
 
-          <!-- ✅ Conteneur pour afficher la carte -->
-          <div id="gpsMapContainer"></div>
-
-          <label for="message">Message :</label>
-          <textarea id="message" rows="5" placeholder="Veuillez entrer votre message ici ou laisser votre préoccupation"></textarea>
-
-          <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
-        </form>
-        <div class="confirmation-message" id="confirmationBanner" style="display: none;"></div>
-      </div>
+      <button id="backToServices" style="margin-top: 1em;">⬅️ Retour aux services</button>
+      <div class="confirmation-message" id="confirmationBanner" style="display: none;"></div>
     </div>
   `;
-  document.body.appendChild(formContainer);
+
+  const main = document.querySelector("main") || document.body;
+  main.appendChild(formContainer);
 }
 
-function setupModal() {
-  const modal = $("#contactAgentModal");
-
-  const dragHandle = $("#modalHeader"); // Assure-toi que cet élément existe dans ton HTML
-
-  let isDragging = false;
-  let offsetX = 0;
-  let offsetY = 0;
-
-  dragHandle?.addEventListener("mousedown", e => {
-    isDragging = true;
-    const rect = modal.getBoundingClientRect();
-    offsetX = e.clientX - rect.left;
-    offsetY = e.clientY - rect.top;
-    modal.style.position = "absolute";
-    modal.style.zIndex = 1000;
-  });
-
-  document.addEventListener("mousemove", e => {
-    if (isDragging) {
-      modal.style.left = `${e.clientX - offsetX}px`;
-      modal.style.top = `${e.clientY - offsetY}px`;
-    }
-  });
-
-  document.addEventListener("mouseup", () => {
-    isDragging = false;
-  });
-
-  document.addEventListener("click", e => {
-    if (e.target.classList.contains("open-modal")) {
-      selectedCategory = e.target.dataset.category;
-      selectedPrice = e.target.dataset.price;
-      modal.style.display = "block";
-    }
-  });
-
-  document.querySelectorAll(".close-modal").forEach(btn => {
-    btn.addEventListener("click", () => {
-      modal.style.display = "none";
-    });
-  });
-
-  window.addEventListener("keydown", e => {
-    if (e.key === "Escape" && modal?.style.display === "block") {
-      modal.style.display = "none";
-    }
-  });
-}
 
 
 

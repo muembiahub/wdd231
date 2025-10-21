@@ -1,5 +1,5 @@
 // intialisation
-// === 7. Appel principal au chargement de la page ===
+// Appel principal au chargement de la page ===
 document.addEventListener("DOMContentLoaded", () => {
   const pageName = getPageName();
 
@@ -8,11 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
   injectHeader();
   injectCardsForPage(); // ← appel unique, logique fusionnée
   injectFooter();
-  injectForm();
-  injectConfirmationBanner();
-  setupModal();
-  setupGPS();
-  setupFormValidation();
   injectPageSearch(pageName);
 });
 
@@ -137,53 +132,12 @@ function injectPageSearch(pageName) {
 let selectedCategory = "";
 let selectedPrice = "";
 
-// === 4. Injection du formulaire ===
-function injectForm() {
-  const formContainer = document.createElement("div");
-  formContainer.innerHTML = `
-     <div id="contactAgentModal" class="modal">
-      <div class="modal-content">
-      <div id="case">
-       <div id="modalHeader">Déplacer ici</div>
-       <button class="close-modal">Fermer</button>
-      </div>
-        <h3>Contacter un agent</h3>
+//
 
-        <form id="contactAgentForm">
-          <label for="name">Nom Complet :</label>
-          <input type="text" id="name" required>
+function showConfirmationBanner() {
+  // Supprime l’ancienne bannière si elle existe
+  document.getElementById("confirmationBanner")?.remove();
 
-          <label for="clientEmail">Email :</label>
-          <input type="email" id="clientEmail" required>
-
-          <label for="clientWhatsApp">WhatsApp :</label>
-          <input type="text" id="clientWhatsApp" required>
-
-          <label for="gps">Ma position :</label>
-          <input type="text" id="gps" readonly placeholder="Coordonnées GPS">
-          <button type="button" id="detectGPS">📍 Détecter ma position</button>
-
-          <!-- ✅ Champ caché pour stocker le lien Google Maps -->
-          <input type="hidden" id="mapUrl">
-
-          <!-- ✅ Conteneur pour afficher la carte -->
-          <div id="gpsMapContainer"></div>
-
-          <label for="message">Message :</label>
-          <textarea id="message" rows="5" placeholder="Veuillez entrer votre message ici ou laisser votre préoccupation"></textarea>
-
-          <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
-        </form>
-        <div class="confirmation-message" id="confirmationBanner" style="display: none;"></div>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(formContainer);
-}
-
-
-/// === 5. Injection de la bannière de confirmation ===
-function injectConfirmationBanner() {
   const banner = document.createElement("div");
   banner.id = "confirmationBanner";
   banner.style.display = "none";
@@ -196,18 +150,47 @@ function injectConfirmationBanner() {
   banner.style.fontFamily = "sans-serif";
   banner.style.borderRadius = "8px";
   banner.style.boxShadow = "0 2px 6px rgba(0,0,0,0.1)";
+  banner.style.opacity = "0";
+  banner.style.transition = "opacity 0.6s ease";
+
   banner.innerHTML = `
-    <h3>🙏 Merci pour votre demande !</h3>
-    <p>Votre message a été transmis avec succès.</p>
-    <p>Un agent Kazidomo vous contactera sous peu.</p>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 0.5em; flex-wrap: wrap;">
+      <span style="font-size: 1.5em;">✅</span>
+      <div>
+        <h3 style="margin: 0;">🎉 Félicitations !</h3>
+        <p style="margin: 0.3em 0;">" Votre message a été envoyé avec succès 🎊";</p>
+        <p style="margin: 0;">Un agent Kazidomo vous contactera sous peu.<b> Merci pour votre confiance.</b>
+        </p>
+      </div>
+    </div>
   `;
 
-  const target = document.querySelector("#category") || document.body;
-  target.parentElement.insertBefore(banner, target); // 👈 insère avant les cartes
+  const target = document.querySelector("#category");
+  const container = target?.parentElement || document.body;
+  container.insertBefore(banner, target || container.firstChild);
+
+  // Affiche avec animation
+  banner.style.display = "block";
+  setTimeout(() => {
+    banner.style.opacity = "1";
+  }, 10);
+
+  // ✅ Option sonore discrète
+  const audio = new Audio("https://assets.mixkit.co/sfx/download/mixkit-achievement-bell-600.mp3");
+  audio.volume = 0.3;
+  audio.play().catch(() => {}); // ignore les erreurs silencieuses
+
+  // Disparition automatique après 6 secondes
+  setTimeout(() => {
+    banner.style.opacity = "0";
+    setTimeout(() => banner.remove(), 600);
+  }, 6000);
 }
 
 
-// 
+
+
+
 
 function renderResponsiveMap(mapUrl, container) {
   const existingMap = document.getElementById("gpsMap");
@@ -269,66 +252,6 @@ function setupGPS() {
 }
 
 
-function setupFormValidation() {
-  const form = $("#contactAgentForm");
-  const modal = $("#contactAgentModal");
-  const banner = $("#confirmationBanner");
-  const requiredFields = ["#name", "#clientEmail", "#clientWhatsApp", "#message"].map($);
-
-  form?.addEventListener("submit", async e => {
-    e.preventDefault();
-
-    const missing = requiredFields.filter(field => !field?.value.trim());
-    if (missing.length > 0) {
-      alert("📌 Remplis tous les champs avant d’envoyer.");
-      return;
-    }
-
-    const formData = {
-      name: $("#name").value.trim(),
-      client_email: $("#clientEmail").value.trim(),
-      client_whatsapp: $("#clientWhatsApp").value.trim(),
-      gps: $("#gps").value.trim(),
-      map_url: $("#mapUrl")?.value.trim(), // ✅ ajout du lien Google Maps
-      message: $("#message").value.trim(),
-      category: selectedCategory,
-      price: selectedPrice
-    };
-
-    console.log("📤 Données à envoyer :", formData);
-
-    const success = await sendToSupabase(formData);
-
-    if (success) {
-      modal.style.display = "none";
-      banner.style.display = "block";
-      showClientBadge?.(); // ✅ sécurise l’appel si la fonction n’est pas définie
-
-      setTimeout(() => {
-        banner.style.display = "none";
-        form.reset();
-      }, 10000);
-    }
-  });
-}
-// === 9. Badge client ===
-function showClientBadge() {
-  if (document.getElementById("clientBadge")) return; // évite les doublons
-
-  const badge = document.createElement("div");
-  badge.id = "clientBadge";
-  badge.textContent = "✅ Client identifié";
-  badge.style.position = "fixed";
-  badge.style.top = "10px";
-  badge.style.right = "10px";
-  badge.style.padding = "10px 20px";
-  badge.style.backgroundColor = "#4CAF50";
-  badge.style.color = "white";
-  badge.style.borderRadius = "5px";
-  badge.style.zIndex = "1000";
-
-  document.body.appendChild(badge);
-}
 
 // === 10. Connexion à Supabase ===
 async function sendToSupabase(formData) {
@@ -354,23 +277,6 @@ async function sendToSupabase(formData) {
     }
 
     console.log("✅ Données envoyées à Supabase.");
-
-    const emailPayload = {
-      email: formData.client_email,
-      name: formData.name,
-      category: formData.category,
-      price: formData.price,
-      message: formData.message,
-      gps: formData.gps,
-      client_whatsapp: formData.client_whatsapp
-    };
-    await fetch("https://formspree.io/f/mqayzdrb", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(emailPayload)
-    });
-    console.log("✅ Email envoyé via Formspree.");
-
     return true;
   } catch (error) {
 
