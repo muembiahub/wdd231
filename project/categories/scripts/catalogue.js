@@ -23,7 +23,6 @@ function injectElegantSearchBar(pageName) {
   container.id = `search-${pageName}`;
   container.className = "elegant-search-bar";
   container.style.cssText = `
-    width: 100%;
     padding: 1em;
     background: linear-gradient(to right, #e0f7fa, #f1f8e9);
     border-bottom: 1px solid #ccc;
@@ -46,7 +45,7 @@ function injectElegantSearchBar(pageName) {
   input.placeholder = `Rechercher dans ${pageName}...`;
   input.style.cssText = `
     flex: 1;
-    max-width: 400px;
+    max-width: 300px;
     padding: 0.6em 1em;
     font-size: 1em;
     border: 1px solid #ccc;
