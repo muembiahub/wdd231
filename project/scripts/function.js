@@ -180,6 +180,7 @@ function createReturnToServicesButton() {
   const btn = document.createElement("button");
   btn.id = "returnToServicesBtn";
   btn.textContent = "↩ Retour aux services";
+  btn.style.marginTop = "2em"; // en plus du style CSS
   btn.style.cssText = `
     margin: 2em auto 1em auto; 
     display: block;

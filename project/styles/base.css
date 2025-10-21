@@ -323,6 +323,16 @@ select {
       #contactAgentForm button:hover, #contactAgentBtn:hover {
         background-color: #008800;
       }
+      @media screen and (max-width: 480px) {
+  #returnToServicesBtn {
+    margin-top: 3em !important;
+    font-size: 1.1em;
+  }
+
+  #confirmationBanner {
+    margin-bottom: 2em;
+  }
+}
 
       @media (max-width: 480px) {
         #contactAgentForm {
