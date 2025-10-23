@@ -24,6 +24,7 @@ function injectElegantSearchBar(pageName) {
   container.className = "elegant-search-bar";
   container.style.cssText = `
     padding: 1em;
+    margin-top: 1em; 
     background: linear-gradient(to right, #e0f7fa, #f1f8e9);
     border-bottom: 1px solid #ccc;
     display: flex;
