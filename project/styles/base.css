@@ -64,13 +64,13 @@ main {
   font-size: 1.2em;
   text-align: center;
   margin-bottom: 8px;
-  color: #333;
+  color:black;
 }
 
 .card p {
   font-size: 0.95em;
   text-align: center;
-  color: #555;
+  color: black;
   margin-bottom: 12px;
 }
 
@@ -82,6 +82,7 @@ main {
   color: rgb(5, 5, 227);
   margin-bottom: 10px;
   text-align: center;
+  font-size: 1.5em;
 }
   table {
     width: 100%;
@@ -137,10 +138,21 @@ main {
   font-size: 2.5rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.view-button{
+/* card pour la page d'acceuill */
+.button{
   text-align: center;
   margin: 1rem auto;
+   background-color: #9cb3c4;
+        color: black;
+        cursor: pointer;
+        padding: 0.55em;
+        font-size: 1em;
+        border-radius: 6px;
+        align-self: center;
+        transition: background-color 0.3s ease;
+
 }
+
 .contact-form {
   max-width: 600px;
   margin: auto;
@@ -302,15 +314,6 @@ select {
   color: #777777;
 }
 
-#footer2 {
-  background: #f7f7f7;
-  padding: 1rem;
-  margin-top: 0px;
-  /* padding-top: 5rem; */
-  padding-top: 1rem;
-  padding-bottom: 80px;
-  background-image: url(../images/cards/v748-toon-111.png);
-}
 
 
 .social-links h2 {
@@ -333,13 +336,7 @@ select {
 }
 
 .social-icons a {
-  /* font-size: 18px; */
-  /* background: #ffffff; */
-  /* box-shadow: rgb(0 0 0 / 8%) 0px 4px 12px;
-    padding: 0.4rem 1rem 0.4rem 1rem;
-    border-radius: 3px;
-	color: #82074a; */
-  /* margin-right: 18px; */
+  font-size: 15px;
   color: #777777;
 }
 

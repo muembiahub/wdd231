@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // === Barre de recherche limitée à la page ===
 function injectElegantSearchBar(pageName) {
-  const excludedPages = ["login", "admin", "contact", "about","index" ];
+  const excludedPages = ["login", "admin", "contact", "about" ];
 
   // Si la page est dans la liste noire, ne pas injecter la barre
   if (excludedPages.includes(pageName)) return;
@@ -73,8 +73,6 @@ function injectElegantSearchBar(pageName) {
     background: none;
     border: none;
     font-size: 1.2em;
-    cursor: pointer;
-    color: #555;
   `;
 
   const message = document.createElement("div");

@@ -40,6 +40,9 @@ body{
   height: 30px;
   margin-right: 8px;
 }
+span{
+  font-size: 1.5em;
+}
 
 /* === Navbar === */
 .navbar {
