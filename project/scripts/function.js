@@ -233,6 +233,7 @@ function setupReturnToServicesButton(buttonId = "returnToServicesBtn") {
   });
 }
 
+
 // === 5. Génération HTML d’une carte pour la page d’accueil ===
 function createHomeCard(item) {
   const logo = item.logo || "images/default.webp";
@@ -249,36 +250,65 @@ function createHomeCard(item) {
     </div>
   `;
 }
+//  
+function createKazidomoCard(item) {
+  const badge = item.overlay?.badge || "Talent local";
+  const couleur = item.overlay?.couleur || "#ccc";
+  const symbolique = item.overlay?.symbolique || "";
 
+  return `
+    <div class="kazidomo-card">
+      <i class="${item.icone}"></i>
+      <h3>${item.nom}</h3>
+      <p>${item.description}</p>
+      <span class="badge" style="background-color:${couleur}">${badge}</span>
+      ${symbolique ? `<small class="symbolique">${symbolique}</small>` : ""}
+    </div>
+  `;
+}
 // === 6. Injection dynamique des cartes selon la page ===
+const containerMap = {
+  index: "categoryHomepage",
+  home: "categoryHomepage",
+  about: "kazidomo-about-card",
+  services: "kazidomo-services-card",
+  contact: "kazidomo-contact-card",
+  // Ajoute ici d'autres pages selon ton architecture
+};
+// === Détection de la structure Kazidomo About page ===
+function detectKazidomoStructure(data) {
+  if (Array.isArray(data.services)) return "services";
+  return "inconnu";
+}
+// injection de card pour les pages 
 function injectCardsForPage() {
   const pageName = getPageName();
-  const isHomePage = pageName === "index" || pageName === "home";
-
-  const containerId = isHomePage ? "categoryHomepage" : "category";
+  const containerId = containerMap[pageName] || "default-card-container";
   const container = document.getElementById(containerId);
-  if (!container) {
-    console.warn(`⚠️ Conteneur #${containerId} introuvable.`);
-    return;
-  }
+  if (!container) return console.warn(`⚠️ Conteneur #${containerId} introuvable.`);
 
-  const jsonPath = isHomePage
-    ? "data/categories.json"
-    : `data/${pageName}.json`;
+  const jsonPath = `data/${pageName}.json`;
 
   fetch(jsonPath)
     .then(response => {
-      if (!response.ok) {
-        throw new Error(`Fichier JSON introuvable : ${jsonPath}`);
-      }
+      if (!response.ok) throw new Error(`Fichier JSON introuvable : ${jsonPath}`);
       return response.json();
     })
     .then(data => {
-      const items = isHomePage
-        ? data.categories
-        : Array.isArray(data.categories)
-          ? data.categories
-          : Object.values(data).flat();
+      const mode = detectKazidomoStructure(data);
+      let items = [];
+
+      if (mode === "services") {
+        items = data.services;
+      } else {
+        container.innerHTML = `
+          <div class="error-message">
+            <p>📦 Structure JSON non reconnue.</p>
+            <p style="font-style: italic;">Impossible d’injecter les cartes.</p>
+          </div>
+        `;
+        return;
+      }
 
       if (!Array.isArray(items) || items.length === 0) {
         container.innerHTML = `
@@ -291,26 +321,23 @@ function injectCardsForPage() {
       }
 
       items.forEach((item, index) => {
-        const cardHTML = isHomePage
-          ? createHomeCard(item)
-          : createCard(item, pageName);
-
+        const cardHTML = createKazidomoCard(item);
         const wrapper = document.createElement("div");
         wrapper.innerHTML = cardHTML;
         const card = wrapper.firstElementChild;
 
-       card.style.opacity = "1";
-card.style.transform = "scale(0.95)";
-card.style.filter = "brightness(0.5)";
-card.style.transition = "opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease";
+        card.style.opacity = "1";
+        card.style.transform = "scale(0.95)";
+        card.style.filter = "brightness(0.5)";
+        card.style.transition = "opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease";
 
-container.appendChild(card);
+        container.appendChild(card);
 
-setTimeout(() => {
-  card.style.opacity = "2";
-  card.style.transform = "scale(1)";
-  card.style.filter = "brightness(1)";
-}, index * 800);
+        setTimeout(() => {
+          card.style.opacity = "1";
+          card.style.transform = "scale(1)";
+          card.style.filter = "brightness(1)";
+        }, index * 600);
       });
     })
     .catch(error => {
@@ -318,7 +345,7 @@ setTimeout(() => {
       container.innerHTML = `
         <div class="error-message">
           <p>📦 Le contenu est temporairement indisponible.</p>
-          <p style="font-style: italic;">Vérifiez le fichier JSON ou réessayez plus tard.</p>
+          <p style="font-style: italic;">Veuillez réessayer plus tard.</p>
         </div>
       `;
     });

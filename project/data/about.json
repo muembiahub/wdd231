@@ -1,178 +1,176 @@
 {
-  "plateforme": {
-    "nom": "Kazidomo Confiance",
-    "type": [
-      "application mobile",
-      "plateforme web"
-    ],
-    "description": "Kazidomo Confiance met en relation les talents locaux avec leur communauté, en valorisant les savoir-faire formels et informels.",
-    "fonctionnalités": {
-      "mise_en_relation": true,
-      "géolocalisation": true,
-      "contrats_numériques": true,
-      "paiement_sécurisé": true,
-      "vitrine_moderne": true
-    },
-    "bénéficiaires": [
-      "artisans",
-      "professionnels",
-      "passionnés"
-    ],
-    "mission": "Connecter les talents locaux avec leur communauté, en valorisant les savoir-faire authentiques et en favorisant l’autonomie économique.",
-    "valeurs": [
-      "Confiance et transparence dans chaque échange",
-      "Respect et valorisation des talents locaux",
-      "Accessibilité pour tous, sans discrimination",
-      "Innovation au service de la communauté"
-    ],
-    "philosophie": "Le talent ne se mesure pas à un diplôme, mais à l’impact réel. C’est un pont de confiance entre ceux qui offrent et ceux qui cherchent.",
-    "localisation": {
-      "ville": "Lubumbashi",
-      "province": "Haut-Katanga",
-      "pays": "RDC"
-    },
-    "disponibilite": "24h/24",
-    "services": [
-      {
-        "nom": "Agriculture",
-        "icone": "fas fa-seedling",
-        "description": "Cultiver la terre, nourrir la communauté.",
-        "overlay": {
-          "badge": "Savoir ancestral",
-          "couleur": "#228B22",
-          "symbolique": "Fertilité, résilience"
-        }
-      },
-      {
-        "nom": "Animaux",
-        "icone": "fas fa-paw",
-        "description": "Soins, élevage et compagnons fidèles.",
-        "overlay": {
-          "badge": "Compassion locale",
-          "couleur": "#A0522D",
-          "symbolique": "Protection, lien vivant"
-        }
-      },
-      {
-        "nom": "Autres Blogs",
-        "icone": "fas fa-blog",
-        "description": "Partage d’idées, témoignages et savoirs.",
-        "overlay": {
-          "badge": "Voix communautaire",
-          "couleur": "#6A5ACD",
-          "symbolique": "Expression, mémoire"
-        }
-      },
-      {
-        "nom": "Beauté",
-        "icone": "fas fa-spa",
-        "description": "Esthétique, bien-être et confiance en soi.",
-        "overlay": {
-          "badge": "Éclat local",
-          "couleur": "#FF69B4",
-          "symbolique": "Soin, dignité"
-        }
-      },
-      {
-        "nom": "Construction & Réparation",
-        "icone": "fas fa-tools",
-        "description": "Bâtir, restaurer et renforcer les fondations.",
-        "overlay": {
-          "badge": "Main solide",
-          "couleur": "#708090",
-          "symbolique": "Stabilité, savoir-faire"
-        }
-      },
-      {
-        "nom": "Électricité",
-        "icone": "fas fa-bolt",
-        "description": "Énergie, sécurité et modernité.",
-        "overlay": {
-          "badge": "Éclaireur local",
-          "couleur": "#FFD700",
-          "symbolique": "Puissance, fiabilité"
-        }
-      },
-      {
-        "nom": "Formation",
-        "icone": "fas fa-chalkboard-teacher",
-        "description": "Transmettre le savoir, ouvrir les horizons.",
-        "overlay": {
-          "badge": "Mentor communautaire",
-          "couleur": "#1E90FF",
-          "symbolique": "Éveil, transmission"
-        }
-      },
-      {
-        "nom": "Hôtellerie & Restauration",
-        "icone": "fas fa-concierge-bell",
-        "description": "Accueil chaleureux et cuisine locale.",
-        "overlay": {
-          "badge": "Hospitalité enracinée",
-          "couleur": "#CD853F",
-          "symbolique": "Générosité, partage"
-        }
-      },
-      {
-        "nom": "Immobilier",
-        "icone": "fas fa-home",
-        "description": "Espaces de vie, projets durables.",
-        "overlay": {
-          "badge": "Bâtisseur de confiance",
-          "couleur": "#2F4F4F",
-          "symbolique": "Abri, stabilité"
-        }
-      },
-      {
-        "nom": "Manifestations & Cérémonies",
-        "icone": "fas fa-calendar-alt",
-        "description": "Moments sacrés et célébrations communautaires.",
-        "overlay": {
-          "badge": "Mémoire vivante",
-          "couleur": "#800080",
-          "symbolique": "Rituel, reconnaissance"
-        }
-      },
-      {
-        "nom": "Menuiserie",
-        "icone": "fas fa-hammer",
-        "description": "Travail du bois, précision et héritage.",
-        "overlay": {
-          "badge": "Artisan enraciné",
-          "couleur": "#8B4513",
-          "symbolique": "Tradition, robustesse"
-        }
-      },
-      {
-        "nom": "Mécanique",
-        "icone": "fas fa-cogs",
-        "description": "Réparer, optimiser et faire rouler.",
-        "overlay": {
-          "badge": "Technicien de terrain",
-          "couleur": "#696969",
-          "symbolique": "Ingéniosité, mouvement"
-        }
-      },
-      {
-        "nom": "Mode",
-        "icone": "fas fa-tshirt",
-        "description": "Style, identité et expression culturelle.",
-        "overlay": {
-          "badge": "Créateur local",
-          "couleur": "#FF4500",
-          "symbolique": "Beauté, affirmation"
-        }
-      },
-      {
-        "nom": "Santé",
-        "icone": "fas fa-notes-medical",
-        "description": "Soins, prévention et bien-être communautaire.",
-        "overlay": {
-          "badge": "Gardien du vivant",
-          "couleur": "#2E8B57",
-          "symbolique": "Guérison, dignité"
-        }
+  "nom": "Kazidomo Confiance",
+  "type": [
+    "application mobile",
+    "plateforme web"
+  ],
+  "description": "Kazidomo Confiance relie les talents locaux à leur communauté, en valorisant les savoir-faire formels et informels à travers une vitrine moderne et sécurisée.",
+  "mission": "Favoriser l’autonomie économique en connectant les savoirs vivants aux besoins réels, dans un esprit de confiance et de reconnaissance mutuelle.",
+  "philosophie": "Le talent ne se mesure pas à un diplôme, mais à l’impact réel. Kazidomo est un pont de confiance entre ceux qui offrent et ceux qui cherchent.",
+  "valeurs": [
+    "Confiance et transparence dans chaque échange",
+    "Respect et valorisation des talents locaux",
+    "Accessibilité pour tous, sans discrimination",
+    "Innovation au service de la communauté"
+  ],
+  "fonctionnalités": {
+    "mise_en_relation": true,
+    "géolocalisation": true,
+    "contrats_numériques": true,
+    "paiement_sécurisé": true,
+    "vitrine_moderne": true
+  },
+  "bénéficiaires": [
+    "artisans",
+    "professionnels",
+    "passionnés"
+  ],
+  "localisation": {
+    "ville": "Lubumbashi",
+    "province": "Haut-Katanga",
+    "pays": "RDC"
+  },
+  "disponibilite": "Accessible 24h/24",
+  "services": [
+    {
+      "nom": "Agriculture",
+      "icone": "fas fa-seedling",
+      "description": "Cultiver la terre, nourrir la communauté.",
+      "overlay": {
+        "badge": "Savoir ancestral",
+        "couleur": "#228B22",
+        "symbolique": "Fertilité, résilience"
       }
-    ]
-  }
+    },
+    {
+      "nom": "Animaux",
+      "icone": "fas fa-paw",
+      "description": "Soins, élevage et compagnons fidèles.",
+      "overlay": {
+        "badge": "Compassion locale",
+        "couleur": "#A0522D",
+        "symbolique": "Protection, lien vivant"
+      }
+    },
+    {
+      "nom": "Autres Blogs",
+      "icone": "fas fa-blog",
+      "description": "Partage d’idées, témoignages et savoirs.",
+      "overlay": {
+        "badge": "Voix communautaire",
+        "couleur": "#6A5ACD",
+        "symbolique": "Expression, mémoire"
+      }
+    },
+    {
+      "nom": "Beauté",
+      "icone": "fas fa-spa",
+      "description": "Esthétique, bien-être et confiance en soi.",
+      "overlay": {
+        "badge": "Éclat local",
+        "couleur": "#FF69B4",
+        "symbolique": "Soin, dignité"
+      }
+    },
+    {
+      "nom": "Construction & Réparation",
+      "icone": "fas fa-tools",
+      "description": "Bâtir, restaurer et renforcer les fondations.",
+      "overlay": {
+        "badge": "Main solide",
+        "couleur": "#708090",
+        "symbolique": "Stabilité, savoir-faire"
+      }
+    },
+    {
+      "nom": "Électricité",
+      "icone": "fas fa-bolt",
+      "description": "Énergie, sécurité et modernité.",
+      "overlay": {
+        "badge": "Éclaireur local",
+        "couleur": "#FFD700",
+        "symbolique": "Puissance, fiabilité"
+      }
+    },
+    {
+      "nom": "Formation",
+      "icone": "fas fa-chalkboard-teacher",
+      "description": "Transmettre le savoir, ouvrir les horizons.",
+      "overlay": {
+        "badge": "Mentor communautaire",
+        "couleur": "#1E90FF",
+        "symbolique": "Éveil, transmission"
+      }
+    },
+    {
+      "nom": "Hôtellerie & Restauration",
+      "icone": "fas fa-concierge-bell",
+      "description": "Accueil chaleureux et cuisine locale.",
+      "overlay": {
+        "badge": "Hospitalité enracinée",
+        "couleur": "#CD853F",
+        "symbolique": "Générosité, partage"
+      }
+    },
+    {
+      "nom": "Immobilier",
+      "icone": "fas fa-home",
+      "description": "Espaces de vie, projets durables.",
+      "overlay": {
+        "badge": "Bâtisseur de confiance",
+        "couleur": "#2F4F4F",
+        "symbolique": "Abri, stabilité"
+      }
+    },
+    {
+      "nom": "Manifestations & Cérémonies",
+      "icone": "fas fa-calendar-alt",
+      "description": "Moments sacrés et célébrations communautaires.",
+      "overlay": {
+        "badge": "Mémoire vivante",
+        "couleur": "#800080",
+        "symbolique": "Rituel, reconnaissance"
+      }
+    },
+    {
+      "nom": "Menuiserie",
+      "icone": "fas fa-hammer",
+      "description": "Travail du bois, précision et héritage.",
+      "overlay": {
+        "badge": "Artisan enraciné",
+        "couleur": "#8B4513",
+        "symbolique": "Tradition, robustesse"
+      }
+    },
+    {
+      "nom": "Mécanique",
+      "icone": "fas fa-cogs",
+      "description": "Réparer, optimiser et faire rouler.",
+      "overlay": {
+        "badge": "Technicien de terrain",
+        "couleur": "#696969",
+        "symbolique": "Ingéniosité, mouvement"
+      }
+    },
+    {
+      "nom": "Mode",
+      "icone": "fas fa-tshirt",
+      "description": "Style, identité et expression culturelle.",
+      "overlay": {
+        "badge": "Créateur local",
+        "couleur": "#FF4500",
+        "symbolique": "Beauté, affirmation"
+      }
+    },
+    {
+      "nom": "Santé",
+      "icone": "fas fa-notes-medical",
+      "description": "Soins, prévention et bien-être communautaire.",
+      "overlay": {
+        "badge": "Gardien du vivant",
+        "couleur": "#2E8B57",
+        "symbolique": "Guérison, dignité"
+      }
+    }
+  ]
 }
