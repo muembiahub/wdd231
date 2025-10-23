@@ -184,6 +184,7 @@ function createReturnToServicesButton() {
   btn.style.cssText = `
     margin: 2em auto 1em auto; 
     display: block;
+
     padding: 0.8em 1.2em;
     font-size: 1em;
     background: #00aa00;
@@ -297,18 +298,18 @@ function injectCardsForPage() {
         wrapper.innerHTML = cardHTML;
         const card = wrapper.firstElementChild;
 
-        card.style.opacity = "0";
-        card.style.transform = "translateY(20px)";
-        card.style.filter = "blur(4px)";
-        card.style.transition = "opacity 0.1s ease, transform 0.1s ease, filter 0.1s ease";
+       card.style.opacity = "1";
+card.style.transform = "scale(0.95)";
+card.style.filter = "brightness(0.5)";
+card.style.transition = "opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease";
 
-        container.appendChild(card);
+container.appendChild(card);
 
-        setTimeout(() => {
-          card.style.opacity = "1";
-          card.style.transform = "translateY(0)";
-          card.style.filter = "blur(0)";
-        }, index * 1050);
+setTimeout(() => {
+  card.style.opacity = "2";
+  card.style.transform = "scale(1)";
+  card.style.filter = "brightness(1)";
+}, index * 800);
       });
     })
     .catch(error => {
@@ -333,7 +334,7 @@ function populateCountryCodes() {
       data.forEach(entry => {
         const option = document.createElement("option");
         option.value = entry.dial_code;
-        option.textContent = `${entry.country} (${entry.dial_code})`;
+        option.textContent = `${entry.dial_code} ${entry.country} `;
         option.dataset.iso = entry.iso.toLowerCase(); // important pour le lien
         select.appendChild(option);
       });

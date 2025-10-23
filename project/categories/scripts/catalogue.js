@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   injectCardsForPage(); // ← appel unique, logique fusionnée
   injectFooter();
   injectElegantSearchBar(pageName);
+  removeSearchBarOnForm(pageName);
 });
 
 
@@ -17,7 +18,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // === Barre de recherche limitée à la page ===
 function injectElegantSearchBar(pageName) {
+  const excludedPages = ["login", "admin", "contact", "about", ];
+
+  // Si la page est dans la liste noire, ne pas injecter la barre
+  if (excludedPages.includes(pageName)) return;
+
   if (document.getElementById(`search-${pageName}`)) return;
+
+
+
 
   const container = document.createElement("div");
   container.id = `search-${pageName}`;
@@ -37,7 +46,7 @@ function injectElegantSearchBar(pageName) {
   const icon = document.createElement("span");
   icon.innerHTML = " <i class='fas fa-search'></i> ";
   icon.style.cssText = `
-    font-size: 1.2em;
+    font-size: 1em;
     color: #00796b;
   `;
 
@@ -119,6 +128,19 @@ function injectElegantSearchBar(pageName) {
       el.style.backgroundColor = "";
     });
   }
+}
+//  === Supprime la barre de recherche si un formulaire est détecté ===
+function removeSearchBarOnForm(pageName) {
+  const observer = new MutationObserver(() => {
+    const form = document.querySelector("form");
+    const searchBar = document.getElementById(`search-${pageName}`);
+    if (form && searchBar) {
+      searchBar.remove();
+      observer.disconnect();
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
 }
 
 

@@ -40,11 +40,6 @@
   .showcase-container {
     animation: fadeInUp 1.2s ease-out forwards;
   }
-
-  .open-modal {
-    font-size: 1em;
-    padding: 12px 20px;
-  }
   .card:hover {
     transform: translateY(-8px);
   }
