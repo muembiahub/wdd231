@@ -104,6 +104,7 @@ function createCard(item, pageName) {
 </button>
     </div>
   `;
+  
 }
 // function sendToSupabase(formData) 
 
