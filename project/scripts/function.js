@@ -85,6 +85,131 @@ function generateImageName(title) {
     .replace(/[^\w-]/g, "") + ".webp";
 }
 
+// === Barre de recherche limitée à la page ===
+function injectElegantSearchBar(pageName) {
+  const excludedPages = ["login", "admin", "contact", "about" ];
+
+  // Si la page est dans la liste noire, ne pas injecter la barre
+  if (excludedPages.includes(pageName)) return;
+
+  if (document.getElementById(`search-${pageName}`)) return;
+
+
+
+
+  const container = document.createElement("div");
+  container.id = `search-${pageName}`;
+  container.className = "elegant-search-bar";
+  container.style.cssText = `
+    padding: 1em;
+    margin-top: 1em; 
+    background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  `;
+
+  const icon = document.createElement("span");
+  icon.innerHTML = " <i class='fas fa-search'></i> ";
+  icon.style.cssText = `
+    font-size: 1em;
+    color: #00796b;
+  `;
+
+  const input = document.createElement("input");
+  input.type = "text";
+  input.placeholder = `Rechercher dans ${pageName}...`;
+  input.style.cssText = `
+    flex: 1;
+    max-width: 300px;
+    padding: 0.6em 1em;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background: #fff;
+    transition: box-shadow 0.3s ease;
+  `;
+  input.onfocus = () => input.style.boxShadow = "0 0 6px #00796b";
+  input.onblur = () => input.style.boxShadow = "none";
+
+  const clearBtn = document.createElement("button");
+  clearBtn.textContent = "✖";
+  clearBtn.title = "Effacer";
+  clearBtn.style.cssText = `
+    background: none;
+    border: none;
+    font-size: 1.2em;
+  `;
+
+  const message = document.createElement("div");
+  message.textContent = "Aucun résultat trouvé.";
+  message.style.cssText = `
+    margin-top: 0.5em;
+    text-align: center;
+    color: #c62828;
+    font-size: 0.9em;
+    display: none;
+  `;
+
+  container.appendChild(icon);
+  container.appendChild(input);
+  container.appendChild(clearBtn);
+
+  const header = document.querySelector("header");
+  if (header) {
+    header.insertAdjacentElement("afterend", container);
+  } else {
+    document.body.insertBefore(container, document.body.firstChild);
+  }
+
+  container.insertAdjacentElement("afterend", message);
+
+  input.addEventListener("input", () => {
+    const query = input.value.toLowerCase();
+    const targets = document.querySelectorAll(`[data-page="${pageName}"]`);
+    let found = false;
+
+    targets.forEach(el => {
+      const text = el.textContent.toLowerCase();
+      const match = text.includes(query);
+      el.style.display = match ? "" : "none";
+      el.style.backgroundColor = match ? "#c8e6c9" : "";
+      if (match) found = true;
+    });
+
+    message.style.display = query && !found ? "block" : "none";
+  });
+
+  clearBtn.addEventListener("click", () => {
+    input.value = "";
+    resetHighlights();
+    message.style.display = "none";
+  });
+
+  function resetHighlights() {
+    document.querySelectorAll(`[data-page="${pageName}"]`).forEach(el => {
+      el.style.display = "";
+      el.style.backgroundColor = "";
+    });
+  }
+}
+//  === Supprime la barre de recherche si un formulaire est détecté ===
+function removeSearchBarOnForm(pageName) {
+  const observer = new MutationObserver(() => {
+    const form = document.querySelector("form");
+    const searchBar = document.getElementById(`search-${pageName}`);
+    if (form && searchBar) {
+      searchBar.remove();
+      observer.disconnect();
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+}
+
 // === 4. Génération HTML d’une carte pour les pages hors accueil ===
 function createCard(item, pageName) {
   const title = item.category || item.type || item.title || "Service";
@@ -120,7 +245,8 @@ function sanitizeFormData(form) {
     category: get("#serviceCategory"),
     price: price,
     message: get("#clientMessage"),
-    gps: get("#gpsField")
+    gps: get("#gpsField"),
+    map_url: get("#mapUrl")
   };
 }
 
@@ -159,7 +285,15 @@ function loadContactView(title, price) {
     }
 
     const formData = sanitizeFormData(form);
+
+          if (!isValidEmail(formData.client_email)) {
+                alert("📭 L’adresse email semble incomplète… Comme une lettre sans destinataire.");
+                btn.disabled = false;
+                btn.innerHTML = originalHTML;
+          return;
+}
     const success = await sendToSupabase(formData);
+    
 
     if (btn) {
       btn.disabled = false;
@@ -298,7 +432,7 @@ function injectCardsForPage() {
         wrapper.innerHTML = cardHTML;
         const card = wrapper.firstElementChild;
 
-        card.style.opacity = "0";
+        card.style.opacity = "1";
         card.style.transform = "translateY(20px)";
         card.style.filter = "blur(4px)";
         card.style.transition = "opacity 0.1s ease, transform 0.1s ease, filter 0.1s ease";
@@ -354,36 +488,45 @@ function populateCountryCodes() {
     });
 }
 
-// === 4. Injection du formulaire ===
 function injectForm() {
   const formContainer = document.createElement("div");
   formContainer.innerHTML = `
     <div class="form-view">
       <h2>Contacter un agent</h2>
       <form id="contactAgentForm">
-        <label for="name">Nom Complet :</label>
-        <input type="text" id="name" placeholder="Saisissez votre nom complet" required>
+        <label for="clientName">Nom Complet :</label>
+        <input type="text" id="clientName" name="clientName" placeholder="Saisissez votre nom complet" required>
 
         <label for="clientEmail">Email :</label>
-        <input type="email" id="clientEmail" placeholder="Saisissez votre email" required>
+        <input type="email" id="clientEmail" name="clientEmail" placeholder="Saisissez votre email" required>
+
         <label for="clientWhatsApp">Numéro WhatsApp :</label>
-         <div style="display: flex; align-items: center; gap: 0.2em;">
-            <img id="flagDisplay" src="" alt="Drapeau" style="width: 24px; height: 18px;">
-              <select id="countryCode" required></select>
-                <input type="text" id="clientWhatsApp" placeholder="Saisissez votre numéro WhatsApp" required>
-          </div>
+        <div style="display: flex; align-items: center; gap: 0.4em;">
+          <img id="flagDisplay" src="" alt="Drapeau" style="width: 24px; height: 18px;">
+          <select id="countryCode" required></select>
+          <input type="text" id="clientWhatsApp" name="clientWhatsApp" placeholder="Votre numéro WhatsApp" required>
+        </div>
 
-        <label for="gps">Ma position :</label>
-        <input type="text" id="gps" readonly placeholder="Coordonnées GPS">
-        <button type="button" id="detectGPS">📍 Détecter ma position  </button>
+        <label for="serviceCategory">Service sélectionné :</label>
+        <input type="text" id="serviceCategory" name="serviceCategory" readonly>
 
-        <input type="hidden" id="mapUrl">
+        <label for="servicePrice">Prix :</label>
+        <input type="text" id="servicePrice" name="servicePrice" readonly>
+
+        <label for="gpsField">Ma position :</label>
+        <input type="text" id="gpsField" name="gps" readonly placeholder="Coordonnées GPS" />
+
+        <button type="button" id="detectGPS">📍 Détecter ma position</button>
+
+        <input type="hidden" id="mapUrl" name="map_url" />
+
         <div id="gpsMapContainer"></div>
 
-        <label for="message">Message :</label>
-        <textarea id="message" rows="5" placeholder="Votre message ou préoccupation"></textarea>
 
-        <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
+        <label for="clientMessage">Message :</label>
+        <textarea id="clientMessage" name="clientMessage" rows="5" placeholder="Votre message ou préoccupation"></textarea>
+
+        <button type="submit" id="submitBtn"><i class="fas fa-paper-plane"></i> Envoyer</button>
       </form>
 
       <button id="backToServices" style="margin-top: 1em;">⬅️ Retour aux services</button>
@@ -393,8 +536,86 @@ function injectForm() {
 
   const main = document.querySelector("main") || document.body;
   main.appendChild(formContainer);
-}
 
+  // 🧩 Injecte les valeurs dynamiques
+  document.getElementById("serviceCategory").value = selectedCategory || "";
+  document.getElementById("servicePrice").value = selectedPrice || "";
+}
+// === 6 setup Gps sur le formulaire de contact Agent  ===
+function setupGPS() {
+  const detectBtn = document.getElementById("detectGPS");
+  const gpsField = document.getElementById("gpsField");
+  const mapUrlField = document.getElementById("mapUrl");
+  const mapContainer = document.getElementById("gpsMapContainer");
+
+  if (!detectBtn || !gpsField || !mapUrlField || !mapContainer) {
+    console.warn("⚠️ Éléments GPS manquants.");
+    return;
+  }
+
+  detectBtn.addEventListener("click", () => {
+    if (!navigator.geolocation) {
+      gpsField.value = "🛑 Géolocalisation non supportée.";
+      return;
+    }
+
+    gpsField.value = "📡 Détection en cours…";
+    detectBtn.disabled = true;
+    detectBtn.textContent = "📡 En cours…";
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const latitude = position.coords.latitude.toFixed(6);
+        const longitude = position.coords.longitude.toFixed(6);
+        const coords = `${latitude}, ${longitude}`;
+
+        gpsField.value = coords;
+
+        const mapUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
+        mapUrlField.value = mapUrl;
+
+        mapContainer.innerHTML = `
+          <iframe
+            src="${mapUrl}&hl=fr&z=14&output=embed"
+            width="100%"
+            height="250"
+            frameborder="0"
+            style="border:0; border-radius: 8px;"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        `;
+
+        detectBtn.textContent = "✅ Position détectée";
+      },
+      (error) => {
+        gpsField.value = "⚠️ Erreur : " + error.message;
+        detectBtn.disabled = false;
+        detectBtn.textContent = "📍 Réessayer";
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0
+      }
+    );
+  });
+}
+// === 7. Validation de l’email ===
+function isValidEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+// === 8. Sanitize form data before sending ===
+
+const formData = sanitizeFormData(form);
+
+if (!isValidEmail(formData.client_email)) {
+  alert("📭 L’adresse email semble incomplète… Comme une lettre sans destinataire.");
+  btn.disabled = false;
+  btn.innerHTML = originalHTML;
+  return;
+}
 
 
 
