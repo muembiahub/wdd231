@@ -238,12 +238,13 @@ function createHomeCard(item) {
   const description = item.description || "Description indisponible.";
   const pageUrl = item.page_url || "#";
 
+
   return `
     <div class="card">
       <img src="${logo}" alt="${category}">
       <h3>${category}</h3>
       <p>${description}</p>
-      <a href="${pageUrl}" class="view-button">Consulter</a>
+      <a href="${pageUrl}" class="button">Consulter</a>
     </div>
   `;
 }
