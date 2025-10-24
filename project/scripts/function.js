@@ -285,13 +285,6 @@ function loadContactView(title, price) {
     }
 
     const formData = sanitizeFormData(form);
-
-          if (!isValidEmail(formData.client_email)) {
-                alert("📭 L’adresse email semble incomplète… Comme une lettre sans destinataire.");
-                btn.disabled = false;
-                btn.innerHTML = originalHTML;
-          return;
-}
     const success = await sendToSupabase(formData);
     
 
@@ -601,22 +594,80 @@ function setupGPS() {
     );
   });
 }
-// === 7. Validation de l’email ===
-function isValidEmail(email) {
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return regex.test(email);
+
+// === 7. Bannière de confirmation avec animation et son ===
+function showConfirmationBanner() {
+  // Supprime l’ancienne bannière si elle existe
+  document.getElementById("confirmationBanner")?.remove();
+
+  // Crée la bannière
+  const banner = document.createElement("div");
+  banner.id = "confirmationBanner";
+  banner.style.display = "none";
+  banner.style.background = "#e6ffe6";
+  banner.style.border = "1px solid #00aa00";
+  banner.style.padding = "1em";
+  banner.style.textAlign = "center";
+  banner.style.margin = "1em auto";
+  banner.style.maxWidth = "600px";
+  banner.style.fontFamily = "sans-serif";
+  banner.style.borderRadius = "8px";
+  banner.style.boxShadow = "0 2px 6px rgba(0,0,0,0.1)";
+  banner.style.opacity = "0";
+  banner.style.transition = "opacity 0.6s ease";
+
+  // Contenu HTML de la bannière
+  banner.innerHTML = `
+    <div style="display: flex; align-items: center; justify-content: center; gap: 0.5em; flex-wrap: wrap;">
+      <span style="font-size: 1.5em;">✅</span>
+      <div>
+        <h3 style="margin: 0;">🎉 Félicitations !</h3>
+        <p style="margin: 0.3em 0;">Votre message a été envoyé avec succès 🎊</p>
+        <p style="margin: 0;">Un agent Kazidomo vous contactera sous peu.<b> Merci pour votre confiance.</b></p>
+      </div>
+    </div>
+  `;
+
+  // Insertion dans le conteneur principal
+  const container = document.querySelector("main") || document.body;
+  container.insertBefore(banner, container.firstChild);
+
+  // Affiche avec animation + scroll vers la bannière
+  banner.style.display = "block";
+  setTimeout(() => {
+    banner.style.opacity = "1";
+    banner.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    // Scroll de rappel pour écraser les scrolls parasites
+    setTimeout(() => {
+      banner.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 1000);
+  }, 10);
+
+  // Lecture audio si interaction utilisateur détectée
+  const audioPath = "/project/media/sound-bip-alert-190038.mp3"; // chemin absolu recommandé
+  fetch(audioPath, { method: "HEAD" })
+    .then((res) => {
+      if (res.ok && document.hasFocus()) {
+        const audio = new Audio(audioPath);
+        audio.volume = 0.7;
+        audio.play().catch((err) => {
+          console.warn("Audio bloqué :", err);
+        });
+      } else {
+        console.warn("Fichier audio introuvable ou interaction manquante.");
+      }
+    })
+    .catch((err) => {
+      console.warn("Erreur de chargement audio :", err);
+    });
+
+  // Disparition automatique après 6 secondes
+  setTimeout(() => {
+    banner.style.opacity = "0";
+    setTimeout(() => banner.remove(), 800);
+  }, 8000);
 }
-// === 8. Sanitize form data before sending ===
-
-const formData = sanitizeFormData(form);
-
-if (!isValidEmail(formData.client_email)) {
-  alert("📭 L’adresse email semble incomplète… Comme une lettre sans destinataire.");
-  btn.disabled = false;
-  btn.innerHTML = originalHTML;
-  return;
-}
-
 
 
 
