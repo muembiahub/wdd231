@@ -1,54 +1,65 @@
+// 🔄 Chargement du fichier JSON
 fetch('data/about.json')
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) throw new Error("Fichier JSON introuvable");
+    return response.json();
+  })
   .then(data => {
-    injectAbout(data.plateforme);
-    injectServices(data.plateforme);
+    injectAbout(data);
+    injectServices(data);
+  })
+  .catch(error => {
+    console.error("Erreur de chargement :", error);
+    document.getElementById("about-section").innerHTML = `<p class="erreur">Impossible de charger les données Kazidomo.</p>`;
   });
 
+// 🧾 Injection des informations générales
 function injectAbout(data) {
   const section = document.getElementById("about-section");
 
   section.innerHTML = `
-   <table>
-  <tr>
-    <th>Nom</th>
-    <td><strong>${data.nom}</strong> est une application mobile et plateforme web qui met en relation les talents locaux avec leur communauté.</td>
-  </tr>
-  <tr>
-    <th>Description</th>
-    <td>${data.description}</td>
-  </tr>
-  <tr>
-    <th>Mission</th>
-    <td>${data.mission}</td>
-  </tr>
-  <tr>
-    <th>Philosophie</th>
-    <td>${data.philosophie}</td>
-  </tr>
-  <tr>
-    <th>Localisation</th>
-    <td>${data.localisation.ville}, ${data.localisation.province}, ${data.localisation.pays}</td>
-  </tr>
-  <tr>
-    <th>Disponibilité</th>
-    <td>${data.disponibilite}</td>
-  </tr>
-  <tr>
-    <th>Valeurs</th>
-    <td>
-      <ul>
-        ${data.valeurs.map(val => `<li>${val}</li>`).join("")}
-      </ul>
-    </td>
-  </tr>
-</table>
+    <table>
+      <tr>
+        <th>Nom</th>
+        <td><strong>${data.nom}</strong> est une application mobile et plateforme web qui met en relation les talents locaux avec leur communauté.</td>
+      </tr>
+      <tr>
+        <th>Description</th>
+        <td>${data.description}</td>
+      </tr>
+      <tr>
+        <th>Mission</th>
+        <td>${data.mission}</td>
+      </tr>
+      <tr>
+        <th>Philosophie</th>
+        <td>${data.philosophie}</td>
+      </tr>
+      <tr>
+        <th>Localisation</th>
+        <td>${data.localisation.ville}, ${data.localisation.province}, ${data.localisation.pays}</td>
+      </tr>
+      <tr>
+        <th>Disponibilité</th>
+        <td>${data.disponibilite}</td>
+      </tr>
+      <tr>
+        <th>Valeurs</th>
+        <td>
+          <ul>
+            ${data.valeurs.map(val => `<li>${val}</li>`).join("")}
+          </ul>
+        </td>
+      </tr>
+    </table>
   `;
 }
 
+// 🧩 Injection des services
 function injectServices(data) {
   const section = document.getElementById("services-section");
-  section.innerHTML = ` `;
+  section.innerHTML = ""; // Nettoyage préalable
+
   data.services.forEach(service => {
     const card = document.createElement("div");
     card.className = "card";

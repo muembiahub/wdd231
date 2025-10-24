@@ -595,12 +595,9 @@ function setupGPS() {
   });
 }
 
-// === 7. Bannière de confirmation avec animation et son ===
 function showConfirmationBanner() {
-  // Supprime l’ancienne bannière si elle existe
   document.getElementById("confirmationBanner")?.remove();
 
-  // Crée la bannière
   const banner = document.createElement("div");
   banner.id = "confirmationBanner";
   banner.style.display = "none";
@@ -616,7 +613,6 @@ function showConfirmationBanner() {
   banner.style.opacity = "0";
   banner.style.transition = "opacity 0.6s ease";
 
-  // Contenu HTML de la bannière
   banner.innerHTML = `
     <div style="display: flex; align-items: center; justify-content: center; gap: 0.5em; flex-wrap: wrap;">
       <span style="font-size: 1.5em;">✅</span>
@@ -628,24 +624,19 @@ function showConfirmationBanner() {
     </div>
   `;
 
-  // Insertion dans le conteneur principal
   const container = document.querySelector("main") || document.body;
   container.insertBefore(banner, container.firstChild);
 
-  // Affiche avec animation + scroll vers la bannière
   banner.style.display = "block";
   setTimeout(() => {
     banner.style.opacity = "1";
     banner.scrollIntoView({ behavior: "smooth", block: "center" });
-
-    // Scroll de rappel pour écraser les scrolls parasites
     setTimeout(() => {
       banner.scrollIntoView({ behavior: "smooth", block: "center" });
     }, 1000);
   }, 10);
 
-  // Lecture audio si interaction utilisateur détectée
-  const audioPath = "/project/media/sound-bip-alert-190038.mp3"; // chemin absolu recommandé
+  const audioPath = "/project/media/sound-bip-alert-190038.mp3";
   fetch(audioPath, { method: "HEAD" })
     .then((res) => {
       if (res.ok && document.hasFocus()) {
@@ -661,13 +652,12 @@ function showConfirmationBanner() {
     .catch((err) => {
       console.warn("Erreur de chargement audio :", err);
     });
-
-  // Disparition automatique après 6 secondes
-  setTimeout(() => {
-    banner.style.opacity = "0";
-    setTimeout(() => banner.remove(), 800);
-  }, 8000);
 }
+
+
+
+
+
 
 
 
