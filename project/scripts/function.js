@@ -230,27 +230,9 @@ function createCard(item, pageName) {
     </div>
   `;
 }
-// function sendToSupabase(formData) 
-
-function sanitizeFormData(form) {
-  const get = (selector) => form.querySelector(selector)?.value.trim() || "";
-
-  const rawPrice = get("#servicePrice");
-  const price = rawPrice ? parseFloat(rawPrice) : null;
-
-  return {
-    name: get("#clientName"),
-    client_email: get("#clientEmail"),
-    client_whatsapp: get("#countryCode") + get("#clientWhatsApp"),
-    category: get("#serviceCategory"),
-    price: price,
-    message: get("#clientMessage"),
-    gps: get("#gpsField"),
-    map_url: get("#mapUrl")
-  };
-}
 
 
+// === Function pour afficher et charger la vue de contact ===
 function loadContactView(title, price) {
   selectedCategory = decodeURIComponent(title);
   selectedPrice = decodeURIComponent(price);
@@ -594,6 +576,61 @@ function setupGPS() {
     );
   });
 }
+
+
+// function sendToSupabase(formData) 
+
+function sanitizeFormData(form) {
+  const get = (selector) => form.querySelector(selector)?.value.trim() || "";
+  const rawPrice = get("#servicePrice");
+  const price = rawPrice ? parseFloat(rawPrice) : null;
+
+  return {
+    name: get("#clientName"),
+    client_email: get("#clientEmail"),
+    client_whatsapp: get("#countryCode") + get("#clientWhatsApp"),
+    category: get("#serviceCategory"),
+    price: price,
+    message: get("#clientMessage"),
+    gps: get("#gpsField"),
+    map_url: get("#mapUrl")
+  };
+}
+
+// === 6. Envoi des données à Supabase ===
+async function sendToSupabase(formData) {
+  const SUPABASE_URL = "https://eumdndwnxjqdolbpcyrp.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_PRp1AmuEtEsGhWnZktlK0Q_uJmipcrO";
+
+  try {
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/kazidomo_demandes_services`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "apikey": SUPABASE_KEY,
+        "Authorization": `Bearer ${SUPABASE_KEY}`
+      },
+      body: JSON.stringify([formData])
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("❌ Erreur Supabase :", errorText);
+      alert(`Échec Supabase : ${errorText}`);
+      return false;
+    }
+
+    console.log("✅ Données envoyées à Supabase.");
+    return true;
+  } catch (error) {
+    console.error("❌ Erreur JS :", error);
+    alert(`Erreur JS : ${error.message}`);
+    return false;
+  }
+}
+
+
+// === 7. Bannière de confirmation après envoi réussi ===
 
 function showConfirmationBanner() {
   document.getElementById("confirmationBanner")?.remove();
