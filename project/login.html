@@ -46,13 +46,18 @@
     <input type="checkbox" id="check-signup">
     <input type="checkbox" id="check-reset">
    <div class="container">
-    <input type="checkbox" id="check">
     <div class="login form">
       <h1 >Login</h1>
       <form id ="login-form">
         <input type="email" id="email" placeholder="Enter your email">
         <input type="password" id="password" placeholder="Enter your password">
-        <label for="check-reset">Mot de passe oublié ?</label>
+        <div>
+          <span class="signup">
+           <label for="check-reset">Mot de passe oublié ?</label>
+        </span>
+        </div>
+       
+        
         <input type="submit" class="button" value="Connexion">
       </form>
       <div class="signup">
@@ -70,6 +75,9 @@
   <input type="password" id="confirm-password" placeholder="Confirmer le mot de passe" required />
   <input type="submit" class="button" value="Mettre à jour">
   </form>
+  <span class="signup">
+    <label for="check-reset">Retour à la connexion</label>
+  </span>
     </div>
     <!-- creation de compte -->
     <div class="registration form">
