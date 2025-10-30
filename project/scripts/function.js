@@ -87,7 +87,7 @@ function generateImageName(title) {
 
 // === Barre de recherche limitée à la page ===
 function injectElegantSearchBar(pageName) {
-  const excludedPages = ["login", "admin", "contact", "about" ];
+  const excludedPages = ["login", "contact", "about", "dashboard", "register","confirmationpage"];
 
   // Si la page est dans la liste noire, ne pas injecter la barre
   if (excludedPages.includes(pageName)) return;
@@ -719,7 +719,7 @@ function injectFooter(targetId = 'footer', filename = 'footer.html', maxDepth = 
         if (target) {
           target.innerHTML = html;
         } else {
-          console.warn(`Élément #${targetId} introuvable pour injecter le header.`);
+          console.warn(`Élément #${targetId} introuvable pour injecter le footer.`);
         }
       })
       .catch(() => {

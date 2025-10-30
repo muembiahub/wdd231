@@ -1,44 +1,128 @@
 /* form-style.css */
-
-
-label {
-  display: block;
-  margin-top: 15px;
-  font-weight: bold;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
-
-input[type="text"],
-textarea,
-select {
+body{
+  min-height: 300vh;
   width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-.large-input {
-   width: 50%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+  background: #009579;
+  display: flex;
+  justify-content: center;
+
+  
 }
 
+/* Styles pour les champs de formulaire en erreur */
+.champ-erreur {
+  border: 2px solid #e74c3c !important;
+  background-color: #fff6f6;
+}
 
-button {
-  margin-top: 20px;
+.erreur {
+  background-color: #ffe0e0;
+  color: #a00;
   padding: 10px 15px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 4px;
+  margin-top: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+h1{
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+.container {
+  max-width: 430px;
+  width: 100%;
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  padding: 3px;
+}
+
+/* Par défaut : login visible, autres cachés */
+.container .registration,
+.container .reset {
+  display: none;
+}
+
+/* Si check-signup est coché : afficher signup, cacher login et reset */
+#check-signup:checked ~ .container .registration {
+  display: block;
+}
+#check-signup:checked ~ .container .login,
+#check-signup:checked ~ .container .reset {
+  display: none;
+}
+
+/* Si check-reset est coché : afficher reset, cacher login et signup */
+#check-reset:checked ~ .container .reset {
+  display: block;
+}
+#check-reset:checked ~ .container .login,
+#check-reset:checked ~ .container .registration {
+  display: none;
+}
+
+/* Cacher les cases à cocher */
+#check-signup,
+#check-reset 
+    {
+  display: none;
+}
+.form{
+  padding: 30px 25px;
+}
+ .form input{
+   height: 60px;
+   width: 100%;
+   padding: 0 15px;
+   font-size: 17px;
+   margin-bottom: 1.3rem;
+   border: 1px solid #ddd;
+   border-radius: 6px;
+   outline: none;
+ }
+ .form input:focus{
+   box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+ }
+.form a{
   font-size: 16px;
+  color: #009579;
+  text-decoration: none;
+}
+.form a:hover{
+  text-decoration: underline;
+}
+.form input.button{
+  color: #fff;
+  background: #009579;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 1.7rem;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.form input.button:hover{
+  background: #006653;
+}
+.signup  {
+  font-size: 17px;
+  text-align: center;
+}
+.signup label {
+  color: #009579;
   cursor: pointer;
 }
-
-button:hover {
-  background-color: #218838;
+.signup label:hover  {
+  text-decoration: underline;
 }
-
+.reset  label {  
+  color: blue;
+}

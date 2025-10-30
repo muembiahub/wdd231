@@ -292,6 +292,130 @@ select {
       #contactAgentForm button:hover, #contactAgentBtn:hover {
         background-color: #008800;
       }
+
+/* Formulaire de réinitialisation de mot de passe */
+body.reset-password-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form#new-password-form {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+form#new-password-form h2 {
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+form#new-password-form label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #444;
+}
+
+form#new-password-form input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+  max-width: 50%;
+}
+
+form#new-password-form input:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+form#new-password-form button {
+  margin-top: 25px;
+  width: 100%;
+  padding: 12px;
+  background-color: #007BFF;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form#new-password-form button:hover {
+  background-color: #0056b3;
+}
+
+  align-items: center;
+  height: 100vh;
+}
+
+form#new-password-form {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+form#new-password-form h2 {
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+form#new-password-form label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #444;
+}
+
+form#new-password-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+form#new-password-form input:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+form#new-password-form button {
+  margin-top: 25px;
+  width: 100%;
+  padding: 12px;
+  background-color: #007BFF;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form#new-password-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive design */  
       @media screen and (max-width: 480px) {
   #returnToServicesBtn {
     margin-top: 3em !important;

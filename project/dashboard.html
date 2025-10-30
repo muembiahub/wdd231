@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Directory">
+  <meta property="og:description"
+    content="Kazidomo is a smart mobile application designed to enable anyone with a skill or trade—formal or informal—to offer their services in their neighborhood, city, or beyond.">
+  <meta property="og:url" content="https://muembiahub.github.io/wdd231/chamber">
+  <meta property="og:site_name" content="Kazidomo">
+  <meta property="og:image" content="https://muembiahub.github.io/wdd231/chamber/images/facebook-tag.png" />
+  <meta name="author" content="Jonathan M. Muembia">
+  <meta name="description"
+    content="Kazidomo is a smart mobile application designed to enable anyone with a skill or trade—formal or informal—to offer their services in their neighborhood, city, or beyond.">
+  <meta name="robots" content="index, follow">
+  <meta name="application-name" content="Kazidomo">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="keywords">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <title>Dashboard  – Kazidomo-Confiance</title>
+
+<!-- 📦 Scripts -->
+  <script src="scripts/function.js"></script>
+  <script src="./categories/scripts/catalogue.js"></script>
+  <script src="scripts/dashboard.js" defer></script>
+
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/dashboard.css" />
+  <link rel="stylesheet" href="styles/header.css" />
+   <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/mobile.css">
+  <link rel="stylesheet" href="styles/tablets.css">
+  <link rel="stylesheet" href="styles/desktop.css">
+
+
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+
+<body>
+  <header>
+    <div id="header"></div>
+  </header>
+
+  <main>
+ <!-- 🪞 Message de connexion -->
+    <div id="login-message"></div>
+    <div id="badge-role"></div>
+    <section id="admin-dashboard">
+      <h1>📋 Tableau de bord Kazidomo-Confiance</h1>
+   
+
+      <!-- 🔎 Filtres -->
+      <div id="filtres">
+        <select id="filtre-categorie">
+          <option value="">Toutes les catégories</option>
+           <option value="Plomberie">Plomberie</option>
+            <option value="Électricité">Électricité</option>
+            <option value="Nettoyage">Nettoyage</option>
+            <option value="Menuiserie">Menuiserie</option>
+            <option value="Construction & Réparation">Construction & Réparation</option>
+            <option value="Manifestations & Cérémonies">Manifestations & Cérémonies</option>
+            <option value="Mécanique">Mécanique</option>
+            <option value="Formation">Formation</option>
+            <option value="Mode">Mode</option>
+            <option value="Beauté">Beauté</option>
+            <option value="Hôtels & Restaurants">Hôtels & Restaurants</option>
+            <option value="Santé">Santé</option>
+            <option value="Immobilier">Immobilier</option>
+            <option value="Animaux">Animaux</option>
+            <option value="Agriculture">Agriculture</option>
+            <option value="Autres Services">Autres Services</option>
+        </select>
+      <!-- 🔎 Filtre statut  -->
+        <select id="filtre-statut">
+          <option value="">Tous les statuts</option>
+          <option value="traité">Traité</option>
+          <option value="en attente">En attente</option>
+        </select>
+      </div>
+      <!-- 📊 Statistiques et demandes -->
+      <div id="stats-box"></div>
+      <div id="demandes-container"></div>
+      <button id="restore-data-button">♻️ Restaurer les données</button>
+  </main>
+  <footer id="footer">
+
+  </footer>
+</body>
+</html>

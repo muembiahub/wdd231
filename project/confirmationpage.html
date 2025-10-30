@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Directory">
+  <meta property="og:description"
+    content="Kazidomo is a smart mobile application designed to enable anyone with a skill or trade—formal or informal—to offer their services in their neighborhood, city, or beyond.">
+  <meta property="og:url" content="https://muembiahub.github.io/wdd231/chamber">
+  <meta property="og:site_name" content="Kazidomo">
+  <meta property="og:image" content="https://muembiahub.github.io/wdd231/chamber/images/facebook-tag.png" />
+  <meta name="author" content="Jonathan M. Muembia">
+  <meta name="description"
+    content="Kazidomo is a smart mobile application designed to enable anyone with a skill or trade—formal or informal—to offer their services in their neighborhood, city, or beyond.">
+  <meta name="robots" content="index, follow">
+  <meta name="application-name" content="Kazidomo">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="keywords">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="scripts/function.js"></script>
+  <script src="scripts/signup.js" defer></script>
+  <script src="./categories/scripts/catalogue.js" defer></script>
+  <title>Kazidomo Confiance Home Page </title>
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/mobile.css">
+  <link rel="stylesheet" href="styles/tablets.css">
+  <link rel="stylesheet" href="styles/desktop.css">
+  <link rel="stylesheet" href="styles/dashboard.css" />
+</head>
+<style>
+.card {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: auto;
+    }
+    h1 {
+      color: #2e7d32;
+    }
+    p {
+      font-size: 1.1em;
+      margin: 20px 0;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #2e7d32;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+<header id="header"></header>
+<body>
+  <div class="card">
+    <h1>✅ Bienvenue <span id="prenom">!</span></h1>
+    <p>Votre domaine métier : <strong id="domaine"></strong></p>
+    <p>Votre rôle d’accès est <strong>user</strong> pour le moment.</p>
+    <p>Un administrateur validera votre rôle par métier bientôt.</p>
+    <p>Merci de votre patience !</p>
+    <a href="login.html" class="btn">Se connecter</a>
+  </div>
+
+  <script>
+    // Exemple : récupérer les infos depuis localStorage ou sessionStorage
+    const prenom = sessionStorage.getItem("prenom") || "utilisateur";
+    const domaine = sessionStorage.getItem("domaine") || "non spécifié";
+
+    document.getElementById("prenom").textContent = prenom;
+    document.getElementById("domaine").textContent = domaine;
+  </script>
+</body>
+
+<footer id="footer"></footer>
+</html>
