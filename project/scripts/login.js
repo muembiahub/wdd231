@@ -57,7 +57,7 @@ function initLoginForm() {
       return afficherMessage(msg, true, passwordInput, ".login.form");
     }
 
-    window.location.href = "dashboard.html";
+    window.location.href = "admin.html";
   });
 }
 
