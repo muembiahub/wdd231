@@ -43,22 +43,32 @@ function injectFavicon(path = "images/favicon.ico") {
   document.head.appendChild(link);
 }
 
-function injectTitle() {
-  const pageName = getPageName();
+function injectTitle(prefix = "Kazidomo Confiance") {
+  try {
+    const pageName = typeof getPageName === "function" ? getPageName() : "Page";
 
-  // Supprimer tous les <title> existants
-  const existingTitles = document.head.querySelectorAll("title");
-  existingTitles.forEach(t => t.remove());
+    if (typeof pageName !== "string" || !pageName.trim()) {
+      console.warn("injectTitle: Nom de page invalide.");
+      return;
+    }
 
-  // Créer et injecter un nouveau <title>
-  const newTitle = document.createElement("title");
-  newTitle.textContent = pageName;
-  document.head.appendChild(newTitle);
+    // Supprimer tous les <title> existants
+    document.querySelectorAll("title").forEach(t => t.remove());
 
-  // Mettre à jour l’élément visible dans le corps de la page
-  const pageTitleElement = $("#pageTitle");
-  if (pageTitleElement) {
-    pageTitleElement.textContent = "kazidomo Confiance - " + pageName;
+    // Créer et injecter un nouveau <title>
+    const newTitle = document.createElement("title");
+    newTitle.textContent = `${prefix} - ${pageName} page`;
+    document.head.appendChild(newTitle);
+
+    // Mettre à jour l’élément visible dans le corps de la page
+    const pageTitleElement = document.querySelector("#pageTitle");
+    if (pageTitleElement) {
+      pageTitleElement.textContent = `${prefix} - ${pageName} page`;
+    } else {
+      console.info("injectTitle: Aucun élément #pageTitle trouvé.");
+    }
+  } catch (error) {
+    console.error("injectTitle: Erreur lors de l’injection du titre", error);
   }
 }
 
