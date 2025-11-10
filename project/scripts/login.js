@@ -66,7 +66,7 @@ function initLoginForm() {
       return afficherMessage(msg, true, passwordInput, ".login.form");
     }
     // Connexion réussie - redirection vers la page admin
-    window.location.href = "admin.html";
+    window.location.href = "dashboard.html";
   });
 }
 
