@@ -2,7 +2,7 @@
   "general": {
     "userAgentRegexes": [],
     "replaceStrings": [],
-    "publicKey": "jbnlojn",
+    "publicKey": "Kconfiance",
     "deviceRegKey": "a869wf20te9p0burymtxn5rpgr",
     "appName": "Kazidomo Confiance",
     "initialUrl": "https://kazidomo.com",
@@ -17,7 +17,7 @@
     "userAgentAdd": "kazidomo",
     "forceUserAgent": "",
     "iosUserAgentAdd": "kazidomo",
-    "iosForceUserAgent": "",
+    "iosForceUserAgent": " ",
     "androidUserAgentAdd": "kazidomo",
     "androidForceUserAgent": "",
     "languages": [
@@ -146,110 +146,109 @@
       "active": true,
       "actions": [],
       "actionSelection": []
-
     },
     "navigationLevels": {
-  "active": true,
-  "levels": []
-},
-"sidebarNavigation": {
-  "menuSelectionConfig": {
-    "redirectLocations": [
-      {
-        "regex": ".*dashboard.*",
-        "menuName": "noSidebar",
-        "loggedIn": true
-      },
-      {
-        "regex": ".*",
-        "menuName": "default",
-        "loggedIn": true
-      }
-    ]
-  },
-  "menus": [
-    {
-      "name": "default",
       "active": true,
-      "items": [
+      "levels": []
+    },
+    "sidebarNavigation": {
+      "menuSelectionConfig": {
+        "redirectLocations": [
+          {
+            "regex": ".*dashboard.*",
+            "menuName": "noSidebar",
+            "loggedIn": true
+          },
+          {
+            "regex": ".*",
+            "menuName": "default",
+            "loggedIn": true
+          }
+        ]
+      },
+      "menus": [
         {
-          "label": "Home",
-          "url": "https://kazidomo.com/index.html",
-          "icon": "fal fa-house-chimney",
-          "subLinks": []
+          "name": "default",
+          "active": true,
+          "items": [
+            {
+              "label": "Home",
+              "url": "https://kazidomo.com/index.html",
+              "icon": "fal fa-house-chimney",
+              "subLinks": []
+            },
+            {
+              "label": "About-Us",
+              "url": "https://kazidomo.com/about.html",
+              "icon": "fas fa-address-card",
+              "subLinks": []
+            },
+            {
+              "label": "Connexion",
+              "url": "https://kazidomo.com/login.html",
+              "icon": "fal fa-person-shelter",
+              "subLinks": []
+            }
+          ]
         },
         {
-          "label": "About-Us",
-          "url": "https://kazidomo.com/about.html",
-          "icon": "fas fa-address-card",
-          "subLinks": []
-        },
-        {
-          "label": "Connexion",
-          "url": "https://kazidomo.com/login.html",
-          "icon": "fal fa-person-shelter",
-          "subLinks": []
+          "name": "noSidebar",
+          "active": false,
+          "items": []
         }
       ]
     },
-    {
-      "name": "noSidebar",
+    "tabNavigation": {
       "active": false,
-      "items": []
-    }
-  ]
-},
-"tabNavigation": {
-  "active": false,
-  "tabMenus": [
-    {
-      "id": "1",
-      "items": [
+      "tabMenus": [
         {
-          "icon": "fas fa-home",
-          "inactiveIcon": "far fa-home",
-          "label": "Home",
-          "url": "https://kazidomo.com",
-          "subLinks": []
-        },
+          "id": "1",
+          "items": [
+            {
+              "icon": "fas fa-home",
+              "inactiveIcon": "far fa-home",
+              "label": "Home",
+              "url": "https://kazidomo.com",
+              "subLinks": []
+            },
+            {
+              "label": "News",
+              "icon": "fas fa-newspaper",
+              "inactiveIcon": "far fa-newspaper",
+              "url": "https://kazidomo.com/news",
+              "subLinks": []
+            },
+            {
+              "label": "Directory",
+              "icon": "fas fa-address-book",
+              "inactiveIcon": "far fa-address-book",
+              "url": "https://kazidomo.com/directory",
+              "subLinks": []
+            }
+          ]
+        }
+      ],
+      "tabSelectionConfig": [
         {
-          "label": "News",
-          "icon": "fas fa-newspaper",
-          "inactiveIcon": "far fa-newspaper",
-          "url": "https://kazidomo.com/news",
-          "subLinks": []
-        },
-        {
-          "label": "Directory",
-          "icon": "fas fa-address-book",
-          "inactiveIcon": "far fa-address-book",
-          "url": "https://kazidomo.com/directory",
-          "subLinks": []
+          "id": "1",
+          "regex": ".*",
+          "_id": "690ecc6df9a82b2195272052",
+          "label": "Bottom Tab Bar Menu 1 - All pages"
         }
       ]
-    }
-  ],
-  "tabSelectionConfig": [
-    {
-      "id": "1",
-      "regex": ".*",
-      "_id": "690ecc6df9a82b2195272052",
-      "label": "Bottom Tab Bar Menu 1 - All pages"
-    }
-  ]
-},
-"androidShowOfflinePage": true,
-"iosShowOfflinePage": true,
-"toolbarNavigation": {
-  "enabled": true,
-  "visibilityByPages": "allPages",
-  "visibilityByBackButton": "backButtonActive",
-  "regexes": [
-    {
+    },
+    "androidShowOfflinePage": true,
+    "iosShowOfflinePage": true,
+    "toolbarNavigation": {
       "enabled": true,
-      "regex": ".*"
-    }
-  ],
+      "visibilityByPages": "allPages",
+      "visibilityByBackButton": "backButtonActive",
+      "regexes": [
+        {
+          "enabled": true,
+          "regex": ".*"
+        }
+      ],
       "items": [
         {
           "system": "back",
