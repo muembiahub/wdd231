@@ -1,62 +1,71 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
-
+// Configuration Supabase 
 const SUPABASE_URL = "https://eumdndwnxjqdolbpcyrp.supabase.co";
 const SUPABASE_KEY = "sb_publishable_PRp1AmuEtEsGhWnZktlK0Q_uJmipcrO";
 const client = createClient(SUPABASE_URL, SUPABASE_KEY);
-
+// Initialisation des formulaires après le chargement du DOM
 document.addEventListener("DOMContentLoaded", () => {
   initLoginForm();
   initSignupForm();
   initResetForm();
 });
-
+// Initialisation du formulaire de connexion
 function initLoginForm() {
+  // Récupération du formulaire
   const form = document.getElementById("login-form");
+  // Si le formulaire n'existe pas, on quitte la fonction
   if (!form) return;
-
+// Ajout de l'événement de soumission
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    // Récupération des champs email et mot de passe
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
+    // Extraction et nettoyage des valeurs
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
-
+  // Réinitialisation des styles d'erreur
     emailInput.classList.remove("champ-erreur");
     passwordInput.classList.remove("champ-erreur");
-
+    // Validation des champs
     if (!email && !password) {
       emailInput.classList.add("champ-erreur");
       passwordInput.classList.add("champ-erreur");
+      // Affichage du message d'erreur
       return afficherMessage(`
         <div class="erreur"><h3>Champs manquants</h3><p>Veuillez renseigner votre adresse email et votre mot de passe.</p></div>
       `, true, passwordInput, ".login.form");
     }
-
+    // Validation email
     if (!email) {
       emailInput.classList.add("champ-erreur");
+      // Affichage du message d'erreur
       return afficherMessage(`
         <div class="erreur"><h3>Email requis</h3><p>Veuillez renseigner votre adresse email.</p></div>
       `, true, emailInput, ".login.form");
     }
 
+    // Validation mot de passe
     if (!password) {
       passwordInput.classList.add("champ-erreur");
       return afficherMessage(`
         <div class="erreur"><h3>Mot de passe requis</h3><p>Veuillez entrer votre mot de passe.</p></div>
       `, true, passwordInput, ".login.form");
     }
-
+// Tentative de connexion avec Supabase 
     const { error } = await client.auth.signInWithPassword({ email, password });
-
+  // Gestion des erreurs de connexion
     if (error) {
+      // Marquer le champ mot de passe en erreur
       passwordInput.classList.add("champ-erreur");
       const msg = error.message.includes("Invalid login credentials")
         ? `<div class="erreur"><h3>Mot de passe incorrect</h3><p>Identifiants invalides. Veuillez vérifier votre mot de passe.</p></div>`
         : `<div class="erreur"><h3>Erreur technique</h3><p>${error.message}</p></div>`;
+        // Affichage du message d'erreur
       return afficherMessage(msg, true, passwordInput, ".login.form");
     }
-
+    // Connexion réussie - redirection vers la page admin
     window.location.href = "admin.html";
   });
 }
