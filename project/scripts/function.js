@@ -231,7 +231,7 @@ function createCard(item, pageName) {
   return `
     <div class="card searchable" data-page="${pageName}">
       <img src="${image}" alt="${alt}">
-      <h3>${title}</h3>
+      <h3><strong>Service :</strong> ${title}</h3>
       <p>${description}</p>
       <p id="price"><strong> À partir de : ${price} $</strong></p>
      <button onclick="loadContactView('${encodeURIComponent(title)}', '${encodeURIComponent(price)}')" id="contactAgentBtn">
@@ -361,7 +361,7 @@ function createHomeCard(item) {
   return `
     <div class="card">
       <img src="${logo}" alt="${category}">
-      <h3>${category}</h3>
+      <h3><strong>Category :</strong> ${category}</h3>
       <p>${description}</p>
       <a href="${pageUrl}" class="button">Consulter</a>
     </div>
@@ -491,9 +491,11 @@ function injectForm() {
           <select id="countryCode" required></select>
           <input type="text" id="clientWhatsApp" name="clientWhatsApp" placeholder="Votre numéro WhatsApp" required>
         </div>
+        <label for="Category">Catégorie de service :</label>
+        <input type="text" id="Category" name="Category" readonly>
 
         <label for="serviceCategory">Service sélectionné :</label>
-        <input type="text" id="serviceCategory" name="serviceCategory" readonly>
+        <input type="text" id="service" name="service" readonly>
 
         <label for="servicePrice">Prix :</label>
         <input type="text" id="servicePrice" name="servicePrice" readonly>
@@ -523,8 +525,10 @@ function injectForm() {
   main.appendChild(formContainer);
 
   // 🧩 Injecte les valeurs dynamiques
-  document.getElementById("serviceCategory").value = selectedCategory || "";
+  document.getElementById("Category").value = previousPageName || ""; // 🧩 Injecte les valeurs dynamiques
+  document.getElementById("service").value = selectedCategory || "";
   document.getElementById("servicePrice").value = selectedPrice || "";
+
 }
 // === 6 setup Gps sur le formulaire de contact Agent  ===
 function setupGPS() {
@@ -599,7 +603,8 @@ function sanitizeFormData(form) {
     name: get("#clientName"),
     client_email: get("#clientEmail"),
     client_whatsapp: get("#countryCode") + get("#clientWhatsApp"),
-    category: get("#serviceCategory"),
+    category: get("#Category"),
+    service: get("#service"),
     price: price,
     message: get("#clientMessage"),
     gps: get("#gpsField"),

@@ -1,214 +1,123 @@
-/* Styles spécifiques au tableau de bord */
-#signup-form {
-  margin: 20px auto;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  max-width: 300px;
-  background-color: #f9f9f9;
-
+body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f4; }
+header { background: #2c3e50; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+.menu-toggle { font-size: 1.5em; cursor: pointer; display: none; }
+.dashboard { display: flex; flex-wrap: wrap; gap: 20px; margin: 20px; }
+.carte { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 8px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.2s ease; flex: 1; min-width: 200px; }
+.carte:hover { transform: scale(1.02); }
+.admin-panel { background: #ecf0f1; padding: 15px; display: flex; flex-wrap: wrap; gap: 10px; }
+.admin-panel select, .admin-panel input, .admin-panel button { padding: 8px; font-size: 1em; }
+.admin-only { display: none; }
+.stats, .service-card { background: white; margin: 15px; padding: 15px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+.traitee { border-left: 5px solid green; }
+canvas { margin: 15px; }
+@media (max-width: 600px) {
+  .menu-toggle { display: block; }
+  .admin-panel { display: none; flex-direction: column; }
+  .admin-panel.show { display: flex; }
 }
 
-    .statut-traite {
-  color: rgb(234, 9, 9);
-  font-weight: bold;
-  margin-top: 10px;
-    }
-
-    button.statut-traite {
-  background-color: #e0ffe0;
-  color: rgb(128, 150, 128);
-  cursor: default;
-  border: 2px solid green;
-  padding: 5px 10px;
-  font-weight: bold;
-  margin-top: 10px;
+.carte.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
 }
-
-
-
 
 
 
 #demandes-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 4fr));
-  gap: 20px;
-  justify-content: center;
-  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 1rem;
 }
-
-
-
-
-
-
-
-.service-card {
-  border: 1px solid #ddd;
+.ajout-user-card ,.profil-card  {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem;
+  gap : 0.5rem;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin: 15px auto;
-  max-width: 400px;
-  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   transition: transform 0.2s ease;
-}
-
-.service-card:hover {
-  transform: scale(1.02);
-}
-
-.service-card h5 {
-  margin-top: 0;
-  font-size: 17px;
-  color: #333;
-}
-.service-card h4 {
-  margin: 0 0 10px 0;
-  font-size: 22px;
-  color: #222;
-  border-bottom: 2px solid #eee;
-  padding-bottom: 5px;
-  text-align: center;
-}
-.service-card p {
-  margin: 8px 0;
-  font-size: 16px;
-  color: #140c0c;
-}
-
-.service-status {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: bold;
-  background-color: #f0f0f0;
-  color: #333;
-}
-
-.service-status.pending {
-  background-color: #ffe58f;
-  color: #8c6d1f;
-}
-
-.service-status.approved {
-  background-color: #b7eb8f;
-  color: #389e0d;
-}
-
-.service-status.rejected {
-  background-color: #ffa39e;
-  color: #a8071a;
-}
-
-
-.service-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  padding: 16px;
-  margin-bottom: 12px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  transition: opacity 0.4s ease;
-}
-
-.service-card.traitee {
-  border-left: 4px solid #4caf50;
-  background-color: #f6fff6;
-}
-
-.statut-traite {
-  color: #4caf50;
-  font-weight: bold;
-  margin-top: 8px;
-}
-
-.stats {
-  background: #f0f4f8;
-  padding: 12px;
-  margin-bottom: 16px;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-button {
-  margin-top: 8px;
-  margin-right: 8px;
-  padding: 6px 12px;
-  border: none;
-  border-radius: 4px;
   cursor: pointer;
+  flex: 1;
+  min-width: 200px;
 }
-
-.btn-traiter {
-  background-color: #2196f3;
-  color: white;
+.carte{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem;
+  gap : 0.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  flex: 1;
+  min-width: 200px;
 }
-
-.btn-traiter:hover {
-  background-color: #1976d2;
+.demandes-service-card {
+  padding: 1rem;
+  margin: 1rem;
+  gap : 0.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  flex: 1;
+  min-width: 200px;
 }
-
-.btn-supprimer {
-  background-color: #f44336;
-  color: white;
-}
-
-.btn-supprimer:hover {
-  background-color: #d32f2f;
-}
-
-.btn-annuler {
-  background-color: #ffc107;
-  color: #333;
-}
-
-.btn-annuler:hover {
-  background-color: #ffb300;
-}
-
-.message, .erreur {
-  margin-top: 12px;
-  padding: 12px;
+.statut {
+  font-weight: bold;
+  padding: 4px 8px;
   border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 0.5rem;
 }
 
-.message {
-  background-color: #e8f5e9;
-  color: #2e7d32;
+/* Couleurs par statut */
+.statut.attente {
+  background-color: #ffeeba;
+  color: #856404;
 }
 
-.erreur {
-  background-color: #ffebee;
-  color: #c62828;
+.statut.traité {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.statut.rejeté {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.statut.en_cours {
+  background-color: #cce5ff;
+  color: #004085;
 }
 
 
-/* 📱 Responsive pour les petits écrans */
-@media screen and (max-width: 480px) {
-  body {
-    padding: 10px;
+@media (max-width: 600px) {
+  .carte {
+    font-size: 0.9rem;
+    margin: 0.5rem;
   }
-  .service-card {
-    padding: 15px;
-    margin: 20px;
-    max-width: 100%;
-    box-shadow: none;
-    border-radius: 4px;
-  }
+}
 
-  .service-card h3 {
-    font-size: 18px;
+@media (min-width: 601px) and (max-width: 1024px) {
+  .carte {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
+}
 
-  .service-card p {
-    font-size: 13px;
-  }
-
-  .service-status {
-    font-size: 11px;
-    padding: 5px 10px;
+@media (min-width: 1025px) {
+  .carte:hover {
+    transform: scale(1.02);
   }
 }
