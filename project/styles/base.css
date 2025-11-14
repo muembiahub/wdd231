@@ -354,8 +354,6 @@ form#new-password-form button {
 
 form#new-password-form button:hover {
   background-color: #0056b3;
-}
-
   align-items: center;
   height: 100vh;
 }

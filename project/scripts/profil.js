@@ -1,36 +1,46 @@
 function afficherProfil() {
-  const container = document.getElementById("demandes-container");
-  const statsBox = document.getElementById("stats-box");
-  const chart = document.getElementById("chart-categories");
-  const panel = document.getElementById("admin-panel");
+  const panneau = document.getElementById("contenu-carte");
+  if (!panneau) {
+    console.warn("contenu-carte introuvable");
+    return;
+  }
 
-  container.innerHTML = "";
-  statsBox.innerHTML = "";
-  chart.style.display = "none";
-  panel.innerHTML = "";
+  panneau.innerHTML = "<p>Chargement du profil...</p>";
 
   client.auth.getSession().then(({ data: session }) => {
     const userId = session?.session?.user?.id;
     if (!userId) return;
 
-    client.from("utilisateurs").select("*").eq("id", userId).single().then(({ data, error }) => {
-      if (error || !data) {
-        container.innerHTML = `<p class="erreur">Impossible de charger le profil.</p>`;
-        return;
-      }
+    client
+      .from("utilisateurs")
+      .select("*")
+      .eq("id", userId)
+      .single()
+      .then(({ data: utilisateur, error }) => {
+        if (error || !utilisateur) {
+          panneau.innerHTML = "<p class='erreur'>Erreur de chargement du profil.</p>";
+          return;
+        }
 
-      const card = document.createElement("div");
-      card.className = "service-card";
-      card.innerHTML = `
-        <h3>👤 Mon profil</h3>
-        <p><strong>Nom :</strong> ${data.nom}</p>
-        <p><strong>Prénom :</strong> ${data.prenom}</p>
-        
-        <p><strong>Email :</strong> ${data.email}</p>
-        <p><strong>Rôle :</strong> ${data.role}</p>
-        <p><strong>Domaine :</strong> ${data.domaine || "Non attribué"}</p>
-      `;
-      container.appendChild(card);
-    });
+        panneau.innerHTML = `
+          <h3>👤 Mon profil</h3>
+          <p><strong>Nom :</strong> ${utilisateur.nom}</p>
+          <p><strong>Email :</strong> ${utilisateur.email}</p>
+          <p><strong>Rôle :</strong> ${utilisateur.role}</p>
+          <p><strong>Utilisateur ID :</strong> ${utilisateur.id}</p>
+          <p><strong>Domaine :</strong> ${utilisateur.domaine}</p>
+          <p><strong>Créé le  :</strong> ${new Date(utilisateur.created_at).toLocaleDateString()}</p>
+        `;
+      });
   });
+}
+// 
+function parametresCompte() {
+  const panneau = document.getElementById("contenu-carte");
+  if (panneau) {
+    panneau.innerHTML = `
+      <h3>Paramètres du compte</h3>
+      <p>Module en cours de développement. Ici vous pourrez modifier vos informations personnelles, votre mot de passe, et gérer vos préférences.</p>
+    `;
+  }
 }

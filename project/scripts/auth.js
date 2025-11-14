@@ -2,19 +2,19 @@ const SUPABASE_URL = "https://eumdndwnxjqdolbpcyrp.supabase.co";
 const SUPABASE_KEY = "sb_publishable_PRp1AmuEtEsGhWnZktlK0Q_uJmipcrO";
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-let estAdmin = false;
-let domaineAutorisé = null;
-
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const { data: session, error: sessionError } = await client.auth.getSession();
-    const userId = session?.session?.user?.id;
+    // 🔐 Récupération de la session utilisateur
+    const { data: sessionData, error: sessionError } = await client.auth.getSession();
+    const userId = sessionData?.session?.user?.id;
 
     if (!userId) {
       console.warn("Aucun utilisateur connecté.");
-      return (window.location.href = "login.html");
+      window.location.href = "login.html";
+      return;
     }
 
+    // 👤 Récupération des infos utilisateur
     const { data: utilisateur, error: userError } = await client
       .from("utilisateurs")
       .select("role, domaine")
@@ -27,13 +27,35 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
 
-    estAdmin = utilisateur.role?.toLowerCase() === "admin";
-    domaineAutorisé = utilisateur.domaine;
+    // 🔍 Détection du rôle
+    const role = utilisateur.role?.toLowerCase();
+    const domaineAutorisé = utilisateur.domaine;
 
-    console.log("Rôle :", utilisateur.role, "| estAdmin =", estAdmin);
+    // 🛡️ Définition des rôles
+    const estSuperadmin = role === "superadmin";
+    const estAdmin = ["admin", "superadmin"].includes(role);
+    const estPrestataire = role === "prestataire";
+    const estRequerant = role === "requerant";
+
+    // 💾 Stockage dans sessionStorage
+    sessionStorage.setItem("role", role);
+    sessionStorage.setItem("domaineAutorisé", domaineAutorisé);
+    sessionStorage.setItem("estSuperadmin", estSuperadmin);
+    sessionStorage.setItem("estAdmin", estAdmin);
+    sessionStorage.setItem("estPrestataire", estPrestataire);
+    sessionStorage.setItem("estRequerant", estRequerant);
+
+    // 🧭 Log de contrôle
+    console.log("Rôle :", role);
     console.log("Domaine autorisé :", domaineAutorisé);
+    console.log("estSuperadmin =", estSuperadmin);
+    console.log("estAdmin =", estAdmin);
+    console.log("estPrestataire =", estPrestataire);
+    console.log("estRequerant =", estRequerant);
 
-    afficherCartes(); // utilise la variable globale estAdmin
+    // 🚀 Initialisation de l'interface
+    afficherBadgeRole();
+    afficherCartes();
 
   } catch (err) {
     console.error("Erreur inattendue :", err);

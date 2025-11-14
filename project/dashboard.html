@@ -1,65 +1,45 @@
 <!DOCTYPE html>
 <html lang="fr">
-<>
-  <meta charset="UTF-8">
+<head>
+  <meta charset="UTF-8" />
   <title>Kazidomo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Kazidomo Admin Dashboard">
-  <meta name="author" content="Jonathan M. Muembia">
-  <link rel="stylesheet" href="styles/main.css">
-   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Contenu du dashboard sera inséré ici -->
-  <link rel="stylesheet" href="styles/dashboard.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kazidomo Admin Dashboard" />
+  <meta name="author" content="Jonathan M. Muembia" />
 
-  <!-- Librairies externes -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Librairies JS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js" defer></script>
 
   <!-- Modules internes -->
-  <script src="scripts/auth.js" defer></script>         <!-- Authentification et rôle -->
-  <script src="scripts/dashboard.js" defer></script>    <!-- Cartes cliquables -->
-  <script src="scripts/graphique.js" defer></script>    <!-- Stats + graphique -->
-  <script src="scripts/export.js" defer></script>       <!-- Export CSV/PDF -->
-  <script src="scripts/demandes.js" defer></script>     <!-- Affichage des demandes -->
-  <script src="scripts/utilisateurs.js" defer></script> <!-- Gestion des utilisateurs -->
-  <script src="scripts/profil.js" defer></script>       <!-- Vue Mon profil -->
+<script src="scripts/auth.js" defer></script>
+<script src="scripts/profil.js" defer></script>
+<script src="scripts/demandes.js" defer></script>
+<script src="scripts/export.js" defer></script>
+<script src="scripts/graphique.js" defer></script>
+<script src="scripts/dashboard.js" defer></script>
+<script src="scripts/utilisateurs.js" defer></script>
 </head>
+
 <body>
   <header>
-<header>
-    <div><span class="menu-toggle" onclick="toggleMenu()">☰</span></div>
+    <div class="header-bar">
+      <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+      <h1>Kazidomo Dashboard</h1>
+      <span id="role-badge" class="role-badge">Utilisateur</span>
+    </div>
+    <nav id="dashboard" class="dashboard-nav"></nav>
   </header>
-    <nav>
-      <a href="index.html"><i class="fa-solid fa-house"></i> Accueil</a>
-      <a href="dashboard.html"><i class="fa-solid fa-tachometer-alt"></i> Dashboard</a>
-      <a href="demandes.html"><i class="fa-solid fa-list"></i> Demandes</a>
-      <a href="settings.html"><i class="fa-solid fa-cog"></i> Paramètres</a>
-    </nav>
-  </header>
+
   <main>
-    <section class="dashboard">
-      <h1> Kazidomo Confiance Dashboard</h1>
-      <div class="dashboard-content">
-        
-<body>
-  <!-- Zone principale -->
-  <div id="dashboard" class="dashboard"></div>
-
-  <!-- Panneau admin pour filtres -->
-  <div id="admin-panel" class="admin-panel"></div>
-
-  <!-- Statistiques globales -->
-  <div id="stats-box"></div>
-
-  <!-- Graphique des demandes -->
-  <canvas id="chart-categories" class="admin-only" height="100"></canvas>
-
-  <!-- Cartes des demandes -->
-  <div id="demandes-container"></div>
-
+    <section class="dashboard-content">
+      <div id="contenu-carte" class="contenu-carte"></div>
+    </section>
+  </main>
 </body>
 </html>
