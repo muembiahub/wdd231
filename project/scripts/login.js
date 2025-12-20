@@ -45,7 +45,8 @@ function initLoginForm() {
       return showMessage("Email ou mot de passe incorrect.", true, form.password, ".login.form");
     }
 
-    window.location.href = "dashboard.html";
+    showMessage("Connexion réussie ✅", false, null, ".login.form");
+    setTimeout(() => window.location.href = "dashboard.html", 1000);
   });
 }
 
@@ -106,7 +107,7 @@ function initSignupForm() {
     }
 
     // Création du compte uniquement dans Auth
-    const { data: signupData, error: signupError } = await supabase.auth.signUp({
+    const { error: signupError } = await supabase.auth.signUp({
       email: values.email,
       password: values.password,
       options: {
@@ -135,9 +136,7 @@ function initSignupForm() {
     sessionStorage.setItem("prenom", values.surname);
     sessionStorage.setItem("domaine", values.domaine);
 
-    setTimeout(() => {
-      window.location.href = "confirmationpage.html";
-    }, 1500);
+    setTimeout(() => window.location.href = "confirmationpage.html", 1500);
   });
 }
 
@@ -162,7 +161,7 @@ function initResetForm() {
       return showMessage(`Erreur : ${error.message}`, true, form["reset-email"], ".reset.form");
     }
 
-    showMessage(`Un lien a été envoyé à ${email}.`, false, null, ".reset.form");
+    showMessage(`Un lien a été envoyé à ${email}. ✅`, false, null, ".reset.form");
   });
 }
 
@@ -172,7 +171,10 @@ function showFieldError(input, message) {
   input.classList.add("champ-erreur");
   const errorDiv = document.createElement("div");
   errorDiv.className = "message-erreur";
-  errorDiv.textContent = message;
+  errorDiv.style.color = "#b30000";
+  errorDiv.style.fontSize = "12px";
+  errorDiv.style.marginTop = "4px";
+  errorDiv.innerHTML = `❗ ${message}`;
   input.parentNode.insertBefore(errorDiv, input.nextSibling);
 }
 
@@ -193,7 +195,26 @@ function showMessage(html, isError = false, target = null, scope = null) {
 
   const messageDiv = document.createElement("div");
   messageDiv.className = isError ? "erreur" : "success";
-  messageDiv.innerHTML = `<h3>${isError ? "Erreur" : "Succès"}</h3><p>${html}</p>`;
+
+  messageDiv.style.borderRadius = "6px";
+  messageDiv.style.padding = "12px";
+  messageDiv.style.margin = "12px 0";
+  messageDiv.style.fontSize = "14px";
+  messageDiv.style.display = "flex";
+  messageDiv.style.alignItems = "center";
+  messageDiv.style.gap = "8px";
+
+  if (isError) {
+    messageDiv.style.backgroundColor = "#ffe5e5";
+    messageDiv.style.border = "1px solid #ff4d4d";
+    messageDiv.style.color = "#b30000";
+    messageDiv.innerHTML = `<h3 style="margin:0;font-size:16px;font-weight:bold;">❌ Erreur</h3><p>${html}</p>`;
+  } else {
+    messageDiv.style.backgroundColor = "#e6ffed";
+    messageDiv.style.border = "1px solid #4CAF50";
+    messageDiv.style.color = "#006400";
+    messageDiv.innerHTML = `<h3 style="margin:0;font-size:16px;font-weight:bold;">✅ Succès</h3><p>${html}</p>`;
+  }
 
   if (target) {
     target.parentNode.insertBefore(messageDiv, target.nextSibling);
