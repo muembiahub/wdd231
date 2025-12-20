@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initResetForm();
 });
 
-// Connexion
+// ---------------- Connexion ----------------
 function initLoginForm() {
   const form = document.getElementById("login-form");
   if (!form) return;
@@ -49,7 +49,7 @@ function initLoginForm() {
   });
 }
 
-// Inscription
+// ---------------- Inscription ----------------
 function initSignupForm() {
   const form = document.getElementById("signup-form");
   if (!form) return;
@@ -105,16 +105,7 @@ function initSignupForm() {
       return showFieldError(document.getElementById("signup-confirm-password"), "Les mots de passe ne correspondent pas.");
     }
 
-    const { data: existingUser } = await supabase
-      .from("utilisateurs")
-      .select("id")
-      .eq("username", values.username)
-      .single();
-
-    if (existingUser) {
-      return showMessage("Nom d'utilisateur déjà utilisé.", true, document.getElementById("username"), ".registration.form");
-    }
-
+    // Création du compte uniquement dans Auth
     const { data: signupData, error: signupError } = await supabase.auth.signUp({
       email: values.email,
       password: values.password,
@@ -131,36 +122,13 @@ function initSignupForm() {
           quartier: values.quartier,
           ville: values.city,
           pays: values.country,
-          role: "user"
+          role: "requerant"
         }
       }
     });
 
     if (signupError) {
       return showMessage(`Erreur Supabase : ${signupError.message}`, true, null, ".registration.form");
-    }
-
-    if (signupData?.user?.id) {
-      const { error: insertError } = await supabase.from("utilisateurs").insert({
-        id: signupData.user.id,
-        email: values.email,
-        username: values.username,
-        nom: values.name,
-        prenom: values.surname,
-        domaine: values.domaine,
-        genre: values.gender,
-        birthdate: values.birthdate,
-        telephone: values.phone,
-        adresse: values.line,
-        quartier: values.quartier,
-        ville: values.city,
-        pays: values.country,
-        role: "user"
-      });
-
-      if (insertError) {
-        return showMessage(`Erreur base de données : ${insertError.message}`, true, null, ".registration.form");
-      }
     }
 
     showMessage(`Bienvenue chez Kazidomo, ${values.surname} 🎉`, false, null, ".registration.form");
@@ -173,7 +141,7 @@ function initSignupForm() {
   });
 }
 
-// Réinitialisation
+// ---------------- Réinitialisation ----------------
 function initResetForm() {
   const form = document.getElementById("reset-form");
   if (!form) return;
@@ -198,7 +166,7 @@ function initResetForm() {
   });
 }
 
-// Utilitaires
+// ---------------- Utilitaires ----------------
 function showFieldError(input, message) {
   clearFieldError(input);
   input.classList.add("champ-erreur");
