@@ -16,6 +16,27 @@ body{
   
 }
 
+
+/* Conteneur du logo */
+.form-logo {
+  text-align: center;       /* Centre le logo horizontalement */
+  margin-bottom: 20px;      /* Espace sous le logo */
+}
+
+/* Image du logo */
+.form-logo .logo {
+  max-width: 120px;         /* Taille maximale du logo */
+  height: auto;             /* Conserve les proportions */
+  display: inline-block;    /* Évite les décalages */
+}
+
+/* Optionnel : effet au survol */
+.form-logo .logo:hover {
+  transform: scale(1.05);   /* Zoom léger */
+  transition: transform 0.3s ease;
+}
+
+
 /* Styles pour les champs de formulaire en erreur */
 .champ-erreur {
   border: 2px solid #e74c3c !important;
