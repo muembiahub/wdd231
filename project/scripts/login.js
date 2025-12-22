@@ -51,6 +51,7 @@ function initLoginForm() {
 }
 
 // ---------------- Inscription ----------------
+// ---------------- Inscription ----------------
 function initSignupForm() {
   const form = document.getElementById("signup-form");
   if (!form) return;
@@ -94,19 +95,30 @@ function initSignupForm() {
       return showMessage("Veuillez remplir tous les champs obligatoires.", true, null, ".registration.form");
     }
 
+    // ✅ Validation email
     if (!values.email.endsWith("@kazidomo.com")) {
       return showFieldError(document.getElementById("signup-email"), "Seuls les emails @kazidomo.com sont autorisés.");
     }
 
+    // ✅ Validation mot de passe
     if (values.password.length < 8) {
       return showFieldError(document.getElementById("signup-password"), "Mot de passe trop court.");
     }
-
     if (values.password !== values.confirm) {
       return showFieldError(document.getElementById("signup-confirm-password"), "Les mots de passe ne correspondent pas.");
     }
 
-    // Création du compte uniquement dans Auth
+    // ✅ Validation domaine contre enum
+    const domainesValides = [
+      "agriculture","animaux","autres-services","beauté","construction-et-réparation",
+      "formation","hôtels-et-restaurants","immobilier","manifestations-et-cérémonies",
+      "menuiserie","mode","mécanique","nettoyage","plomberie","santé","tout terrain","électricité"
+    ];
+    if (!domainesValides.includes(values.domaine)) {
+      return showFieldError(document.getElementById("domaine"), "Valeur de domaine invalide.");
+    }
+
+    // ✅ Création du compte dans Auth avec role par défaut
     const { error: signupError } = await supabase.auth.signUp({
       email: values.email,
       password: values.password,
@@ -117,13 +129,13 @@ function initSignupForm() {
           username: values.username,
           domaine: values.domaine,
           genre: values.gender,
-          birthdate: values.birthdate,
+          birthdate: values.birthdate, // format YYYY-MM-DD
           telephone: values.phone,
           adresse: values.line,
           quartier: values.quartier,
           ville: values.city,
           pays: values.country,
-          role: "requerant"
+          role: "requerant" // ✅ obligatoire car NOT NULL
         }
       }
     });
@@ -139,6 +151,7 @@ function initSignupForm() {
     setTimeout(() => window.location.href = "confirmationpage.html", 1500);
   });
 }
+
 
 // ---------------- Réinitialisation ----------------
 function initResetForm() {
