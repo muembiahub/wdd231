@@ -5,7 +5,7 @@ async function afficherUtilisateurs() {
   const panneau = document.getElementById("contenu-carte");
   if (!panneau) return;
 
-  panneau.innerHTML = "<h3>👥 Gestion des utilisateurs</h3>";
+  panneau.innerHTML = "<h3>Gestion des utilisateurs</h3>";
 
   const domaines = [
     "informatique-et-technologie", "plomberie", "électricité", "nettoyage", "menuiserie",
@@ -14,7 +14,7 @@ async function afficherUtilisateurs() {
     "agriculture", "autres-services"
   ];
 
-  const rolesDisponibles = ["tous", "user", "moderateur", "admin"];
+  const rolesDisponibles = ["tous", "requerant", "admin","superadmin", "prestataire"];
   const filtreActuel = sessionStorage.getItem("filtre-role") || "tous";
 
   // 🔍 Filtre par rôle
@@ -46,11 +46,11 @@ async function afficherUtilisateurs() {
     utilisateursFiltres.forEach(user => {
       html += `
         <div class="profil-card" data-role="${user.role}">
-          <h4>👤 ${user.nom || user.email}</h4>
-          <p><strong>Email :</strong> ${user.email}</p>
-          <p><strong>Rôle :</strong> ${user.role}</p>
-          <p><strong>Prénom :</strong> ${user.surname || "Non attribué"}</p>
-          <p><strong> Nom :</strong> ${user.name || "Non attribué"}</p>
+          <h4> ${user.surname.toUpperCase() || user.name.toUpperCase() || "Utilisateur"} ${user.name.toUpperCase()|| user.surname || "Inconnu"}</h4>
+          <p><strong>Rôle :</strong> ${user.role.toUpperCase()}</p>
+          <p><strong>Email:</strong> <strong><a href="mailto:${user.email}">${user.email}</a></strong></p>
+          <p><strong>Téléphone :</strong> ${user.phone || "Non spécifié"}</p>
+          <p><strong>Genre :</strong> ${user.gender|| "Non spécifiée"}</p>
           <p><strong>Domaine :</strong> ${user.domaine || "Non attribué"}</p>
           <hr>` + `
           <p><strong>Utilisateur ID :</strong><a href="#"> ${user.id}</a></p>
@@ -71,6 +71,7 @@ async function afficherUtilisateurs() {
 
   // ➕ Formulaire d’ajout
   html += `
+    <div class="profil-card">
     <div class="ajout-user-card">
       <h3>➕ Ajouter un utilisateur</h3>
       <label>Email</label>
@@ -91,6 +92,7 @@ async function afficherUtilisateurs() {
         ${domaines.map(d => `<option value="${d}">${d.replace(/-/g, " ")}</option>`).join("")}
       </select>
       <button class="btn" onclick="ajouterUtilisateur()">Créer</button>
+    </div>
     </div>
   `;
 

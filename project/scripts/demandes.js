@@ -269,7 +269,7 @@ async function changerStatut(id, nouveauStatut) {
 
 // 🔹 Supprimer une demande
 async function supprimerDemande(id) {
-  if (!confirm("❗ Supprimer cette demande ?")) return;
+  if (!confirm("❗ Voullez-vous Supprimer cette demande ?")) return;
 
   try {
     const { error } = await client
@@ -295,9 +295,9 @@ async function supprimerDemande(id) {
 // 🔹 Export CSV
 function exportDemandesCSV() {
   const rows = toutesLesDemandes.map(d => [
-    d.name || "—",
-    d.client_email || "—",
-    d.client_whatsapp || "—",
+    d.name || "Pas de nom",
+    d.client_email || "Pas d'email",
+    d.client_whatsapp || "Pas de numéro",
     d.message || "—",
     d.category || "—",
     d.service || "—",
