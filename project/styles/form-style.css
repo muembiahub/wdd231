@@ -120,19 +120,21 @@ h1{
 .form a:hover{
   text-decoration: underline;
 }
-.form input.button{
+
+.form button.button { display: block; 
+  margin: 1.2rem auto 0 auto; 
+  padding: 12px 25px; 
   color: #fff;
-  background: #009579;
-  font-size: 1.2rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  margin-top: 1.7rem;
-  cursor: pointer;
-  transition: 0.4s;
-}
-.form input.button:hover{
-  background: #006653;
-}
+   background: #009579; 
+   font-size: 1rem; 
+   font-weight: 500;
+    border: none; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    transition: background 0.3s ease; 
+  }
+  .form button.button:hover { background: #006653; }
+
 .signup  {
   font-size: 17px;
   text-align: center;

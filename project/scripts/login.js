@@ -3,14 +3,7 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 // ---------------- Configuration Supabase ----------------
 const SUPABASE_URL = "https://eumdndwnxjqdolbpcyrp.supabase.co";
 const SUPABASE_KEY = "sb_publishable_PRp1AmuEtEsGhWnZktlK0Q_uJmipcrO";
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
-  global: {
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }
-  }
-});
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // ---------------- Initialisation des formulaires ----------------
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,177 +12,26 @@ document.addEventListener("DOMContentLoaded", () => {
   initResetForm();
 });
 
-// ---------------- Connexion ----------------
-function initLoginForm() {
-  const form = document.getElementById("login-form");
-  if (!form) return;
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const submitBtn = form.querySelector("button[type=submit]");
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Connexion en cours...";
-
-    const email = form.email.value.trim();
-    const password = form.password.value.trim();
-
-    clearFieldError(form.email);
-    clearFieldError(form.password);
-
-    if (!validateField(form.email, email, "Email requis") || 
-        !validateField(form.password, password, "Mot de passe requis")) {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Se connecter";
-      return showMessage("Veuillez remplir tous les champs.", true, form.password, ".login.form");
-    }
-
-    // ✅ Connexion Supabase
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-
-    submitBtn.disabled = false;
-    submitBtn.textContent = "Se connecter";
-
-    if (error) {
-      showFieldError(form.password, "Identifiants invalides");
-      return showMessage("Email ou mot de passe incorrect.", true, form.password, ".login.form");
-    }
-
-    // ✅ Récupérer le rôle depuis Supabase
-    const user = data.user;
-    const role = user?.user_metadata?.role || "user";
-
-    // ✅ Sauvegarder le rôle dans sessionStorage
-    sessionStorage.setItem("role", role);
-
-    // ✅ Feedback visuel
-    showFieldSuccess(form.email, "Email valide ✅");
-    showFieldSuccess(form.password, "Mot de passe correct ✅");
-    showMessage(`Connexion réussie ✅ (Rôle : ${role})`, false, null, ".login.form");
-
-    // ✅ Redirection vers dashboard
-    setTimeout(() => window.location.href = "dashboard.html", 1000);
-  });
-}
-
-
-
-// ---------------- Inscription ----------------
-function initSignupForm() {
-  const form = document.getElementById("signup-form");
-  if (!form) return;
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const submitBtn = form.querySelector("button[type=submit]");
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Création en cours...";
-
-    const email = document.getElementById("signup-email").value.trim();
-    const password = document.getElementById("signup-password").value.trim();
-    const confirm = document.getElementById("signup-confirm-password").value.trim();
-
-    clearFieldError(document.getElementById("signup-email"));
-    clearFieldError(document.getElementById("signup-password"));
-    clearFieldError(document.getElementById("signup-confirm-password"));
-
-    // ✅ Validation email
-    if (!email.endsWith("@kazidomo.com")) {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "S'inscrire";
-      return showFieldError(document.getElementById("signup-email"), "Seuls les emails @kazidomo.com sont autorisés.");
-    } else {
-      showFieldSuccess(document.getElementById("signup-email"), "Email valide ✅");
-    }
-
-    // ✅ Validation mot de passe
-    if (password.length < 8) {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "S'inscrire";
-      return showFieldError(document.getElementById("signup-password"), "Mot de passe trop court.");
-    } else {
-      showFieldSuccess(document.getElementById("signup-password"), "Mot de passe correct ✅");
-    }
-
-    if (password !== confirm) {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "S'inscrire";
-      return showFieldError(document.getElementById("signup-confirm-password"), "Les mots de passe ne correspondent pas.");
-    } else {
-      showFieldSuccess(document.getElementById("signup-confirm-password"), "Confirmation correcte ✅");
-    }
-
-    // ✅ Création du compte avec rôle par défaut
-    const { data, error: signupError } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: { role: "requerant" }
-      }
-    });
-
-    submitBtn.disabled = false;
-    submitBtn.textContent = "S'inscrire";
-
-    if (signupError) {
-      return showMessage(`Erreur Supabase : ${signupError.message}`, true, null, ".registration.form");
-    }
-
-    // ✅ Récupérer le rôle et le stocker
-    const user = data.user;
-    const role = user?.user_metadata?.role || "user";
-    sessionStorage.setItem("role", role);
-
-    // ✅ Feedback visuel
-    showMessage(`Bienvenue chez Kazidomo 🎉 (Rôle : ${role})`, false, null, ".registration.form");
-
-    // ✅ Redirection vers confirmation ou dashboard
-    setTimeout(() => window.location.href = "confirmationpage.html", 1500);
-  });
-}
-
-
-// ---------------- Réinitialisation ----------------
-function initResetForm() {
-  const form = document.getElementById("reset-form");
-  if (!form) return;
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const submitBtn = form.querySelector("button[type=submit]");
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Envoi en cours...";
-
-    const email = form["reset-email"].value.trim();
-
-    if (!validateField(form["reset-email"], email, "Email requis")) {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Réinitialiser";
-      return;
-    }
-
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: "https://kazidomo.com/reset-confirmation.html"
-    });
-
-    submitBtn.disabled = false;
-    submitBtn.textContent = "Réinitialiser";
-
-    if (error) {
-      return showMessage(`Erreur : ${error.message}`, true, form["reset-email"], ".reset.form");
-    }
-
-    showFieldSuccess(form["reset-email"], "Email valide ✅");
-    showMessage(`Un lien a été envoyé à ${email}. ✅`, false, null, ".reset.form");
-  });
-}
-
 // ---------------- Utilitaires ----------------
-function validateField(input, value, errorMessage) {
-  if (!value) {
-    showFieldError(input, errorMessage);
-    return false;
-  }
-  return true;
+function toggleButton(btn, isLoading, loadingText, defaultText) {
+  btn.disabled = isLoading;
+  btn.textContent = isLoading ? loadingText : defaultText;
+}
+
+function clearMessages(scope = null) {
+  const container = scope ? document.querySelector(scope) : document.querySelector(".form");
+  if (!container) return;
+  container.querySelectorAll(".erreur, .success").forEach(msg => msg.remove());
+}
+
+function showMessage(html, isError = false, scope = null) {
+  clearMessages(scope);
+  const container = scope ? document.querySelector(scope) : document.querySelector(".form");
+  if (!container) return;
+  const messageDiv = document.createElement("div");
+  messageDiv.className = isError ? "erreur" : "success";
+  messageDiv.innerHTML = isError ? `❌ ${html}` : `✅ ${html}`;
+  container.insertBefore(messageDiv, container.querySelector("form").nextSibling);
 }
 
 function showFieldError(input, message) {
@@ -200,10 +42,6 @@ function showFieldError(input, message) {
   errorDiv.style.color = "#b30000";
   errorDiv.style.fontSize = "12px";
   errorDiv.style.marginTop = "4px";
-  errorDiv.style.display = "flex";
-  errorDiv.style.alignItems = "center";
-  errorDiv.style.gap = "6px";
-  errorDiv.style.animation = "fadeIn 0.3s ease";
   errorDiv.innerHTML = `❗ ${message}`;
   input.parentNode.insertBefore(errorDiv, input.nextSibling);
 }
@@ -216,10 +54,6 @@ function showFieldSuccess(input, message) {
   successDiv.style.color = "#006400";
   successDiv.style.fontSize = "12px";
   successDiv.style.marginTop = "4px";
-  successDiv.style.display = "flex";
-  successDiv.style.alignItems = "center";
-  successDiv.style.gap = "6px";
-  successDiv.style.animation = "fadeIn 0.3s ease";
   successDiv.innerHTML = `✅ ${message}`;
   input.parentNode.insertBefore(successDiv, input.nextSibling);
 }
@@ -229,69 +63,231 @@ function clearFieldError(input) {
   const msg = input.parentNode.querySelector(".message-erreur, .message-succes");
   if (msg) msg.remove();
 }
-function showMessage(html, isError = false, target = null, scope = null) {
-  const container = scope
-    ? document.querySelector(scope)
-    : target?.closest(".form") || document.querySelector(".form");
 
-  if (!container) return;
-  container.querySelectorAll(".erreur, .success").forEach(el => el.remove());
-
-  const messageDiv = document.createElement("div");
-  messageDiv.className = isError ? "erreur" : "success";
-  messageDiv.style.borderRadius = "6px";
-  messageDiv.style.padding = "12px";
-  messageDiv.style.margin = "12px 0";
-  messageDiv.style.fontSize = "14px";
-  messageDiv.style.display = "flex";
-  messageDiv.style.alignItems = "center";
-  messageDiv.style.gap = "8px";
-  messageDiv.style.animation = "fadeIn 0.3s ease";
-
-  if (isError) {
-    messageDiv.style.backgroundColor = "#ffe5e5";
-    messageDiv.style.border = "1px solid #ff4d4d";
-    messageDiv.style.color = "#b30000";
-    messageDiv.innerHTML = `<h3 style="margin:0;font-size:16px;font-weight:bold;">❌ Erreur</h3><p>${html}</p>`;
-  } else {
-    messageDiv.style.backgroundColor = "#e6ffed";
-    messageDiv.style.border = "1px solid #4CAF50";
-    messageDiv.style.color = "#006400";
-    messageDiv.innerHTML = `<h3 style="margin:0;font-size:16px;font-weight:bold;">✅ Succès</h3><p>${html}</p>`;
+function validateField(input, value, errorMessage) {
+  if (!value) {
+    showFieldError(input, errorMessage);
+    return false;
   }
+  return true;
+}
 
-  if (target) {
-    target.parentNode.insertBefore(messageDiv, target.nextSibling);
+function handleError(input, message, scope = null) {
+  if (input) {
+    showFieldError(input, message);
   } else {
-    container.insertBefore(messageDiv, container.querySelector("form").nextSibling);
+    showMessage(message, true, scope);
   }
 }
 
-// ---------------- Animation CSS ----------------
-const style = document.createElement("style");
-style.textContent = `
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
 
-  .champ-erreur {
-    border: 1px solid #ff4d4d !important;
-    background-color: #fff5f5;
-  }
 
-  .champ-succes {
-    border: 1px solid #4CAF50 !important;
-    background-color: #f5fff5;
-  }
 
-  .message-erreur, .message-succes {
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
 
-  .erreur, .success {
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-`;
-document.head.appendChild(style);
+// ---------------- Connexion ----------------
+async function initLoginForm() {
+  const form = document.getElementById("login-form");
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector("button[type=submit]");
+    toggleButton(submitBtn, true, "Connexion en cours...", "Se connecter");
+
+    const email = form.email.value.trim();
+    const password = form.password.value.trim();
+
+    clearFieldError(form.email);
+    clearFieldError(form.password);
+
+    // ✅ Validation des champs
+    if (!validateField(form.email, email, "Email requis") || 
+        !validateField(form.password, password, "Mot de passe requis")) {
+      toggleButton(submitBtn, false, "", "Se connecter");
+      return showMessage("Veuillez remplir tous les champs.", true, ".login.form");
+    }
+
+    try {
+      // ✅ Connexion Supabase
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      toggleButton(submitBtn, false, "", "Se connecter");
+
+      if (error) {
+        return handleError(form.password, "Identifiants invalides", ".login.form");
+      }
+
+      const user = data?.user;
+      if (!user) return showMessage("Erreur: utilisateur introuvable.", true, ".login.form");
+
+      // ✅ Récupérer le vrai profil depuis la table utilisateurs
+      const { data: profile, error: profileError } = await supabase
+        .from("utilisateurs")
+        .select("id, role, name, surname, email, domaine")
+        .eq("id", user.id)
+        .single();
+
+      if (profileError) {
+        console.error("Erreur récupération profil:", profileError);
+        return showMessage("Impossible de récupérer le profil.", true, ".login.form");
+      }
+
+      // ✅ Stocker les infos utiles en sessionStorage
+      sessionStorage.setItem("prenom", profile.name || "");
+      sessionStorage.setItem("nom", profile.surname || "");
+      sessionStorage.setItem("email", profile.email || "");
+      sessionStorage.setItem("domaine", profile.domaine || "");
+      sessionStorage.setItem("role", profile.role || "requerant");
+
+      // ✅ Feedback visuel
+      showFieldSuccess(form.email, "Email valide ✅");
+      showFieldSuccess(form.password, "Mot de passe correct ✅");
+      showMessage(`Connexion réussie ✅ (Rôle : ${profile.role})`, false, ".login.form");
+
+      // ✅ Redirection vers dashboard
+      setTimeout(() => window.location.replace("dashboard.html"), 1000);
+
+    } catch (err) {
+      toggleButton(submitBtn, false, "", "Se connecter");
+      console.error("Erreur réseau:", err);
+      showMessage("Erreur réseau. Réessayez plus tard.", true, ".login.form");
+    }
+  });
+}
+
+
+
+
+
+
+// ---------------- Inscription ----------------
+function initSignupForm() {
+  const form = document.getElementById("signup-form");
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector("button[type=submit]");
+    toggleButton(submitBtn, true, "Création en cours...", "S'inscrire");
+
+    const email = document.getElementById("signup-email").value.trim();
+    const password = document.getElementById("signup-password").value.trim();
+    const confirm = document.getElementById("signup-confirm-password").value.trim();
+
+    // Champs supplémentaires
+    const surname = document.getElementById("surname").value.trim();
+    const name = document.getElementById("name").value.trim();
+    const birthdate = document.getElementById("birthdate").value.trim();
+    const gender = document.getElementById("gender").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const line = document.getElementById("line").value.trim();
+    const quartier = document.getElementById("quartier").value.trim();
+    const city = document.getElementById("city").value.trim();
+    const country = document.getElementById("country").value.trim();
+    const username = document.getElementById("username").value.trim();
+    const domaine = document.getElementById("domaine").value.trim();
+
+    // ✅ Validation email
+    if (!email.endsWith("@kazidomo.com")) {
+      toggleButton(submitBtn, false, "", "S'inscrire");
+      return showFieldError(document.getElementById("signup-email"), "Seuls les emails @kazidomo.com sont autorisés.");
+    }
+
+    // ✅ Validation mot de passe
+    if (password.length < 8) {
+      toggleButton(submitBtn, false, "", "S'inscrire");
+      return showFieldError(document.getElementById("signup-password"), "Mot de passe trop court.");
+    }
+
+    if (password !== confirm) {
+      toggleButton(submitBtn, false, "", "S'inscrire");
+      return showFieldError(document.getElementById("signup-confirm-password"), "Les mots de passe ne correspondent pas.");
+    }
+
+    // ✅ Validation birthdate et phone
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(birthdate)) {
+      toggleButton(submitBtn, false, "", "S'inscrire");
+      return showFieldError(document.getElementById("birthdate"), "Format attendu: YYYY-MM-DD.");
+    }
+
+    if (!/^\d+$/.test(phone)) {
+      toggleButton(submitBtn, false, "", "S'inscrire");
+      return showFieldError(document.getElementById("phone"), "Le numéro doit contenir uniquement des chiffres.");
+    }
+
+    try {
+      const { error: signupError } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            surname,
+            name,
+            birthdate,
+            gender,
+            phone,
+            line,
+            quartier,
+            city,
+            country,
+            username,
+            domaine
+            // ❌ pas de role ici → Postgres applique DEFAULT 'requerant'
+          }
+        }
+      });
+
+      toggleButton(submitBtn, false, "", "S'inscrire");
+
+      if (signupError) {
+        console.error("Erreur Supabase Auth:", signupError);
+        return showMessage(`Erreur Supabase : ${signupError.message}`, true, ".registration.form");
+      }
+
+      sessionStorage.setItem("role", "requerant");
+      showMessage(`Bienvenue chez Kazidomo 🎉 (Rôle : requerant)`, false, ".registration.form");
+
+      setTimeout(() => window.location.replace("confirmationpage.html"), 1500);
+        } catch (err) {
+      toggleButton(submitBtn, false, "", "S'inscrire");
+      showMessage("Erreur réseau. Réessayez plus tard.", true, ".registration.form");
+    }
+  });
+}
+
+// ---------------- Réinitialisation ----------------
+function initResetForm() {
+  const form = document.getElementById("reset-form");
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector("button[type=submit]");
+    toggleButton(submitBtn, true, "Envoi en cours...", "Réinitialiser");
+
+    const email = form["reset-email"].value.trim();
+
+    if (!validateField(form["reset-email"], email, "Email requis")) {
+      toggleButton(submitBtn, false, "", "Réinitialiser");
+      return;
+    }
+
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: "https://kazidomo.com/reset-confirmation.html"
+      });
+
+      toggleButton(submitBtn, false, "", "Réinitialiser");
+
+      if (error) {
+        return showMessage(`Erreur : ${error.message}`, true, ".reset.form");
+      }
+
+      showFieldSuccess(form["reset-email"], "Email valide ✅");
+      showMessage(`Un lien a été envoyé à ${email}. ✅`, false, ".reset.form");
+    } catch (err) {
+      toggleButton(submitBtn, false, "", "Réinitialiser");
+      showMessage("Erreur réseau. Réessayez plus tard.", true, ".reset.form");
+    }
+  });
+}
 

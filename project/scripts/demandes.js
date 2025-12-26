@@ -1,6 +1,12 @@
+// Variables globales
 let toutesLesDemandes = [];
+let pageCourante = 1;
+const demandesParPage = 10;
+let critereTri = "date";
+let ordreTri = "desc";
 
-function afficherDemandes() {
+// 🔹 Charger les demandes
+async function afficherDemandes() {
   const panneau = document.getElementById("contenu-carte");
   if (!panneau) return;
 
@@ -8,38 +14,28 @@ function afficherDemandes() {
     <h3>📋 Demandes</h3>
     <div class="filtres-demandes">
       <label>Statut :</label>
-      <select id="filtre-statut">
+      <select id="filtre-statut" onchange="filtrerDemandes()">
         <option value="tous">Tous</option>
         <option value="en attente">En attente</option>
-        <option value="traitée">Traité</option>
-        <option value="rejetée">Rejetée</option>
+        <option value="traité">Traité</option>
+        <option value="rejeté">Rejeté</option>
       </select>
 
       <label>Catégorie :</label>
-      <select id="filtre-categorie">
-        <option value="toutes">Toutes</option>
-        <option value="plomberie">Plomberie</option>
-        <option value="électricité">Électricité</option>
-        <option value="nettoyage">Nettoyage</option>
-        <option value="menuiserie">Menuiserie</option>
-        <option value="informatique-et-technologie">Informatique</option>
-        <option value="santé">Santé</option>
-        <option value="construction-et-réparation">Construction et réparation</option>
-        <option value="manifestations-et-cérémonies">Manifestations et cérémonies</option>
-        <option value="mécanique">Mécanique</option>
-        <option value="formation">Formation</option>
-        <option value="mode">Mode</option>
-        <option value="beauté">Beauté</option>
-        <option value="hôtels-et-restaurants">Hôtels et restaurants</option>
-        <option value="animaux">Animaux</option>
-        <option value="agriculture">Agriculture</option>
-        <option value="immobilier">Immobilier</option>
-        <option value="autres-services">Autres services</option>
-      </select>
+      <input type="text" id="filtre-categorie" placeholder="Catégorie libre" oninput="filtrerDemandes()">
 
       <label>Recherche :</label>
-      <input type="text" id="recherche-demande" placeholder="Nom ou email">
-      <button class="btn" onclick="filtrerDemandes()">🔍 Filtrer</button>
+      <input type="text" id="recherche-demande" placeholder="Nom ou email" oninput="filtrerDemandes()">
+
+      <label>Tri :</label>
+      <select id="tri-demandes" onchange="changerTri()">
+        <option value="date-desc">Date ↓</option>
+        <option value="date-asc">Date ↑</option>
+        <option value="prix-desc">Prix ↓</option>
+        <option value="prix-asc">Prix ↑</option>
+        <option value="statut-asc">Statut A→Z</option>
+        <option value="statut-desc">Statut Z→A</option>
+      </select>
     </div>
 
     <div class="export-actions">
@@ -47,166 +43,276 @@ function afficherDemandes() {
       <button class="btn" onclick="exportDemandesPDF()">🧾 Exporter en PDF</button>
     </div>
 
-    <div class="loader">Chargement des demandes...</div>
+    <div class="loader">⏳ Chargement...</div>
   `;
 
-  client
-    .from("kazidomo_demandes_services")
-    .select("*")
-    .order("created_at", { ascending: false })
-    .then(({ data, error }) => {
-      document.querySelector(".loader")?.remove();
-      if (error || !data) {
-        panneau.innerHTML += "<p class='erreur'>Erreur de chargement des demandes.</p>";
-        return;
-      }
-      toutesLesDemandes = data;
-      afficherDemandesFiltrees();
-    });
+  try {
+    const { data, error } = await client
+      .from("kazidomo_demandes_services")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    document.querySelector(".loader")?.remove();
+
+    if (error) {
+      panneau.innerHTML += "<p class='erreur'>❌ Erreur de chargement.</p>";
+      console.error(error);
+      return;
+    }
+
+    if (!data || data.length === 0) {
+      panneau.innerHTML += "<p class='info'>ℹ️ Aucune demande trouvée.</p>";
+      return;
+    }
+
+    toutesLesDemandes = data;
+    pageCourante = 1;
+    afficherDemandesFiltrees();
+  } catch (err) {
+    document.querySelector(".loader")?.remove();
+    panneau.innerHTML += "<p class='erreur'>⚠️ Erreur inattendue.</p>";
+    console.error(err);
+  }
 }
 
+// 🔹 Changer critère de tri
+function changerTri() {
+  const valeur = document.getElementById("tri-demandes").value;
+  [critereTri, ordreTri] = valeur.split("-");
+  filtrerDemandes();
+}
+
+// 🔹 Filtrer les demandes
 function filtrerDemandes() {
+  pageCourante = 1;
   afficherDemandesFiltrees();
 }
 
-function afficherDemandesFiltrees() {
-  const statut = document.getElementById("filtre-statut")?.value || "tous";
-  const categorie = document.getElementById("filtre-categorie")?.value || "toutes";
-  const recherche = document.getElementById("recherche-demande")?.value.toLowerCase() || "";
+// 🔹 Appliquer tri
+function trierDemandes(demandes) {
+  return demandes.sort((a, b) => {
+    if (critereTri === "date") {
+      const dateA = new Date(a.created_at);
+      const dateB = new Date(b.created_at);
+      return ordreTri === "asc" ? dateA - dateB : dateB - dateA;
+    }
+    if (critereTri === "prix") {
+      const prixA = parseFloat(a.price) || 0;
+      const prixB = parseFloat(b.price) || 0;
+      return ordreTri === "asc" ? prixA - prixB : prixB - prixA;
+    }
+    if (critereTri === "statut") {
+      return ordreTri === "asc"
+        ? (a.statut || "").localeCompare(b.statut || "")
+        : (b.statut || "").localeCompare(a.statut || "");
+    }
+    return 0;
+  });
+}
 
-  const demandesFiltres = toutesLesDemandes.filter(d => {
-    const statutOK = statut === "tous" || d.statut === statut;
-    const categorieOK = categorie === "toutes" || d.category === categorie;
-    const rechercheOK =
-      !recherche ||
-      (d.name && d.name.toLowerCase().includes(recherche)) ||
-      (d.client_email && d.client_email.toLowerCase().includes(recherche));
+// 🔹 Afficher avec pagination + filtres + tri + actions
+function afficherDemandesFiltrees() {
+  const statut = (document.getElementById("filtre-statut")?.value || "tous").toLowerCase();
+  const categorie = (document.getElementById("filtre-categorie")?.value || "").toLowerCase();
+  const recherche = (document.getElementById("recherche-demande")?.value || "").toLowerCase();
+
+  let demandesFiltres = toutesLesDemandes.filter(d => {
+    const s = d.statut?.toLowerCase() || "";
+    const c = d.category?.toLowerCase() || "";
+    const n = d.name?.toLowerCase() || "";
+    const e = d.client_email?.toLowerCase() || "";
+
+    const statutOK = statut === "tous" || s === statut;
+    const categorieOK = !categorie || c.includes(categorie);
+    const rechercheOK = !recherche || n.includes(recherche) || e.includes(recherche);
+
     return statutOK && categorieOK && rechercheOK;
   });
 
+  demandesFiltres = trierDemandes(demandesFiltres);
+
+  // 🔹 Calcul des statistiques
   const stats = {
     total: demandesFiltres.length,
-    en_attente: demandesFiltres.filter(d => d.statut === "en attente").length,
-    traitée: demandesFiltres.filter(d => d.statut === "traitée").length,
-    rejetée: demandesFiltres.filter(d => d.statut === "rejetée").length
+    en_attente: demandesFiltres.filter(d => d.statut?.toLowerCase() === "en attente").length,
+    traitees: demandesFiltres.filter(d => d.statut?.toLowerCase() === "traité").length,
+    rejetees: demandesFiltres.filter(d => d.statut?.toLowerCase() === "rejeté").length,
+    supprimees: toutesLesDemandes.length - demandesFiltres.length
   };
 
+  // 🔹 Résumé HTML
   const resumeHTML = `
-    <div class="resume-stats">
-      <p><strong>Total :</strong> ${stats.total}</p>
-      <p><strong>En attente :</strong> ${stats.en_attente}</p>
-      <p><strong>Traitées :</strong> ${stats.traitée}</p>
-      <p><strong>Rejetées :</strong> ${stats.rejetée}</p>
-    </div>
+  <div class="resume-stats">
+  <p class="total"><strong>Total :</strong> <span>${stats.total}</span></p>
+  <p class="attente"><strong>En attente :</strong> <span>${stats.en_attente}</span></p>
+  <p class="traitees"><strong>Traitées :</strong> <span>${stats.traitees}</span></p>
+  <p class="rejetees"><strong>Rejetées :</strong> <span>${stats.rejetees}</span></p>
+  <p class="supprimees"><strong>Supprimées :</strong> <span>${stats.supprimees}</span></p>
+</div>
+
   `;
 
-  const listeHTML = demandesFiltres.map(d => `
-    <div class="demande-card">
-      <h3>🛠️ Service demandé</h3>
-      <p><strong>Nom :</strong> ${d.name || "—"}</p>
-      <p><strong>Email :</strong> <a href="mailto:${d.client_email}">${d.client_email || "—"}</a></p>
-      <p><strong>WhatsApp :</strong> <a href="https://wa.me/${d.client_whatsapp}" target="_blank">${d.client_whatsapp || "—"}</a></p>
-      <p><strong>Message :</strong> ${d.message || "—"}</p>
-      <p><strong>Catégorie :</strong> ${d.category || "—"}</p>
-      <p><strong>Service :</strong> ${d.service || "—"}</p>
-      <p><strong>Prix :</strong> ${d.price ? d.price + " $" : "Non spécifié"}</p>
-      <p><strong>Statut :</strong> <span class="statut-label">${d.statut || "—"}</span></p>
-      <p><strong>Localisation :</strong> <a href="${d.map_url}" target="_blank">Voir sur la carte</a></p>
-      <p><strong>Utilisateur ID :</strong> ${d.id || "—"}</p>
-      <div class="action-buttons">
-        <button class="btn btn-success" onclick="traiterDemande(${d.id})">✅ Marquer comme traité</button>
-        <button class="btn btn-warning" onclick="rejeterDemande(${d.id})">🚫 Rejeter</button>
-        <button class="btn btn-danger" onclick="supprimerDemande(${d.id})">🗑️ Supprimer</button>
-      </div>
-    </div>
+  // Pagination
+  const totalPages = Math.max(1, Math.ceil(demandesFiltres.length / demandesParPage));
+  const startIndex = (pageCourante - 1) * demandesParPage;
+  const endIndex = startIndex + demandesParPage;
+  const demandesPage = demandesFiltres.slice(startIndex, endIndex);
+
+  // Cartes avec actions
+  const listeHTML = demandesPage.map(d => `
+<div class="demande-card">
+  <h3>Demande</h3>
+  
+  <p><strong>Nom :</strong> ${d.name || "Pas de nom"}</p>
+  
+  <p><strong>Email :</strong> 
+    ${d.client_email 
+      ? `<a href="mailto:${d.client_email}">${d.client_email}</a>` 
+      : "Pas d'email"}
+  </p>
+  
+  <p><strong>WhatsApp :</strong> 
+    ${d.client_whatsapp 
+      ? `<a href="tel:${d.client_whatsapp}">${d.client_whatsapp}</a>` 
+      : "Pas de numéro"}
+  </p>
+  
+  <p><strong>Message :</strong> ${d.message || "Pas de message"}</p>
+  <p><strong>Catégorie :</strong> ${d.category || "Non spécifié"}</p>
+  <p><strong>Service :</strong> ${d.service || "Non spécifié"}</p>
+  <p><strong>Prix :</strong> ${d.price ? d.price + " $" : "Non spécifié"}</p>
+  <p><strong>Statut :</strong> 
+  <span class="statut ${d.statut?.toLowerCase() || 'inconnu'}">
+    ${d.statut || "Non spécifié"}
+  </span>
+</p>
+
+  
+  <p><strong>Localisation :</strong> 
+    ${d.map_url 
+      ? `<a href="${d.map_url}" target="_blank">📍 Voir la carte</a>` 
+      : "—"}
+  </p>
+  
+  <div class="action-buttons">
+    <button class="btn btn-success" onclick="changerStatut('${d.id}', 'traité')">✅ Traiter</button>
+    <button class="btn btn-warning" onclick="changerStatut('${d.id}', 'rejeté')">🚫 Rejeter</button>
+    <button class="btn btn-danger" onclick="supprimerDemande('${d.id}')">🗑️ Supprimer</button>
+  </div>
+</div>
+
   `).join("");
 
+  // Nettoyage ancien contenu
   document.querySelector(".resume-stats")?.remove();
   document.querySelector(".demandes-liste")?.remove();
+  document.querySelector(".pagination")?.remove();
 
+  // Injection résumé
   const resume = document.createElement("div");
   resume.className = "resume-stats";
   resume.innerHTML = resumeHTML;
+  document.querySelector(".export-actions")?.insertAdjacentElement("afterend", resume);
 
+  // Injection liste
   const container = document.createElement("div");
   container.className = "demandes-liste";
-  container.innerHTML = demandesFiltres.length > 0 ? listeHTML : `<p class="info">Aucune demande trouvée pour ces critères.</p>`;
+  container.innerHTML = demandesPage.length > 0 ? listeHTML : `<p class="info">ℹ️ Aucune demande trouvée.</p>`;
 
-  document.querySelector(".export-actions")?.insertAdjacentElement("afterend", resume);
+  // Injection pagination
+  const pagination = document.createElement("div");
+  pagination.className = "pagination";
+  pagination.innerHTML = `
+    <button class="btn" onclick="changerPage(${pageCourante - 1})" ${pageCourante <= 1 ? "disabled" : ""}>⬅️ Précédent</button>
+    <span>Page ${pageCourante} / ${totalPages}</span>
+    <button class="btn" onclick="changerPage(${pageCourante + 1})" ${pageCourante >= totalPages ? "disabled" : ""}>Suivant ➡️</button>
+  `;
+
   resume.insertAdjacentElement("afterend", container);
+  container.insertAdjacentElement("afterend", pagination);
+
+  console.log("Cartes affichées :", demandesPage.length);
 }
 
-function changerStatut(id, nouveauStatut) {
-  if (!nouveauStatut) return;
 
-  client
-    .from("kazidomo_demandes_services")
-    .update({ statut: nouveauStatut })
-    .eq("id", parseInt(id))
-    .select("id, statut")
-    .single()
-    .then(({ data, error }) => {
-      if (error) {
-        console.error("Erreur Supabase :", error);
-        alert("❌ Échec de la mise à jour : " + error.message);
-        return;
-      }
-
-      // Mise à jour locale
-      toutesLesDemandes = toutesLesDemandes.map(d =>
-        d.id === id ? { ...d, statut: nouveauStatut } : d
-      );
-
-      // Feedback visuel
-      alert("✅ Statut mis à jour : " + nouveauStatut);
-      afficherDemandesFiltrees();
-    });
+// 🔹 Changer de page
+function changerPage(nouvellePage) {
+  pageCourante = nouvellePage;
+  afficherDemandesFiltrees();
 }
 
-function supprimerDemande(id) {
+/// 🔹 Changer le statut
+async function changerStatut(id, nouveauStatut) {
+  try {
+    const { error } = await client
+      .from("kazidomo_demandes_services")
+      .update({ statut: nouveauStatut })
+      .eq("id", id);
+
+    if (error) {
+      alert("❌ Échec de la mise à jour : " + error.message);
+      return;
+    }
+
+    // Mettre à jour localement
+    toutesLesDemandes = toutesLesDemandes.map(d =>
+      d.id === id ? { ...d, statut: nouveauStatut } : d
+    );
+
+    alert("✅ Statut mis à jour : " + nouveauStatut);
+    afficherDemandesFiltrees();
+  } catch (err) {
+    alert("⚠️ Erreur inattendue.");
+    console.error(err);
+  }
+}
+
+// 🔹 Supprimer une demande
+async function supprimerDemande(id) {
   if (!confirm("❗ Supprimer cette demande ?")) return;
 
-  client
-    .from("kazidomo_demandes_services")
-    .delete()
-    .eq("id", parseInt(id))
-    .select("id")
-    .single()
-    .then(({ data, error }) => {
-      if (error) {
-        console.error("Erreur Supabase :", error);
-        alert("❌ Échec de la suppression : " + error.message);
-        return;
-      }
+  try {
+    const { error } = await client
+      .from("kazidomo_demandes_services")
+      .delete()
+      .eq("id", id);
 
-      toutesLesDemandes = toutesLesDemandes.filter(d => d.id !== id);
-      alert("🗑️ Demande supprimée !");
-      afficherDemandesFiltrees();
-    });
-}
-function traiterDemande(id) {
-  changerStatut(id, "traitée");
+    if (error) {
+      alert("❌ Échec de la suppression : " + error.message);
+      return;
+    }
+
+    // Supprimer localement
+    toutesLesDemandes = toutesLesDemandes.filter(d => d.id !== id);
+    alert("🗑️ Demande supprimée !");
+    afficherDemandesFiltrees();
+  } catch (err) {
+    alert("⚠️ Erreur inattendue.");
+    console.error(err);
+  }
 }
 
-function rejeterDemande(id) {
-  changerStatut(id, "rejetée");
-}
+// 🔹 Export CSV
 function exportDemandesCSV() {
-  const rows = Array.from(document.querySelectorAll(".demande-card")).map(card => {
-    const cells = Array.from(card.querySelectorAll("p")).map(p => {
-      const label = p.querySelector("strong")?.innerText || "";
-      const value = p.innerText.replace(label, "").trim();
-      return `"${value}"`;
-    });
-    return cells.join(",");
-  });
+  const rows = toutesLesDemandes.map(d => [
+    d.name || "—",
+    d.client_email || "—",
+    d.client_whatsapp || "—",
+    d.message || "—",
+    d.category || "—",
+    d.service || "—",
+    d.price ? d.price + " $" : "Non spécifié",
+    d.statut || "—",
+    d.map_url || "—",
+    d.id || "—"
+  ].map(val => `"${val}"`).join(","));
 
   const header = [
-    "Nom", "Email", "WhatsApp", "Adresse", "Message", "Catégorie", "Service",
+    "Nom", "Email", "WhatsApp", "Message", "Catégorie", "Service",
     "Prix", "Statut", "Localisation", "Utilisateur ID"
-  ].join(","
-  );;
-    const csvContent = [header, ...rows].join("\n");
+  ].join(",");
+
+  const csvContent = [header, ...rows].join("\n");
   const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
@@ -216,6 +322,7 @@ function exportDemandesCSV() {
   document.body.removeChild(link);
 }
 
+// 🔹 Export PDF
 function exportDemandesPDF() {
   const contenu = document.querySelector(".demandes-liste");
   const win = window.open("", "", "width=800,height=600");
@@ -229,8 +336,9 @@ function exportDemandesPDF() {
   `);
   win.document.write("</head><body>");
   win.document.write("<h2>📋 Export des demandes filtrées</h2>");
-  win.document.write(contenu.innerHTML);
+  win.document.write(contenu?.innerHTML || "<p>Aucune demande à exporter.</p>");
   win.document.write("</body></html>");
   win.document.close();
   win.print();
 }
+

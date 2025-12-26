@@ -27,9 +27,6 @@
   <link rel="stylesheet" href="styles/tablets.css">
   <link rel="stylesheet" href="styles/desktop.css">
   <link rel="stylesheet" href="styles/form-style.css" />
-
-  <!-- Supabase -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 
 <body>
@@ -45,20 +42,19 @@
     <div class="container">
       <!-- Login -->
       <div class="login form">
-        <!-- ✅ Logo Kazidomo -->
         <div class="form-logo">
-          <img src="images/logo-white.png" alt="Kazidomo Logo" class="logo" >
+          <img src="images/logo-white.png" alt="Kazidomo Logo" class="logo">
         </div>
         <h1>Login</h1>
         <form id="login-form">
-          <input type="email" id="email" placeholder="Enter your email" required>
-          <input type="password" id="password" placeholder="Enter your password" required>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
           <div>
             <span class="signup">
               <label for="check-reset">Mot de passe oublié ?</label>
             </span>
           </div>
-          <input type="submit" class="button" value="Connexion">
+          <button type="submit" class="button">Connexion</button>
         </form>
         <div class="signup">
           <span class="signup">Don't have an account?
@@ -69,15 +65,15 @@
 
       <!-- Réinitialisation du mot de passe -->
       <div class="reset form">
-        <!-- ✅ Logo Kazidomo -->
         <div class="form-logo">
           <img src="images/logo-white.png" alt="Kazidomo Logo" class="logo">
         </div>
         <form id="reset-form">
-          <h1>Reset new-password</h1>
-          <input type="password" id="new-password" placeholder="Nouveau mot de passe" required />
-          <input type="password" id="confirm-password" placeholder="Confirmer le mot de passe" required />
-          <input type="submit" class="button" value="Mettre à jour">
+          <h1>Réinitialiser le mot de passe</h1>
+          <input type="email" id="reset-email" name="reset-email" placeholder="Votre email" required />
+          <input type="password" id="new-password" name="new-password" placeholder="Nouveau mot de passe" required />
+          <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmer le mot de passe" required />
+          <button type="submit" class="button">Mettre à jour</button>
         </form>
         <span class="signup">
           <label for="check-reset">Retour à la connexion</label>
@@ -85,89 +81,89 @@
       </div>
 
       <!-- Création de compte -->
-      <div class="registration form">
-        <!-- ✅ Logo Kazidomo -->
-        <div class="form-logo">
-          <img src="images/logo-white.png" alt="Kazidomo Logo" class="logo">
-        </div>
-        <h1>Signup</h1>
-        <form id="signup-form">
-          <label for="surname">Votre Prénom :</label>
-          <input type="text" id="surname" required placeholder="Écrivez votre prénom">
+      <!-- Création de compte -->
+<div class="registration form">
+  <div class="form-logo">
+    <img src="images/logo-white.png" alt="Kazidomo Logo" class="logo">
+  </div>
+  <h1>Signup</h1>
+  <form id="signup-form">
+    <label for="surname">Votre Prénom :</label>
+    <input type="text" id="surname" name="surname" required placeholder="Écrivez votre prénom">
 
-          <label for="name">Votre Nom :</label>
-          <input type="text" id="name" required placeholder="Écrivez votre nom">
+    <label for="name">Votre Nom :</label>
+    <input type="text" id="name" name="name" required placeholder="Écrivez votre nom">
 
-          <label for="birthdate">Votre date de naissance :</label>
-          <input type="date" id="birthdate" name="birthdate" required>
+    <label for="birthdate">Votre date de naissance :</label>
+    <input type="date" id="birthdate" name="birthdate" required>
 
-          <label for="gender">Votre Genre :</label>
-          <select id="gender" required>
-            <option value="">Choisissez votre genre</option>
-            <option value="masculin">Masculin</option>
-            <option value="féminin">Féminin</option>
-            <option value="autre">Autre</option>
-          </select>
+    <label for="gender">Votre Genre :</label>
+    <select id="gender" name="gender" required>
+      <option value="">Choisissez votre genre</option>
+      <option value="masculin">Masculin</option>
+      <option value="féminin">Féminin</option>
+      <option value="autre">Autre</option>
+    </select>
 
-          <label for="phone">Votre Téléphone :</label>
-          <input type="text" id="phone" required placeholder="Écrivez votre téléphone">
+    <label for="phone">Votre Téléphone :</label>
+    <input type="text" id="phone" name="phone" required placeholder="Écrivez votre téléphone">
 
-          <label for="line">Votre Adresse :</label>
-          <input type="text" id="line" required placeholder="Rue et numéro">
+    <label for="line">Votre Adresse :</label>
+    <input type="text" id="line" name="line" required placeholder="Rue et numéro">
 
-          <label for="quartier">Votre Quartier :</label>
-          <input type="text" id="quartier" required placeholder="Écrivez votre quartier">
+    <label for="quartier">Votre Quartier :</label>
+    <input type="text" id="quartier" name="quartier" required placeholder="Écrivez votre quartier">
 
-          <label for="city">Votre Ville :</label>
-          <input type="text" id="city" required placeholder="Écrivez votre ville">
+    <label for="city">Votre Ville :</label>
+    <input type="text" id="city" name="city" required placeholder="Écrivez votre ville">
 
-          <label for="country">Votre Pays :</label>
-          <input type="text" id="country" required placeholder="Écrivez votre pays">
+    <label for="country">Votre Pays :</label>
+    <input type="text" id="country" name="country" required placeholder="Écrivez votre pays">
 
-          <label for="username">Votre Nom d'utilisateur :</label>
-          <input type="text" id="username" required placeholder="Écrivez votre nom d'utilisateur">
+    <label for="username">Votre Nom d'utilisateur :</label>
+    <input type="text" id="username" name="username" required placeholder="Écrivez votre nom d'utilisateur">
 
-          <!-- ✅ Select aligné avec enum domaine_type -->
-          <label for="domaine">Domaine de Service :</label>
-          <select id="domaine" name="domaine" required>
-            <option value="">Choisissez votre Domaine de Service</option>
-            <option value="agriculture">Agriculture</option>
-            <option value="animaux">Animaux</option>
-            <option value="autres-services">Autres services</option>
-            <option value="beauté">Beauté</option>
-            <option value="construction-et-réparation">Construction et réparation</option>
-            <option value="formation">Formation</option>
-            <option value="hôtels-et-restaurants">Hôtels et restaurants</option>
-            <option value="immobilier">Immobilier</option>
-            <option value="manifestations-et-cérémonies">Manifestations et cérémonies</option>
-            <option value="menuiserie">Menuiserie</option>
-            <option value="mode">Mode</option>
-            <option value="mécanique">Mécanique</option>
-            <option value="nettoyage">Nettoyage</option>
-            <option value="plomberie">Plomberie</option>
-            <option value="santé">Santé</option>
-            <option value="tout terrain">Tout terrain</option>
-            <option value="électricité">Électricité</option>
-          </select>
+    <label for="domaine">Domaine de Service :</label>
+    <select id="domaine" name="domaine" required>
+      <option value="">Choisissez votre Domaine de Service</option>
+      <option value="agriculture">Agriculture</option>
+      <option value="animaux">Animaux</option>
+      <option value="autres-services">Autres services</option>
+      <option value="beauté">Beauté</option>
+      <option value="construction-et-réparation">Construction et réparation</option>
+      <option value="formation">Formation</option>
+      <option value="hôtels-et-restaurants">Hôtels et restaurants</option>
+      <option value="immobilier">Immobilier</option>
+      <option value="manifestations-et-cérémonies">Manifestations et cérémonies</option>
+      <option value="menuiserie">Menuiserie</option>
+      <option value="mode">Mode</option>
+      <option value="mécanique">Mécanique</option>
+      <option value="nettoyage">Nettoyage</option>
+      <option value="plomberie">Plomberie</option>
+      <option value="santé">Santé</option>
+      <option value="tout terrain">Tout terrain</option>
+      <option value="électricité">Électricité</option>
+    </select>
 
-          <label for="signup-email">Votre Email :</label>
-          <input type="email" id="signup-email" required placeholder="Email @kazidomo.com">
+    <label for="signup-email">Votre Email :</label>
+    <input type="email" id="signup-email" name="signup-email" required placeholder="Email @kazidomo.com">
 
-          <label for="signup-password">Votre Mot de passe :</label>
-          <input type="password" id="signup-password" required placeholder="Créez un mot de passe">
+    <label for="signup-password">Votre Mot de passe :</label>
+    <input type="password" id="signup-password" name="signup-password" required placeholder="Créez un mot de passe">
 
-          <label for="signup-confirm-password">Confirmez le mot de passe :</label>
-          <input type="password" id="signup-confirm-password" required placeholder="Confirmez le mot de passe">
+    <label for="signup-confirm-password">Confirmez le mot de passe :</label>
+    <input type="password" id="signup-confirm-password" name="signup-confirm-password" required placeholder="Confirmez le mot de passe">
 
-          <input type="submit" class="button" value="Créer un compte">
-        </form>
+    <button type="submit" class="button">Créer un compte</button>
+  </form>
 
-        <div class="signup">
-          <span class="signup">Already have an account?
-            <label for="check-signup">Login</label>
-          </span>
-        </div>
-      </div>
+  <div class="signup">
+    <span class="signup">Already have an account?
+      <label for="check-signup">Login</label>
+    </span>
+  </div>
+</div>
+ </div>
     </div>
   </main>
 </body>

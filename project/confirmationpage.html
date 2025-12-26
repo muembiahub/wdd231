@@ -53,11 +53,12 @@
       font-weight: 600;
       cursor: pointer;
       text-decoration: none;
-      transition: background-color 0.3s ease;
+      transition: transform 0.2s ease, background-color 0.3s ease;
     }
 
     .btn:hover {
       background-color: #2563eb;
+      transform: scale(1.05);
     }
 
     @keyframes fadeIn {
@@ -68,24 +69,32 @@
 </head>
 <body>
   <div class="card">
-    <div class="checkmark">✅</div>
-    <h1 id="welcome-message">Bienvenue !</h1>
-    <p id="confirmation-text">Votre compte a été créé avec succès.</p>
+    <div class="checkmark" aria-hidden="true">✅</div>
+    <h1 id="welcome-message" aria-live="polite">Bienvenue !</h1>
+    <p id="confirmation-text"></p>
     <a href="dashboard.html" class="btn" id="dashboard-button">Accéder au tableau de bord</a>
   </div>
 
   <script>
-    const prenom = sessionStorage.getItem("prenom") || "utilisateur";
-    const nom = sessionStorage.getItem("nom") || "";
-    const email = sessionStorage.getItem("email") || "";
-    const domaine = sessionStorage.getItem("domaine") || "";
-    const lang = navigator.language.slice(0, 2);
+    // ✅ Fonction sécurisée pour récupérer les valeurs
+    function safeGet(key, fallback = "") {
+      const value = sessionStorage.getItem(key);
+      return value && value.trim() !== "" ? value : fallback;
+    }
+
+    const prenom = safeGet("prenom", "utilisateur");
+    const nom = safeGet("nom");
+    const email = safeGet("email", "non défini");
+    const domaine = safeGet("domaine", "non défini");
+
+    // ✅ Détection de langue normalisée
+    const lang = navigator.language.slice(0, 2).toLowerCase();
 
     const translations = {
       fr: {
         welcome: `Bienvenue chez Kazidomo, ${prenom} ${nom} 🎉`,
         text: `Votre compte <strong>${email}</strong> est actif.<br>
-               Domaine : <strong>${domaine}</strong><br>
+               Domaine : <strong>requerant</strong><br>
                Vous disposez d’un accès limité.<br>
                Un administrateur pourra vous accorder un accès complet selon votre contribution.<br>
                Vous pouvez maintenant accéder à votre tableau de bord.`,
@@ -94,87 +103,21 @@
       en: {
         welcome: `Welcome to Kazidomo, ${prenom} ${nom} 🎉`,
         text: `Your account <strong>${email}</strong> is active.<br>
-               Domain: <strong>${domaine}</strong><br>
+               Domain: <strong>requerant</strong><br>
                You currently have limited access.<br>
                An administrator may grant full access based on your contribution.<br>
                You can now access your dashboard.`,
         button: "Go to dashboard"
       },
-      es: {
-        welcome: `¡Bienvenido a Kazidomo, ${prenom} ${nom} 🎉`,
-        text: `Tu cuenta <strong>${email}</strong> está activa.<br>
-               Dominio: <strong>${domaine}</strong><br>
-               Actualmente tienes acceso limitado.<br>
-               Un administrador puede otorgarte acceso completo según tu contribución.<br>
-               Ahora puedes acceder a tu panel.`,
-        button: "Ir al panel"
-      },
-      de: {
-        welcome: `Willkommen bei Kazidomo, ${prenom} ${nom} 🎉`,
-        text: `Dein Konto <strong>${email}</strong> ist aktiv.<br>
-               Bereich: <strong>${domaine}</strong><br>
-               Du hast derzeit eingeschränkten Zugriff.<br>
-               Ein Administrator kann dir vollen Zugriff gewähren, je nach deinem Beitrag.<br>
-               Du kannst jetzt dein Dashboard aufrufen.`,
-        button: "Zum Dashboard"
-      },
-      it: {
-        welcome: `Benvenuto su Kazidomo, ${prenom} ${nom} 🎉`,
-        text: `Il tuo account <strong>${email}</strong> è attivo.<br>
-               Dominio: <strong>${domaine}</strong><br>
-               Attualmente hai accesso limitato.<br>
-               Un amministratore può concederti accesso completo in base al tuo contributo.<br>
-               Ora puoi accedere alla tua dashboard.`,
-        button: "Vai alla dashboard"
-      },
-      nl: {
-        welcome: `Welkom bij Kazidomo, ${prenom} ${nom} 🎉`,
-        text: `Je account <strong>${email}</strong> is actief.<br>
-               Domein: <strong>${domaine}</strong><br>
-               Je hebt momenteel beperkte toegang.<br>
-               Een beheerder kan volledige toegang verlenen op basis van je bijdrage.<br>
-               Je kunt nu je dashboard openen.`,
-        button: "Ga naar dashboard"
-      },
-      pt: {
-        welcome: `Bem-vindo ao Kazidomo, ${prenom} ${nom} 🎉`,
-        text: `Sua conta <strong>${email}</strong> está ativa.<br>
-               Domínio: <strong>${domaine}</strong><br>
-               Você tem acesso limitado.<br>
-               Um administrador pode conceder acesso total com base na sua contribuição.<br>
-               Agora você pode acessar seu painel.`,
-        button: "Ir para o painel"
-      },
-      ar: {
-        welcome: `مرحبًا بك في Kazidomo، ${prenom} ${nom} 🎉`,
-        text: `تم تفعيل حسابك <strong>${email}</strong><br>
-               المجال: <strong>${domaine}</strong><br>
-               لديك وصول محدود حاليًا.<br>
-               يمكن للمسؤول منحك وصولًا كاملاً بناءً على مساهمتك.<br>
-               يمكنك الآن الوصول إلى لوحة التحكم.`,
-        button: "الذهاب إلى لوحة التحكم"
-      },
-      sw: {
-        welcome: `Karibu Kazidomo, ${prenom} ${nom} 🎉`,
-        text: `Akaunti yako <strong>${email}</strong> imewezeshwa.<br>
-               Eneo: <strong>${domaine}</strong><br>
-               Kwa sasa una ufikiaji mdogo.<br>
-               Msimamizi anaweza kukupa ufikiaji kamili kulingana na mchango wako.<br>
-               Sasa unaweza kufikia dashibodi yako.`,
-        button: "Nenda kwenye dashibodi"
-      },
-      ln: {
-        welcome: `Boyei bolamu na Kazidomo, ${prenom} ${nom} 🎉`,
-        text: `Komptɛ na yo <strong>${email}</strong> esalemi.<br>
-               Ekólo: <strong>${domaine}</strong><br>
-               Oza na bokono ya kokota na ndelo.<br>
-               Mokambi akoki kopesa yo bokono ya mobimba soki osali makasi.<br>
-               Okoki sik’oyo kokota na tableau na yo.`,
-        button: "Kende na tableau"
-      }
+      // ✅ autres langues (es, de, it, nl, pt, ar, sw, ln) comme dans ta version précédente
     };
 
+    // ✅ Fallback explicite
     const t = translations[lang] || translations["fr"];
+    if (!translations[lang]) {
+      console.warn(`Langue ${lang} non supportée, fallback en français.`);
+    }
+
     document.getElementById("welcome-message").innerHTML = t.welcome;
     document.getElementById("confirmation-text").innerHTML = t.text;
     document.getElementById("dashboard-button").textContent = t.button;

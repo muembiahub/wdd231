@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // 🚀 Initialisation de l'interface
     afficherBadgeRole();
-    afficherCartes();
+    afficherMenu();
 
   } catch (err) {
     console.error("Erreur inattendue :", err);

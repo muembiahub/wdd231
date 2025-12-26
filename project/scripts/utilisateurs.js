@@ -49,8 +49,8 @@ async function afficherUtilisateurs() {
           <h4>👤 ${user.nom || user.email}</h4>
           <p><strong>Email :</strong> ${user.email}</p>
           <p><strong>Rôle :</strong> ${user.role}</p>
-          <p><strong>Nom :</strong> ${user.nom || "Non attribué"}</p>
-          <p><strong>Prénom :</strong> ${user.prenom || "Non attribué"}</p>
+          <p><strong>Prénom :</strong> ${user.surname || "Non attribué"}</p>
+          <p><strong> Nom :</strong> ${user.name || "Non attribué"}</p>
           <p><strong>Domaine :</strong> ${user.domaine || "Non attribué"}</p>
           <hr>` + `
           <p><strong>Utilisateur ID :</strong><a href="#"> ${user.id}</a></p>
