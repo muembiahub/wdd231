@@ -262,9 +262,9 @@ body {
 /* Responsive tablette */
 @media (max-width: 768px) {
   .header-bar {
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
-    gap: 10px;
+    gap: 5px;
   }
 
   .welcome-layout {
