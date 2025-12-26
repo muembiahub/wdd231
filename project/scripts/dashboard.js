@@ -128,7 +128,7 @@ function afficherMenu() {
     { titre: "Demandes", icon: "fa-solid fa-file-lines", action: afficherDemandes, roles: ["admin","superadmin"] },
     { titre: " Services", icon: "fa-solid fa-screwdriver-wrench", action: () => afficherContenu("Services","Module en cours..."), roles: ["admin","superadmin","prestataire"] },
     { titre: " Paramètres", icon: "fa-solid fa-gear", action: parametresCompte, roles: ["admin","superadmin","prestataire","requerant"] },
-    {titre : "Utilisateurs", icon: "fa-solide fa-id-badge", action: afficherUtilisateurs, roles:["admin", superadmin]},
+    {titre : "Utilisateurs", icon: "fa-solide fa-id-badge", action: afficherUtilisateurs, roles:["admin","superadmin"]} ,
     { titre: " Mon profil", icon: "fa-solid fa-id-badge", action: afficherProfil, roles: ["admin","superadmin","prestataire","requerant"] },
     { titre: "Statistiques", icon: "fa-solid fa-chart-pie", action: afficherGraphiquesEtStats, roles: ["admin","superadmin","prestataire"] },
     { titre: "Export", icon: "fa-solid fa-file-export", action: exporterDemandes, roles: ["admin","superadmin","prestataire"] },
