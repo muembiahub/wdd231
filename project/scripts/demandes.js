@@ -11,12 +11,13 @@ async function afficherDemandes() {
   if (!panneau) return;
 
   panneau.innerHTML = `
-    <h3>📋 Demandes</h3>
+    <h3><i class="fa-solid fa-thumbtack"></i> Demandes</h3>
     <div class="filtres-demandes">
       <label>Statut :</label>
       <select id="filtre-statut" onchange="filtrerDemandes()">
         <option value="tous">Tous</option>
         <option value="en attente">En attente</option>
+        <option value="en cours">En cours</option>
         <option value="traité">Traité</option>
         <option value="rejeté">Rejeté</option>
       </select>
@@ -137,6 +138,7 @@ function afficherDemandesFiltrees() {
     en_attente: demandesFiltres.filter(d => d.statut?.toLowerCase() === "en attente").length,
     traitees: demandesFiltres.filter(d => d.statut?.toLowerCase() === "traité").length,
     rejetees: demandesFiltres.filter(d => d.statut?.toLowerCase() === "rejeté").length,
+    en_cours: demandesFiltres.filter(d => d.statut?.toLowerCase() === "en cours").length,
     supprimees: toutesLesDemandes.length - demandesFiltres.length
   };
 
@@ -145,6 +147,7 @@ function afficherDemandesFiltrees() {
   <div class="resume-stats">
   <p class="total"><strong>Total :</strong> <span>${stats.total}</span></p>
   <p class="attente"><strong>En attente :</strong> <span>${stats.en_attente}</span></p>
+  <p class="cours"><strong>En cours :</strong> <span>${stats.en_cours || 0}</span></p>
   <p class="traitees"><strong>Traitées :</strong> <span>${stats.traitees}</span></p>
   <p class="rejetees"><strong>Rejetées :</strong> <span>${stats.rejetees}</span></p>
   <p class="supprimees"><strong>Supprimées :</strong> <span>${stats.supprimees}</span></p>
@@ -161,10 +164,7 @@ function afficherDemandesFiltrees() {
   // Cartes avec actions
   const listeHTML = demandesPage.map(d => `
 <div class="demande-card">
-  <h3>Demande</h3>
-  
-  <p><strong>Nom :</strong> ${d.name || "Pas de nom"}</p>
-  
+ <h3><i class="fa-solid fa-thumbtack"></i> Demande de ${d.name || "<em><u>Pas de nom</em></u>"}</h3>   
   <p><strong>Email :</strong> 
     ${d.client_email 
       ? `<a href="mailto:${d.client_email}">${d.client_email}</a>` 
@@ -177,10 +177,10 @@ function afficherDemandesFiltrees() {
       : "Pas de numéro"}
   </p>
   
-  <p><strong>Message :</strong> ${d.message || "Pas de message"}</p>
-  <p><strong>Catégorie :</strong> ${d.category || "Non spécifié"}</p>
-  <p><strong>Service :</strong> ${d.service || "Non spécifié"}</p>
-  <p><strong>Prix :</strong> ${d.price ? d.price + " $" : "Non spécifié"}</p>
+  <p><strong>Message :</strong> ${d.message || "<em><u>Pas de message </u></em>"}</p>
+  <p><strong>Catégorie :</strong> ${d.category || "<em><u>Non spécifié</u></em>"}</p>
+  <p><strong>Service :</strong> ${d.service || "<em><u>Non spécifié</em></u>"}</p>
+  <p><strong>Prix :</strong> ${d.price ? d.price + " $" : "<strong><em><u>Non spécifié</u></em></strong>"}</p>
   <p><strong>Statut :</strong> 
   <span class="statut ${d.statut?.toLowerCase() || 'inconnu'}">
     ${d.statut || "Non spécifié"}
@@ -188,14 +188,18 @@ function afficherDemandesFiltrees() {
 </p>
 
   
-  <p><strong>Localisation :</strong> 
-    ${d.map_url 
-      ? `<a href="${d.map_url}" target="_blank">📍 Voir la carte</a>` 
-      : "—"}
-  </p>
+ <p><strong>Localisation :</strong> 
+  ${d.map_url 
+    ? `<a href="${d.map_url}" target="_blank">📍 Voir la carte</a>` 
+    : `<em><strong><u>Localisation non fournie</u></strong></em>`}
+</p>
+
+
   
   <div class="action-buttons">
     <button class="btn btn-success" onclick="changerStatut('${d.id}', 'traité')">✅ Traiter</button>
+    <button class="btn btn-primary" onclick="changerStatut('${d.id}', 'en attente')">⏳ Mettre en attente</button>
+    <button class="btn btn-info" onclick="changerStatut('${d.id}', 'en cours')">🔄 En cours</button>
     <button class="btn btn-warning" onclick="changerStatut('${d.id}', 'rejeté')">🚫 Rejeter</button>
     <button class="btn btn-danger" onclick="supprimerDemande('${d.id}')">🗑️ Supprimer</button>
   </div>

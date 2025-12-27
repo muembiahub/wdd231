@@ -106,10 +106,11 @@ body {
 /* Contenu principal */
 #contenu-carte {
   margin-top: 20px;
-  display: flex; flex-direction: column;
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
   padding: 1.5rem;
-  background: #f9fafb;
+  background: #8cb0d3;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
@@ -117,9 +118,9 @@ body {
 /* Filtres */
 .filtres-demandes {
   display: flex; flex-wrap: wrap;
-  gap: 1rem; margin-bottom: 1.5rem;
+  gap: 1rem; margin-bottom: 1rem;
 }
-.filtres-demandes label { font-weight: 600; }
+.filtres-demandes label { font-weight: 400; }
 .filtres-demandes select,
 .filtres-demandes input {
   padding: 0.4rem 0.6rem;
@@ -153,13 +154,93 @@ body {
 .resume-stats .supprimees span { background: #6b7280; color: #fff; }
 
 /* Liste des demandes */
-.demandes-liste {
+.demandes-liste , #cartes-utilisateurs {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1.5rem;
 }
+.ajout-user-card {
+  background: #f3f4f6; /* gris clair élégant */
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ajout-user-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.ajout-user-card h3 {
+  margin-bottom: 1.2rem;
+  color: #1e3a8a;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Grille interne */
+.ajout-user-card form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.5rem;
+}
+
+/* Labels et inputs */
+.ajout-user-card label {
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.ajout-user-card input,
+.ajout-user-card select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ajout-user-card input:focus,
+.ajout-user-card select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37,99,235,0.2);
+  outline: none;
+}
+
+/* Bouton */
+.ajout-user-card .btn , .btn{
+  grid-column: span 2; /* bouton sur toute la largeur */
+  margin-top: 1rem;
+  background: linear-gradient(90deg, #2563eb, #1e40af);
+  color: white;
+  font-weight: 600;
+  padding: 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  
+  margin: 6px 8px 6px 0; /* espace autour des boutons */
+  padding: 6px 12px;
+  margin-top: 10px;
+  border-radius: 6px; 
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.ajout-user-card .btn:hover {
+  opacity: 0.9;
+}
+
 .demande-card, .profil-card {
-  background: #fff;
+  background: #a7c5d9;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
   padding: 1.2rem;
@@ -177,19 +258,15 @@ body {
   margin-bottom: 0.8rem;
 }
 
-/* Boutons */
-.btn {
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+
+/* Conteneur des boutons */
+.profil-card button {
+  margin-bottom: 8px; /* espace vertical entre les boutons */
+       /* chaque bouton sur une nouvelle ligne */
 }
-.btn:hover {
-  transform: scale(1.04);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
+.btn-primary { background: #3b82f6; color: #fff; }
+.btn-primary:hover { background: #2563eb; }
+
 .btn-success { background: #10b981; color: #fff; }
 .btn-success:hover { background: #059669; }
 .btn-warning { background: #f59e0b; color: #fff; }
@@ -214,6 +291,7 @@ body {
   padding: 0.6rem 1.2rem;
   border: none; border-radius: 8px;
   background: #3b82f6; color: #fff;
+  gap: 10px;
   cursor: pointer; font-size: 0.9rem;
   transition: background 0.2s, transform 0.1s;
 }
@@ -227,13 +305,15 @@ body {
   font-weight: 600;
   padding: 4px 8px;
   border-radius: 6px;
+  font-size: 0.95rem;
   color: #fff;
-  font-size: 0.85rem;
 }
 
+
 /* Couleurs selon statut */
-.statut.en\ attente { background: #f59e0b; } /* orange */
+.statut.attente { background: #f59e0b; } /* orange */
 .statut.traité      { background: #10b981; } /* vert */
+.statut.cours      { background: #d505ec; } /* bleu */
 .statut.rejeté      { background: #ef4444; } /* rouge */
 .statut.inconnu     { background: #6b7280; } /* gris */
 
@@ -252,9 +332,21 @@ body {
 
 .resume-stats .total span     { background: #2563eb; } /* bleu */
 .resume-stats .attente span   { background: #f59e0b; } /* orange */
+.resume-stats .cours span  { background: #f003c4; } /* bleu */
 .resume-stats .traitees span  { background: #10b981; } /* vert */
 .resume-stats .rejetees span  { background: #ef4444; } /* rouge */
+.resume-stats .supprimees span{ background: #0c0c0c; } /* gris */
 .resume-stats .supprimees span{ background: #6b7280; } /* gris */
+
+
+
+ /* Couleurs de boutons supplémentaires  utilisateur table */
+.btn-green { background-color: #16a34a; color: white; }
+.btn-blue { background-color: #2563eb; color: white; }
+.btn-gold { background-color: #f59e0b; color: white; }
+.btn-orange { background-color: #fb923c; color: white; }
+.btn-red { background-color: #dc2626; color: white; }
+.btn-purple { background-color: #9333ea; color: white; }
 
 
 
@@ -288,7 +380,7 @@ body {
   }
 
   .demandes-liste {
-    grid-template-columns: 1fr; /* ✅ une seule colonne */
+     grid-template-columns: repeat(auto-fit, minmax(150px, 3fr));
   }
 
   .demande-card {
@@ -306,42 +398,43 @@ body {
   }
 }
 
-/* Responsive mobile */
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .header-bar {
-    padding: 10px;
-    font-size: 0.9rem;
-  }
-
-  .menu-logo img,
-  .default-avatar {
-    width: 80px;
-    height: 80px;
-  }
-
-  .welcome-text h2 {
-    font-size: 1.2rem;
-  }
-
-  .welcome-text p {
-    font-size: 0.9rem;
-  }
-
-  .btn {
-    width: 100%; /* ✅ boutons pleine largeur */
+    flex-direction: row; /* empile les éléments */
+    align-items: center;
     text-align: center;
   }
+  .header-bar h1 {
+    font-size: 0.90rem;
+  }
+  .role-badge {
+    font-size: 0.75rem;
+    padding: 2px 4px;
+    margin-left: 40px;
 
-  .export-actions button {
-    width: 100%;
+    
   }
 
-  .resume-stats {
-    font-size: 0.85rem;
-    padding: 0.8rem;
+
+  .header-bar .menu-logo,
+  .header-bar .welcome-text,
+  .header-bar .export-actions {
+    margin-bottom: 10px;
   }
+
+  .header-bar .btn {
+    width: 100%; /* bouton pleine largeur sur mobile */
+  }
+}
 
   .demande-card h3 {
     font-size: 1rem;
   }
-}
+  .demande-card p {
+    font-size: 0.9 rem;
+  }
+  .demandes-liste {
+    grid-template-columns: 2fr; /* deux seule colonne */
+  }
+
+

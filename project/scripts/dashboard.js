@@ -29,13 +29,16 @@ function afficherBadgeRole() {
     user: "#6b7280"
   };
 
-  badge.textContent = role.charAt(0).toUpperCase() + role.slice(1);
+  // ✅ Utilisation des backticks et ${...}
+  badge.textContent = `Connecté : ${role.charAt(0).toUpperCase() + role.slice(1)}`;
+
   badge.style.backgroundColor = couleurs[role] || couleurs.user;
   badge.style.color = "#fff";
-  badge.style.padding = "6px 12px";
+  badge.style.padding = "3px 5px";
   badge.style.borderRadius = "8px";
   badge.style.fontWeight = "bold";
 }
+
 
 // 🔹 Affiche du contenu dans le panneau principal
 function afficherContenu(titre, contenu) {
@@ -125,10 +128,10 @@ function afficherMenu() {
       }, 
       roles: ["admin","superadmin","prestataire","requerant"] 
     },
-    { titre: "Demandes", icon: "fa-solid fa-file-lines", action: afficherDemandes, roles: ["admin","superadmin"] },
+    { titre: " Demandes", icon: "fa-solid fa-file-lines", action: afficherDemandes, roles: ["admin","superadmin"] },
     { titre: " Services", icon: "fa-solid fa-screwdriver-wrench", action: () => afficherContenu("Services","Module en cours..."), roles: ["admin","superadmin","prestataire"] },
     { titre: " Paramètres", icon: "fa-solid fa-gear", action: parametresCompte, roles: ["admin","superadmin","prestataire","requerant"] },
-    {titre : " Utilisateurs", icon: "fa-solide fa-users", action: afficherUtilisateurs, roles:["admin","superadmin"]} ,
+    { titre: " Utilisateurs", icon: "fa-solid fa-person", action: afficherUtilisateurs, roles:["admin","superadmin"]} ,
     { titre: " Mon profil", icon: "fa-solid fa-id-badge", action: afficherProfil, roles: ["admin","superadmin","prestataire","requerant"] },
     { titre: " Statistiques", icon: "fa-solid fa-chart-pie", action: afficherGraphiquesEtStats, roles: ["admin","superadmin","prestataire"] },
     { titre: " Export", icon: "fa-solid fa-file-export", action: exporterDemandes, roles: ["admin","superadmin","prestataire"] },

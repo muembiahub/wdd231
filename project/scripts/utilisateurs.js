@@ -5,6 +5,7 @@ async function afficherUtilisateurs() {
   const panneau = document.getElementById("contenu-carte");
   if (!panneau) return;
 
+  // En-tête
   panneau.innerHTML = "<h3>Gestion des utilisateurs</h3>";
 
   const domaines = [
@@ -14,7 +15,7 @@ async function afficherUtilisateurs() {
     "agriculture", "autres-services"
   ];
 
-  const rolesDisponibles = ["tous", "requerant", "admin","superadmin", "prestataire"];
+  const rolesDisponibles = ["tous", "requerant", "prestataire", "admin", "superadmin"];
   const filtreActuel = sessionStorage.getItem("filtre-role") || "tous";
 
   // 🔍 Filtre par rôle
@@ -38,40 +39,39 @@ async function afficherUtilisateurs() {
 
   const utilisateursFiltres = data.filter(user => filtreActuel === "tous" || user.role === filtreActuel);
 
-  let html = "";
+  // ➕ Sous-conteneur pour les cartes
+  let wrapper = `<div id="cartes-utilisateurs">`;
 
   if (utilisateursFiltres.length === 0) {
-    html += `<p class="info">Aucun utilisateur trouvé pour le rôle <strong>${filtreActuel}</strong>.</p>`;
+    wrapper += `<p class="info">Aucun utilisateur trouvé pour le rôle <strong>${filtreActuel}</strong>.</p>`;
   } else {
     utilisateursFiltres.forEach(user => {
-      html += `
-        <div class="profil-card" data-role="${user.role}">
-          <h4> ${user.surname.toUpperCase() || user.name.toUpperCase() || "Utilisateur"} ${user.name.toUpperCase()|| user.surname || "Inconnu"}</h4>
+      wrapper += `
+        <div class="profil-card role-${user.role}" data-role="${user.role}">
+          <h4>${(user.surname || "Utilisateur").toUpperCase()} ${(user.name || "Inconnu").toUpperCase()}</h4>
           <p><strong>Rôle :</strong> ${user.role.toUpperCase()}</p>
-          <p><strong>Email:</strong> <strong><a href="mailto:${user.email}">${user.email}</a></strong></p>
+          <p><strong>Email :</strong> ${user.email ? `<a href="mailto:${user.email}">${user.email}</a>` : "Non spécifié"}</p>
           <p><strong>Téléphone :</strong> ${user.phone || "Non spécifié"}</p>
-          <p><strong>Genre :</strong> ${user.gender|| "Non spécifiée"}</p>
+          <p><strong>Genre :</strong> ${user.gender || "Non spécifiée"}</p>
           <p><strong>Domaine :</strong> ${user.domaine || "Non attribué"}</p>
-          <hr>` + `
-          <p><strong>Utilisateur ID :</strong><a href="#"> ${user.id}</a></p>
+          <hr>
+          <p><strong>Utilisateur ID :</strong> ${user.id}</p>
           <p><strong>Créé le :</strong> ${new Date(user.created_at).toLocaleDateString()}</p>
-          <hr>` + `
+          <hr>
           <label><strong>Changer domaine :</strong></label>
           <select onchange="changerDomaine('${user.id}', this.value)">
             <option value="">-- Domaine --</option>
             ${domaines.map(d => `<option value="${d}" ${user.domaine === d ? "selected" : ""}>${d.replace(/-/g, " ")}</option>`).join("")}
           </select>
-          ${user.role === "user" ? `<button class="btn" onclick="promouvoir('${user.id}', 'moderateur')">🛡️ Promouvoir modérateur</button>` : ""}
-          ${user.role === "moderateur" ? `<button class="btn" onclick="promouvoir('${user.id}', 'user')">↩️ Rétrograder en user</button>` : ""}
-          ${user.role !== "admin" ? `<button class="btn" onclick="promouvoir('${user.id}', 'admin')">👑 Promouvoir admin</button>` : ""}
+          ${getBoutonsRole(user)}
         </div>
       `;
     });
   }
 
+
   // ➕ Formulaire d’ajout
-  html += `
-    <div class="profil-card">
+  wrapper += `
     <div class="ajout-user-card">
       <h3>➕ Ajouter un utilisateur</h3>
       <label>Email</label>
@@ -82,9 +82,10 @@ async function afficherUtilisateurs() {
       <input type="text" id="nouvel-prenom" placeholder="Prénom" required>
       <label>Rôle</label>
       <select id="nouvel-role">
-        <option value="user">user</option>
-        <option value="moderateur">moderateur</option>
-        <option value="admin">admin</option>
+        <option value="requerant">Requerant</option>
+        <option value="prestataire">Prestataire</option>
+        <option value="admin">Admin</option>
+        <option value="superadmin">Superadmin</option>
       </select>
       <label>Domaine</label>
       <select id="nouvel-domaine">
@@ -93,10 +94,33 @@ async function afficherUtilisateurs() {
       </select>
       <button class="btn" onclick="ajouterUtilisateur()">Créer</button>
     </div>
-    </div>
   `;
 
-  panneau.innerHTML += html;
+  panneau.innerHTML += wrapper;
+}
+
+  wrapper += `</div>`; // fermeture du sous-conteneur
+
+// 🔹 Boutons conditionnels selon rôle
+function getBoutonsRole(user) {
+  switch (user.role) {
+    case "requerant":
+      return `<button class="btn btn-green" onclick="promouvoir('${user.id}', 'prestataire')">🛡️ Promouvoir Prestataire</button>`;
+    case "prestataire":
+      return `
+        <button class="btn btn-blue" onclick="promouvoir('${user.id}', 'requerant')">↩️ Rétrograder en Requerant</button>
+        <button class="btn btn-gold" onclick="promouvoir('${user.id}', 'admin')">👑 Promouvoir Admin</button>
+      `;
+    case "admin":
+      return `
+        <button class="btn btn-orange" onclick="promouvoir('${user.id}', 'prestataire')">↩️ Rétrograder en Prestataire</button>
+        <button class="btn btn-red" onclick="promouvoir('${user.id}', 'superadmin')">👑 Promouvoir Superadmin</button>
+      `;
+    case "superadmin":
+      return `<button class="btn btn-purple" onclick="promouvoir('${user.id}', 'admin')">↩️ Rétrograder en Admin</button>`;
+    default:
+      return "";
+  }
 }
 
 function filtrerParRole() {
