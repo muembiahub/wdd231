@@ -24,7 +24,7 @@ function afficherProfil() {
 
         panneau.innerHTML = `
           <h3>👤 Mon profil</h3>
-          <p><strong>Nom :</strong> ${utilisateur.nom}</p>
+          <p><strong>Nom :</strong> ${utilisateur.surname} ${utilisateur.name}</p>
           <p><strong>Email :</strong> ${utilisateur.email}</p>
           <p><strong>Rôle :</strong> ${utilisateur.role}</p>
           <p><strong>Utilisateur ID :</strong> ${utilisateur.id}</p>

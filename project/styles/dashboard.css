@@ -104,6 +104,7 @@ body {
 }
 
 /* Contenu principal */
+
 #contenu-carte {
   margin-top: 20px;
   display: flex;
@@ -113,6 +114,14 @@ body {
   background: #8cb0d3;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Grille des cartes (demandes + utilisateurs) */
+ .demandes-liste, #cartes-utilisateurs { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* largeur minimale 280px */ 
+  gap: 20px; /* espace entre les cartes */ 
+  margin-top: 20px; 
 }
 
 /* Filtres */
@@ -153,12 +162,6 @@ body {
 .resume-stats .rejetees span { background: #ef4444; color: #fff; }
 .resume-stats .supprimees span { background: #6b7280; color: #fff; }
 
-/* Liste des demandes */
-.demandes-liste , #cartes-utilisateurs {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1.5rem;
-}
 .ajout-user-card {
   background: #f3f4f6; /* gris clair élégant */
   border: 1px solid #e5e7eb;
@@ -378,11 +381,6 @@ body {
     flex-direction: column;
     gap: 0.8rem;
   }
-
-  .demandes-liste {
-     grid-template-columns: repeat(auto-fit, minmax(150px, 3fr));
-  }
-
   .demande-card {
     max-width: 100%;
   }
@@ -426,15 +424,5 @@ body {
     width: 100%; /* bouton pleine largeur sur mobile */
   }
 }
-
-  .demande-card h3 {
-    font-size: 1rem;
-  }
-  .demande-card p {
-    font-size: 0.9 rem;
-  }
-  .demandes-liste {
-    grid-template-columns: 2fr; /* deux seule colonne */
-  }
 
 

@@ -99,7 +99,8 @@ async function afficherUtilisateurs() {
   panneau.innerHTML += wrapper;
 }
 
-  wrapper += `</div>`; // fermeture du sous-conteneur
+
+wrapper += `</div>`; // fermeture du sous-conteneur
 
 // 🔹 Boutons conditionnels selon rôle
 function getBoutonsRole(user) {

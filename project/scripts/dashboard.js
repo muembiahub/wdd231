@@ -29,16 +29,13 @@ function afficherBadgeRole() {
     user: "#6b7280"
   };
 
-  // ✅ Utilisation des backticks et ${...}
   badge.textContent = `Connecté : ${role.charAt(0).toUpperCase() + role.slice(1)}`;
-
   badge.style.backgroundColor = couleurs[role] || couleurs.user;
   badge.style.color = "#fff";
   badge.style.padding = "3px 5px";
   badge.style.borderRadius = "8px";
   badge.style.fontWeight = "bold";
 }
-
 
 // 🔹 Affiche du contenu dans le panneau principal
 function afficherContenu(titre, contenu) {
@@ -55,16 +52,24 @@ async function getUserRole(client, user) {
     .eq("id", user.id)
     .single();
 
-  if (!error && data) {
-    return data.role.toLowerCase();
-  }
-
-  if (user.app_metadata?.role) {
-    return user.app_metadata.role.toLowerCase();
-  } else if (user.user_metadata?.role) {
-    return user.user_metadata.role.toLowerCase();
-  }
+  if (!error && data) return data.role.toLowerCase();
+  if (user.app_metadata?.role) return user.app_metadata.role.toLowerCase();
+  if (user.user_metadata?.role) return user.user_metadata.role.toLowerCase();
   return "user";
+}
+
+// 🔹 Affiche une page d'accès refusé
+function afficherAccesRefuse(titre) {
+  afficherContenu(
+    "Accès refusé",
+    `
+      <div style="padding:1rem; text-align:center;">
+        <h2 style="color:#dc2626;">🚫 Accès refusé</h2>
+        <p>Vous n'avez pas les droits pour accéder à <strong>${titre}</strong>.</p>
+        <p>Veuillez contacter un administrateur si vous pensez qu'il s'agit d'une erreur.</p>
+      </div>
+    `
+  );
 }
 
 // 🔹 Fonction pour afficher le tableau de bord
@@ -117,36 +122,26 @@ function afficherMenu() {
   const role = (sessionStorage.getItem("role") || "user").toLowerCase();
 
   const menus = [
-    { 
-      titre: "Tableau de bord", 
-      icon: "fa-solid fa-house", 
-      action: async () => {
+    { titre: "Tableau de bord", icon: "fa-solid fa-house", action: async () => {
         const nomComplet = sessionStorage.getItem("nomComplet") || "Utilisateur";
         const role = (sessionStorage.getItem("role") || "user").toLowerCase();
         const email = sessionStorage.getItem("email") || "";
         afficherTableauDeBord(nomComplet, role, email);
-      }, 
-      roles: ["admin","superadmin","prestataire","requerant"] 
-    },
-    { titre: " Demandes", icon: "fa-solid fa-file-lines", action: afficherDemandes, roles: ["admin","superadmin"] },
-    { titre: " Services", icon: "fa-solid fa-screwdriver-wrench", action: () => afficherContenu("Services","Module en cours..."), roles: ["admin","superadmin","prestataire"] },
-    { titre: " Paramètres", icon: "fa-solid fa-gear", action: parametresCompte, roles: ["admin","superadmin","prestataire","requerant"] },
-    { titre: " Utilisateurs", icon: "fa-solid fa-person", action: afficherUtilisateurs, roles:["admin","superadmin"]} ,
-    { titre: " Mon profil", icon: "fa-solid fa-id-badge", action: afficherProfil, roles: ["admin","superadmin","prestataire","requerant"] },
-    { titre: " Statistiques", icon: "fa-solid fa-chart-pie", action: afficherGraphiquesEtStats, roles: ["admin","superadmin","prestataire"] },
-    { titre: " Export", icon: "fa-solid fa-file-export", action: exporterDemandes, roles: ["admin","superadmin","prestataire"] },
-    { titre: " Support", icon: "fa-solid fa-headset", action: () => afficherContenu("Support","Contactez-nous à <a href='mailto:contact@kazidomo.com'>contact@kazidomo.com</a>"), roles: ["admin","superadmin","prestataire","requerant"] },
-    { titre: " Aide", icon: "fa-solid fa-circle-question", action: () => afficherContenu("Aide","Consultez la FAQ."), roles: ["admin","superadmin","prestataire","requerant"] },
-    { 
-      titre: " Déconnexion", 
-      icon: "fa-solid fa-right-from-bracket", 
-      action: async () => { 
-        afficherContenu("Déconnexion","Redirection..."); 
+      }, roles: ["admin","superadmin","prestataire","requerant"] },
+    { titre: "Demandes", icon: "fa-solid fa-file-lines", action: afficherDemandes, roles: ["admin","superadmin"] },
+    { titre: "Services", icon: "fa-solid fa-screwdriver-wrench", action: afficherServices, roles: ["admin","superadmin","prestataire"] },
+    { titre: "Paramètres", icon: "fa-solid fa-gear", action: parametresCompte, roles: ["admin","superadmin","prestataire","requerant"] },
+    { titre: "Utilisateurs", icon: "fa-solid fa-user", action: afficherUtilisateurs, roles:["admin","superadmin"] },
+    { titre: "Mon profil", icon: "fa-solid fa-id-badge", action: afficherProfil, roles: ["admin","superadmin","prestataire","requerant"] },
+    { titre: "Statistiques", icon: "fa-solid fa-chart-pie", action: afficherGraphiquesEtStats, roles: ["admin","superadmin","prestataire"] },
+    { titre: "Export", icon: "fa-solid fa-file-export", action: exporterDemandes, roles: ["admin","superadmin","prestataire"] },
+    { titre: "Support", icon: "fa-solid fa-headset", action: () => afficherContenu("Support","Contactez-nous à <a href='mailto:contact@kazidomo.com'>contact@kazidomo.com</a>"), roles: ["admin","superadmin","prestataire","requerant"] },
+    { titre: "Aide", icon: "fa-solid fa-circle-question", action: () => afficherContenu("Aide","Consultez la FAQ."), roles: ["admin","superadmin","prestataire","requerant"] },
+    { titre: "Déconnexion", icon: "fa-solid fa-right-from-bracket", action: async () => { 
+        afficherContenu("Déconnexion","Redirection...");
         await client.auth.signOut();   
         window.location.href="login.html"; 
-      }, 
-      roles: ["admin","superadmin","prestataire","requerant"] 
-    },
+      }, roles: ["admin","superadmin","prestataire","requerant"] },
   ];
 
   menuItems.innerHTML = "";
@@ -154,17 +149,19 @@ function afficherMenu() {
   menus.forEach(menu => {
     const autorise = menu.roles.includes(role);
     const li = document.createElement("li");
-    li.className = autorise ? "" : "disabled";
-
-    li.innerHTML = `<i class="${menu.icon}"></i> ${menu.titre}`;
 
     if (autorise) {
+      li.innerHTML = `<i class="${menu.icon}"></i> ${menu.titre}`;
       li.addEventListener("click", async () => {
         document.querySelectorAll("#menu-items li").forEach(item => item.classList.remove("active"));
         li.classList.add("active");
         toggleMenu();
         await menu.action();
       });
+    } else {
+      li.className = "disabled";
+      li.innerHTML = `<i class="${menu.icon}"></i> ${menu.titre} <i class="fa-solid fa-lock"></i>`;
+      li.addEventListener("click", () => afficherAccesRefuse(menu.titre));
     }
 
     menuItems.appendChild(li);
@@ -173,6 +170,7 @@ function afficherMenu() {
 
 // 🔹 Initialisation au chargement
 window.onload = async () => {
+  // Gestion du bouton hamburger
   document.getElementById("hamburger-btn").addEventListener("click", toggleMenu);
   document.getElementById("menu-overlay").addEventListener("click", toggleMenu);
 
@@ -180,6 +178,7 @@ window.onload = async () => {
   let role = "user";
   let email = "";
 
+  // Récupération de l'utilisateur connecté via Supabase
   const { data: { user } } = await client.auth.getUser();
   if (user) {
     const surname = user.user_metadata?.surname || "";
@@ -189,12 +188,16 @@ window.onload = async () => {
     role = await getUserRole(client, user);
     email = user.email || "";
 
-    sessionStorage.set
-      // 🔹 Affiche le badge et le menu
+    // ✅ Stockage en session
+    sessionStorage.setItem("nomComplet", nomComplet);
+    sessionStorage.setItem("role", role);
+    sessionStorage.setItem("email", email);
+  }
+
+  // 🔹 Affiche le badge et le menu
   afficherBadgeRole();
   afficherMenu();
 
   // 🔹 Affiche directement le tableau de bord au chargement
   afficherTableauDeBord(nomComplet, role, email);
 };
-}
