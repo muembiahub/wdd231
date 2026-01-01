@@ -1,70 +1,64 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="Directory">
-  <meta property="og:description"
-    content="Kazidomo is a smart mobile application designed to enable anyone with a skill or trade—formal or informal—to offer their services in their neighborhood, city, or beyond.">
+  <meta property="og:description" content="Kazidomo is a smart mobile application designed to enable anyone with a skill or trade—formal or informal—to offer their services in their neighborhood, city, or beyond.">
   <meta property="og:url" content="https://muembiahub.github.io/wdd231/chamber">
   <meta property="og:site_name" content="Kazidomo">
-  <meta property="og:image" content="https://muembiahub.github.io/wdd231/chamber/images/facebook-tag.png" />
   <meta name="author" content="Jonathan M. Muembia">
-  <meta name="description"
-    content="Kazidomo is a smart mobile application designed to enable anyone with a skill or trade—formal or informal—to offer their services in their neighborhood, city, or beyond.">
+  <meta name="description" content="Kazidomo is a smart mobile application designed to enable anyone with a skill or trade—formal or informal—to offer their services in their neighborhood, city, or beyond.">
   <meta name="robots" content="index, follow">
   <meta name="application-name" content="Kazidomo">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="keywords">
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <meta name="keywords" content="Kazidomo, mobile application, service providers, geolocation, digital contracts, payment options, economic autonomy">
+
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-  <script src="scripts/function.js"></script>
-  <script src="./categories/scripts/catalogue.js" defer></script>
-  <title>Kazidomo Confiance Home Page </title>
   <link rel="stylesheet" href="styles/base.css">
   <link rel="stylesheet" href="styles/header.css">
   <link rel="stylesheet" href="styles/mobile.css">
   <link rel="stylesheet" href="styles/tablets.css">
   <link rel="stylesheet" href="styles/desktop.css">
 
+  <script src="scripts/function.js" defer></script>
+  <script src="./categories/scripts/catalogue.js" defer></script>
+  <script src="scripts/about.js" defer></script>
 
-
+  <title>Kazidomo Confiance Home Page</title>
 </head>
 
 <body>
   <header>
     <div id="header"></div>
-
   </header>
+
   <main>
-    <section class="showcase-area" id="showcase">
+    <h1 class="about-title">Kazidomo Confiance (RDC)</h1>
+
+  <!-- Main content -->
+  <main id="main-content">
+        <section class="showcase-area" id="showcase">
       <div class="showcase-container">
-        <h1 class="main-title" id="home">Kazidomo Confiance</h1>
         <p>Le lien entre savoir-faire authentique et confiance locale.</p>
-
-
         <button onclick="location.href='#annuaire'" class="buttonAnnuaire">Découvrir l’annuaire</button>
       </div>
     </section>
-    <h1 class="about-title">NOS CATÉGORIES</h1>
 
-    <div id="categoryHomepage" class="category">
-      <!-- Les cartes des catégories seront insérées ici par JavaScript -->
-    </div>
+    <section id="annuaire">
+      <h2 class="about-title">Nos catégories</h2>
+      <div id="categoryHomepage" class="category"></div>
+    </section>
   </main>
-  <!-- Ton contenu ici -->
 
-  <footer id="footer"> </footer>
-
-
+  <!-- Footer -->
+  <footer id="footer"></footer>
 
 </body>
-
 </html>

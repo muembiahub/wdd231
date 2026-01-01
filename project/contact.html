@@ -20,7 +20,6 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="keywords"
     content="Kazidomo, mobile application, service providers, geolocation, digital contracts, payment options, economic autonomy">
-  <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,15 +46,7 @@
 
   </header>
   <main>
-    <section class="showcase-area" id="showcase">
-      <div class="showcase-container">
-        <h1 class="main-title" id="home">Kazidomo Confiance</h1>
-        <p>Le lien entre savoir-faire authentique et confiance locale.</p>
-
-
-        <button onclick="location.href='#annuaire'" class="buttonAnnuaire">Découvrir l’annuaire</button>
-      </div>
-    </section>
+    
     <h1 class="about-title">CONTACTEZ-NOUS</h1>
     <!-- Inclure Font Awesome dans le <head> -->
 
@@ -82,16 +73,17 @@
       </label>
 
       <!-- Sujet -->
-      <label>
-        <i class="fas fa-comment-dots"></i>
-        <select name="subject" required>
-          <option value="">Choisissez un sujet</option>
-          <option value="collaboration">Collaboration</option>
-          <option value="support">Support technique</option>
-          <option value="formation">Formation / Guide</option>
-          <option value="autre">Autre</option>
-        </select>
-      </label>
+<label for="subject">
+  <i class="fas fa-comment-dots"></i> Sujet
+</label>
+<select id="subject" name="subject" required>
+  <option value="">Choisissez un sujet</option>
+  <option value="collaboration">Collaboration</option>
+  <option value="support">Support technique</option>
+  <option value="formation">Formation / Guide</option>
+  <option value="autre">Autre</option>
+</select>
+
 
       <!-- Type de visiteur -->
       <fieldset>
@@ -101,16 +93,18 @@
       </fieldset>
 
       <!-- Langue préférée -->
-      <label>
-        <i class="fas fa-language"></i>
-        <select name="lang" required>
-          <option value="">Langue préférée</option>
-          <option value="fr">🇫🇷 Français</option>
-          <option value="ln">🇱🇺 Lingala</option>
-          <option value="sw">🇨🇩 Swahili</option>
-          <option value="lu">🇨🇩 Tshiluba</option>
-        </select>
-      </label>
+     <!-- Langue préférée -->
+<label for="lang">
+  <i class="fas fa-language"></i> Langue préférée
+</label>
+<select id="lang" name="lang" required>
+  <option value="">Choisissez une langue</option>
+  <option value="fr">🇫🇷 Français</option>
+  <option value="ln">🇱🇺 Lingala</option>
+  <option value="sw">🇨🇩 Swahili</option>
+  <option value="lu">🇨🇩 Tshiluba</option>
+</select>
+
 
       <!-- Message -->
       <label>
