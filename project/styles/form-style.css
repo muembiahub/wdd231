@@ -15,6 +15,33 @@ body{
 
   
 }
+.champ-erreur {
+  border: 2px solid #b30000;
+  background-color: #ffe6e6;
+}
+
+.message-erreur {
+  font-family: Arial, sans-serif;
+}
+
+#confirmation-page {
+  position: fixed;        /* reste visible même si on scrolle */
+  top: 60%;               /* centré verticalement */
+  left: 50%;              /* centré horizontalement */
+  transform: translate(-50%, -50%);
+  background: #f0fff0;
+  border: 2px solid #28a745;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  text-align: center;
+  z-index: 1000;
+}
+
+.hidden {
+  display: none;
+}
+
 
 
 /* Conteneur du logo */
@@ -69,25 +96,29 @@ h1{
 /* Par défaut : login visible, autres cachés */
 .container .registration,
 .container .reset {
-  display: none;
+  display: none;  
 }
 
 /* Si check-signup est coché : afficher signup, cacher login et reset */
 #check-signup:checked ~ .container .registration {
   display: block;
+ 
 }
 #check-signup:checked ~ .container .login,
 #check-signup:checked ~ .container .reset {
   display: none;
+  
 }
 
 /* Si check-reset est coché : afficher reset, cacher login et signup */
 #check-reset:checked ~ .container .reset {
   display: block;
+ 
 }
 #check-reset:checked ~ .container .login,
 #check-reset:checked ~ .container .registration {
   display: none;
+
 }
 
 /* Cacher les cases à cocher */
