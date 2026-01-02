@@ -29,7 +29,6 @@
 
   <script src="scripts/function.js" defer></script>
   <script src="./categories/scripts/catalogue.js" defer></script>
-  <script src="scripts/about.js" defer></script>
 
   <title>Kazidomo Confiance Home Page</title>
 </head>
@@ -40,12 +39,14 @@
   </header>
 
   <main>
-    <h1 class="about-title">Kazidomo Confiance (RDC)</h1>
+   
 
   <!-- Main content -->
   <main id="main-content">
         <section class="showcase-area" id="showcase">
+           
       <div class="showcase-container">
+        <h1 class="about-title">Kazidomo Confiance (RDC)</h1>
         <p>Le lien entre savoir-faire authentique et confiance locale.</p>
         <button onclick="location.href='#annuaire'" class="buttonAnnuaire">Découvrir l’annuaire</button>
       </div>
@@ -59,6 +60,31 @@
 
   <!-- Footer -->
   <footer id="footer"></footer>
+   <button id="kazidomo-chat-btn" aria-label="Ouvrir le chat Kazidomo">
+    <img src="https://files.bpcontent.cloud/2025/12/31/09/20251231093525-LJRFKVVW.png" alt="Kazidomo Assistant">
+  </button>
+  <script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var CONFIG_URL = "https://files.bpcontent.cloud/2025/12/30/13/20251230131849-AY45NXSY.json";
+
+      window.botpressWebChat.init({
+        configUrl: CONFIG_URL,
+        hostUrl: "https://cdn.botpress.cloud/webchat/v0", // 👉 force le CSS à venir du CDN Botpress
+        botName: "Kazidomo Assistant",
+        theme: "light",
+        language: "fr",
+        showCloseButton: true,
+        showConversationsButton: true,
+        layout: { position: "bottom-right" },
+        hideWidget: true // caché au départ
+      });
+
+      document.getElementById("kazidomo-chat-btn").onclick = function () {
+        window.botpressWebChat.sendEvent({ type: "toggle" });
+      };
+    });
+  </script>
 
 </body>
 </html>
