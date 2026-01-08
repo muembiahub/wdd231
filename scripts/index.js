@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const header = document.querySelector(header);
+  header.style.bacgroudcolor = 'blue'
   const menuButton = document.getElementById('menu-button');
   const navList = document.querySelector('.nav-list');
   menuButton.addEventListener('click', () => {
