@@ -467,19 +467,16 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
     <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem;">
       <p><i class="fa-solid fa-bolt" style="color:#FFD700; margin-right:8px;"></i>
-        <a href="https://kazidomo.com/muembiahub.html" target="_blank" style="color:#2196F3; text-decoration:none; font-weight:600;">Muembia Hub</a>
+        Propulsé par  <a href=" https://kazidomo.com/muembiahub.html" target="_blank" style="color:#2196F3; text-decoration:none; font-weight:600;">Muembia Hub</a>
       </p>
       <p><i class="fa-solid fa-globe" style="color:#4CAF50; margin-right:8px;"></i>Designed by Kazidomo</p>
       <p><i class="fa-solid fa-shield-halved" style="color:#E91E63; margin-right:8px;"></i>Tous droits réservés</p>
     </div>
     <button id="kazidomo-chat-btn" aria-label="Ouvrir le chat Kazidomo" style="
-      background:#CBDAE7;
-      color:blue;
-      border:none;
+      color:blue; background-color: white;
       padding:5px 10px;
       font-size:15px;
       font-weight:bold;
-      border-radius:80px;
       cursor:pointer;
       display:flex;
       justify-content:center;

@@ -6,15 +6,7 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-body{
-  min-height: 300vh;
-  width: 100%;
-  background: #009579;
-  display: flex;
-  justify-content: center;
 
-  
-}
 .champ-erreur {
   border: 2px solid #b30000;
   background-color: #ffe6e6;
