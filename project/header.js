@@ -467,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
     <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem;">
       <p><i class="fa-solid fa-bolt" style="color:#FFD700; margin-right:8px;"></i>
-        Propulsé par  <a href=" https://kazidomo.com/muembiahub/muembiahub.html" target="_blank" style="color:#2196F3; text-decoration:none; font-weight:600;">Muembia Hub</a>
+        Propulsé par  <a href=" https://kazidomo.com/muembiahub/home-page.html" target="_blank" style="color:#2196F3; text-decoration:none; font-weight:600;">Muembia Hub</a>
       </p>
       <p><i class="fa-solid fa-globe" style="color:#4CAF50; margin-right:8px;"></i>Designed by Kazidomo</p>
       <p><i class="fa-solid fa-shield-halved" style="color:#E91E63; margin-right:8px;"></i>Tous droits réservés</p>
