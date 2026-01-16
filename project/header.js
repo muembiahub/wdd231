@@ -151,10 +151,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== MENU ITEMS - TOUS IDENTIQUES ✅ =====
     const menuItems = [
       { text: 'Accueil', href: 'https://kazidomo.com/', icon: 'fa-solid fa-house', color: '#4CAF50' },
-      { text: 'Services', href: 'https://kazidomo.com/services.html', icon: 'fa-solid fa-screwdriver-wrench', color: '#FF9800' },
+      { text: 'Services', href: '#https://kazidomo.com/services.html', icon: 'fa-solid fa-screwdriver-wrench', color: '#FF9800' },
       { text: 'Contact', href: 'https://kazidomo.com/contact.html', icon: 'fa-solid fa-phone', color: '#2196F3' },
       { text: 'À propos', href: 'https://kazidomo.com/about.html', icon: 'fa-solid fa-circle-info', color: '#9C27B0' },
-      { text: 'Blog', href: 'https://kazidomo.com/blog.html', icon: 'fa-solid fa-blog', color: '#E91E63' },
+      { text: 'Blog', href: '#https://kazidomo.com/blog.html', icon: 'fa-solid fa-blog', color: '#E91E63' },
       { text: 'Recherche', type: 'search', icon: 'fa-solid fa-magnifying-glass', color: '#666' }
     ];
 
@@ -444,16 +444,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ===== FOOTER =====
-  const footer = document.createElement('footer');
+  // Création du footer
+  const footer = document.createElement("footer");
+
   Object.assign(footer.style, {
-    textAlign: 'center',
-    width: '100%',
-    padding: '2rem 1rem',
-    background: 'linear-gradient(135deg, #1F4CAD 0%, #0e4a8e 100%)',
-    color: 'white',
-    fontSize: '15px',
-    boxShadow: '0 -4px 16px rgba(0,0,0,0.1)',
-    marginTop: '3rem'
+    textAlign: "center",
+    width: "100%",
+    padding: "2rem 1rem",
+    background: "linear-gradient(135deg, #1F4CAD 0%, #0e4a8e 100%)",
+    color: "white",
+    fontSize: "15px",
+    boxShadow: "0 -4px 16px rgba(0,0,0,0.1)",
+    marginTop: "3rem",
   });
 
   footer.innerHTML = `
@@ -470,6 +472,52 @@ document.addEventListener('DOMContentLoaded', () => {
       <p><i class="fa-solid fa-globe" style="color:#4CAF50; margin-right:8px;"></i>Designed by Kazidomo</p>
       <p><i class="fa-solid fa-shield-halved" style="color:#E91E63; margin-right:8px;"></i>Tous droits réservés</p>
     </div>
+    <button id="kazidomo-chat-btn" aria-label="Ouvrir le chat Kazidomo" style="
+      background:#CBDAE7;
+      color:blue;
+      border:none;
+      padding:5px 10px;
+      font-size:15px;
+      font-weight:bold;
+      border-radius:80px;
+      cursor:pointer;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:8px;
+    ">
+      <i class="fa-solid fa-comments"></i> Besoin d'aide ?
+    </button>
   `;
+
   document.body.appendChild(footer);
+
+  // Injection du script Botpress
+  const chantbot = document.createElement("script");
+  chantbot.src = "https://cdn.botpress.cloud/webchat/v0/inject.js";
+  chantbot.onload = function () {
+    var CONFIG_URL = "https://files.bpcontent.cloud/2025/12/30/13/20251230131849-AY45NXSY.json";
+
+    // Initialisation du chat Botpress
+    window.botpressWebChat.init({
+      configUrl: CONFIG_URL,
+      hostUrl: "https://cdn.botpress.cloud/webchat/v0",
+      botName: "Kazidomo Assistant",
+      theme: "light",
+      language: "fr",
+      enableReset: true,
+      showUserNameInput: true,
+      showCloseButton: true,
+      showConversationsButton: true,
+      layout: { position: "bottom-right" },
+      hideWidget: true, // caché au départ
+    });
+
+    // Toggle du chat au clic sur le bouton
+    document.getElementById("kazidomo-chat-btn").onclick = function () {
+      window.botpressWebChat.sendEvent({ type: "toggle" });
+    };
+  };
+
+  document.body.appendChild(chantbot);
 });

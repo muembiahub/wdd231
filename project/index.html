@@ -55,33 +55,5 @@
 
   <!-- Footer -->
   <footer></footer>
-   <button id="kazidomo-chat-btn" aria-label="Ouvrir le chat Kazidomo">
-    <i class="fa-solid fa-comments"></i> Besoin d'aide ?
-  </button>
-  <script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var CONFIG_URL = "https://files.bpcontent.cloud/2025/12/30/13/20251230131849-AY45NXSY.json";
-
-      window.botpressWebChat.init({
-        configUrl: CONFIG_URL,
-        hostUrl: "https://cdn.botpress.cloud/webchat/v0", // 👉 force le CSS à venir du CDN Botpress
-        botName: "Kazidomo Assistant",
-        theme: "light",
-        language: "fr",
-        enableReset: true,
-        showUserNameInput: true,
-        showCloseButton: true,
-        showConversationsButton: true,
-        layout: { position: "bottom-right" },
-        hideWidget: true // caché au départ
-      });
-
-      document.getElementById("kazidomo-chat-btn").onclick = function () {
-        window.botpressWebChat.sendEvent({ type: "toggle" });
-      };
-    });
-  </script>
-
 </body>
 </html>
