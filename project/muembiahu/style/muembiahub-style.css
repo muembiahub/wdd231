@@ -1,0 +1,71 @@
+/* ===== Reset de base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== Navigation ===== */
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 10px 10px;
+  gap: 15px;
+  border-radius: 8px;
+}
+
+.navigation li {
+  margin: 0 10px;
+
+}
+
+.navigation li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 50px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+}
+
+/* Effet au survol */
+.navigation li a:hover {
+  background-color: #0e0b0b;
+  color: #fff;
+}
+
+
+.navigation li a span {
+  visibility: hidden;   /* caché */
+  opacity: 0;           /* transparent */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  position: absolute;
+  top: 50%;             /* centré verticalement */
+  left: 100%;           /* placé à droite du lien */
+  transform: translateY(-50%) translateX(10px); /* petit décalage vers la droite */
+  background: #0e0b0b;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 0.9em;
+  z-index: 10;
+}
+
+/* Span visible au hover */
+.navigation li a:hover span {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(-50%) translateX(0); /* revient en place avec effet fondu */
+}
+
+
+/* ===== Classe utilitaire ===== */
+.hidden {
+  display: none;
+}
+
