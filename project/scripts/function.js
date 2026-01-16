@@ -1,33 +1,4 @@
-// function pour injecter Header sur toutes les pages sur Kazidomo.com
 
-function injectHeader(targetId = 'header', filename = 'header.html', maxDepth = 5) {
-  function tryPath(depth) {
-    const prefix = '../'.repeat(depth);
-    const path = `${prefix}${filename}`;
-    fetch(path)
-      .then(response => {
-        if (!response.ok) throw new Error('Not found');
-        return response.text();
-      })
-      .then(html => {
-        const target = document.getElementById(targetId);
-        if (target) {
-          target.innerHTML = html;
-        } else {
-          console.warn(`Élément #${targetId} introuvable pour injecter le header.`);
-        }
-      })
-      .catch(() => {
-        if (depth < maxDepth) {
-          tryPath(depth + 1);
-        } else {
-          console.error(`Échec du chargement de ${filename} après ${maxDepth} tentatives.`);
-        }
-      });
-  }
-
-  tryPath(0);
-}
 
 
 
@@ -65,7 +36,7 @@ function injectTitle(prefix = "Kazidomo Confiance") {
     if (pageTitleElement) {
       pageTitleElement.textContent = `${prefix} - ${pageName} page`;
     } else {
-      console.info("injectTitle: Aucun élément #pageTitle trouvé.");
+      console.info("injectTitle: Aucun élément du page titre trouvé.");
     }
   } catch (error) {
     console.error("injectTitle: Erreur lors de l’injection du titre", error);
@@ -95,130 +66,170 @@ function generateImageName(title) {
     .replace(/[^\w-]/g, "") + ".webp";
 }
 
-// === Barre de recherche limitée à la page ===
-function injectElegantSearchBar(pageName) {
-  const excludedPages = ["login", "contact", "about", "dashboard", "register","confirmationpage"];
+// Ajout d'une animation bounce pour le badge
+const style = document.createElement("style");
+style.textContent = `
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-15px);}
+    60% {transform: translateY(-8px);}
+  }
+  .bounce {
+    animation: bounce 1s;
+  }
+`;
+document.head.appendChild(style);
 
-  // Si la page est dans la liste noire, ne pas injecter la barre
-  if (excludedPages.includes(pageName)) return;
+// Fonction réutilisable
+function createOrUpdateBanner(targetSelector, bannerId, messageHTML, buttonText, buttonAction) {
+  // Vérifie si le banner existe déjà
+  let banner = document.getElementById(bannerId);
 
-  if (document.getElementById(`search-${pageName}`)) return;
+  if (!banner) {
+    banner = document.createElement("div");
+    banner.id = bannerId;
+    banner.style.background = "#f0f8ff";
+    banner.style.padding = "20px";
+    banner.style.textAlign = "center";
+    banner.style.fontSize = "18px";
+    banner.style.color = "#333";
+    banner.style.borderRadius = "10px";
+    banner.style.margin = "10px 0";
+    banner.style.boxShadow = "0 4px 10px rgba(0,0,0,0.1)";
+    banner.style.transition = "opacity 1s ease-in-out";
+    banner.style.opacity = "0";
+    banner.style.position = "relative"; // nécessaire pour la croix ✖
 
-
-
-
-  const container = document.createElement("div");
-  container.id = `search-${pageName}`;
-  container.className = "elegant-search-bar";
-  container.style.cssText = `
-    padding: 1em;
-    margin-top: 1em; 
-    background: linear-gradient(to right, #e0f7fa, #f1f8e9);
-    border-bottom: 1px solid #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  `;
-
-  const icon = document.createElement("span");
-  icon.innerHTML = " <i class='fas fa-search'></i> ";
-  icon.style.cssText = `
-    font-size: 1em;
-    color: #00796b;
-  `;
-
-  const input = document.createElement("input");
-  input.type = "text";
-  input.placeholder = `Rechercher dans ${pageName}...`;
-  input.style.cssText = `
-    flex: 1;
-    max-width: 300px;
-    padding: 0.6em 1em;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    background: #fff;
-    transition: box-shadow 0.3s ease;
-  `;
-  input.onfocus = () => input.style.boxShadow = "0 0 6px #00796b";
-  input.onblur = () => input.style.boxShadow = "none";
-
-  const clearBtn = document.createElement("button");
-  clearBtn.textContent = "✖";
-  clearBtn.title = "Effacer";
-  clearBtn.style.cssText = `
-    background: none;
-    border: none;
-    font-size: 1.2em;
-  `;
-
-  const message = document.createElement("div");
-  message.textContent = "Aucun résultat trouvé.";
-  message.style.cssText = `
-    margin-top: 0.5em;
-    text-align: center;
-    color: #c62828;
-    font-size: 0.9em;
-    display: none;
-  `;
-
-  container.appendChild(icon);
-  container.appendChild(input);
-  container.appendChild(clearBtn);
-
-  const header = document.querySelector("header");
-  if (header) {
-    header.insertAdjacentElement("afterend", container);
-  } else {
-    document.body.insertBefore(container, document.body.firstChild);
+    const target = document.querySelector(targetSelector);
+    if (target) target.appendChild(banner);
   }
 
-  container.insertAdjacentElement("afterend", message);
+  // Nettoyage du contenu
+  banner.innerHTML = "";
 
-  input.addEventListener("input", () => {
-    const query = input.value.toLowerCase();
-    const targets = document.querySelectorAll(`[data-page="${pageName}"]`);
-    let found = false;
+  // Croix de fermeture
+  const closeBtn = document.createElement("span");
+  closeBtn.textContent = "✖";
+  closeBtn.style.position = "absolute";
+  closeBtn.style.top = "10px";
+  closeBtn.style.right = "20px";
+  closeBtn.style.cursor = "pointer";
+  closeBtn.style.fontSize = "18px";
+  closeBtn.style.color = "#0078d7";
+  closeBtn.title = "Fermer le banner";
+  closeBtn.onclick = () => {
+    banner.style.display = "none";
+  };
+  banner.appendChild(closeBtn);
 
-    targets.forEach(el => {
-      const text = el.textContent.toLowerCase();
-      const match = text.includes(query);
-      el.style.display = match ? "" : "none";
-      el.style.backgroundColor = match ? "#c8e6c9" : "";
-      if (match) found = true;
-    });
+  // Message principal (HTML accepté)
+  const bannerMessage = document.createElement("div");
+  bannerMessage.innerHTML = messageHTML;
+  bannerMessage.style.fontWeight = "bold";
+  banner.appendChild(bannerMessage);
 
-    message.style.display = query && !found ? "block" : "none";
-  });
+  // Bouton CTA
+  if (buttonText) {
+    const ctaButton = document.createElement("button");
+    ctaButton.textContent = buttonText;
+    ctaButton.style.background = "#0078d7";
+    ctaButton.style.color = "#fff";
+    ctaButton.style.border = "none";
+    ctaButton.style.padding = "10px 20px";
+    ctaButton.style.fontSize = "16px";
+    ctaButton.style.fontWeight = "bold";
+    ctaButton.style.borderRadius = "8px";
+    ctaButton.style.cursor = "pointer";
+    ctaButton.style.marginTop = "10px";
 
-  clearBtn.addEventListener("click", () => {
-    input.value = "";
-    resetHighlights();
-    message.style.display = "none";
-  });
+    ctaButton.onmouseover = () => (ctaButton.style.background = "#005a9e");
+    ctaButton.onmouseout = () => (ctaButton.style.background = "#0078d7");
 
-  function resetHighlights() {
-    document.querySelectorAll(`[data-page="${pageName}"]`).forEach(el => {
-      el.style.display = "";
-      el.style.backgroundColor = "";
-    });
+    if (buttonAction) ctaButton.onclick = buttonAction;
+
+    banner.appendChild(ctaButton);
   }
-}
-//  === Supprime la barre de recherche si un formulaire est détecté ===
-function removeSearchBarOnForm(pageName) {
-  const observer = new MutationObserver(() => {
-    const form = document.querySelector("form");
-    const searchBar = document.getElementById(`search-${pageName}`);
-    if (form && searchBar) {
-      searchBar.remove();
-      observer.disconnect();
-    }
-  });
 
-  observer.observe(document.body, { childList: true, subtree: true });
+  // --- Compteur de visites uniques ---
+  const VISIT_INTERVAL = 30 * 60 * 1000; // 30 min
+  let visits = localStorage.getItem("visits");
+  let lastVisit = localStorage.getItem("lastVisit");
+
+  visits = visits ? parseInt(visits, 10) : 0;
+  const now = Date.now();
+
+  let isNewVisit = false;
+  if (!lastVisit || (now - parseInt(lastVisit, 10)) > VISIT_INTERVAL) {
+    visits++;
+    localStorage.setItem("visits", visits);
+    localStorage.setItem("lastVisit", now);
+    isNewVisit = true;
+  }
+
+  const lastVisitDate = new Date(parseInt(localStorage.getItem("lastVisit"), 10))
+    .toLocaleString("fr-FR", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+
+  // Container compteur
+  const visitContainer = document.createElement("div");
+  visitContainer.style.display = "flex";
+  visitContainer.style.alignItems = "center";
+  visitContainer.style.justifyContent = "center";
+  visitContainer.style.marginTop = "10px";
+
+  // Badge
+  const badge = document.createElement("span");
+  badge.textContent = visits;
+  badge.style.background = "#0078d7";
+  badge.style.color = "#fff";
+  badge.style.borderRadius = "50%";
+  badge.style.padding = "8px 14px";
+  badge.style.fontWeight = "bold";
+  badge.style.marginRight = "10px";
+  badge.style.boxShadow = "0 2px 6px rgba(0,0,0,0.2)";
+
+  // Animation bounce si nouvelle visite
+  if (isNewVisit) {
+    badge.classList.add("bounce");
+    setTimeout(() => badge.classList.remove("bounce"), 1000);
+  }
+
+  // Texte
+  const visitText = document.createElement("span");
+  visitText.textContent = `Visites uniques — Dernière : ${lastVisitDate}`;
+  visitText.style.color = "#333";
+  visitText.style.fontSize = "14px";
+
+  visitContainer.appendChild(badge);
+  visitContainer.appendChild(visitText);
+  banner.appendChild(visitContainer);
+
+  // Fade-in
+  setTimeout(() => {
+    banner.style.opacity = "1";
+  }, 100);
 }
+
+// Exemple d’utilisation
+createOrUpdateBanner(
+  "header",                 // endroit cible
+  "kazidomoBannerHeader",   // id unique
+  `<h1>Bienvenue chez Kazidomo Confiance!</h1>
+   <p>Nous offrons des services de confiance et de qualité.</p>
+   <p>Découvrez nos services de confiance et de qualité.</p>`, // message HTML
+  "Découvrir maintenant",   // texte bouton
+  () => window.location.href = "https://kazidomo-confiance.example.com" // action bouton
+);
+
+
+
+
 
 // === 4. Génération HTML d’une carte pour les pages hors accueil ===
 function createCard(item, pageName) {
@@ -416,19 +427,7 @@ function injectCardsForPage() {
         const wrapper = document.createElement("div");
         wrapper.innerHTML = cardHTML;
         const card = wrapper.firstElementChild;
-
-        card.style.opacity = "1";
-        card.style.transform = "translateY(20px)";
-        card.style.filter = "blur(4px)";
-        card.style.transition = "opacity 0.1s ease, transform 0.1s ease, filter 0.1s ease";
-
         container.appendChild(card);
-
-        setTimeout(() => {
-          card.style.opacity = "1";
-          card.style.transform = "translateY(0)";
-          card.style.filter = "blur(0)";
-        }, index * 1050);
       });
     })
     .catch(error => {
@@ -687,65 +686,5 @@ function showConfirmationBanner() {
       banner.scrollIntoView({ behavior: "smooth", block: "center" });
     }, 1000);
   }, 10);
-
-  const audioPath = "/project/media/sound-bip-alert-190038.mp3";
-  fetch(audioPath, { method: "HEAD" })
-    .then((res) => {
-      if (res.ok && document.hasFocus()) {
-        const audio = new Audio(audioPath);
-        audio.volume = 0.7;
-        audio.play().catch((err) => {
-          console.warn("Audio bloqué :", err);
-        });
-      } else {
-        console.warn("Fichier audio introuvable ou interaction manquante.");
-      }
-    })
-    .catch((err) => {
-      console.warn("Erreur de chargement audio :", err);
-    });
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function pour injecter footer sur toutes les pages sur Kazidomo.com
-function injectFooter(targetId = 'footer', filename = 'footer.html', maxDepth = 5) {
-  function tryPath(depth) {
-    const prefix = '../'.repeat(depth);
-    const path = `${prefix}${filename}`;
-    fetch(path)
-      .then(response => {
-        if (!response.ok) throw new Error('Not found');
-        return response.text();
-      })
-      .then(html => {
-        const target = document.getElementById(targetId);
-        if (target) {
-          target.innerHTML = html;
-        } else {
-          console.warn(`Élément #${targetId} introuvable pour injecter le footer.`);
-        }
-      })
-      .catch(() => {
-        if (depth < maxDepth) {
-          tryPath(depth + 1);
-        } else {
-          console.error(`Échec du chargement de ${filename} après ${maxDepth} tentatives.`);
-        }
-      });
-  }
-
-  tryPath(0);
 
 }

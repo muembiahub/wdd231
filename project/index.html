@@ -26,15 +26,18 @@
   <link rel="stylesheet" href="styles/mobile.css">
   <link rel="stylesheet" href="styles/tablets.css">
   <link rel="stylesheet" href="styles/desktop.css">
-
+   
+  <script src="header.js" defer></script>
   <script src="scripts/function.js" defer></script>
   <script src="./categories/scripts/catalogue.js" defer></script>
+  
 
   <title>Kazidomo Confiance Home Page</title>
 </head>
 
 <body>
   <header>
+    <div id="top-bar"></div>
     <div id="header"></div>
   </header>
 
@@ -43,15 +46,7 @@
 
   <!-- Main content -->
   <main id="main-content">
-        <section class="showcase-area" id="showcase">
-           
-      <div class="showcase-container">
-        <h1 class="about-title">Kazidomo Confiance (RDC)</h1>
-        <p>Le lien entre savoir-faire authentique et confiance locale.</p>
-        <button onclick="location.href='#annuaire'" class="buttonAnnuaire">Découvrir l’annuaire</button>
-      </div>
-    </section>
-
+        
     <section id="annuaire">
       <h2 class="about-title">Nos catégories</h2>
       <div id="categoryHomepage" class="category"></div>
@@ -59,9 +54,9 @@
   </main>
 
   <!-- Footer -->
-  <footer id="footer"></footer>
+  <footer></footer>
    <button id="kazidomo-chat-btn" aria-label="Ouvrir le chat Kazidomo">
-    <img src="https://files.bpcontent.cloud/2025/12/31/09/20251231093525-LJRFKVVW.png" alt="Kazidomo Assistant">
+    <i class="fa-solid fa-comments"></i> Besoin d'aide ?
   </button>
   <script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>
   <script>
@@ -74,6 +69,8 @@
         botName: "Kazidomo Assistant",
         theme: "light",
         language: "fr",
+        enableReset: true,
+        showUserNameInput: true,
         showCloseButton: true,
         showConversationsButton: true,
         layout: { position: "bottom-right" },

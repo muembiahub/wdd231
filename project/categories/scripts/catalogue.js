@@ -4,10 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   injectTitle();
   injectFavicon();
-  injectHeader();
-
+  
   injectCardsForPage();
-  injectFooter();
   injectElegantSearchBar(pageName);
   removeSearchBarOnForm(pageName);
   
