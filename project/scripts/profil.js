@@ -18,7 +18,8 @@ function afficherProfil() {
       .single()
       .then(({ data: utilisateur, error }) => {
         if (error || !utilisateur) {
-          panneau.innerHTML = "<p class='erreur'>Erreur de chargement du profil.</p>";
+          panneau.innerHTML =
+            "<p class='erreur'>Erreur de chargement du profil.</p>";
           return;
         }
 
@@ -34,7 +35,7 @@ function afficherProfil() {
       });
   });
 }
-// 
+//
 function parametresCompte() {
   const panneau = document.getElementById("contenu-carte");
   if (panneau) {

@@ -60,8 +60,8 @@
     "category": "Désinfection dépôt",
     "description": "Désinfection du dépôt — traitement contre moisissures et nuisibles.",
     "price": "150"
-  }
-  ,{
+  },
+  {
     "category": "Désinfection commerce",
     "description": "Désinfection du commerce — hygiène optimale pour espaces commerciaux.",
     "price": "120"
@@ -72,14 +72,13 @@
     "price": "200"
   },
   {
-  "category": "Décagement de poubelles",
-  "description": "Service mensuel de nettoyage et désengorgement des zones de dépôt de déchets pour un environnement sain.",
-  "price": "20"
-}
-  ,{
+    "category": "Décagement de poubelles",
+    "description": "Service mensuel de nettoyage et désengorgement des zones de dépôt de déchets pour un environnement sain.",
+    "price": "20"
+  },
+  {
     "category": "Nettoyage de graffitis",
     "description": "Élimination professionnelle des graffitis sur diverses surfaces pour restaurer l'apparence originale.",
     "price": "15"
   }
-
 ]

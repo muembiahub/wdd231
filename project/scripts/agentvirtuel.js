@@ -39,16 +39,20 @@ document.addEventListener("DOMContentLoaded", function () {
   document.head.appendChild(style);
 
   // Initialiser Botpress WebChat
-  if (window.botpressWebChat && typeof window.botpressWebChat.init === "function") {
+  if (
+    window.botpressWebChat &&
+    typeof window.botpressWebChat.init === "function"
+  ) {
     window.botpressWebChat.init({
-      configUrl: "https://files.bpcontent.cloud/2025/12/30/13/20251230131849-AY45NXSY.json", // 👉 ton fichier JSON
+      configUrl:
+        "https://files.bpcontent.cloud/2025/12/30/13/20251230131849-AY45NXSY.json", // 👉 ton fichier JSON
       botName: "Kazidomo Assistant",
       theme: "light",
       language: "fr",
       showCloseButton: true,
       showConversationsButton: true,
       layout: { position: "bottom-right" },
-      hideWidget: true // 👉 caché au départ
+      hideWidget: true, // 👉 caché au départ
     });
 
     // Attacher l’événement au bouton flottant

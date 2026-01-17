@@ -11,7 +11,11 @@
   { "country": "Chad", "dial_code": "+235", "iso": "td" },
   { "country": "Comoros", "dial_code": "+269", "iso": "km" },
   { "country": "Congo", "dial_code": "+242", "iso": "cg" },
-  { "country": "Democratic Republic of the Congo", "dial_code": "+243", "iso": "cd" },
+  {
+    "country": "Democratic Republic of the Congo",
+    "dial_code": "+243",
+    "iso": "cd"
+  },
   { "country": "Djibouti", "dial_code": "+253", "iso": "dj" },
   { "country": "Egypt", "dial_code": "+20", "iso": "eg" },
   { "country": "Equatorial Guinea", "dial_code": "+240", "iso": "gq" },

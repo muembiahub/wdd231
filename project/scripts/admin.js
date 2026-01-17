@@ -2,14 +2,13 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 
 const client = createClient(
   "https://eumdndwnxjqdolbpcyrp.supabase.co",
-  "sb_publishable_PRp1AmuEtEsGhWnZktlK0Q_uJmipcrO"
+  "sb_publishable_PRp1AmuEtEsGhWnZktlK0Q_uJmipcrO",
 );
 
 document.addEventListener("DOMContentLoaded", () => {
   updateStatDemandesRecues();
   updateCategoryChart();
   chargerCategories();
-
 
   const statCard = document.getElementById("stat-demandes-recues");
   statCard?.addEventListener("click", () => {
@@ -25,9 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function switchView(viewId) {
-  document.querySelectorAll(".dashboard-view").forEach((view) =>
-    view.classList.remove("active")
-  );
+  document
+    .querySelectorAll(".dashboard-view")
+    .forEach((view) => view.classList.remove("active"));
   const targetView = document.getElementById(viewId);
   if (targetView) targetView.classList.add("active");
 }
@@ -55,7 +54,9 @@ async function updateStatDemandesRecues() {
   startOfWeek.setDate(now.getDate() - now.getDay());
   startOfWeek.setHours(0, 0, 0, 0);
 
-  const thisWeekCount = data.filter((d) => new Date(d.created_at) >= startOfWeek).length;
+  const thisWeekCount = data.filter(
+    (d) => new Date(d.created_at) >= startOfWeek,
+  ).length;
   changeEl.textContent = `+${thisWeekCount} cette semaine`;
 }
 
@@ -82,11 +83,20 @@ async function updateCategoryChart() {
     type: "doughnut",
     data: {
       labels,
-      datasets: [{
-        data: values,
-        backgroundColor: ["#8b5cf6", "#10b981", "#f59e0b", "#ef4444", "#3b82f6", "#ec4899"],
-        borderWidth: 0,
-      }],
+      datasets: [
+        {
+          data: values,
+          backgroundColor: [
+            "#8b5cf6",
+            "#10b981",
+            "#f59e0b",
+            "#ef4444",
+            "#3b82f6",
+            "#ec4899",
+          ],
+          borderWidth: 0,
+        },
+      ],
     },
     options: {
       responsive: true,
@@ -151,7 +161,9 @@ async function afficherToutesLesDemandes(categorie = "") {
     return;
   }
 
-  container.innerHTML = filtered.map((d) => `
+  container.innerHTML = filtered
+    .map(
+      (d) => `
     <div class="demande-card">
       <h3>${d.name}</h3>
       <p><strong>Email :</strong> <a href="mailto:${d.client_email}">${d.client_email}</a></p>
@@ -163,9 +175,11 @@ async function afficherToutesLesDemandes(categorie = "") {
       <p><strong>Map URL :</strong> <a href="${d.map_url}" target="_blank">Voir la localisation</a></p>
       <p><strong>Message :</strong> ${d.message}</p>
       <p><strong>Date :</strong> ${new Date(d.created_at).toLocaleDateString()}</p>
-<p><strong>Heure :</strong> ${new Date(d.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+<p><strong>Heure :</strong> ${new Date(d.created_at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</p>
     </div>
-  `).join("");
+  `,
+    )
+    .join("");
 }
 
 // 👥 Gestion des utilisateurs
@@ -184,7 +198,9 @@ async function afficherUtilisateurs() {
     return;
   }
 
-  container.innerHTML = data.map((u) => `
+  container.innerHTML = data
+    .map(
+      (u) => `
     <div class="demande-card">
       <h3>${u.prenom} ${u.nom}</h3>
       <p><strong>Username :</strong> ${u.username}</p>
@@ -202,11 +218,15 @@ async function afficherUtilisateurs() {
         <button onclick="supprimerUtilisateur('${u.id}')">Supprimer</button>
       </div>
     </div>
-  `).join("");
+  `,
+    )
+    .join("");
 }
 // 🔄 Modifier rôle utilisateur
 async function modifierRole(id, email) {
-  const nouveauRole = prompt(`Nouveau rôle pour ${email} {${u.role}} {${u.domaine}} :`);
+  const nouveauRole = prompt(
+    `Nouveau rôle pour ${email} {${u.role}} {${u.domaine}} :`,
+  );
   if (!nouveauRole) return;
 
   const { error } = await client
@@ -228,10 +248,7 @@ async function modifierRole(id, email) {
 async function supprimerUtilisateur(id) {
   if (!confirm("Confirmer la suppression de cet utilisateur ?")) return;
 
-  const { error } = await client
-    .from("utilisateurs")
-    .delete()
-    .eq("id", id);
+  const { error } = await client.from("utilisateurs").delete().eq("id", id);
 
   if (error) {
     alert("Erreur lors de la suppression.");

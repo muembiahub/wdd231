@@ -4,11 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   injectTitle();
   injectFavicon();
-  
+
   injectCardsForPage();
   injectElegantSearchBar(pageName);
   removeSearchBarOnForm(pageName);
-  
 
   // Exemple : après clic sur un bouton
   const submitBtn = document.querySelector("#submitBtn");
@@ -20,15 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-
 // === 3. Variables globales ===
 let selectedCategory = "";
 let selectedPrice = "";
-
-
-
-
-
 
 function renderResponsiveMap(mapUrl, container) {
   const existingMap = document.getElementById("gpsMap");

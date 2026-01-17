@@ -2,15 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     document.body.style.fontFamily = 'Arial, sans-serif';
-    document.title = 'Dynamic Page Title created by Jonathan Muembia';
+    document.title = 'Muembiahub page';
 
 const topBar = document.createElement('div');
+topBar.className = 'top-bar';
   Object.assign(topBar.style, {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    background: '#484545',
-    color: 'white',
     padding: '10px 20px',
     position: 'fixed',
     width: '100%',
@@ -35,20 +34,18 @@ const topBar = document.createElement('div');
   emailLink.href = 'mailto:jonathanmuembia3@gmail.com';
   emailLink.target = '_blank';
   Object.assign(emailLink.style, {
-    color: 'white',
     textDecoration: 'none',
     display: 'flex',
     alignItems: 'center',
     gap: '5px',
     transition: 'all 0.3s ease'
   });
-  emailLink.innerHTML = '<i class="fa-solid fa-envelope" style="color:#2196F3;"></i>jonathanmuembia3@gmail.com';
+  emailLink.innerHTML = '<i class="fa-solid fa-envelope" style="color:#E4340C;"></i>jonathanmuembia3@gmail.com';
   
   // Phone
   const phoneLink = document.createElement('a');
   phoneLink.href = 'tel:+243831709022';
   Object.assign(phoneLink.style, {
-    color: 'white',
     textDecoration: 'none',
     display: 'flex',
     alignItems: 'center',
@@ -69,12 +66,11 @@ const topBar = document.createElement('div');
     { href: '#https://www.tiktok.com/@kazidomo3?_t=ZM-8zPu75OCnCP&_r=1', icon: 'fa-brands fa-tiktok', color: '#E1306C' }
   ];
 
-  socialLinks.forEach(({ href, icon, color }) => {
+  socialLinks.forEach(({ href, icon, }) => {
     const link = document.createElement('a');
     link.href = href;
     link.target = '_blank';
     Object.assign(link.style, { 
-      color, 
       fontSize: '20px',
       textDecoration: 'none',
       transition: 'all 0.3s ease'
@@ -90,6 +86,7 @@ const topBar = document.createElement('div');
 
   // ===== MAIN HEADER =====
   const appMenu = document.getElementById('header');
+  appMenu.className = 'app-menu'
   if (appMenu) {
     Object.assign(appMenu.style, {
       margin: '40px auto 1rem',
@@ -97,13 +94,11 @@ const topBar = document.createElement('div');
       alignItems: 'center',
       borderBottom: '2px solid #e0e0e0',
       boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-      maxWidth: '1000px',
+      maxWidth: '1250px',
       fontSize: '16px',
       borderRadius: '12px',
       padding: '0.5rem 1rem',
       position: 'relative',
-      backgroundColor: '#ffffff',
-      color: '#333'
     });
 
     // Logo
@@ -127,240 +122,128 @@ const topBar = document.createElement('div');
     Object.assign(logoTitle.style, {
       margin: '0',
       fontFamily: "'Cedarville Cursive', cursive",
-      fontSize: '0.8rem',
+      fontSize: '2rem',
       color: '#1F4CAD',
-      marginRight: '2rem',
+      marginRight: '1rem',
       fontWeight: '700'
     });
-    logoTitle.textContent = 'Kazidomo-Confiance';
+    logoTitle.textContent = 'Muembia hub';
     appMenu.appendChild(logoTitle);
 
-    // Navigation
     const nav = document.createElement('nav');
     nav.style.flexGrow = '1';
     appMenu.appendChild(nav);
 
-    const menuList = document.createElement('ul');
-    Object.assign(menuList.style, {
-      listStyle: 'none',
-      margin: '0',
-      padding: '0',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      gap: '1rem'
-    });
-    nav.appendChild(menuList);
+// Créer une liste de menu
+const menuList = document.createElement('ul');
+menuList.className = 'navigation'; // correction : utiliser menuList.className
+nav.appendChild(menuList);
+
+menuList.style.listStyle = 'none';
+menuList.style.margin = '0';
+menuList.style.padding = '0';
+menuList.style.display = 'flex';
+menuList.style.justifyContent = 'center';
+menuList.style.gap = '50px';
+
 
     // ===== MENU ITEMS - TOUS IDENTIQUES ✅ =====
     const menuItems = [
-      { text: 'Accueil', href: 'https://kazidomo.com/', icon: 'fa-solid fa-house', color: '#4CAF50' },
-      { text: 'Services', href: '#https://kazidomo.com/services.html', icon: 'fa-solid fa-screwdriver-wrench', color: '#FF9800' },
-      { text: 'Contact', href: 'https://kazidomo.com/contact.html', icon: 'fa-solid fa-phone', color: '#2196F3' },
-      { text: 'À propos', href: 'https://kazidomo.com/about.html', icon: 'fa-solid fa-circle-info', color: '#9C27B0' },
+      { text: 'Accueil', href: 'https://kazidomo.com/muembiahub/home-page.html', icon: 'fa-solid fa-house', color: '#4CAF50' },
+      { text: 'Services', href: '#https://kazidomo.com/services.html', icon: 'fa-solid fa-briefcase', color: '#FF9800' },
+      { text: 'Site web creer', href: '#https://kazidomo.com/contact.html', icon: 'fa-solid fa-globe', color: '#2196F3' },
+      { text: 'À propos', href: '#https://kazidomo.com/about.html', icon: 'fa-solid fa-circle-info', color: '#9C27B0' },
       { text: 'Blog', href: '#https://kazidomo.com/blog.html', icon: 'fa-solid fa-blog', color: '#E91E63' },
       { text: 'Recherche', type: 'search', icon: 'fa-solid fa-magnifying-glass', color: '#666' }
     ];
 
     menuItems.forEach(item => {
       const li = document.createElement('li');
-      li.style.position = 'relative';
 
       if (item.type === 'search') {
-        // 🔍 RECHERCHE - IDENTIQUE AUX AUTRES LIENS
-        const searchLink = document.createElement('a');
-        Object.assign(searchLink.style, {
-          color: '#333',
-          textDecoration: 'none',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          padding: '12px 16px',
-          borderRadius: '8px',
-          fontWeight: '300',
-          fontSize: '10px',
-          transition: 'all 0.3s ease',
-          position: 'relative'
-        });
+    const form = document.createElement('form');
+    form.id = 'searchForm';
 
-        // Icon
-        const searchIcon = document.createElement('i');
-        searchIcon.className = item.icon;
-        Object.assign(searchIcon.style, { color: item.color, fontSize: '16px', width: '20px' });
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.placeholder = 'Rechercher...';
+    input.style.borderRadius = '20px';
+    input.style.padding = '5px';
+    input.style.display = 'none'; // caché par défaut
 
-        // Text
-        const searchText = document.createElement('span');
-        searchText.textContent = item.text;
+    const button = document.createElement('button');
+    button.type = 'button'; // bouton cliquable
+    button.innerHTML = `<i class="${item.icon}"></i>`;
+    button.style.background = 'none';
+    button.style.border = 'none';
+    button.style.cursor = 'pointer';
+    button.style.color = 'blue';
 
-        // Tooltip
-        const searchTooltip = document.createElement('span');
-        Object.assign(searchTooltip.style, {
-          visibility: 'hidden',
-          opacity: '0',
-          position: 'absolute',
-          top: '50%',
-          left: '100%',
-          transform: 'translateY(-50%) translateX(10px)',
-          background: '#333',
-          color: 'white',
-          padding: '8px 12px',
-          borderRadius: '6px',
-          fontSize: '13px',
-          whiteSpace: 'nowrap',
-          zIndex: '100',
-          transition: 'all 0.3s ease',
-          pointerEvents: 'none',
-          display: 'none'
-        });
-        searchTooltip.textContent = 'Rechercher sur le site';
+    form.appendChild(button);
+    form.appendChild(input);
+    li.appendChild(form);
 
-        searchLink.append(searchIcon, searchTooltip);
+    let inputVisible = false;
 
-        // Input recherche
-        const searchInput = document.createElement('input');
-        Object.assign(searchInput.style, {
-          padding: '10px 20px',
-          border: '1px solid #ddd',
-          borderRadius: '25px',
-          fontSize: '14px',
-          width: '200px',
-          outline: 'none',
-          position: 'absolute',
-          top: '150%',
-          right: '20%',
-          transform: 'translateX(-50%)',
-          zIndex: '100',
-          display: 'none',
-          transition: 'all 0.3s ease',
-          marginTop: '10px'
-        });
-        searchInput.type = 'text';
-        searchInput.placeholder = 'Rechercher sur le site...';
-        li.appendChild(searchInput);
-
-        // Hover effects (IDENTIQUE aux autres)
-        searchLink.addEventListener('mouseenter', () => {
-          searchLink.style.backgroundColor = '#f8f9fa';
-          searchLink.style.transform = 'translateY(-2px)';
-          searchLink.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
-          searchTooltip.style.visibility = 'visible';
-          searchTooltip.style.opacity = '1';
-          searchTooltip.style.transform = 'translateY(-50%) translateX(5px)';
-        });
-        searchLink.addEventListener('mouseleave', () => {
-          searchLink.style.backgroundColor = '';
-          searchLink.style.transform = '';
-          searchLink.style.boxShadow = '';
-          searchTooltip.style.visibility = 'hidden';
-          searchTooltip.style.opacity = '0';
-        });
-
-        // CLICK recherche
-        let isSearchOpen = false;
-        searchLink.addEventListener('click', (e) => {
-          e.preventDefault();
-          const targets = document.querySelectorAll('[data-search], h1, h2, h3, p, .content, [class*="content"]');
-          
-          if (!isSearchOpen) {
-            searchInput.style.display = 'block';
-            searchInput.focus();
-            isSearchOpen = true;
-          } else {
-            const query = searchInput.value.trim().toLowerCase();
-            if (query) {
-              let found = false;
-              targets.forEach(el => {
-                const text = el.textContent.toLowerCase();
-                el.classList.remove('search-highlight');
-                if (text.includes(query)) {
-                  el.classList.add('search-highlight');
-                  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                  found = true;
-                }
-              });
-              if (!found) alert(`❌ Aucun résultat pour "${query}"`);
-            }
-            searchInput.style.display = 'none';
-            searchInput.value = '';
-            isSearchOpen = false;
-          }
-        });
-
-        li.appendChild(searchLink);
-
+    // clic sur l’icône
+   button.addEventListener('click', () => {
+      if (!inputVisible) {
+        // première fois : afficher l’input
+        input.style.display = 'inline-block';
+        input.focus();
+        inputVisible = true;
       } else {
-        // 🔗 LIENS NORMAUX
-        const link = document.createElement('a');
-        link.href = item.href;
-        
-    
-        Object.assign(link.style, {
-          color: '#333',
-          textDecoration: 'none',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          padding: '12px 16px',
-          borderRadius: '8px',
-          fontWeight: '500',
-          fontSize: '15px',
-          transition: 'all 0.3s ease',
-          position: 'relative'
-        });
-
-        // Icon
-        const icon = document.createElement('i');
-        icon.className = item.icon;
-        Object.assign(icon.style, { color: item.color, fontSize: '16px', width: '20px' });
-
-        // Text
-        const textSpan = document.createElement('span');
-        textSpan.textContent = item.text;
-
-        // Tooltip
-        const tooltip = document.createElement('span');
-        Object.assign(tooltip.style, { display: 'none',
-          opacity: '0',
-          position: 'absolute',
-          top: '50%',
-          left: '100%',
-          transform: 'translateY(-50%) translateX(10px)',
-          background: 'black',
-          color: 'white',
-          padding: '8px 12px',
-          borderRadius: '6px',
-          fontSize: '13px',
-          whiteSpace: 'nowrap',
-          zIndex: '100',
-          transition: 'all 0.3s ease',
-          pointerEvents: 'none',
-        });
-
-        link.append(icon, textSpan, tooltip);
-
-        // Hover effects
-        link.addEventListener('mouseenter', () => {
-    
-          link.style.transform = 'translateY(-2px)';
-          link.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
-          tooltip.style.visibility = 'visible';
-          tooltip.style.opacity = '1';
-          tooltip.style.transform = 'translateY(-50%) translateX(5px)';
-        });
-        link.addEventListener('mouseleave', () => {
-          link.style.backgroundColor = '';
-          link.style.transform = '';
-          link.style.boxShadow = '';
-          tooltip.style.visibility = 'hidden';
-          tooltip.style.opacity = '0';
-        });
-
-        li.appendChild(link);
+        // si déjà visible : vérifier contenu
+        const query = input.value.trim();
+        if (query) {
+          alert("Recherche : " + query);
+          // Ici tu peux ajouter ta logique : filtrer des éléments, appeler une API, etc.
+        } else {
+          // si vide → fermer l’input
+          input.style.display = 'none';
+          inputVisible = false;
+        }
       }
-      menuList.appendChild(li);
     });
+
+  } else {
+    const link = document.createElement('a');
+    link.href = item.href;
+    link.style.color = 'white';
+    link.style.textDecoration = 'none';
+    link.style.cursor = 'pointer';
+
+    const icon = document.createElement('i');
+    icon.className = item.icon;
+
+    switch(item.text) {
+      case 'Accueil': icon.style.color = '#4CAF50'; break;
+      case 'Services': icon.style.color = '#FF9800'; break;
+      case 'Site web creer': icon.style.color = '#2196F3'; break;
+      case 'À propos': icon.style.color = '#9C27B0'; break;
+      case 'Blog': icon.style.color = '#E91E63'; break;
+      case 'Recherche': icon.style.color = '#000'; break;
+    }
+
+    const span = document.createElement('span');
+    span.textContent = item.text;
+    span.style.marginLeft = '5px';
+
+    link.appendChild(icon);
+    link.appendChild(span);
+
+    link.addEventListener('mouseover', () => {
+      link.style.fontFamily = 'times new roman, serif';
+    });
+    link.addEventListener('mouseout', () => {
+      link.style.textDecoration = 'none';
+    });
+
+    li.appendChild(link);
+  }
+
+  menuList.appendChild(li);
+});
 
     // 🍔 Hamburger Mobile
     const hamburger = document.createElement('button');
@@ -446,172 +329,266 @@ const topBar = document.createElement('div');
       }
     });
   }
-      // ===== Création des éléments =====
-      const wrapper = document.createElement("div");      // conteneur global
-      const chronoDiv = document.createElement("div");    // affichage du chrono
-      const controls = document.createElement("div");     // zone des boutons
-      const btnStart = document.createElement("button");
-      const btnStop  = document.createElement("button");
-      const btnReset = document.createElement("button");
-
-      // ===== Insertion dans le DOM =====
-      document.body.insertBefore(wrapper, document.getElementById('app'));
-      wrapper.appendChild(chronoDiv);
-      wrapper.appendChild(controls);
-      controls.appendChild(btnStart);
-      controls.appendChild(btnStop);
-      controls.appendChild(btnReset);
-
-      // ===== Styles (JS uniquement) =====
-      wrapper.style.textAlign = "center";
-      wrapper.style.margin = "20px 0";
-      wrapper.style.border = "2px solid #444";
-      wrapper.style.padding = "15px";
-      wrapper.style.borderRadius = "10px";
-      wrapper.style.backgroundColor = "#D3D3D3";
-      wrapper.style.display = "inline-block";
-      wrapper.style.minWidth = "250px";
-      chronoDiv.style.fontSize = "28px";
-      chronoDiv.style.fontWeight = "bold";
-      chronoDiv.style.color = "darkred";
-      chronoDiv.style.marginBottom = "12px";
-      controls.style.display = "flex";
-      controls.style.gap = "10px";
-      controls.style.justifyContent = "center";
 
 
-      [btnStart, btnStop, btnReset].forEach(b => {
-        b.style.padding = "8px 14px";
-        b.style.border = "1px solid #444";
-        b.style.borderRadius = "6px";
-        b.style.cursor = "pointer";
-        b.style.background = "#969EAB";
-      });
-
-      btnStart.textContent = "Start";
-      btnStop.textContent  = "Stop";
-      btnReset.textContent = "Reset";
-
-      // ===== Logique du chronomètre =====
-      let totalSeconds = 0;
-      let intervalId = null;
-
-      const render = () => {
-        const minutes = Math.floor(totalSeconds / 60);
-        const seconds = totalSeconds % 60;
-        const formatted = String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0");
-        chronoDiv.textContent = "Chronomètre : " + formatted;
-      };
-
-      const tick = () => {
-        render();
-        totalSeconds++;
-      };
-
-      // État initial
-      render();
-
-      // ===== Contrôles =====
-      btnStart.addEventListener("click", () => {
-        btnStart.style.backgroundColor = 'green';
-        if (!intervalId) intervalId = setInterval(tick, 1000);
-      });
-
-      btnStop.addEventListener("click", () => {
-        btnStop.style.backgroundColor = 'red';
-        clearInterval(intervalId);
-        intervalId = null;
-      });
-
-      btnReset.addEventListener("click", () => {
-        btnStop.style.backgroundColor = 'lightred';
-        clearInterval(intervalId);
-        intervalId = null;
-        totalSeconds = 0;
-        render();
-      });
-
-
-
-
-
-  
-
-
-  // Conteneur
-  const appDiv = document.getElementById('app');
-  appDiv.style.color = 'blue';
-  appDiv.style.textAlign = 'center';
-  appDiv.style.marginTop = '5px';
-  appDiv.style.marginBottom = '50px';
-  appDiv.style.padding = '20px';
-  appDiv.style.backgroundColor = '#A0BBD5';
-  appDiv.style.borderRadius = '10px';
-
- 
-  const h1 = document.querySelector('#app h1');
-    h1.style.fontSize = '48px';
-    h1.style.fontWeight = 'bold';
-    h1.style.color = 'blue';
-    h1.textContent = 'Welcome to the Dynamic Page! now is managed by JavaScript.';
-  const p1 = document.querySelector('#app p');
-    p1.style.fontSize = '18px';
-    p1.style.color = 'darkblue';
-    p1.textContent = 'This content was added and styled using JavaScript. Enjoy the dynamic experience!';
-  
-
-
-
-  // Paragraphe
-  const p = document.createElement('p');
-  p.textContent = 'This is a dynamically added paragraph.';
-  p.style.fontSize = '20px';
-  p.style.fontWeight = 'bold';
-  p.style.fontFamily = 'Cedarville Cursive, cursive';
-  p.style.color = 'red'; // une seule couleur
-  p.classList.add('hidden');
-  appDiv.appendChild(p);
-
-  // Indicateur d'attente
-  const info = document.createElement('small');
-  info.textContent = 'Le paragraphe apparaîtra dans 4 secondes...';
-  appDiv.appendChild(info);
-
-  // Afficher après 4 secondes
-  const delayMs = 4000;
-  setTimeout(() => {
-    p.classList.remove('hidden');
-    info.remove();
-  }, delayMs);
     
 
 
 
-const buttonDiv = document.createElement('div');
-    buttonDiv.className = 'button';
-    buttonDiv.style.marginTop = '20px';
-    buttonDiv.style.padding = '10px';
-    buttonDiv.style.border = '2px solid black';
-    buttonDiv.style.display = 'inline-block';
-    buttonDiv.style.cursor = 'pointer';
-    buttonDiv.textContent = 'Click Me';
 
-    appDiv.appendChild(buttonDiv);
 
-    buttonDiv.addEventListener('click', () => {
-        buttonDiv.style.backgroundColor = 'green';
-        buttonDiv.style.borderColor = 'green';
 
-    buttonDiv.addEventListener('mouseover',() => {
-        buttonDiv.style.backgroundColor = 'red';
-        buttonDiv.style.borderColor = 'red';
 
-    buttonDiv.addEventListener('mouseout',() => {
-        buttonDiv.style.backgroundColor = 'blue';
-        buttonDiv.style.borderColor = 'blue';
+
+// 4) Fonction pour créer une rangée
+function createRow(columns, isLarge = false) {
+  const row = document.createElement('div');
+  row.style.display = 'grid';
+  row.style.gap = '16px';
+
+  if (columns === 1) {
+    row.style.gridTemplateColumns = '1fr';
+    if (isLarge) {
+      row.style.minHeight = '100px'; // ✅ carte plus grande
+    }
+  } else if (columns === 2) {
+    row.style.gridTemplateColumns = '1fr 1fr';
+  }
+  return row;
+}
+
+// Fonction pour créer une carte
+function createCard({ title, accent = '#2563eb' }) {
+  const card = document.createElement('section');
+  card.className = 'card';
+
+  // Header
+  const header = document.createElement('h2');
+  header.textContent = title;
+  header.style.color = accent;
+  header.style.fontSize = '1.5rem';
+  header.style.fontWeight = '600';
+  header.style.marginBottom = '2rem';
+  header.style.marginLeft = '10px';
+  header.style.marginTop = '10px';
+  header.style.textAlign = 'center';
+  header.style.textTransform = 'uppercase';
+  header.style.letterSpacing = '0.1em';
+  header.style.fontFamily = 'sans-serif';
+  header.style.textShadow = '2px 2px 4px rgba(0,0,0,0.1)';
+  card.appendChild(header);
+
+  // Content
+  const content = document.createElement('div');
+  content.style.color = '#374151';
+  content.style.fontSize = '14px';
+  content.style.lineHeight = '1.6';
+  content.style.margin = '0 10px';
+  content.style.textAlign = 'center';
+  content.style.fontFamily = 'sans-serif';
+  content.style.textShadow = '2px 2px 4px rgba(0,0,0,0.1)';
+  card.appendChild(content);
+
+  // Helpers
+  card.addText = (text) => {
+    const p = document.createElement('p');
+    p.textContent = text;
+    p.style.margin = '0 0 8px';
+    p.style.fontSize = '16px';
+
+    content.appendChild(p);
+    return p;
+  };
+
+  card.addList = (items) => {
+    const ul = document.createElement('ul');
+    ul.style.margin = '0';
+    ul.style.paddingLeft = '18px';
+    items.forEach((t) => {
+      const li = document.createElement('li');
+      li.textContent = t;
+      li.style.marginBottom = '6px';
+      ul.appendChild(li);
     });
+    content.appendChild(ul);
+    return ul;
+  };
+
+  card.addCTA = (label, onClick, type = 'primary') => {
+    const btn = document.createElement('button');
+    btn.textContent = label;
+    btn.className = `cta-btn ${type}`;
+    btn.addEventListener('click', onClick);
+    content.classList.add('card-actions');
+    content.appendChild(btn);
+    return btn;
+  };
+
+  card.addImage = (src, alt = '', full = true) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = alt;
+
+
+    if (full) {
+      img.style.width = '300px';
+      img.style.height = '200px';
+      img.style.borderRadius = '0';
+    } else {
+      img.style.width = '100px';
+      img.style.height = '100px';
+      img.style.borderRadius = '50%';
+    }
+
+    content.appendChild(img);
+    return img;
+  };
+
+  // Nouvelle méthode pour actions
+  card.addActions = (actions) => {
+    actions.forEach(action => {
+      card.addCTA(action.label, action.handler);
     });
-    });
+  };
+
+  return card;
+}
+
+// =======================
+// Cartes
+// =======================
+
+// Actions pour la carte CV
+const actions = [
+  { 
+    label: 'Télécharger CV', 
+    handler: () => window.open('data/jonathanmuembiacv.pdf', '_blank')
+  },
+  {
+    label: 'Contactez-moi',
+    handler: () => {
+      const mailUrl = new URL('https://mail.google.com/mail/');
+      mailUrl.search = new URLSearchParams({
+        view: 'cm',
+        fs: '1',
+        to: 'jonathanmuembia3@gmail.com',
+        su: 'Demande de contact',
+        body: 'Bonjour Jonathan Muembia Le Développeur Web\n\n'
+      }).toString();
+      window.open(mailUrl.toString(), '_blank');
+    }
+  }
+];
+
+const resumeCard = createCard({
+  title: 'Jonathan Muembia',
+  icon: 'fa-solid fa-user',
+  accent: '#6B46C1'
+});
+resumeCard.addText('Innovation, design, et services IT — en temps réel.');
+resumeCard.addActions(actions);
+
+// Record card
+const recordCard = createCard({ title: '', icon: '', accent: '' });
+recordCard.addText('');
+recordCard.addImage('images/portifio.jpg', 'Record', true);
+
+// About card
+const aboutCard = createCard({ title: 'A propos de moi', icon: 'fa-solid fa-code-branch', accent: '#0ea5e9' });
+aboutCard.addText("Je suis Jonathan Mukuta Muembia, IT team lead, technicien et bâtisseur. Je suis passionné par les technologies et j'aime résoudre des problèmes complexes. Je suis toujours à la recherche de nouvelles opportunités pour apprendre et grandir dans mon domaine.");
+aboutCard.addText("Je suis un passionné de technologies et j'aime résoudre des problèmes complexes. Je suis toujours à la recherche de nouvelles opportunités pour apprendre et grandir dans mon domaine.");  
+
+// Skills card
+const skillsCard = createCard({ title: 'Compétences clés', icon: 'fa-solid fa-code', accent: '#22c55e' });
+skillsCard.addList([
+  'JavaScript & CSS modulaires',
+  'UI/UX design (responsive)',
+  'Gestion et support IT',
+  'Brand-building (MuembiaHub, Kazidomo)'
+]);
+
+// Projects card
+const projectsCard = createCard({ title: 'Projets', icon: 'fa-solid fa-briefcase', accent: '#a855f7' });
+projectsCard.addText('MuembiaHub — plateforme d’innovation et de services digitaux.');
+projectsCard.addText('Kazidomo — espace de créativité et de connexion.');
+projectsCard.addCTA('Voir une démo', () => alert('Démo: horloge, bouton interactif, cartes dynamiques.'));
+
+// Contact card
+const contactCard = createCard({ title: 'Contact', icon: 'fa-solid fa-envelope', accent: '#f59e0b' });
+contactCard.addText('Email: jonathan@muembiahub.com');
+contactCard.addText('Ville: Lubumbashi, RDC');
+contactCard.addCTA('Me contacter', () => alert('Merci pour votre message — réponse sous peu.'));
+
+// =======================
+// Layout en 4 rangées
+// =======================
+const grid = document.createElement('section');
+grid.className = 'grid';
+grid.style.display = 'flex';
+grid.style.flexDirection = 'column';
+grid.style.gap = '20px';
+grid.style.padding = '20px';
+
+// Rangée 1 : deux cartes côte à côte
+const row1 = createRow(2);
+row1.appendChild(resumeCard);
+row1.appendChild(recordCard);
+grid.appendChild(row1);
+
+// Rangée 2 : une carte pleine largeur
+const row2 = createRow(1, true);
+row2.appendChild(aboutCard);
+grid.appendChild(row2);
+
+// Rangée 3 : une carte pleine largeur
+const row3 = createRow(1, true);
+row3.appendChild(contactCard);
+grid.appendChild(row3);
+
+// Rangée 4 : deux cartes côte à côte
+const row4 = createRow(2);
+row4.appendChild(aboutCard.cloneNode(true));
+row4.appendChild(skillsCard.cloneNode(true));
+grid.appendChild(row4);
+
+// Ajout au container principal
+document.getElementById('app').appendChild(grid);
+
+// Clock badge
+const clockBadge = document.createElement('div');
+clockBadge.className = 'clock-badge';
+clockBadge.style.position = 'fixed';
+clockBadge.style.background = 'linear-gradient(135deg, #4CAF50, #2E7D32)';
+clockBadge.style.bottom = '10px';
+clockBadge.style.right = '10px';
+clockBadge.style.padding = '10px';
+clockBadge.style.fontSize = '20px';
+clockBadge.style.borderRadius = '5px';
+
+clockBadge.style.color = 'blue';
+document.body.appendChild(clockBadge);
+
+function updateClock() {
+  const now = new Date();
+  const timeStr = now.toLocaleTimeString('fr-FR', { hour12: false });
+  const dateStr = now.toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short' });
+  clockBadge.textContent = `${timeStr} | ${dateStr}`;
+}
+updateClock();
+setInterval(updateClock, 1000);
+
+// Micro polish: page container card
+const pageCard = document.createElement('div');
+pageCard.style.borderRadius = '14px';
+pageCard.style.boxShadow = '0 10px 28px rgba(0,0,0,0.08)';
+pageCard.style.padding = '2px';
+
+// Move existing elements into pageCard
+pageCard.appendChild(grid);
+
+// Replace app content with pageCard
+app.innerHTML = '';
+app.appendChild(pageCard);
     
 
 

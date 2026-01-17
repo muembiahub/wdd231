@@ -20,13 +20,13 @@ Deno.serve(async (req) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${RESEND_API_KEY}`,
+      Authorization: `Bearer ${RESEND_API_KEY}`,
     },
     body: JSON.stringify({
       from: "contact@kazidomo.com",
       to: email,
       subject: "Confirmation de votre demande",
-      html
+      html,
     }),
   });
 

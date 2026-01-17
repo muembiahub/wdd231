@@ -1,10 +1,10 @@
 /* form-style.css */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-*{
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .champ-erreur {
@@ -17,15 +17,15 @@
 }
 
 #confirmation-page {
-  position: fixed;        /* reste visible même si on scrolle */
-  top: 60%;               /* centré verticalement */
-  left: 50%;              /* centré horizontalement */
+  position: fixed; /* reste visible même si on scrolle */
+  top: 60%; /* centré verticalement */
+  left: 50%; /* centré horizontalement */
   transform: translate(-50%, -50%);
   background: #f0fff0;
   border: 2px solid #28a745;
   padding: 30px 40px;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   text-align: center;
   z-index: 1000;
 }
@@ -34,27 +34,24 @@
   display: none;
 }
 
-
-
 /* Conteneur du logo */
 .form-logo {
-  text-align: center;       /* Centre le logo horizontalement */
-  margin-bottom: 20px;      /* Espace sous le logo */
+  text-align: center; /* Centre le logo horizontalement */
+  margin-bottom: 20px; /* Espace sous le logo */
 }
 
 /* Image du logo */
 .form-logo .logo {
-  max-width: 120px;         /* Taille maximale du logo */
-  height: auto;             /* Conserve les proportions */
-  display: inline-block;    /* Évite les décalages */
+  max-width: 120px; /* Taille maximale du logo */
+  height: auto; /* Conserve les proportions */
+  display: inline-block; /* Évite les décalages */
 }
 
 /* Optionnel : effet au survol */
 .form-logo .logo:hover {
-  transform: scale(1.05);   /* Zoom léger */
+  transform: scale(1.05); /* Zoom léger */
   transition: transform 0.3s ease;
 }
-
 
 /* Styles pour les champs de formulaire en erreur */
 .champ-erreur {
@@ -71,7 +68,7 @@
   font-size: 14px;
 }
 
-h1{
+h1 {
   text-align: center;
   margin-bottom: 20px;
   color: #333;
@@ -81,84 +78,82 @@ h1{
   width: 100%;
   background: #fff;
   border-radius: 7px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
   padding: 3px;
 }
 
 /* Par défaut : login visible, autres cachés */
 .container .registration,
 .container .reset {
-  display: none;  
+  display: none;
 }
 
 /* Si check-signup est coché : afficher signup, cacher login et reset */
 #check-signup:checked ~ .container .registration {
   display: block;
- 
 }
 #check-signup:checked ~ .container .login,
 #check-signup:checked ~ .container .reset {
   display: none;
-  
 }
 
 /* Si check-reset est coché : afficher reset, cacher login et signup */
 #check-reset:checked ~ .container .reset {
   display: block;
- 
 }
 #check-reset:checked ~ .container .login,
 #check-reset:checked ~ .container .registration {
   display: none;
-
 }
 
 /* Cacher les cases à cocher */
 #check-signup,
-#check-reset 
-    {
+#check-reset {
   display: none;
 }
-.form{
+.form {
   padding: 30px 25px;
 }
- .form input{
-   height: 60px;
-   width: 100%;
-   padding: 0 15px;
-   font-size: 17px;
-   margin-bottom: 1.3rem;
-   border: 1px solid #ddd;
-   border-radius: 6px;
-   outline: none;
- }
- .form input:focus{
-   box-shadow: 0 1px 0 rgba(0,0,0,0.2);
- }
-.form a{
+.form input {
+  height: 60px;
+  width: 100%;
+  padding: 0 15px;
+  font-size: 17px;
+  margin-bottom: 1.3rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+}
+.form input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+.form a {
   font-size: 16px;
   color: #009579;
   text-decoration: none;
 }
-.form a:hover{
+.form a:hover {
   text-decoration: underline;
 }
 
-.form button.button { display: block; 
-  margin: 1.2rem auto 0 auto; 
-  padding: 12px 25px; 
+.form button.button {
+  display: block;
+  margin: 1.2rem auto 0 auto;
+  padding: 12px 25px;
   color: #fff;
-   background: #009579; 
-   font-size: 1rem; 
-   font-weight: 500;
-    border: none; 
-    border-radius: 6px; 
-    cursor: pointer; 
-    transition: background 0.3s ease; 
-  }
-  .form button.button:hover { background: #006653; }
+  background: #009579;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.form button.button:hover {
+  background: #006653;
+}
 
-.signup  {
+.signup {
   font-size: 17px;
   text-align: center;
 }
@@ -166,9 +161,9 @@ h1{
   color: #009579;
   cursor: pointer;
 }
-.signup label:hover  {
+.signup label:hover {
   text-decoration: underline;
 }
-.reset  label {  
+.reset label {
   color: blue;
 }

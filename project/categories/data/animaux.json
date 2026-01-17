@@ -76,8 +76,8 @@
     "category": "Dressage de l’obéissance",
     "description": "Programme de 1 mois pour renforcer l’écoute et la discipline du chien.",
     "price": "100"
-  }
-  ,{
+  },
+  {
     "logo": "images/dressage-proprete.webp",
     "category": "Dressage de la propreté",
     "description": "Programme de 1 mois pour apprendre la propreté à votre chiot ou chien adulte.",
@@ -89,4 +89,4 @@
     "description": "Programme de 1 mois pour former votre chien à des tâches spécifiques (garde, chasse, etc.).",
     "price": "200"
   }
- ]
+]

@@ -1,7 +1,3 @@
-
-
-
-
 // === Favicon dynamique ===
 function injectFavicon(path = "images/favicon.ico") {
   const existing = document.querySelector("link[rel='icon']");
@@ -24,7 +20,7 @@ function injectTitle(prefix = "Kazidomo Confiance") {
     }
 
     // Supprimer tous les <title> existants
-    document.querySelectorAll("title").forEach(t => t.remove());
+    document.querySelectorAll("title").forEach((t) => t.remove());
 
     // Créer et injecter un nouveau <title>
     const newTitle = document.createElement("title");
@@ -58,12 +54,14 @@ function $(selector) {
 
 // === 3. Génération du nom d’image ===
 function generateImageName(title) {
-  return title
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/\s+/g, "_")
-    .replace(/[^\w-]/g, "") + ".webp";
+  return (
+    title
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, "_")
+      .replace(/[^\w-]/g, "") + ".webp"
+  );
 }
 
 // Ajout d'une animation bounce pour le badge
@@ -81,7 +79,13 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Fonction réutilisable
-function createOrUpdateBanner(targetSelector, bannerId, messageHTML, buttonText, buttonAction) {
+function createOrUpdateBanner(
+  targetSelector,
+  bannerId,
+  messageHTML,
+  buttonText,
+  buttonAction,
+) {
   // Vérifie si le banner existe déjà
   let banner = document.getElementById(bannerId);
 
@@ -159,22 +163,23 @@ function createOrUpdateBanner(targetSelector, bannerId, messageHTML, buttonText,
   const now = Date.now();
 
   let isNewVisit = false;
-  if (!lastVisit || (now - parseInt(lastVisit, 10)) > VISIT_INTERVAL) {
+  if (!lastVisit || now - parseInt(lastVisit, 10) > VISIT_INTERVAL) {
     visits++;
     localStorage.setItem("visits", visits);
     localStorage.setItem("lastVisit", now);
     isNewVisit = true;
   }
 
-  const lastVisitDate = new Date(parseInt(localStorage.getItem("lastVisit"), 10))
-    .toLocaleString("fr-FR", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit"
-    });
+  const lastVisitDate = new Date(
+    parseInt(localStorage.getItem("lastVisit"), 10),
+  ).toLocaleString("fr-FR", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
   // Container compteur
   const visitContainer = document.createElement("div");
@@ -218,23 +223,20 @@ function createOrUpdateBanner(targetSelector, bannerId, messageHTML, buttonText,
 
 // Exemple d’utilisation
 createOrUpdateBanner(
-  "header",                 // endroit cible
-  "kazidomoBannerHeader",   // id unique
+  "header", // endroit cible
+  "kazidomoBannerHeader", // id unique
   `<h1>Bienvenue chez Kazidomo Confiance!</h1>
    <p>Nous offrons des services de confiance et de qualité.</p>
    <p>Découvrez nos services de confiance et de qualité.</p>`, // message HTML
-  "Découvrir maintenant",   // texte bouton
-  () => window.location.href = "https://kazidomo-confiance.example.com" // action bouton
+  "Découvrir maintenant", // texte bouton
+  () => (window.location.href = "https://kazidomo-confiance.example.com"), // action bouton
 );
-
-
-
-
 
 // === 4. Génération HTML d’une carte pour les pages hors accueil ===
 function createCard(item, pageName) {
   const title = item.category || item.type || item.title || "Service";
-  const description = item.description || item.summary || "Description indisponible.";
+  const description =
+    item.description || item.summary || "Description indisponible.";
   const price = item.price || "—";
   const alt = item.alt || title;
   const image = `images/${generateImageName(title)}`;
@@ -251,7 +253,6 @@ function createCard(item, pageName) {
     </div>
   `;
 }
-
 
 // === Function pour afficher et charger la vue de contact ===
 function loadContactView(title, price) {
@@ -289,7 +290,6 @@ function loadContactView(title, price) {
 
     const formData = sanitizeFormData(form);
     const success = await sendToSupabase(formData);
-    
 
     if (btn) {
       btn.disabled = false;
@@ -297,13 +297,13 @@ function loadContactView(title, price) {
     }
     const formView = document.querySelector(".form-view");
     if (formView) {
-    formView.style.display = "none";
-    showConfirmationBanner();
-    createReturnToServicesButton();
-  }
+      formView.style.display = "none";
+      showConfirmationBanner();
+      createReturnToServicesButton();
+    }
   });
 }
-// 
+//
 function createReturnToServicesButton() {
   if (document.getElementById("returnToServicesBtn")) return;
 
@@ -355,9 +355,7 @@ function setupReturnToServicesButton(buttonId = "returnToServicesBtn") {
     }
 
     window.scrollTo({ top: previousScrollY || 0, behavior: "smooth" });
-     btn.remove(); // ✅ ca supprime le bouton après retour
-     
-
+    btn.remove(); // ✅ ca supprime le bouton après retour
   });
 }
 
@@ -367,7 +365,6 @@ function createHomeCard(item) {
   const category = item.category || "Service";
   const description = item.description || "Description indisponible.";
   const pageUrl = item.page_url || "#";
-
 
   return `
     <div class="card">
@@ -396,13 +393,13 @@ function injectCardsForPage() {
     : `data/${pageName}.json`;
 
   fetch(jsonPath)
-    .then(response => {
+    .then((response) => {
       if (!response.ok) {
         throw new Error(`Fichier JSON introuvable : ${jsonPath}`);
       }
       return response.json();
     })
-    .then(data => {
+    .then((data) => {
       const items = isHomePage
         ? data.categories
         : Array.isArray(data.categories)
@@ -430,7 +427,7 @@ function injectCardsForPage() {
         container.appendChild(card);
       });
     })
-    .catch(error => {
+    .catch((error) => {
       console.error("💥 Erreur lors du chargement du JSON :", error);
       container.innerHTML = `
         <div class="error-message">
@@ -444,12 +441,12 @@ function injectCardsForPage() {
 // populate country codes in the select element
 function populateCountryCodes() {
   fetch("data/countries.json")
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       const select = document.getElementById("countryCode");
       const flagDisplay = document.getElementById("flagDisplay");
 
-      data.forEach(entry => {
+      data.forEach((entry) => {
         const option = document.createElement("option");
         option.value = entry.dial_code;
         option.textContent = `${entry.country} (${entry.dial_code})`;
@@ -467,7 +464,7 @@ function populateCountryCodes() {
       const initialISO = select.options[0].dataset.iso;
       flagDisplay.src = `https://flagcdn.com/${initialISO}.svg`;
     })
-    .catch(error => {
+    .catch((error) => {
       console.error("💥 Erreur lors du chargement des indicatifs :", error);
     });
 }
@@ -527,7 +524,6 @@ function injectForm() {
   document.getElementById("Category").value = previousPageName || ""; // 🧩 Injecte les valeurs dynamiques
   document.getElementById("service").value = selectedCategory || "";
   document.getElementById("servicePrice").value = selectedPrice || "";
-
 }
 // === 6 setup Gps sur le formulaire de contact Agent  ===
 function setupGPS() {
@@ -584,14 +580,13 @@ function setupGPS() {
       {
         enableHighAccuracy: true,
         timeout: 10000,
-        maximumAge: 0
-      }
+        maximumAge: 0,
+      },
     );
   });
 }
 
-
-// function sendToSupabase(formData) 
+// function sendToSupabase(formData)
 
 function sanitizeFormData(form) {
   const get = (selector) => form.querySelector(selector)?.value.trim() || "";
@@ -607,7 +602,7 @@ function sanitizeFormData(form) {
     price: price,
     message: get("#clientMessage"),
     gps: get("#gpsField"),
-    map_url: get("#mapUrl")
+    map_url: get("#mapUrl"),
   };
 }
 
@@ -617,15 +612,18 @@ async function sendToSupabase(formData) {
   const SUPABASE_KEY = "sb_publishable_PRp1AmuEtEsGhWnZktlK0Q_uJmipcrO";
 
   try {
-    const response = await fetch(`${SUPABASE_URL}/rest/v1/kazidomo_demandes_services`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "apikey": SUPABASE_KEY,
-        "Authorization": `Bearer ${SUPABASE_KEY}`
+    const response = await fetch(
+      `${SUPABASE_URL}/rest/v1/kazidomo_demandes_services`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: SUPABASE_KEY,
+          Authorization: `Bearer ${SUPABASE_KEY}`,
+        },
+        body: JSON.stringify([formData]),
       },
-      body: JSON.stringify([formData])
-    });
+    );
 
     if (!response.ok) {
       const errorText = await response.text();
@@ -642,7 +640,6 @@ async function sendToSupabase(formData) {
     return false;
   }
 }
-
 
 // === 7. Bannière de confirmation après envoi réussi ===
 
@@ -686,5 +683,4 @@ function showConfirmationBanner() {
       banner.scrollIntoView({ behavior: "smooth", block: "center" });
     }, 1000);
   }, 10);
-
 }

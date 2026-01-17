@@ -13,19 +13,25 @@ function afficherGraphiquesEtStats() {
     .order("created_at", { ascending: false })
     .then(({ data, error }) => {
       if (error || !data) {
-        panneau.innerHTML = "<p class='erreur'>Erreur de chargement des statistiques.</p>";
+        panneau.innerHTML =
+          "<p class='erreur'>Erreur de chargement des statistiques.</p>";
         return;
       }
 
       // 📊 Calcul des stats globales
       const total = data.length;
-      const traitees = data.filter(d => d.statut === "traité").length;
-      const en_attente = data.filter(d => d.statut === "en attente").length;
-      const en_cours = data.filter(d => d.statut === "en cours").length;
-      const rejetees = data.filter(d => d.statut === "rejeté").length;
+      const traitees = data.filter((d) => d.statut === "traité").length;
+      const en_attente = data.filter((d) => d.statut === "en attente").length;
+      const en_cours = data.filter((d) => d.statut === "en cours").length;
+      const rejetees = data.filter((d) => d.statut === "rejeté").length;
 
-      const categoriesCount = data.map(d => d.category).filter(Boolean).length;
-      const montantTotal = data.reduce((sum, d) => sum + (parseFloat(d.price) || 0), 0);
+      const categoriesCount = data
+        .map((d) => d.category)
+        .filter(Boolean).length;
+      const montantTotal = data.reduce(
+        (sum, d) => sum + (parseFloat(d.price) || 0),
+        0,
+      );
 
       // 📋 Affichage des stats
       panneau.innerHTML = `
@@ -63,40 +69,49 @@ function afficherGraphiquesEtStats() {
 
       // 📊 Données par statut
       const parStatut = {
-        "Traitées": traitees,
+        Traitées: traitees,
         "En attente": en_attente,
         "En cours": en_cours,
-        "Rejetées": rejetees
+        Rejetées: rejetees,
       };
 
       // 🎨 Graphique statuts (doughnut compact)
-      const ctxStatut = document.getElementById("chart-statut").getContext("2d");
+      const ctxStatut = document
+        .getElementById("chart-statut")
+        .getContext("2d");
       new Chart(ctxStatut, {
         type: "doughnut",
         data: {
           labels: Object.keys(parStatut),
-          datasets: [{
-            data: Object.values(parStatut),
-            backgroundColor: [
-              "#16a34a", // vert traité
-              "#2563eb", // bleu attente
-              "#f59e0b", // orange en cours
-              "#dc2626"  // rouge rejeté
-            ]
-          }]
+          datasets: [
+            {
+              data: Object.values(parStatut),
+              backgroundColor: [
+                "#16a34a", // vert traité
+                "#2563eb", // bleu attente
+                "#f59e0b", // orange en cours
+                "#dc2626", // rouge rejeté
+              ],
+            },
+          ],
         },
         options: {
           responsive: true,
           plugins: {
-            legend: { position: "bottom", labels: { boxWidth: 12, font: { size: 12 } } },
-            title: { display: true, text: "Répartition des statuts" }
+            legend: {
+              position: "bottom",
+              labels: { boxWidth: 12, font: { size: 12 } },
+            },
+            title: { display: true, text: "Répartition des statuts" },
           },
-          cutout: "40%" // ✅ trou central pour alléger le rendu
-        }
+          cutout: "40%", // ✅ trou central pour alléger le rendu
+        },
       });
 
       // 🎨 Graphique catégories (bar chart avec 2 datasets)
-      const ctxCategories = document.getElementById("chart-categories").getContext("2d");
+      const ctxCategories = document
+        .getElementById("chart-categories")
+        .getContext("2d");
       new Chart(ctxCategories, {
         type: "bar",
         data: {
@@ -105,26 +120,32 @@ function afficherGraphiquesEtStats() {
             {
               label: "categorie",
               data: Object.values(demandesParCategorie),
-              backgroundColor: "#4CAF50"
+              backgroundColor: "#4CAF50",
             },
             {
               label: "Services par catégorie",
-              data: Object.keys(demandesParCategorie).map(cat => servicesCountParCategorie[cat] || 0),
-              backgroundColor: "#2563eb"
-            }
-          ]
+              data: Object.keys(demandesParCategorie).map(
+                (cat) => servicesCountParCategorie[cat] || 0,
+              ),
+              backgroundColor: "#2563eb",
+            },
+          ],
         },
         options: {
           responsive: true,
           plugins: {
             legend: { position: "top" },
-            title: { display: true, text: "Demandes et services distincts par catégorie", position: "top" }
+            title: {
+              display: true,
+              text: "Demandes et services distincts par catégorie",
+              position: "top",
+            },
           },
           scales: {
             x: { title: { display: true, text: "Catégories" } },
-            y: { beginAtZero: true, title: { display: true, text: "Nombre" } }
-          }
-        }
+            y: { beginAtZero: true, title: { display: true, text: "Nombre" } },
+          },
+        },
       });
     });
 }

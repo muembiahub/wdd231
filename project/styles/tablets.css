@@ -3,8 +3,8 @@
 
   .showcase-area {
     height: 80vh;
-    background: linear-gradient(rgba(240, 240, 240, 0.144),
-        rgba(255, 255, 255, 0.336)),
+    background:
+      linear-gradient(rgba(240, 240, 240, 0.144), rgba(255, 255, 255, 0.336)),
       url("https://img.freepik.com/photos-gratuite/personne-au-bureau-pendant-journee-travail_23-2150690165.jpg");
     background-size: cover;
     background-position: center;
@@ -17,7 +17,7 @@
     color: #333;
     margin-bottom: 1rem;
     font-size: 2.5rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
 
   .showcase-area p {

@@ -1,121 +1,167 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="Kazidomo Directory" />
+    <meta
+      property="og:description"
+      content="Kazidomo est une application mobile intelligente qui permet à toute personne ayant une compétence ou un métier d’offrir ses services dans son quartier, sa ville ou au-delà."
+    />
+    <meta
+      property="og:url"
+      content="https://muembiahub.github.io/wdd231/chamber"
+    />
+    <meta property="og:site_name" content="Kazidomo" />
+    <meta
+      property="og:image"
+      content="https://muembiahub.github.io/wdd231/chamber/images/facebook-tag.png"
+    />
+    <meta name="author" content="Jonathan M. Muembia" />
+    <meta
+      name="description"
+      content="Kazidomo est une application mobile intelligente qui permet à toute personne ayant une compétence ou un métier d’offrir ses services dans son quartier, sa ville ou au-delà."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="application-name" content="Kazidomo" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta
+      name="keywords"
+      content="Kazidomo, mobile application, service providers, geolocation, digital contracts, payment options, economic autonomy"
+    />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="Kazidomo Directory">
-  <meta property="og:description"
-    content="Kazidomo est une application mobile intelligente qui permet à toute personne ayant une compétence ou un métier d’offrir ses services dans son quartier, sa ville ou au-delà.">
-  <meta property="og:url" content="https://muembiahub.github.io/wdd231/chamber">
-  <meta property="og:site_name" content="Kazidomo">
-  <meta property="og:image" content="https://muembiahub.github.io/wdd231/chamber/images/facebook-tag.png" />
-  <meta name="author" content="Jonathan M. Muembia">
-  <meta name="description"
-    content="Kazidomo est une application mobile intelligente qui permet à toute personne ayant une compétence ou un métier d’offrir ses services dans son quartier, sa ville ou au-delà.">
-  <meta name="robots" content="index, follow">
-  <meta name="application-name" content="Kazidomo">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="keywords"
-    content="Kazidomo, mobile application, service providers, geolocation, digital contracts, payment options, economic autonomy">
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Kazidomo Confiance — Contact</title>
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/header.css" />
+    <link rel="stylesheet" href="styles/mobile.css" />
+    <link rel="stylesheet" href="styles/tablets.css" />
+    <link rel="stylesheet" href="styles/desktop.css" />
+    <link rel="stylesheet" href="styles/form-style.css" />
 
-  <title>Kazidomo Confiance — Contact</title>
-  <link rel="stylesheet" href="styles/base.css">
-  <link rel="stylesheet" href="styles/header.css">
-  <link rel="stylesheet" href="styles/mobile.css">
-  <link rel="stylesheet" href="styles/tablets.css">
-  <link rel="stylesheet" href="styles/desktop.css">
-  <link rel="stylesheet" href="styles/form-style.css">
+    <script src="scripts/function.js" defer></script>
+    <script src="header.js" defer></script>
+    <script src="./categories/scripts/catalogue.js" defer></script>
+    <script type="module" src="scripts/contact.js" defer></script>
+  </head>
 
-  <script src="scripts/function.js" defer></script>
-  <script src="header.js" defer></script>
-  <script src="./categories/scripts/catalogue.js" defer></script>
-  <script type="module" src="scripts/contact.js" defer></script>
-</head>
+  <body>
+    <header>
+      <div id="top-bar"></div>
+      <div id="header"></div>
+    </header>
 
-<body>
-  <header>
-    <div id="top-bar"></div>
-    <div id="header"></div>
-  </header>
+    <main>
+      <!-- Formulaire -->
+      <form name="contact-kazidomo" class="contact-form">
+        <h1 class="about-title">CONTACTEZ-NOUS</h1>
 
-  <main>
-        <!-- Formulaire -->
-    <form name="contact-kazidomo" class="contact-form">
-      <h1 class="about-title">CONTACTEZ-NOUS</h1>
+        <label>
+          <i class="fas fa-user"></i>
+          <input
+            type="text"
+            name="name"
+            placeholder="Votre nom complet"
+            required
+          />
+        </label>
 
-      <label>
-        <i class="fas fa-user"></i>
-        <input type="text" name="name" placeholder="Votre nom complet" required>
-      </label>
+        <label>
+          <i class="fas fa-envelope"></i>
+          <input
+            type="email"
+            name="email"
+            placeholder="Votre adresse e-mail"
+            required
+          />
+        </label>
 
-      <label>
-        <i class="fas fa-envelope"></i>
-        <input type="email" name="email" placeholder="Votre adresse e-mail" required>
-      </label>
+        <label>
+          <i class="fas fa-phone"></i>
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Votre numéro de téléphone"
+          />
+        </label>
 
-      <label>
-        <i class="fas fa-phone"></i>
-        <input type="tel" name="phone" placeholder="Votre numéro de téléphone">
-      </label>
+        <label for="subject"> <i class="fas fa-comment-dots"></i> Sujet </label>
+        <select id="subject" name="subject" required>
+          <option value="">Choisissez un sujet</option>
+          <option value="collaboration">Collaboration</option>
+          <option value="support">Support technique</option>
+          <option value="formation">Formation / Guide</option>
+          <option value="autre">Autre</option>
+        </select>
 
-      <label for="subject">
-        <i class="fas fa-comment-dots"></i> Sujet
-      </label>
-      <select id="subject" name="subject" required>
-        <option value="">Choisissez un sujet</option>
-        <option value="collaboration">Collaboration</option>
-        <option value="support">Support technique</option>
-        <option value="formation">Formation / Guide</option>
-        <option value="autre">Autre</option>
-      </select>
+        <fieldset>
+          <legend><i class="fas fa-users"></i> Type de visiteur</legend>
+          <label
+            ><input
+              type="radio"
+              name="visitor-type"
+              value="individuel"
+              required
+            />
+            Visiteur individuel</label
+          >
+          <label
+            ><input type="radio" name="visitor-type" value="communautaire" />
+            Représentant communautaire</label
+          >
+        </fieldset>
 
-      <fieldset>
-        <legend><i class="fas fa-users"></i> Type de visiteur</legend>
-        <label><input type="radio" name="visitor-type" value="individuel" required> Visiteur individuel</label>
-        <label><input type="radio" name="visitor-type" value="communautaire"> Représentant communautaire</label>
-      </fieldset>
+        <label for="lang">
+          <i class="fas fa-language"></i> Langue préférée
+        </label>
+        <select id="lang" name="lang" required>
+          <option value="">Choisissez une langue</option>
+          <option value="fr">🇫🇷 Français</option>
+          <option value="ln">🇨🇩 Lingala</option>
+          <option value="sw">🇨🇩 Swahili</option>
+          <option value="lu">🇨🇩 Tshiluba</option>
+        </select>
 
-      <label for="lang">
-        <i class="fas fa-language"></i> Langue préférée
-      </label>
-      <select id="lang" name="lang" required>
-        <option value="">Choisissez une langue</option>
-        <option value="fr">🇫🇷 Français</option>
-        <option value="ln">🇨🇩 Lingala</option>
-        <option value="sw">🇨🇩 Swahili</option>
-        <option value="lu">🇨🇩 Tshiluba</option>
-      </select>
+        <label>
+          <i class="fas fa-pencil-alt"></i>
+          <textarea
+            name="message"
+            rows="5"
+            placeholder="Votre message"
+            required
+          ></textarea>
+        </label>
 
-      <label>
-        <i class="fas fa-pencil-alt"></i>
-        <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
-      </label>
+        <label>
+          <input type="checkbox" name="consent" required />
+          <i class="fas fa-shield-alt"></i> J’accepte les conditions de
+          confiance Kazidomo
+        </label>
 
-      <label>
-        <input type="checkbox" name="consent" required>
-        <i class="fas fa-shield-alt"></i> J’accepte les conditions de confiance Kazidomo
-      </label>
+        <button type="submit">
+          <i class="fas fa-paper-plane"></i> Envoyer
+        </button>
+      </form>
 
-      <button type="submit">
-        <i class="fas fa-paper-plane"></i> Envoyer
-      </button>
-    </form>
-
-    <!-- Page de confirmation -->
-    <div id="confirmation-page" class="hidden">
-      <h2><i class="fas fa-check-circle"></i> Merci !</h2>
-      <p id="confirmation-text"></p>
-      <button id="return-btn">⬅️ Retour au formulaire</button>
-    </div>
-  </main>
-  <footer></footer>
-</body>
+      <!-- Page de confirmation -->
+      <div id="confirmation-page" class="hidden">
+        <h2><i class="fas fa-check-circle"></i> Merci !</h2>
+        <p id="confirmation-text"></p>
+        <button id="return-btn">⬅️ Retour au formulaire</button>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
 </html>

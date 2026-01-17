@@ -18,17 +18,17 @@
     {
       "category": "Tissage",
       "description": "Pose de tissages naturels ou synthétiques, avec entretien et conseils personnalisés.",
-      "price": 40.00
+      "price": 40.0
     },
     {
       "category": "Soins du visage",
       "description": "Soins du visage personnalisés pour tous types de peau, incluant nettoyage et hydratation.",
-      "price": 25.00
+      "price": 25.0
     },
     {
       "category": "Maquillage",
       "description": "Maquillage professionnel pour toutes occasions, y compris les mariages.",
-      "price": 30.50
+      "price": 30.5
     },
     {
       "category": "Soins capillaires",
@@ -38,7 +38,7 @@
     {
       "category": "Coiffure événementielle",
       "description": "Coiffures et maquillages pour mariages, cérémonies et événements spéciaux.",
-      "price": 47.40
+      "price": 47.4
     },
     {
       "category": "Soins des Ongles",

@@ -1,9 +1,6 @@
 {
   "nom": "Kazidomo Confiance",
-  "type": [
-    "application mobile",
-    "plateforme web"
-  ],
+  "type": ["application mobile", "plateforme web"],
   "description": "Kazidomo Confiance relie les talents locaux à leur communauté, en valorisant les savoir-faire formels et informels à travers une vitrine moderne et sécurisée.",
   "mission": "Favoriser l’autonomie économique en connectant les savoirs vivants aux besoins réels, dans un esprit de confiance et de reconnaissance mutuelle.",
   "philosophie": "Le talent ne se mesure pas à un diplôme, mais à l’impact réel. Kazidomo est un pont de confiance entre ceux qui offrent et ceux qui cherchent.",
@@ -20,11 +17,7 @@
     "paiement_sécurisé": true,
     "vitrine_moderne": true
   },
-  "bénéficiaires": [
-    "artisans",
-    "professionnels",
-    "passionnés"
-  ],
+  "bénéficiaires": ["artisans", "professionnels", "passionnés"],
   "localisation": {
     "ville": "Lubumbashi",
     "province": "Haut-Katanga",

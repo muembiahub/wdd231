@@ -17,10 +17,10 @@ function telechargerCSV() {
   const lignes = [
     ["ID", "Catégorie", "Statut", "Date"],
     ["1", "Agriculture", "traité", "2025-11-10"],
-    ["2", "Éducation", "en attente", "2025-11-12"]
+    ["2", "Éducation", "en attente", "2025-11-12"],
   ];
 
-  const contenu = lignes.map(l => l.join(",")).join("\n");
+  const contenu = lignes.map((l) => l.join(",")).join("\n");
   const blob = new Blob([contenu], { type: "text/csv" });
   const url = URL.createObjectURL(blob);
 

@@ -1,189 +1,188 @@
 {
   "categories": [
-  {
-    "category": "Installation électrique",
-    "description": "Installation de réseaux électriques domestiques ou industriels, tableaux de distribution, et compteurs.",
-    "price": "50"
-  },
-  {
-    "category": "Maintenance et Réparation",
-    "description": "Diagnostic et réparation de pannes, remplacement de câblage, révision de tableaux et groupes électrogènes.",
-    "price": "150"
-  },
-  {
-    "category": "Éclairage et Ambiance",
-    "description": "Installation de luminaires, éclairage solaire, détecteurs de mouvement et systèmes d’ambiance.",
-    "price": "500"
-  },
-  {
-    "category": "Énergies renouvelables",
-    "description": "Installation de panneaux solaires, batteries, onduleurs et systèmes hybrides.",
-    "price": "un paneaux a partir de 5"
-  },
-  {
-    "category": "Sécurité et Automatisation",
-    "description": "Installation de disjoncteurs, domotique, alarmes et vidéosurveillance alimentée électriquement.",
-    "price": "1000"
-  },
-  {
-    "category": "Études et Conseil",
-    "description": "Audits énergétiques, plans électriques, optimisation de consommation et conformité aux normes.",
-    "price": "25000"
-  },
-  {
-    "category": "Hydrofort installation",
-    "description": "Installation Hydrofort.",
-    "price": "40"
-  },
-  {
-    "category": "Hydrofort réparation",
-    "description": "Réparation Hydrofort.",
-    "price": "30"
-  },
-  {
-    "category": "Pompe immergée réparation",
-    "description": "Réparation de pompe immergée.",
-    "price": "60"
-  },
-  {
-    "category": "Chauffe bain réparation",
-    "description": "Réparation de chauffe bain.",
-    "price": "30"
-  },
-  {
-    "category": "Électricité maison étage",
-    "description": "Installation électrique d'une maison en étage un niveau avec devis.",
-    "price": "1500"
-  },
-  {
-    "category": "Électricité maison simple",
-    "description": "Installation électrique d'une maison simple avec devis.",
-    "price": "400"
-  },
-  {
-    "category": "Mise à terre complète",
-    "description": "Installation de la mise à terre complète.",
-    "price": "65"
-  },
-  {
-    "category": "Panneaux solaires installation",
-    "description": "Installation de panneaux solaires à partir de 5 panneaux, peu importe la capacité.",
-    "price": "185"
-  },
-  {
-    "category": "Caméras surveillance installation",
-    "description": "Installation de toute sorte de caméras de surveillance.",
-    "price": "250"
-  },
-  {
-    "category": "Caméras surveillance réparation",
-    "description": "Réparation de caméras de surveillance.",
-    "price": "70"
-  },
-  {
-    "category": "Pompe émergée installation",
-    "description": "Installation de pompe émergée.",
-    "price": "130"
-  },
-  {
-    "category": "Cuisine réparation",
-    "description": "Réparation de cuisine.",
-    "price": "65"
-  },
-  {
-    "category": "Barrières automatiques installation",
-    "description": "Installation de barrières automatiques.",
-    "price": "140"
-  },
+    {
+      "category": "Installation électrique",
+      "description": "Installation de réseaux électriques domestiques ou industriels, tableaux de distribution, et compteurs.",
+      "price": "50"
+    },
+    {
+      "category": "Maintenance et Réparation",
+      "description": "Diagnostic et réparation de pannes, remplacement de câblage, révision de tableaux et groupes électrogènes.",
+      "price": "150"
+    },
+    {
+      "category": "Éclairage et Ambiance",
+      "description": "Installation de luminaires, éclairage solaire, détecteurs de mouvement et systèmes d’ambiance.",
+      "price": "500"
+    },
+    {
+      "category": "Énergies renouvelables",
+      "description": "Installation de panneaux solaires, batteries, onduleurs et systèmes hybrides.",
+      "price": "un paneaux a partir de 5"
+    },
+    {
+      "category": "Sécurité et Automatisation",
+      "description": "Installation de disjoncteurs, domotique, alarmes et vidéosurveillance alimentée électriquement.",
+      "price": "1000"
+    },
+    {
+      "category": "Études et Conseil",
+      "description": "Audits énergétiques, plans électriques, optimisation de consommation et conformité aux normes.",
+      "price": "25000"
+    },
+    {
+      "category": "Hydrofort installation",
+      "description": "Installation Hydrofort.",
+      "price": "40"
+    },
+    {
+      "category": "Hydrofort réparation",
+      "description": "Réparation Hydrofort.",
+      "price": "30"
+    },
+    {
+      "category": "Pompe immergée réparation",
+      "description": "Réparation de pompe immergée.",
+      "price": "60"
+    },
+    {
+      "category": "Chauffe bain réparation",
+      "description": "Réparation de chauffe bain.",
+      "price": "30"
+    },
+    {
+      "category": "Électricité maison étage",
+      "description": "Installation électrique d'une maison en étage un niveau avec devis.",
+      "price": "1500"
+    },
+    {
+      "category": "Électricité maison simple",
+      "description": "Installation électrique d'une maison simple avec devis.",
+      "price": "400"
+    },
+    {
+      "category": "Mise à terre complète",
+      "description": "Installation de la mise à terre complète.",
+      "price": "65"
+    },
+    {
+      "category": "Panneaux solaires installation",
+      "description": "Installation de panneaux solaires à partir de 5 panneaux, peu importe la capacité.",
+      "price": "185"
+    },
+    {
+      "category": "Caméras surveillance installation",
+      "description": "Installation de toute sorte de caméras de surveillance.",
+      "price": "250"
+    },
+    {
+      "category": "Caméras surveillance réparation",
+      "description": "Réparation de caméras de surveillance.",
+      "price": "70"
+    },
+    {
+      "category": "Pompe émergée installation",
+      "description": "Installation de pompe émergée.",
+      "price": "130"
+    },
+    {
+      "category": "Cuisine réparation",
+      "description": "Réparation de cuisine.",
+      "price": "65"
+    },
+    {
+      "category": "Barrières automatiques installation",
+      "description": "Installation de barrières automatiques.",
+      "price": "140"
+    },
 
-  {
-    "category": "Groupe électrogène installation",
-    "description": "Installation de groupe électrogène.",
-    "price": "50"
-  },
-  {
-    "category": "Parafoudre installation",
-    "description": "Installation de parafoudre à terre.",
-    "price": "300"
-  },
-  {
-    "category": "Chauffe bain installation",
-    "description": "Installation de chauffe bain.",
-    "price": "50"
-  },
-  {
-    "category": "Four électrique réparation",
-    "description": "Réparation de four électrique.",
-    "price": "100"
-  },
-  {
-    "category": "Mini industriel installation",
-    "description": "Installation de mini industriel.",
-    "price": "500"
-  },
-  {
-    "category": "Mini industriel maintenance",
-    "description": "Maintenance électrique mini industriel.",
-    "price": "300"
-  },
-  {
-    "category": "Éclairage automatique installation",
-    "description": "Installation d'éclairage automatique.",
-    "price": "50"
-  },
-  {
-    "category": "Éclairage automatique réparation",
-    "description": "Réparation d'éclairage automatique.",
-    "price": "50"
-  },
-  {
-    "category": "Éclairage simple installation",
-    "description": "Installation d'éclairage simple ou normal.",
-    "price": "50"
-  },
-  {
-    "category": "Moteur triphasé installation",
-    "description": "Installation de moteur triphasé.",
-    "price": "500"
-  },
-  {
-    "category": "Moteur monophasé installation",
-    "description": "Installation de moteur monophasé.",
-    "price": "35"
-  },
-  {
-    "category": "Moteur pression installation",
-    "description": "Installation de moteur pression.",
-    "price": "30"
-  },
-  {
-    "category": "Moteur broyeur installation",
-    "description": "Installation de moteur broyeur.",
-    "price": "35"
-  },
-  {
-    "category": "Schéma électrique industriel",
-    "description": "Plan d'un schéma électrique industriel.",
-    "price": "1000"
-  },
-  {
-    "logo": "images/porte-metal.webp",
-    "category": "Remplacement de serrure de porte métallique",
-    "description": "Intervention pour le changement de serrures sur portes métalliques, assurant sécurité et fiabilité.",
-    "price": "45"
-  },
-  {
-    "logo": "images/electricite-complete.webp",
-    "category": "Réparation électrique et remplacement d’accessoires",
-    "description": "Service complet incluant le remplacement d’ampoules, prises, interrupteurs et autres accessoires électriques simples.",
-    "price": "120"
-  },
-  {
-    "logo": "images/electricite-simple.webp",
-    "category": "Réparation de courant simple",
-    "description": "Intervention rapide pour résoudre les pannes électriques de base dans les habitations ou locaux.",
-    "price": "50"
-  }
+    {
+      "category": "Groupe électrogène installation",
+      "description": "Installation de groupe électrogène.",
+      "price": "50"
+    },
+    {
+      "category": "Parafoudre installation",
+      "description": "Installation de parafoudre à terre.",
+      "price": "300"
+    },
+    {
+      "category": "Chauffe bain installation",
+      "description": "Installation de chauffe bain.",
+      "price": "50"
+    },
+    {
+      "category": "Four électrique réparation",
+      "description": "Réparation de four électrique.",
+      "price": "100"
+    },
+    {
+      "category": "Mini industriel installation",
+      "description": "Installation de mini industriel.",
+      "price": "500"
+    },
+    {
+      "category": "Mini industriel maintenance",
+      "description": "Maintenance électrique mini industriel.",
+      "price": "300"
+    },
+    {
+      "category": "Éclairage automatique installation",
+      "description": "Installation d'éclairage automatique.",
+      "price": "50"
+    },
+    {
+      "category": "Éclairage automatique réparation",
+      "description": "Réparation d'éclairage automatique.",
+      "price": "50"
+    },
+    {
+      "category": "Éclairage simple installation",
+      "description": "Installation d'éclairage simple ou normal.",
+      "price": "50"
+    },
+    {
+      "category": "Moteur triphasé installation",
+      "description": "Installation de moteur triphasé.",
+      "price": "500"
+    },
+    {
+      "category": "Moteur monophasé installation",
+      "description": "Installation de moteur monophasé.",
+      "price": "35"
+    },
+    {
+      "category": "Moteur pression installation",
+      "description": "Installation de moteur pression.",
+      "price": "30"
+    },
+    {
+      "category": "Moteur broyeur installation",
+      "description": "Installation de moteur broyeur.",
+      "price": "35"
+    },
+    {
+      "category": "Schéma électrique industriel",
+      "description": "Plan d'un schéma électrique industriel.",
+      "price": "1000"
+    },
+    {
+      "logo": "images/porte-metal.webp",
+      "category": "Remplacement de serrure de porte métallique",
+      "description": "Intervention pour le changement de serrures sur portes métalliques, assurant sécurité et fiabilité.",
+      "price": "45"
+    },
+    {
+      "logo": "images/electricite-complete.webp",
+      "category": "Réparation électrique et remplacement d’accessoires",
+      "description": "Service complet incluant le remplacement d’ampoules, prises, interrupteurs et autres accessoires électriques simples.",
+      "price": "120"
+    },
+    {
+      "logo": "images/electricite-simple.webp",
+      "category": "Réparation de courant simple",
+      "description": "Intervention rapide pour résoudre les pannes électriques de base dans les habitations ou locaux.",
+      "price": "50"
+    }
   ]
-  
 }

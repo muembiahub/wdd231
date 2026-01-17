@@ -6,21 +6,21 @@
 }
 
 :root {
-  --primary: #1F4CAD;
+  --primary: #1f4cad;
   --secondary: #484545;
-  --success: #4CAF50;
-  --warning: #FF9800;
-  --info: #2196F3;
-  --purple: #9C27B0;
-  --pink: #E91E63;
+  --success: #4caf50;
+  --warning: #ff9800;
+  --info: #2196f3;
+  --purple: #9c27b0;
+  --pink: #e91e63;
   --dark: #0e0b0b;
   --light-bg: #f8f9fa;
   --white: #ffffff;
   --text-dark: #333;
   --text-light: #666;
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.15);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.2);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
   --radius: 8px;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -104,7 +104,7 @@
 
 #header h1 {
   margin: 0 !important;
-  font-family: 'Cedarville Cursive', cursive !important;
+  font-family: "Cedarville Cursive", cursive !important;
   font-size: 0.8rem !important;
   color: var(--primary) !important;
   margin-right: 2rem !important;
@@ -147,13 +147,6 @@ nav ul li a i {
   width: 20px !important;
 }
 
-
-
-
-
-
-
-
 /* ===== HAMBURGER MENU ===== */
 .hamburger {
   background: none !important;
@@ -179,7 +172,7 @@ nav ul li a i {
   nav ul {
     gap: 0.5rem !important;
   }
-  
+
   #searchForm input {
     width: 220px !important;
   }
@@ -191,13 +184,13 @@ nav ul li a i {
     flex-wrap: wrap !important;
     gap: 10px !important;
   }
-  
+
   #header {
     margin: 55px 1rem 1rem !important;
     padding: 1rem !important;
     flex-wrap: wrap !important;
   }
-  
+
   .hamburger {
     display: block !important;
   }
@@ -249,7 +242,7 @@ nav ul li a i {
     gap: 10px !important;
     text-align: center !important;
   }
-  
+
   #header img {
     width: 40px !important;
     height: 40px !important;
@@ -257,7 +250,9 @@ nav ul li a i {
 }
 
 /* ===== UTILITAIRES ===== */
-.hidden { display: none !important; }
+.hidden {
+  display: none !important;
+}
 
 .visually-hidden {
   position: absolute !important;
@@ -266,7 +261,7 @@ nav ul li a i {
   padding: 0 !important;
   margin: -1px !important;
   overflow: hidden !important;
-  clip: rect(0,0,0,0) !important;
+  clip: rect(0, 0, 0, 0) !important;
   white-space: nowrap !important;
 }
 

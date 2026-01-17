@@ -40,9 +40,14 @@ async function afficherServices() {
 
   try {
     const role = (sessionStorage.getItem("role") || "user").toLowerCase();
-    const userCategory = (sessionStorage.getItem("category") || "").toLowerCase();
+    const userCategory = (
+      sessionStorage.getItem("category") || ""
+    ).toLowerCase();
 
-    let query = client.from("kazidomo_demandes_services").select("*").order("created_at", { ascending: false });
+    let query = client
+      .from("kazidomo_demandes_services")
+      .select("*")
+      .order("created_at", { ascending: false });
 
     // 🔹 Condition selon rôle
     if (role === "prestataire" && userCategory) {
@@ -116,40 +121,49 @@ function trierServices(services) {
 function afficherServicesFiltres() {
   const role = (sessionStorage.getItem("role") || "user").toLowerCase();
 
-  const categorie = (document.getElementById("filtre-service-categorie")?.value || "").toLowerCase();
-  const recherche = (document.getElementById("recherche-service")?.value || "").toLowerCase();
+  const categorie = (
+    document.getElementById("filtre-service-categorie")?.value || ""
+  ).toLowerCase();
+  const recherche = (
+    document.getElementById("recherche-service")?.value || ""
+  ).toLowerCase();
 
-  let servicesFiltres = toutesLesServices.filter(s => {
+  let servicesFiltres = toutesLesServices.filter((s) => {
     const c = s.category?.toLowerCase() || "";
     const n = s.name?.toLowerCase() || "";
     const d = s.description?.toLowerCase() || "";
 
     const categorieOK = !categorie || c.includes(categorie);
-    const rechercheOK = !recherche || n.includes(recherche) || d.includes(recherche);
+    const rechercheOK =
+      !recherche || n.includes(recherche) || d.includes(recherche);
 
     return categorieOK && rechercheOK;
   });
 
   servicesFiltres = trierServices(servicesFiltres);
 
-  const totalPages = Math.max(1, Math.ceil(servicesFiltres.length / servicesParPage));
+  const totalPages = Math.max(
+    1,
+    Math.ceil(servicesFiltres.length / servicesParPage),
+  );
   const startIndex = (pageCouranteServices - 1) * servicesParPage;
   const endIndex = startIndex + servicesParPage;
   const servicesPage = servicesFiltres.slice(startIndex, endIndex);
 
-  const listeHTML = servicesPage.map(s => {
-    let boutons = `
+  const listeHTML = servicesPage
+    .map((s) => {
+      let boutons = `
       <button class="btn btn-primary" onclick="modifierService('${s.id}')">✏️ Modifier</button>
       <button class="btn btn-info" onclick="mettreEnAttenteService('${s.id}')">⏳ Mettre en attente</button>
       <button class="btn btn-warning" onclick="changerStatutService('${s.id}', 'approuvé')">✅ Approuver</button>
       <button class="btn btn-secondary" onclick="changerStatutService('${s.id}', 'rejeté')">❌ Rejeter</button>
     `;
 
-    if (role === "admin" || role === "superadmin") {
-      boutons += `<button class="btn btn-danger" onclick="supprimerService('${s.id}')">🗑️ Supprimer</button>`;
-    }
+      if (role === "admin" || role === "superadmin") {
+        boutons += `<button class="btn btn-danger" onclick="supprimerService('${s.id}')">🗑️ Supprimer</button>`;
+      }
 
-    return `
+      return `
       <div class="demande-card">
         <h3><i class="fa-solid fa-screwdriver-wrench"></i> ${s.name || "<em><u>Pas de nom</u></em>"}</h3>
         <p><strong>Catégorie du service sollicité  :</strong> ${s.category || "<em><u>Non spécifié</u></em>"}</p>
@@ -160,14 +174,18 @@ function afficherServicesFiltres() {
         <div class="action-buttons">${boutons}</div>
       </div>
     `;
-  }).join("");
+    })
+    .join("");
 
   document.querySelector(".services-liste")?.remove();
   document.querySelector(".pagination-services")?.remove();
 
   const container = document.createElement("div");
   container.className = "services-liste";
-  container.innerHTML = servicesPage.length > 0 ? listeHTML : `<p class="info">ℹ️ Aucun service trouvé.</p>`;
+  container.innerHTML =
+    servicesPage.length > 0
+      ? listeHTML
+      : `<p class="info">ℹ️ Aucun service trouvé.</p>`;
 
   const pagination = document.createElement("div");
   pagination.className = "pagination-services";
@@ -177,7 +195,9 @@ function afficherServicesFiltres() {
     <button class="btn" onclick="changerPageServices(${pageCouranteServices + 1})" ${pageCouranteServices >= totalPages ? "disabled" : ""}>Suivant ➡️</button>
   `;
 
-  document.querySelector(".export-actions")?.insertAdjacentElement("afterend", container);
+  document
+    .querySelector(".export-actions")
+    ?.insertAdjacentElement("afterend", container);
   container.insertAdjacentElement("afterend", pagination);
 }
 
@@ -189,15 +209,21 @@ function changerPageServices(nouvellePage) {
 
 // 🔹 Export CSV
 function exportServicesCSV() {
-  const rows = toutesLesServices.map(s => [
-    s.name || "Pas de nom",
-    s.description || "—",
-    s.category || "—",
-    s.price ? s.price + " $" : "Non spécifié",
-    s.created_at || "—"
-  ].map(val => `"${val}"`).join(","));
+  const rows = toutesLesServices.map((s) =>
+    [
+      s.name || "Pas de nom",
+      s.description || "—",
+      s.category || "—",
+      s.price ? s.price + " $" : "Non spécifié",
+      s.created_at || "—",
+    ]
+      .map((val) => `"${val}"`)
+      .join(","),
+  );
 
-  const header = ["Nom", "Serices", "Catégorie", "Prix","Statut", "Date"].join(",");
+  const header = ["Nom", "Serices", "Catégorie", "Prix", "Statut", "Date"].join(
+    ",",
+  );
   const csvContent = [header, ...rows].join("\n");
   const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
   const link = document.createElement("a");
@@ -232,18 +258,24 @@ function exportServicesPDF() {
 
 // 🔹 Actions backend (à sécuriser côté Supabase aussi)
 async function modifierService(id) {
-  afficherContenu("Modifier service", `Formulaire de modification pour le service #${id}`);
+  afficherContenu(
+    "Modifier service",
+    `Formulaire de modification pour le service #${id}`,
+  );
   // Ici tu peux charger les données du service et afficher un formulaire
 }
 
 async function mettreEnAttenteService(id) {
   afficherContenu("Mettre en attente", `Le service #${id} est mis en attente.`);
-   
+
   // Ici tu peux mettre à jour le champ status dans Supabase
 }
 
 async function changerStatutService(id, nouveauStatut) {
-  afficherContenu("Changer statut", `Le statut du service #${id} est passé à ${nouveauStatut}.`);
+  afficherContenu(
+    "Changer statut",
+    `Le statut du service #${id} est passé à ${nouveauStatut}.`,
+  );
 
   // Ici tu peux mettre à jour le champ status dans Supabase
 }
@@ -255,7 +287,10 @@ async function supprimerService(id) {
     return;
   }
 
-  const { error } = await client.from("kazidomo_demandes_services").delete().eq("id", id);
+  const { error } = await client
+    .from("kazidomo_demandes_services")
+    .delete()
+    .eq("id", id);
   if (error) {
     afficherContenu("Erreur", "❌ Impossible de supprimer le service.");
     console.error(error);

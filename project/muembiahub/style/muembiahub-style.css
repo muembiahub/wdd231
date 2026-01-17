@@ -4,6 +4,23 @@
   padding: 0;
   box-sizing: border-box;
 }
+:root {
+  --primary-blue: #1396ee;
+  --secondary-blue: #c3e4ff;
+  --deep-blue: #2980b9;
+  --dark-gray: #2c3e50;
+  --text-gray: #333333;
+  --light-gray: #f5f7fa;
+}
+.top-bar {
+  background-color: var(--primary-blue);
+  color: var(--text-gray);
+}
+.app-menu, main, .card, body
+ {
+  background-color: var(--secondary-blue);
+}
+
 
 /* ===== Navigation ===== */
 .navigation {
@@ -12,13 +29,12 @@
   align-items: center;
   list-style: none;
   padding: 10px 10px;
-  gap: 15px;
-  border-radius: 8px;
+  gap: 20px;
+  border-radius: 20px;
 }
 
 .navigation li {
   margin: 0 10px;
-
 }
 
 .navigation li a {
@@ -28,31 +44,34 @@
   font-weight: bold;
   padding: 10px 15px;
   border-radius: 50px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
   position: relative;
 }
 
 /* Effet au survol */
 .navigation li a:hover {
-  background-color: #0e0b0b;
+  background-color: #6d6868;
   color: #fff;
 }
 
-
 .navigation li a span {
-  visibility: hidden;   /* caché */
-  opacity: 0;           /* transparent */
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  visibility: hidden; /* caché */
+  opacity: 0; /* transparent */
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
   position: absolute;
-  top: 50%;             /* centré verticalement */
-  left: 100%;           /* placé à droite du lien */
+  top: 50%; /* centré verticalement */
+  left: 87%; /* placé à droite du lien */
   transform: translateY(-50%) translateX(10px); /* petit décalage vers la droite */
-  background: #0e0b0b;
-  color: #fff;
+  background: blanchedalmond;
+  color: black;
   padding: 5px 10px;
   border-radius: 4px;
   white-space: nowrap;
-  font-size: 0.9em;
+  font-size: 1em;
   z-index: 10;
 }
 
@@ -63,9 +82,81 @@
   transform: translateY(-50%) translateX(0); /* revient en place avec effet fondu */
 }
 
-
-/* ===== Classe utilitaire ===== */
 .hidden {
   display: none;
 }
 
+.card {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  padding: 10px;
+  display: inline-block;   /* s’adapte au contenu */
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+
+.cta-btn {
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Bouton principal */
+.cta-btn.primary {
+  color: var(--text-gray);
+  border: 1px solid #3b05e0;
+}
+
+.cta-btn.primary:hover {
+  background-color: #4f27c7;
+  color: var(--light-gray);
+}
+
+/* Bouton secondaire */
+.cta-btn.secondary {
+  color: var(--text-gray);
+  border: 1px solid black;
+}
+
+.cta-btn.secondary:hover {
+  color: var(--text-gray);
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap; /* permet de passer à la ligne sur mobile */
+  gap: 12px; /* espace uniforme entre les boutons */
+  margin-top: 16px;
+}
+
+/* Bouton flottant Kazidomo */
+.clock-badge {
+  position: fixed;
+  font-size: large;
+  bottom: 20px;
+  right: 20px;
+  border: none;
+  color: #0a8b40;
+  cursor: pointer;
+  z-index: 99999;
+  padding: 0;
+  animation: pulse 2s infinite;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Animation pulsante */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(6, 41, 236, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 15px rgba(255, 102, 0, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 102, 0, 0);
+  }
+}

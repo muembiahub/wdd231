@@ -1,126 +1,139 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Confirmation</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confirmation</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
 
-    .card {
-      background: white;
-      padding: 3rem 2.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      max-width: 420px;
-      width: 90%;
-      animation: fadeIn 0.6s ease-out;
-    }
+      .card {
+        background: white;
+        padding: 3rem 2.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 420px;
+        width: 90%;
+        animation: fadeIn 0.6s ease-out;
+      }
 
-    .card h1 {
-      font-size: 1.8rem;
-      color: #1f2937;
-      margin-bottom: 0.5rem;
-    }
+      .card h1 {
+        font-size: 1.8rem;
+        color: #1f2937;
+        margin-bottom: 0.5rem;
+      }
 
-    .card p {
-      color: #4b5563;
-      margin-bottom: 2rem;
-    }
+      .card p {
+        color: #4b5563;
+        margin-bottom: 2rem;
+      }
 
-    .checkmark {
-      font-size: 3rem;
-      color: #10b981;
-      margin-bottom: 1rem;
-    }
+      .checkmark {
+        font-size: 3rem;
+        color: #10b981;
+        margin-bottom: 1rem;
+      }
 
-    .btn {
-      background-color: #3b82f6;
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.2s ease, background-color 0.3s ease;
-    }
+      .btn {
+        background-color: #3b82f6;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        transition:
+          transform 0.2s ease,
+          background-color 0.3s ease;
+      }
 
-    .btn:hover {
-      background-color: #2563eb;
-      transform: scale(1.05);
-    }
+      .btn:hover {
+        background-color: #2563eb;
+        transform: scale(1.05);
+      }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
-</head>
-<body>
-  <div class="card">
-    <div class="checkmark" aria-hidden="true">✅</div>
-    <h1 id="welcome-message" aria-live="polite">Bienvenue !</h1>
-    <p id="confirmation-text"></p>
-    <a href="dashboard.html" class="btn" id="dashboard-button">Accéder au tableau de bord</a>
-  </div>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="checkmark" aria-hidden="true">✅</div>
+      <h1 id="welcome-message" aria-live="polite">Bienvenue !</h1>
+      <p id="confirmation-text"></p>
+      <a href="dashboard.html" class="btn" id="dashboard-button"
+        >Accéder au tableau de bord</a
+      >
+    </div>
 
-  <script>
-    // ✅ Fonction sécurisée pour récupérer les valeurs
-    function safeGet(key, fallback = "") {
-      const value = sessionStorage.getItem(key);
-      return value && value.trim() !== "" ? value : fallback;
-    }
+    <script>
+      // ✅ Fonction sécurisée pour récupérer les valeurs
+      function safeGet(key, fallback = "") {
+        const value = sessionStorage.getItem(key);
+        return value && value.trim() !== "" ? value : fallback;
+      }
 
-    const prenom = safeGet("prenom", "utilisateur");
-    const nom = safeGet("nom");
-    const email = safeGet("email", "non défini");
-    const domaine = safeGet("domaine", "non défini");
+      const prenom = safeGet("prenom", "utilisateur");
+      const nom = safeGet("nom");
+      const email = safeGet("email", "non défini");
+      const domaine = safeGet("domaine", "non défini");
 
-    // ✅ Détection de langue normalisée
-    const lang = navigator.language.slice(0, 2).toLowerCase();
+      // ✅ Détection de langue normalisée
+      const lang = navigator.language.slice(0, 2).toLowerCase();
 
-    const translations = {
-      fr: {
-        welcome: `Bienvenue chez Kazidomo, ${prenom} ${nom} 🎉`,
-        text: `Votre compte <strong>${email}</strong> est actif.<br>
+      const translations = {
+        fr: {
+          welcome: `Bienvenue chez Kazidomo, ${prenom} ${nom} 🎉`,
+          text: `Votre compte <strong>${email}</strong> est actif.<br>
                Domaine : <strong>requerant</strong><br>
                Vous disposez d’un accès limité.<br>
                Un administrateur pourra vous accorder un accès complet selon votre contribution.<br>
                Vous pouvez maintenant accéder à votre tableau de bord.`,
-        button: "Accéder au tableau de bord"
-      },
-      en: {
-        welcome: `Welcome to Kazidomo, ${prenom} ${nom} 🎉`,
-        text: `Your account <strong>${email}</strong> is active.<br>
+          button: "Accéder au tableau de bord",
+        },
+        en: {
+          welcome: `Welcome to Kazidomo, ${prenom} ${nom} 🎉`,
+          text: `Your account <strong>${email}</strong> is active.<br>
                Domain: <strong>requerant</strong><br>
                You currently have limited access.<br>
                An administrator may grant full access based on your contribution.<br>
                You can now access your dashboard.`,
-        button: "Go to dashboard"
-      },
-      // ✅ autres langues (es, de, it, nl, pt, ar, sw, ln) comme dans ta version précédente
-    };
+          button: "Go to dashboard",
+        },
+        // ✅ autres langues (es, de, it, nl, pt, ar, sw, ln) comme dans ta version précédente
+      };
 
-    // ✅ Fallback explicite
-    const t = translations[lang] || translations["fr"];
-    if (!translations[lang]) {
-      console.warn(`Langue ${lang} non supportée, fallback en français.`);
-    }
+      // ✅ Fallback explicite
+      const t = translations[lang] || translations["fr"];
+      if (!translations[lang]) {
+        console.warn(`Langue ${lang} non supportée, fallback en français.`);
+      }
 
-    document.getElementById("welcome-message").innerHTML = t.welcome;
-    document.getElementById("confirmation-text").innerHTML = t.text;
-    document.getElementById("dashboard-button").textContent = t.button;
-  </script>
-</body>
+      document.getElementById("welcome-message").innerHTML = t.welcome;
+      document.getElementById("confirmation-text").innerHTML = t.text;
+      document.getElementById("dashboard-button").textContent = t.button;
+    </script>
+  </body>
 </html>

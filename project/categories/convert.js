@@ -1,4 +1,4 @@
-// Script JS de Jonathan 
+// Script JS de Jonathan
 const fs = require("fs");
 const path = require("path");
 const sharp = require("sharp");
@@ -11,8 +11,8 @@ function normaliserNom(nom) {
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "") // supprime les accents
-    .replace(/\s+/g, "_")            // espaces → underscore
-    .replace(/[^\w-]/g, "")          // supprime caractères spéciaux
+    .replace(/\s+/g, "_") // espaces → underscore
+    .replace(/[^\w-]/g, "") // supprime caractères spéciaux
     .replace(/\.(jpg|jpeg|png|webp)$/i, ""); // retire extension
 }
 
@@ -23,7 +23,7 @@ fs.readdir(dossierImages, (err, fichiers) => {
     return;
   }
 
-  fichiers.forEach(fichier => {
+  fichiers.forEach((fichier) => {
     const ext = path.extname(fichier).toLowerCase();
     const nomSansExt = path.basename(fichier, ext);
     const nouveauNom = normaliserNom(nomSansExt) + ".webp";
@@ -32,7 +32,7 @@ fs.readdir(dossierImages, (err, fichiers) => {
     const nouveauChemin = path.join(dossierImages, nouveauNom);
 
     // Vérifie que le fichier est lisible
-    fs.access(ancienChemin, fs.constants.R_OK, err => {
+    fs.access(ancienChemin, fs.constants.R_OK, (err) => {
       if (err) {
         console.error(`❌ Fichier inaccessible : ${fichier}`);
         return;
@@ -41,11 +41,13 @@ fs.readdir(dossierImages, (err, fichiers) => {
       // Si déjà .webp → juste renommer
       if (ext === ".webp") {
         if (fichier !== nouveauNom) {
-          fs.rename(ancienChemin, nouveauChemin, err => {
+          fs.rename(ancienChemin, nouveauChemin, (err) => {
             if (err) {
               console.error(`⚠️ Échec renommage ${fichier} →`, err.message);
             } else {
-              console.log(`🔄 Renommé sans conversion : ${fichier} → ${nouveauNom}`);
+              console.log(
+                `🔄 Renommé sans conversion : ${fichier} → ${nouveauNom}`,
+              );
             }
           });
         } else {
@@ -57,18 +59,18 @@ fs.readdir(dossierImages, (err, fichiers) => {
       // Conversion + redimensionnement fixe
       sharp(ancienChemin)
         .resize({
- 		 width: 300,
- 		 height: 200,
- 		 fit: "contain",
- 		 background: { r: 255, g: 255, b: 255, alpha: 1 } // fond blanc
-		})
+          width: 300,
+          height: 200,
+          fit: "contain",
+          background: { r: 255, g: 255, b: 255, alpha: 1 }, // fond blanc
+        })
         .webp({ quality: 80 })
-        .toFile(nouveauChemin, err => {
+        .toFile(nouveauChemin, (err) => {
           if (err) {
             console.warn(`⚠️ Échec conversion ${fichier} →`, err.message);
           } else {
             console.log(`✅ Converti : ${fichier} → ${nouveauNom}`);
-            fs.unlink(ancienChemin, err => {
+            fs.unlink(ancienChemin, (err) => {
               if (err) console.error(`⚠️ Échec suppression ${fichier}`);
             });
           }

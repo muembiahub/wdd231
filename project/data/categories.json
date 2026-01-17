@@ -78,12 +78,12 @@
       "description": "Cultures, élevage, agro-transformation et services agricoles durables.",
       "page_url": "categories/agriculture.html"
     },
-   {
-  "logo": "images/autres-services.webp",
-  "category": "Autres Services",
-  "description": "Services variés incluant accompagnement communautaire, initiatives locales, témoignages et projets transversaux.",
-  "price": "0",
-  "page_url": "categories/autres-services.html"
-}
+    {
+      "logo": "images/autres-services.webp",
+      "category": "Autres Services",
+      "description": "Services variés incluant accompagnement communautaire, initiatives locales, témoignages et projets transversaux.",
+      "price": "0",
+      "page_url": "categories/autres-services.html"
+    }
   ]
 }

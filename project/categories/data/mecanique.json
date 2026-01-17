@@ -106,16 +106,16 @@
       "category": "Entretien Insectair poudre",
       "description": "Entretien de Insectair 9 kg en poudre.",
       "price": false
-  },
-  {
-    "category": "Entretien Insectair gaze",
-    "description": "Entretien de Insectair 9 kg à gaz.",
-    "price": false
-  },
-  {
-    "category": "Entretien Insectair gaz 250",
-    "description": "Entretien de Insectair 250 en gaz.",
-    "price": false
-  }
-]
+    },
+    {
+      "category": "Entretien Insectair gaze",
+      "description": "Entretien de Insectair 9 kg à gaz.",
+      "price": false
+    },
+    {
+      "category": "Entretien Insectair gaz 250",
+      "description": "Entretien de Insectair 250 en gaz.",
+      "price": false
+    }
+  ]
 }

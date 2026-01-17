@@ -132,9 +132,7 @@
     },
     "deepLinkDomains": {
       "enableAndroidApplinks": false,
-      "domains": [
-        "kazidomo.com"
-      ]
+      "domains": ["kazidomo.com"]
     },
     "navigationTitles": {
       "active": true,
@@ -432,10 +430,7 @@
   "allowZoom": true,
   "contextMenu": {
     "enabled": true,
-    "linkActions": [
-      "copyLink",
-      "openExternal"
-    ]
+    "linkActions": ["copyLink", "openExternal"]
   },
   "security": {
     "network": {

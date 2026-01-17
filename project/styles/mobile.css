@@ -1,9 +1,8 @@
 @media (max-width: 767px) {
-
   .showcase-area {
     height: 40vh;
-    background: linear-gradient(rgba(240, 240, 240, 0.144),
-        rgba(255, 255, 255, 0.336)),
+    background:
+      linear-gradient(rgba(240, 240, 240, 0.144), rgba(255, 255, 255, 0.336)),
       url("https://img.freepik.com/photos-gratuite/personne-au-bureau-pendant-journee-travail_23-2150690165.jpg");
     background-size: cover;
     background-position: center;
@@ -16,7 +15,6 @@
     color: #ec0b0b;
     margin-bottom: 0.1rem;
     font-size: 1.2rem;
-
   }
 
   .showcase-area p {
@@ -41,11 +39,4 @@
   .showcase-container {
     animation: fadeInUp 1.2s ease-out forwards;
   }
-  
- 
- 
 }
-
-
-
-

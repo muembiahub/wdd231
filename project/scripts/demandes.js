@@ -113,11 +113,17 @@ function trierDemandes(demandes) {
 
 // 🔹 Afficher avec pagination + filtres + tri + actions
 function afficherDemandesFiltrees() {
-  const statut = (document.getElementById("filtre-statut")?.value || "tous").toLowerCase();
-  const categorie = (document.getElementById("filtre-categorie")?.value || "").toLowerCase();
-  const recherche = (document.getElementById("recherche-demande")?.value || "").toLowerCase();
+  const statut = (
+    document.getElementById("filtre-statut")?.value || "tous"
+  ).toLowerCase();
+  const categorie = (
+    document.getElementById("filtre-categorie")?.value || ""
+  ).toLowerCase();
+  const recherche = (
+    document.getElementById("recherche-demande")?.value || ""
+  ).toLowerCase();
 
-  let demandesFiltres = toutesLesDemandes.filter(d => {
+  let demandesFiltres = toutesLesDemandes.filter((d) => {
     const s = d.statut?.toLowerCase() || "";
     const c = d.category?.toLowerCase() || "";
     const n = d.name?.toLowerCase() || "";
@@ -125,7 +131,8 @@ function afficherDemandesFiltrees() {
 
     const statutOK = statut === "tous" || s === statut;
     const categorieOK = !categorie || c.includes(categorie);
-    const rechercheOK = !recherche || n.includes(recherche) || e.includes(recherche);
+    const rechercheOK =
+      !recherche || n.includes(recherche) || e.includes(recherche);
 
     return statutOK && categorieOK && rechercheOK;
   });
@@ -135,11 +142,19 @@ function afficherDemandesFiltrees() {
   // 🔹 Calcul des statistiques
   const stats = {
     total: demandesFiltres.length,
-    en_attente: demandesFiltres.filter(d => d.statut?.toLowerCase() === "en attente").length,
-    traitees: demandesFiltres.filter(d => d.statut?.toLowerCase() === "traité").length,
-    rejetees: demandesFiltres.filter(d => d.statut?.toLowerCase() === "rejeté").length,
-    en_cours: demandesFiltres.filter(d => d.statut?.toLowerCase() === "en cours").length,
-    supprimees: toutesLesDemandes.length - demandesFiltres.length
+    en_attente: demandesFiltres.filter(
+      (d) => d.statut?.toLowerCase() === "en attente",
+    ).length,
+    traitees: demandesFiltres.filter(
+      (d) => d.statut?.toLowerCase() === "traité",
+    ).length,
+    rejetees: demandesFiltres.filter(
+      (d) => d.statut?.toLowerCase() === "rejeté",
+    ).length,
+    en_cours: demandesFiltres.filter(
+      (d) => d.statut?.toLowerCase() === "en cours",
+    ).length,
+    supprimees: toutesLesDemandes.length - demandesFiltres.length,
   };
 
   // 🔹 Résumé HTML
@@ -156,25 +171,34 @@ function afficherDemandesFiltrees() {
   `;
 
   // Pagination
-  const totalPages = Math.max(1, Math.ceil(demandesFiltres.length / demandesParPage));
+  const totalPages = Math.max(
+    1,
+    Math.ceil(demandesFiltres.length / demandesParPage),
+  );
   const startIndex = (pageCourante - 1) * demandesParPage;
   const endIndex = startIndex + demandesParPage;
   const demandesPage = demandesFiltres.slice(startIndex, endIndex);
 
   // Cartes avec actions
-  const listeHTML = demandesPage.map(d => `
+  const listeHTML = demandesPage
+    .map(
+      (d) => `
 <div class="demande-card">
  <h3><i class="fa-solid fa-thumbtack"></i> Demande de ${d.name || "<em><u>Pas de nom</em></u>"}</h3>   
   <p><strong>Email :</strong> 
-    ${d.client_email 
-      ? `<a href="mailto:${d.client_email}">${d.client_email}</a>` 
-      : "Pas d'email"}
+    ${
+      d.client_email
+        ? `<a href="mailto:${d.client_email}">${d.client_email}</a>`
+        : "Pas d'email"
+    }
   </p>
   
   <p><strong>WhatsApp :</strong> 
-    ${d.client_whatsapp 
-      ? `<a href="tel:${d.client_whatsapp}">${d.client_whatsapp}</a>` 
-      : "Pas de numéro"}
+    ${
+      d.client_whatsapp
+        ? `<a href="tel:${d.client_whatsapp}">${d.client_whatsapp}</a>`
+        : "Pas de numéro"
+    }
   </p>
   
   <p><strong>Message :</strong> ${d.message || "<em><u>Pas de message </u></em>"}</p>
@@ -182,16 +206,18 @@ function afficherDemandesFiltrees() {
   <p><strong>Service :</strong> ${d.service || "<em><u>Non spécifié</em></u>"}</p>
   <p><strong>Prix :</strong> ${d.price ? d.price + " $" : "<strong><em><u>Non spécifié</u></em></strong>"}</p>
   <p><strong>Statut :</strong> 
-  <span class="statut ${d.statut?.toLowerCase() || 'inconnu'}">
+  <span class="statut ${d.statut?.toLowerCase() || "inconnu"}">
     ${d.statut || "Non spécifié"}
   </span>
 </p>
 
   
  <p><strong>Localisation :</strong> 
-  ${d.map_url 
-    ? `<a href="${d.map_url}" target="_blank">📍 Voir la carte</a>` 
-    : `<em><strong><u>Localisation non fournie</u></strong></em>`}
+  ${
+    d.map_url
+      ? `<a href="${d.map_url}" target="_blank">📍 Voir la carte</a>`
+      : `<em><strong><u>Localisation non fournie</u></strong></em>`
+  }
 </p>
 
 
@@ -205,7 +231,9 @@ function afficherDemandesFiltrees() {
   </div>
 </div>
 
-  `).join("");
+  `,
+    )
+    .join("");
 
   // Nettoyage ancien contenu
   document.querySelector(".resume-stats")?.remove();
@@ -216,12 +244,17 @@ function afficherDemandesFiltrees() {
   const resume = document.createElement("div");
   resume.className = "resume-stats";
   resume.innerHTML = resumeHTML;
-  document.querySelector(".export-actions")?.insertAdjacentElement("afterend", resume);
+  document
+    .querySelector(".export-actions")
+    ?.insertAdjacentElement("afterend", resume);
 
   // Injection liste
   const container = document.createElement("div");
   container.className = "demandes-liste";
-  container.innerHTML = demandesPage.length > 0 ? listeHTML : `<p class="info">ℹ️ Aucune demande trouvée.</p>`;
+  container.innerHTML =
+    demandesPage.length > 0
+      ? listeHTML
+      : `<p class="info">ℹ️ Aucune demande trouvée.</p>`;
 
   // Injection pagination
   const pagination = document.createElement("div");
@@ -237,7 +270,6 @@ function afficherDemandesFiltrees() {
 
   console.log("Cartes affichées :", demandesPage.length);
 }
-
 
 // 🔹 Changer de page
 function changerPage(nouvellePage) {
@@ -259,8 +291,8 @@ async function changerStatut(id, nouveauStatut) {
     }
 
     // Mettre à jour localement
-    toutesLesDemandes = toutesLesDemandes.map(d =>
-      d.id === id ? { ...d, statut: nouveauStatut } : d
+    toutesLesDemandes = toutesLesDemandes.map((d) =>
+      d.id === id ? { ...d, statut: nouveauStatut } : d,
     );
 
     alert("✅ Statut mis à jour : " + nouveauStatut);
@@ -287,7 +319,7 @@ async function supprimerDemande(id) {
     }
 
     // Supprimer localement
-    toutesLesDemandes = toutesLesDemandes.filter(d => d.id !== id);
+    toutesLesDemandes = toutesLesDemandes.filter((d) => d.id !== id);
     alert("🗑️ Demande supprimée !");
     afficherDemandesFiltrees();
   } catch (err) {
@@ -298,22 +330,34 @@ async function supprimerDemande(id) {
 
 // 🔹 Export CSV
 function exportDemandesCSV() {
-  const rows = toutesLesDemandes.map(d => [
-    d.name || "Pas de nom",
-    d.client_email || "Pas d'email",
-    d.client_whatsapp || "Pas de numéro",
-    d.message || "—",
-    d.category || "—",
-    d.service || "—",
-    d.price ? d.price + " $" : "Non spécifié",
-    d.statut || "—",
-    d.map_url || "—",
-    d.id || "—"
-  ].map(val => `"${val}"`).join(","));
+  const rows = toutesLesDemandes.map((d) =>
+    [
+      d.name || "Pas de nom",
+      d.client_email || "Pas d'email",
+      d.client_whatsapp || "Pas de numéro",
+      d.message || "—",
+      d.category || "—",
+      d.service || "—",
+      d.price ? d.price + " $" : "Non spécifié",
+      d.statut || "—",
+      d.map_url || "—",
+      d.id || "—",
+    ]
+      .map((val) => `"${val}"`)
+      .join(","),
+  );
 
   const header = [
-    "Nom", "Email", "WhatsApp", "Message", "Catégorie", "Service",
-    "Prix", "Statut", "Localisation", "Utilisateur ID"
+    "Nom",
+    "Email",
+    "WhatsApp",
+    "Message",
+    "Catégorie",
+    "Service",
+    "Prix",
+    "Statut",
+    "Localisation",
+    "Utilisateur ID",
   ].join(",");
 
   const csvContent = [header, ...rows].join("\n");
@@ -345,4 +389,3 @@ function exportDemandesPDF() {
   win.document.close();
   win.print();
 }
-

@@ -5,7 +5,8 @@ const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     // 🔐 Récupération de la session utilisateur
-    const { data: sessionData, error: sessionError } = await client.auth.getSession();
+    const { data: sessionData, error: sessionError } =
+      await client.auth.getSession();
     const userId = sessionData?.session?.user?.id;
 
     if (!userId) {
@@ -22,8 +23,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       .single();
 
     if (userError || !utilisateur) {
-      console.error("Erreur lors de la récupération de l'utilisateur :", userError);
-      alert("Erreur : votre compte n'est pas correctement configuré. Contactez l'administrateur.");
+      console.error(
+        "Erreur lors de la récupération de l'utilisateur :",
+        userError,
+      );
+      alert(
+        "Erreur : votre compte n'est pas correctement configuré. Contactez l'administrateur.",
+      );
       return;
     }
 
@@ -56,7 +62,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     // 🚀 Initialisation de l'interface
     afficherBadgeRole();
     afficherMenu();
-
   } catch (err) {
     console.error("Erreur inattendue :", err);
     alert("Une erreur est survenue. Veuillez réessayer plus tard.");

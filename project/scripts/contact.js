@@ -60,7 +60,7 @@ form.addEventListener("submit", async (e) => {
     subject: form.subject.value,
     visitor_type: form["visitor-type"].value,
     lang: form.lang.value,
-    message: form.message.value
+    message: form.message.value,
   };
 
   // Insertion dans Supabase

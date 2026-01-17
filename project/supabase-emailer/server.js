@@ -1,40 +1,44 @@
 // === server.js pour l'envoi de données ===
-const express = require('express');
-const nodemailer = require('nodemailer');
-const { createClient } = require('@supabase/supabase-js');
-require('dotenv').config();
+const express = require("express");
+const nodemailer = require("nodemailer");
+const { createClient } = require("@supabase/supabase-js");
+require("dotenv").config();
 
 const app = express();
 app.use(express.json());
 
 // Supabase client
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_KEY,
+);
 
 // Email transporteur (Zoho Mail)
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: parseInt(process.env.SMTP_PORT),
-  secure: process.env.SMTP_SECURE === 'true',
+  secure: process.env.SMTP_SECURE === "true",
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
+    pass: process.env.EMAIL_PASS,
+  },
 });
 
 // Route pour envoyer l'email au client
-app.post('/notify-client', async (req, res) => {
+app.post("/notify-client", async (req, res) => {
   const { email } = req.body;
 
-const { data, error } = await supabase
-  .from('kazidomo_demandes_services')
-  .select('*')
-  .eq('clientEmail', email)
-  .order('created_at', { ascending: false })
-  .limit(1);
-
+  const { data, error } = await supabase
+    .from("kazidomo_demandes_services")
+    .select("*")
+    .eq("clientEmail", email)
+    .order("created_at", { ascending: false })
+    .limit(1);
 
   if (error || !data || data.length === 0) {
-    return res.status(404).json({ message: 'Aucune donnée trouvée pour cet email.' });
+    return res
+      .status(404)
+      .json({ message: "Aucune donnée trouvée pour cet email." });
   }
 
   const request = data[0];
@@ -53,7 +57,7 @@ const { data, error } = await supabase
       <p>Nous vous contacterons bientôt.</p>
       <br>
       <p>Cordialement,<br>L’équipe Kazidomo</p>
-    `
+    `,
   };
 
   try {
@@ -61,14 +65,14 @@ const { data, error } = await supabase
 
     // ✅ Met à jour le champ sentAt après envoi réussi
     await supabase
-      .from('kazidomo_demandes_services')
+      .from("kazidomo_demandes_services")
       .update({ sentAt: new Date().toISOString() })
-      .eq('clientEmail', request.clientEmail);
+      .eq("clientEmail", request.clientEmail);
 
-    res.status(200).json({ message: '✅ Email envoyé avec succès.' });
+    res.status(200).json({ message: "✅ Email envoyé avec succès." });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: '❌ Erreur lors de l’envoi de l’email.' });
+    res.status(500).json({ message: "❌ Erreur lors de l’envoi de l’email." });
   }
 });
 

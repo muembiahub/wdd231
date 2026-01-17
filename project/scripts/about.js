@@ -1,16 +1,17 @@
 // 🔄 Chargement du fichier JSON
-fetch('data/about.json')
-  .then(response => {
+fetch("data/about.json")
+  .then((response) => {
     if (!response.ok) throw new Error("Fichier JSON introuvable");
     return response.json();
   })
-  .then(data => {
+  .then((data) => {
     injectAbout(data);
     injectServices(data);
   })
-  .catch(error => {
+  .catch((error) => {
     console.error("Erreur de chargement :", error);
-    document.getElementById("about-section").innerHTML = `<p class="erreur">Impossible de charger les données Kazidomo.</p>`;
+    document.getElementById("about-section").innerHTML =
+      `<p class="erreur">Impossible de charger les données Kazidomo.</p>`;
   });
 
 // 🧾 Injection des informations générales
@@ -47,7 +48,7 @@ function injectAbout(data) {
         <th>Valeurs</th>
         <td>
           <ul>
-            ${data.valeurs.map(val => `<li>${val}</li>`).join("")}
+            ${data.valeurs.map((val) => `<li>${val}</li>`).join("")}
           </ul>
         </td>
       </tr>
@@ -60,7 +61,7 @@ function injectServices(data) {
   const section = document.getElementById("services-section");
   section.innerHTML = ""; // Nettoyage préalable
 
-  data.services.forEach(service => {
+  data.services.forEach((service) => {
     const card = document.createElement("div");
     card.className = "card";
     card.style.borderLeft = `6px solid ${service.overlay.couleur}`;

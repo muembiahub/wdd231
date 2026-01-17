@@ -9,23 +9,46 @@ async function afficherUtilisateurs() {
   panneau.innerHTML = "<h3>Gestion des utilisateurs</h3>";
 
   const domaines = [
-    "informatique-et-technologie", "plomberie", "électricité", "nettoyage", "menuiserie",
-    "construction-et-réparation", "manifestations-et-cérémonies", "mécanique", "formation",
-    "mode", "beauté", "hôtels-et-restaurants", "santé", "immobilier", "animaux",
-    "agriculture", "autres-services"
+    "informatique-et-technologie",
+    "plomberie",
+    "électricité",
+    "nettoyage",
+    "menuiserie",
+    "construction-et-réparation",
+    "manifestations-et-cérémonies",
+    "mécanique",
+    "formation",
+    "mode",
+    "beauté",
+    "hôtels-et-restaurants",
+    "santé",
+    "immobilier",
+    "animaux",
+    "agriculture",
+    "autres-services",
   ];
 
-  const rolesDisponibles = ["tous", "requerant", "prestataire", "admin", "superadmin"];
+  const rolesDisponibles = [
+    "tous",
+    "requerant",
+    "prestataire",
+    "admin",
+    "superadmin",
+  ];
   const filtreActuel = sessionStorage.getItem("filtre-role") || "tous";
 
   // 🔍 Filtre par rôle
   panneau.innerHTML += `
     <label><strong>Filtrer par rôle :</strong></label>
     <select id="filtre-role" onchange="filtrerParRole()">
-      ${rolesDisponibles.map(role => `
+      ${rolesDisponibles
+        .map(
+          (role) => `
         <option value="${role}" ${filtreActuel === role ? "selected" : ""}>
           ${role.charAt(0).toUpperCase() + role.slice(1)}
-        </option>`).join("")}
+        </option>`,
+        )
+        .join("")}
     </select>
     <hr>
   `;
@@ -37,7 +60,9 @@ async function afficherUtilisateurs() {
     return;
   }
 
-  const utilisateursFiltres = data.filter(user => filtreActuel === "tous" || user.role === filtreActuel);
+  const utilisateursFiltres = data.filter(
+    (user) => filtreActuel === "tous" || user.role === filtreActuel,
+  );
 
   // ➕ Sous-conteneur pour les cartes
   let wrapper = `<div id="cartes-utilisateurs">`;
@@ -45,7 +70,7 @@ async function afficherUtilisateurs() {
   if (utilisateursFiltres.length === 0) {
     wrapper += `<p class="info">Aucun utilisateur trouvé pour le rôle <strong>${filtreActuel}</strong>.</p>`;
   } else {
-    utilisateursFiltres.forEach(user => {
+    utilisateursFiltres.forEach((user) => {
       wrapper += `
         <div class="profil-card role-${user.role}" data-role="${user.role}">
           <h4>${(user.surname || "Utilisateur").toUpperCase()} ${(user.name || "Inconnu").toUpperCase()}</h4>
@@ -61,14 +86,13 @@ async function afficherUtilisateurs() {
           <label><strong>Changer domaine :</strong></label>
           <select onchange="changerDomaine('${user.id}', this.value)">
             <option value="">-- Domaine --</option>
-            ${domaines.map(d => `<option value="${d}" ${user.domaine === d ? "selected" : ""}>${d.replace(/-/g, " ")}</option>`).join("")}
+            ${domaines.map((d) => `<option value="${d}" ${user.domaine === d ? "selected" : ""}>${d.replace(/-/g, " ")}</option>`).join("")}
           </select>
           ${getBoutonsRole(user)}
         </div>
       `;
     });
   }
-
 
   // ➕ Formulaire d’ajout
   wrapper += `
@@ -90,7 +114,7 @@ async function afficherUtilisateurs() {
       <label>Domaine</label>
       <select id="nouvel-domaine">
         <option value="">-- Domaine --</option>
-        ${domaines.map(d => `<option value="${d}">${d.replace(/-/g, " ")}</option>`).join("")}
+        ${domaines.map((d) => `<option value="${d}">${d.replace(/-/g, " ")}</option>`).join("")}
       </select>
       <button class="btn" onclick="ajouterUtilisateur()">Créer</button>
     </div>
@@ -98,7 +122,6 @@ async function afficherUtilisateurs() {
 
   panneau.innerHTML += wrapper;
 }
-
 
 wrapper += `</div>`; // fermeture du sous-conteneur
 
@@ -131,7 +154,10 @@ function filtrerParRole() {
 }
 
 async function changerDomaine(id, nouveauDomaine) {
-  await client.from("utilisateurs").update({ domaine: nouveauDomaine }).eq("id", id);
+  await client
+    .from("utilisateurs")
+    .update({ domaine: nouveauDomaine })
+    .eq("id", id);
   alert("✅ Domaine mis à jour !");
   afficherUtilisateurs();
 }
@@ -162,14 +188,17 @@ async function ajouterUtilisateur() {
     return;
   }
 
-  const response = await fetch("https://eumdndwnxjqdolbpcyrp.supabase.co/functions/v1/cree_utilisateur", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+  const response = await fetch(
+    "https://eumdndwnxjqdolbpcyrp.supabase.co/functions/v1/cree_utilisateur",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ email, nom, prenom, role, domaine }),
     },
-    body: JSON.stringify({ email, nom, prenom, role, domaine })
-  });
+  );
 
   const result = await response.json();
 

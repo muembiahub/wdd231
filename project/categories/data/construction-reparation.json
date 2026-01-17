@@ -2,67 +2,67 @@
   "categories": [
     {
       "category": "Réparation lavabo",
-      "price": 20.00,
+      "price": 20.0,
       "logo": "images/reparation_lavabo.jpg",
       "description": "Remplacement du siphon et resserrage des joints sous le lavabo de la salle de bain."
     },
     {
       "category": "Réparation mélangeur cuisine",
-      "price": 20.00,
+      "price": 20.0,
       "logo": "images/melangeur_cuisine.jpg",
       "description": "Réparation du mécanisme de mélange eau chaude/froide dans la cuisine."
     },
     {
       "category": "Débouchage WC",
-      "price": 25.00,
+      "price": 25.0,
       "logo": "images/debouchage_wc.jpg",
       "description": "Utilisation d’un furet manuel pour déboucher les toilettes obstruées."
     },
     {
       "category": "Remplacement robinet salle de bain",
-      "price": 30.00,
+      "price": 30.0,
       "logo": "images/robinet_sdb.jpg",
       "description": "Installation d’un robinet moderne avec économiseur d’eau dans la salle de bain."
     },
     {
       "category": "Inspection fuite sous évier",
-      "price": 15.00,
+      "price": 15.0,
       "logo": "images/fuite_evier.jpg",
       "description": "Inspection visuelle et test de pression pour localiser une fuite sous l’évier."
     },
     {
       "category": "Coulage dalle béton",
-      "price": 120.00,
+      "price": 120.0,
       "logo": "images/dalle_beton.jpg",
       "description": "Préparation du coffrage et coulage de la dalle pour fondation."
     },
     {
       "category": "Montage mur en briques",
-      "price": 95.00,
+      "price": 95.0,
       "logo": "images/mur_briques.jpg",
       "description": "Élévation du mur porteur avec briques rouges et mortier."
     },
     {
       "category": "Pose charpente bois",
-      "price": 150.00,
+      "price": 150.0,
       "logo": "images/charpente_bois.jpg",
       "description": "Assemblage et fixation de la structure en bois pour toiture."
     },
     {
       "category": "Installation portes métalliques",
-      "price": 60.00,
+      "price": 60.0,
       "logo": "images/portes_metal.jpg",
       "description": "Pose de deux portes métalliques avec verrouillage sécurisé."
     },
     {
       "category": "Crépi façade extérieure",
-      "price": 80.00,
+      "price": 80.0,
       "logo": "images/crepi_facade.jpg",
       "description": "Application du crépi sur les murs extérieurs pour finition esthétique."
     },
     {
       "category": "Béton",
-      "price": 65.00,
+      "price": 65.0,
       "logo": "images/beton.webp",
       "description": "Matériau de base pour fondations, dalles et structures portantes."
     },
@@ -74,37 +74,37 @@
     },
     {
       "category": "Acier et fer",
-      "price": 18.50,
+      "price": 18.5,
       "logo": "images/acier.webp",
       "description": "Armatures et structures métalliques pour construction durable."
     },
     {
       "category": "Verre et vitrage",
-      "price": 22.00,
+      "price": 22.0,
       "logo": "images/verre.webp",
       "description": "Vitrages simples ou doubles pour fenêtres, cloisons et façades."
     },
     {
       "category": "PVC et composites",
-      "price": 9.80,
+      "price": 9.8,
       "logo": "images/pvc.webp",
       "description": "Matériaux légers pour tuyauterie, menuiserie et revêtements."
     },
     {
       "category": "Mortier de réparation",
-      "price": 14.90,
+      "price": 14.9,
       "logo": "images/mortier_reparation.webp",
       "description": "Rebouchage et reconstitution de surfaces endommagées."
     },
     {
       "category": "Résine époxy",
-      "price": 28.00,
+      "price": 28.0,
       "logo": "images/resine_epoxy.webp",
       "description": "Scellement, collage et imperméabilisation haute performance."
     },
     {
       "category": "Enduit plastique",
-      "price": 11.50,
+      "price": 11.5,
       "logo": "images/enduit.webp",
       "description": "Protection contre fissures et humidité, finition lisse."
     },
@@ -116,208 +116,207 @@
     },
     {
       "category": "Équipement de chantier",
-      "price": 350.00,
+      "price": 350.0,
       "logo": "images/equipement_chantier.webp",
       "description": "Machines et outils pour excavation, levage et nivellement."
     },
     {
       "category": "Échafaudage",
-      "price": 120.00,
+      "price": 120.0,
       "logo": "images/echafaudage.webp",
       "description": "Structure temporaire pour travaux en hauteur sécurisés."
     },
     {
       "category": "Isolation thermique",
-      "price": 45.00,
+      "price": 45.0,
       "logo": "images/isolation.webp",
       "description": "Matériaux pour confort intérieur et économie d’énergie."
     },
     {
       "category": "Étanchéité",
-      "price": 32.00,
+      "price": 32.0,
       "logo": "categories/images/etancheite.webp",
       "description": "Systèmes pour protéger contre l’humidité et les infiltrations."
     },
     {
       "category": "Renforcement structurel",
-      "price": 75.00,
+      "price": 75.0,
       "logo": "categories/images/renforcement.webp",
       "description": "Techniques pour solidifier les éléments porteurs."
     },
     {
-    "category": "Carrelage pose au mètre carré",
-    "description": "Pose de carreaux et faïence 1m².",
-    "price": "7"
-  },
-  {
-    "category": "Pavage pose au mètre carré",
-    "description": "Pose de pavés 1m².",
-    "price": "9"
-  },
-  {
-    "category": "Plomberie tuyauterie maison",
-    "description": "Installation de la tuyauterie d'une maison.",
-    "price": "150"
-  },
-  {
-    "category": "Plomberie installation complète 2 circuits",
-    "description": "Installation complète de plomberie pour maison avec 2 circuits.",
-    "price": "500"
-  },
-  {
-    "category": "Plomberie installation complète avec évacuation",
-    "description": "Installation de plomberie incluant tuyauterie, évacuation et raccordement.",
-    "price": "350"
-  },
-  {
-    "category": "Pompe forage immergé",
-    "description": "Plongée et installation de pompe immergée de forage.",
-    "price": "40"
-  },
-  {
-    "category": "Plomberie débouchage cuisine",
-    "description": "Débouchage du levier de cuisine.",
-    "price": "25"
-  },
-  {
-    "category": "Plomberie débouchage WC",
-    "description": "Débouchage de la cuve WC.",
-    "price": "70"
-  },
-  {
-    "category": "Plomberie réparation robinet cuisine",
-    "description": "Réparation du mélangeur de cuisine.",
-    "price": "25"
-  },
-  {
-    "category": "Plomberie réparation baignoire",
-    "description": "Réparation de baignoire ou douche.",
-    "price": "25"
-  },
-  {
-    "category": "Plomberie réparation citerne",
-    "description": "Réparation de la citerne d'eau.",
-    "price": "30"
-  },
-  {
-    "category": "Plomberie installation complète 1 circuit",
-    "description": "Installation de plomberie pour maison complète avec 1 circuit.",
-    "price": "300"
-  },
-  {
-    "logo": "images/maison-80m.webp",
-    "category": "Maison 3 chambres – 80m²",
-    "description": "Construction avec double salon, cuisine, dépôt et terrasse sur 80m².",
-    "price": "80000"
-  },
-  {
-    "logo": "images/maison-250m.webp",
-    "category": "Maison 4 chambres – 250m²",
-    "description": "Double salon, cuisine, plan au choix du client, tout compris.",
-    "price": "250000"
-  },
-  {
-    "logo": "images/maison-rplus1.webp",
-    "category": "Maison R+1 – 3 chambres – 150m²",
-    "description": "Cuisine, double salon, dépôt, plan au choix du client.",
-    "price": "150000"
-  },
-  {
-    "logo": "images/maison-250m-repos.webp",
-    "category": "Maison 4 chambres avec espace de repos – 250m²",
-    "description": "Réserve, cuisine, salle à manger, salon, plan au choix du client.",
-    "price": "350000"
-  },
-  {
-    "logo": "images/forage-70m.webp",
-    "category": "Forage avec pompe – 70m",
-    "description": "Installation de forage avec pompe à 70 mètres de profondeur.",
-    "price": "2500"
-  },
-  {
-    "logo": "images/forage-80m.webp",
-    "category": "Forage avec pompe – 80m",
-    "description": "Installation de forage avec pompe à 80 mètres.",
-    "price": "2700"
-  },
-  {
-    "logo": "images/forage-90-100m.webp",
-    "category": "Forage avec pompe – 90m à 100m",
-    "description": "Forage profond avec pompe, adapté aux besoins intensifs.",
-    "price": "3200"
-  },
-  {
-    "logo": "images/forage-solaire.webp",
-    "category": "Forage kit complet solaire – 80m à 90m",
-    "description": "Pompe hybride, 4 panneaux solaires, accessoires inclus.",
-    "price": "5200"
-  },
-  {
-    "logo": "images/forage-kit.webp",
-    "category": "Forage kit complet – 75m à 80m",
-    "description": "Pompe 1HP, citerne 5000L, support tank inclus.",
-    "price": "4500"
-  },
-  {
-    "logo": "images/forage-simple-100m.webp",
-    "category": "Forage simple sans pompe – 100m",
-    "description": "Forage profond sans système de pompage.",
-    "price": "2600"
-  },
-  {
-    "logo": "images/forage-simple-90m.webp",
-    "category": "Forage simple sans pompe – 90m",
-    "description": "Forage standard sans pompe.",
-    "price": "2300"
-  },
-  {
-    "logo": "images/forage-simple-60m.webp",
-    "category": "Forage simple sans pompe – 60m",
-    "description": "Forage économique sans système de pompage.",
-    "price": "1500"
-  },
-  {
-    "logo": "images/forage-simple-70m.webp",
-    "category": "Forage simple sans pompe – 70m",
-    "description": "Forage intermédiaire sans pompe.",
-    "price": "1800"
-  },
-  {
-    "logo": "images/forage-simple-80m.webp",
-    "category": "Forage simple sans pompe – 80m",
-    "description": "Forage profond sans pompe, tarif premium.",
-    "price": "20000"
-  },
-  {
-    "logo": "images/immeuble-1600m.webp",
-    "category": "Immeuble 1600m² – projet sur 2 ans",
-    "description": "Parking, supermarché (R+1), bureaux (R+2), appartements (R+3 à R+5), paiement par tranche.",
-    "price": "1500000"
-  },
-  {
-    "logo": "images/maison-200m.webp",
-    "category": "Maison 200m² – plan au choix",
-    "description": "Projet livré en 6 mois, budget disponible, paiement par tranche.",
-    "price": "200000"
-  },
-  {
-    "logo": "images/peinture-8x14.webp",
-    "category": "Peinture maison 8x10 à 14x16m",
-    "description": "Design au choix, devis inclus.",
-    "price": "2000"
-  },
-  {
-    "logo": "images/peinture-rplus1.webp",
-    "category": "Peinture maison R+1 – 6 chambres",
-    "description": "Design personnalisé, devis inclus.",
-    "price": "8000"
-  },
-  {
-    "logo": "images/porte-bois.webp",
-    "category": "Remplacement de serrure de porte en bois",
-    "description": "Intervention rapide pour porte en bois.",
-    "price": "30"
-  }
-]
-
+      "category": "Carrelage pose au mètre carré",
+      "description": "Pose de carreaux et faïence 1m².",
+      "price": "7"
+    },
+    {
+      "category": "Pavage pose au mètre carré",
+      "description": "Pose de pavés 1m².",
+      "price": "9"
+    },
+    {
+      "category": "Plomberie tuyauterie maison",
+      "description": "Installation de la tuyauterie d'une maison.",
+      "price": "150"
+    },
+    {
+      "category": "Plomberie installation complète 2 circuits",
+      "description": "Installation complète de plomberie pour maison avec 2 circuits.",
+      "price": "500"
+    },
+    {
+      "category": "Plomberie installation complète avec évacuation",
+      "description": "Installation de plomberie incluant tuyauterie, évacuation et raccordement.",
+      "price": "350"
+    },
+    {
+      "category": "Pompe forage immergé",
+      "description": "Plongée et installation de pompe immergée de forage.",
+      "price": "40"
+    },
+    {
+      "category": "Plomberie débouchage cuisine",
+      "description": "Débouchage du levier de cuisine.",
+      "price": "25"
+    },
+    {
+      "category": "Plomberie débouchage WC",
+      "description": "Débouchage de la cuve WC.",
+      "price": "70"
+    },
+    {
+      "category": "Plomberie réparation robinet cuisine",
+      "description": "Réparation du mélangeur de cuisine.",
+      "price": "25"
+    },
+    {
+      "category": "Plomberie réparation baignoire",
+      "description": "Réparation de baignoire ou douche.",
+      "price": "25"
+    },
+    {
+      "category": "Plomberie réparation citerne",
+      "description": "Réparation de la citerne d'eau.",
+      "price": "30"
+    },
+    {
+      "category": "Plomberie installation complète 1 circuit",
+      "description": "Installation de plomberie pour maison complète avec 1 circuit.",
+      "price": "300"
+    },
+    {
+      "logo": "images/maison-80m.webp",
+      "category": "Maison 3 chambres – 80m²",
+      "description": "Construction avec double salon, cuisine, dépôt et terrasse sur 80m².",
+      "price": "80000"
+    },
+    {
+      "logo": "images/maison-250m.webp",
+      "category": "Maison 4 chambres – 250m²",
+      "description": "Double salon, cuisine, plan au choix du client, tout compris.",
+      "price": "250000"
+    },
+    {
+      "logo": "images/maison-rplus1.webp",
+      "category": "Maison R+1 – 3 chambres – 150m²",
+      "description": "Cuisine, double salon, dépôt, plan au choix du client.",
+      "price": "150000"
+    },
+    {
+      "logo": "images/maison-250m-repos.webp",
+      "category": "Maison 4 chambres avec espace de repos – 250m²",
+      "description": "Réserve, cuisine, salle à manger, salon, plan au choix du client.",
+      "price": "350000"
+    },
+    {
+      "logo": "images/forage-70m.webp",
+      "category": "Forage avec pompe – 70m",
+      "description": "Installation de forage avec pompe à 70 mètres de profondeur.",
+      "price": "2500"
+    },
+    {
+      "logo": "images/forage-80m.webp",
+      "category": "Forage avec pompe – 80m",
+      "description": "Installation de forage avec pompe à 80 mètres.",
+      "price": "2700"
+    },
+    {
+      "logo": "images/forage-90-100m.webp",
+      "category": "Forage avec pompe – 90m à 100m",
+      "description": "Forage profond avec pompe, adapté aux besoins intensifs.",
+      "price": "3200"
+    },
+    {
+      "logo": "images/forage-solaire.webp",
+      "category": "Forage kit complet solaire – 80m à 90m",
+      "description": "Pompe hybride, 4 panneaux solaires, accessoires inclus.",
+      "price": "5200"
+    },
+    {
+      "logo": "images/forage-kit.webp",
+      "category": "Forage kit complet – 75m à 80m",
+      "description": "Pompe 1HP, citerne 5000L, support tank inclus.",
+      "price": "4500"
+    },
+    {
+      "logo": "images/forage-simple-100m.webp",
+      "category": "Forage simple sans pompe – 100m",
+      "description": "Forage profond sans système de pompage.",
+      "price": "2600"
+    },
+    {
+      "logo": "images/forage-simple-90m.webp",
+      "category": "Forage simple sans pompe – 90m",
+      "description": "Forage standard sans pompe.",
+      "price": "2300"
+    },
+    {
+      "logo": "images/forage-simple-60m.webp",
+      "category": "Forage simple sans pompe – 60m",
+      "description": "Forage économique sans système de pompage.",
+      "price": "1500"
+    },
+    {
+      "logo": "images/forage-simple-70m.webp",
+      "category": "Forage simple sans pompe – 70m",
+      "description": "Forage intermédiaire sans pompe.",
+      "price": "1800"
+    },
+    {
+      "logo": "images/forage-simple-80m.webp",
+      "category": "Forage simple sans pompe – 80m",
+      "description": "Forage profond sans pompe, tarif premium.",
+      "price": "20000"
+    },
+    {
+      "logo": "images/immeuble-1600m.webp",
+      "category": "Immeuble 1600m² – projet sur 2 ans",
+      "description": "Parking, supermarché (R+1), bureaux (R+2), appartements (R+3 à R+5), paiement par tranche.",
+      "price": "1500000"
+    },
+    {
+      "logo": "images/maison-200m.webp",
+      "category": "Maison 200m² – plan au choix",
+      "description": "Projet livré en 6 mois, budget disponible, paiement par tranche.",
+      "price": "200000"
+    },
+    {
+      "logo": "images/peinture-8x14.webp",
+      "category": "Peinture maison 8x10 à 14x16m",
+      "description": "Design au choix, devis inclus.",
+      "price": "2000"
+    },
+    {
+      "logo": "images/peinture-rplus1.webp",
+      "category": "Peinture maison R+1 – 6 chambres",
+      "description": "Design personnalisé, devis inclus.",
+      "price": "8000"
+    },
+    {
+      "logo": "images/porte-bois.webp",
+      "category": "Remplacement de serrure de porte en bois",
+      "description": "Intervention rapide pour porte en bois.",
+      "price": "30"
+    }
+  ]
 }
