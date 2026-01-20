@@ -40,7 +40,7 @@ body{
 
 
 .nav-list{
-  list-style:none; display:flex; gap:0.2rem; margin: 1px; padding:2px;
+  list-style:none; display:flex; gap:0.2rem; margin: 1px; padding:2px; font-size: 0.8rem;
 }
 .nav-list a{
   color: var(--muted); text-decoration:none; padding:0.5rem 0.75rem; border-radius:8px;

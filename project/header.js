@@ -113,17 +113,18 @@ menuItems.forEach((item) => {
   // ===== FOOTER =====
   const footer = document.querySelector("footer");
   footer.innerHTML = `
-    <div>
+  
+    <div id = "year" >
       <p><i class="fa-regular fa-copyright"></i>
-      ${new Date().getFullYear()} Kazidomo-Confiance</p>
+      ${new Date().getFullYear()} Jonathan M. Muembia</p>
     </div>
     <div>
-      <p><i class="fa-solid fa-bolt"></i> Propulsé par <a href="https://kazidomo.com/muembiahub/portifio.html" target="_blank">Muembia Hub</a></p>
-      <p><i class="fa-solid fa-globe"></i> Designed by Kazidomo</p>
-      <p><i class="fa-solid fa-shield-halved"></i> Tous droits réservés</p>
+      <p id = "bolt"><i class="fa-solid fa-bolt"></i> Propulsé par <a href="https://kazidomo.com/muembiahub/portifio.html" target="_blank">Muembia Hub</a></p>
+      <p id = 'globe'><i class="fa-solid fa-globe"></i> Designed by Muembia Designer</p>
+      <p id = "halved"><i class="fa-solid fa-shield-halved"></i> Tous droits réservés</p>
     </div>
-    <button id="kazidomo-chat-btn" aria-label="Ouvrir le chat Kazidomo">
-      <i class="fa-solid fa-comments"></i>
+    <button id ="kazidomo-chat-btn" aria-label="Ouvrir le chat">
+      <i class="fa-solid fa-blog"></i>
     </button>
   `;
   document.body.appendChild(footer);
