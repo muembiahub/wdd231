@@ -1,28 +1,8 @@
 @media (max-width: 767px) {
-  .showcase-area {
-    height: 40vh;
-    background:
-      linear-gradient(rgba(240, 240, 240, 0.144), rgba(255, 255, 255, 0.336)),
-      url("https://img.freepik.com/photos-gratuite/personne-au-bureau-pendant-journee-travail_23-2150690165.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    text-align: center;
-    margin: 2px 0 0 0;
+  header h1 {
+    font-size: 0.5rem;
   }
-
-  .showcase-area h1 {
-    color: #ec0b0b;
-    margin-bottom: 0.1rem;
-    font-size: 1.2rem;
-  }
-
-  .showcase-area p {
-    font-size: 1rem;
-    color: rgb(10, 15, 171);
-    line-height: 1.5;
-    text-align: center;
-  }
+  
 
   @keyframes fadeInUp {
     from {

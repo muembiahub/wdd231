@@ -229,7 +229,7 @@ createOrUpdateBanner(
    <p>Nous offrons des services de confiance et de qualité.</p>
    <p>Découvrez nos services de confiance et de qualité.</p>`, // message HTML
   "Découvrir maintenant", // texte bouton
-  () => (window.location.href = "https://kazidomo-confiance.example.com"), // action bouton
+  () => (window.location.href = "#categoryHomepage"), // action bouton
 );
 
 // === 4. Génération HTML d’une carte pour les pages hors accueil ===

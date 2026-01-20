@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', () => {
 // Mobile nav toggle
 const toggle = document.querySelector('.nav-toggle');
 const navList = document.querySelector('.nav-list');
@@ -19,10 +20,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// Year in footer
-document.getElementById('year').textContent = new Date().getFullYear();
 
-document.addEventListener('DOMContentLoaded', () => {
+
+
   const btn = document.getElementById('downloadCV');
 
   if (btn) {
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
       msg.style.display = 'block';
     });
   }
-});
+
 
 
 
@@ -61,3 +61,43 @@ document.getElementById('contactForm')?.addEventListener('submit', e => {
   alert('Thanks! Your message has been sent (demo).');
   e.target.reset();
 });
+
+
+const footer = document.querySelector("footer");
+  footer.innerHTML = `
+  
+    <div id = "year" >
+      <p><i class="fa-regular fa-copyright"></i>
+      ${new Date().getFullYear()} Jonathan M. Muembia</p>
+    </div>
+    <div>
+      <p id = "bolt"><i class="fa-solid fa-bolt"></i> Propulsé par <a href="https://kazidomo.com/muembiahub/portifio.html" target="_blank">Muembia Hub</a></p>
+      <p id = 'globe'><i class="fa-solid fa-globe"></i> Designed by Muembia Designer</p>
+      <p id = "halved"><i class="fa-solid fa-shield-halved"></i> Tous droits réservés</p>
+    </div>
+    <button id ="kazidomo-chat-btn" aria-label="Ouvrir le chat">
+      <i class="fa-solid fa-blog"></i>
+    </button>
+  `;
+  document.body.appendChild(footer);
+  // ===== BOTPRESS CHAT =====
+  const chantbot = document.createElement("script");
+  chantbot.src = "https://cdn.botpress.cloud/webchat/v0/inject.js";
+  chantbot.onload = function () {
+    var CONFIG_URL = "https://files.bpcontent.cloud/2025/12/30/13/20251230131849-AY45NXSY.json";
+    window.botpressWebChat.init({
+      configUrl: CONFIG_URL,
+      hostUrl: "https://cdn.botpress.cloud/webchat/v0",
+      botName: "Kazidomo Assistant",
+      theme: "light",
+      language: "fr",
+      layout: { position: "bottom-right" },
+      hideWidget: true,
+    });
+    document.getElementById("kazidomo-chat-btn").onclick = function () {
+      window.botpressWebChat.sendEvent({ type: "toggle" });
+    };
+  };
+  document.body.appendChild(chantbot);
+});
+

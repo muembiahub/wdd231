@@ -118,7 +118,7 @@ body{
 
 /* Sections */
 .section{padding: 3rem 1rem}
-.section.alt{background: var(--bg-alt)}
+.section.alt{background: linear-gradient(180deg, #bfdbfe 0%, #2196F3 100%)}
 .container{max-width:1100px; margin:0 auto}
 .section h2{margin:0 0 1rem; font-size:1.8rem}
 
@@ -209,9 +209,10 @@ body{
 .work figcaption{padding:0.75rem; color: var(--muted)}
 
 /* Contact form */
+.title {color: #0567d7; font-size: 0.6rem; text-align: center;}
 .contact-form{
   background: var(--card); border:1px solid var(--border); border-radius:12px;
-  padding:1rem; box-shadow: var(--shadow); max-width:720px;
+  padding:1rem; box-shadow: var(--shadow); max-width:320px;
 }
 .form-row{display:flex; flex-direction:column; margin-bottom:0.75rem}
 label{font-weight:600; margin-bottom:0.25rem}
@@ -224,6 +225,70 @@ input:focus, textarea:focus{outline:2px solid #bfdbfe}
 /* Footer */
 .site-footer{
   border-top:1px solid var(--border); padding:1rem; text-align:center; color: var(--muted);
+  background: linear-gradient(180deg, #dbeafe 0%, #3079bd 100%);
+}
+.site-footer:hover{  background: linear-gradient(180deg, #3079bd 0%, #bfdbfe 100%);
+
+}
+
+/* ===== CHAT BUTTON ===== */
+#kazidomo-chat-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 99999;
+  background-color: white;
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: pulse 2s infinite;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease-in-out;
+}
+badge-available a {
+  position: relative;
+  display: inline-block;
+}
+
+#kazidomo-chat-btn::after {
+  content: "Need Help ?"; /* message */
+  position: absolute;
+  left: 5%;
+  top: 10%;
+  transform: translateX(-50%);
+  background-color: #9089b1;
+  color: black;
+  padding: 4px 8px;
+  border-radius: 40px;
+  font-size: 1rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+#kazidomo-chat-btn:hover::after {
+  opacity: 1;
+}
+#year i { color: #4CAF50; }
+#bolt i { color: #FF9800; }
+.menu-contact i { color: #2196F3; }
+#halved i{ color: #9C27B0; }
+#globe i  { color: #E91E63; }
+.menu-compte i { color: #76F310; }
+#kazidomo-chat-btn {color: #0567d7; }
+
+
+/* Animation pulse */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 /* Responsive */
