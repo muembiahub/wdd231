@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { href: "https://www.facebook.com/profile.php?id=61578830991597", icon: "fa-brands fa-facebook" },
     { href: "https://www.linkedin.com/in/kazidomo-confiance-287846383", icon: "fa-brands fa-linkedin" },
     { href: "https://www.tiktok.com/@kazidomo3?_t=ZM-8zPu75OCnCP&_r=1", icon: "fa-brands fa-tiktok" },
+    { href: "https://www.instagram.com/kazidomo3/", icon: "fa-brands fa-instagram" },
   ];
 
   socialLinks.forEach(({ href, icon }) => {
@@ -116,7 +117,7 @@ menuItems.forEach((item) => {
   
     <div id = "year" >
       <p><i class="fa-regular fa-copyright"></i>
-      ${new Date().getFullYear()} Jonathan M. Muembia</p>
+      ${new Date().getFullYear()} Kazidomo-Confiance</p>
     </div>
     <div>
       <p id = "bolt"><i class="fa-solid fa-bolt"></i> Propulsé par <a href="https://kazidomo.com/muembiahub/portifio.html" target="_blank">Muembia Hub</a></p>

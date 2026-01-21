@@ -35,7 +35,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     btn.addEventListener('click', () => {
       // Crée un lien invisible avec l'attribut download
       const link = document.createElement('a');
-      link.href = 'data/jonathanmuembiacv.pdf';
+      link.href = '/data/jonathanmuembiacv.pdf';
       link.download = 'Jonathan_Muembia_CV.pdf'; // nom du fichier téléchargé
       document.body.appendChild(link);
       link.click();
@@ -63,41 +63,59 @@ document.getElementById('contactForm')?.addEventListener('submit', e => {
 });
 
 
-const footer = document.querySelector("footer");
-  footer.innerHTML = `
-  
-    <div id = "year" >
-      <p><i class="fa-regular fa-copyright"></i>
-      ${new Date().getFullYear()} Jonathan M. Muembia</p>
-    </div>
-    <div>
-      <p id = "bolt"><i class="fa-solid fa-bolt"></i> Propulsé par <a href="https://kazidomo.com/muembiahub/portifio.html" target="_blank">Muembia Hub</a></p>
-      <p id = 'globe'><i class="fa-solid fa-globe"></i> Designed by Muembia Designer</p>
-      <p id = "halved"><i class="fa-solid fa-shield-halved"></i> Tous droits réservés</p>
-    </div>
-    <button id ="kazidomo-chat-btn" aria-label="Ouvrir le chat">
-      <i class="fa-solid fa-blog"></i>
-    </button>
-  `;
-  document.body.appendChild(footer);
-  // ===== BOTPRESS CHAT =====
-  const chantbot = document.createElement("script");
-  chantbot.src = "https://cdn.botpress.cloud/webchat/v0/inject.js";
-  chantbot.onload = function () {
-    var CONFIG_URL = "https://files.bpcontent.cloud/2025/12/30/13/20251230131849-AY45NXSY.json";
-    window.botpressWebChat.init({
-      configUrl: CONFIG_URL,
-      hostUrl: "https://cdn.botpress.cloud/webchat/v0",
-      botName: "Kazidomo Assistant",
-      theme: "light",
-      language: "fr",
-      layout: { position: "bottom-right" },
-      hideWidget: true,
-    });
-    document.getElementById("kazidomo-chat-btn").onclick = function () {
-      window.botpressWebChat.sendEvent({ type: "toggle" });
-    };
-  };
-  document.body.appendChild(chantbot);
+// Créer le footer
+const footer = document.createElement("footer");
+
+// Contenu du footer
+const yearDiv = document.createElement("div");
+yearDiv.id = "year";
+yearDiv.innerHTML = `<p><i class="fa-regular fa-copyright"></i> 
+  ${new Date().getFullYear()} Jonathan M. Muembia</p>`;
+
+const infoDiv = document.createElement("div");
+infoDiv.innerHTML = `
+  <p id="bolt"><i class="fa-solid fa-bolt"></i> Propulsé par 
+    <a href="https://kazidomo.com/muembiahub/portifio.html" target="_blank">Muembia Hub</a>
+  </p>
+  <p id="globe"><i class="fa-solid fa-globe"></i> Designed by Muembia Designer</p>
+  <p id="halved"><i class="fa-solid fa-shield-halved"></i> Tous droits réservés</p>
+`;
+
+// Créer le bouton WhatsApp
+const chatButton = document.createElement("button");
+chatButton.id = "kazidomo-chat-btn";
+chatButton.ariaLabel = "Ouvrir le chat";
+chatButton.innerHTML = '<i class="fa-brands fa-whatsapp"></i>';
+
+// Action au clic
+chatButton.addEventListener("click", () => {
+  window.open("whatsapp://send?phone=+243831709022&text=Bonjour", "_blank");
 });
 
+// Ajouter les éléments au footer
+footer.appendChild(yearDiv);
+footer.appendChild(infoDiv);
+footer.appendChild(chatButton);
+
+// Ajouter le footer au body
+document.body.appendChild(footer);
+
+// Afficher le bouton après 2 minutes
+setTimeout(() => {
+  chatButton.style.display = "inline-block";
+
+  // Ensuite lancer le cycle répétitif
+  setInterval(() => {
+    // Disparaît après 1 minute
+    chatButton.style.display = "none";
+
+    // Réapparaît après 4 secondes
+    setTimeout(() => {
+      chatButton.style.display = "inline-block";
+    }, 2000);
+
+  }, 4000); // 1 minute (60000 ms) + 4 secondes (4000 ms) = 64000 ms
+}, 20000); // 120000 ms = 2 minutes
+
+
+});

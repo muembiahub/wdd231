@@ -223,17 +223,18 @@ input, textarea{
 input:focus, textarea:focus{outline:2px solid #bfdbfe}
 
 /* Footer */
-.site-footer{
+footer{
   border-top:1px solid var(--border); padding:1rem; text-align:center; color: var(--muted);
   background: linear-gradient(180deg, #dbeafe 0%, #3079bd 100%);
 }
-.site-footer:hover{  background: linear-gradient(180deg, #3079bd 0%, #bfdbfe 100%);
+footer:hover{  background: linear-gradient(180deg, #3079bd 0%, #bfdbfe 100%);
 
 }
 
 /* ===== CHAT BUTTON ===== */
 #kazidomo-chat-btn {
   position: fixed;
+  display: none;
   bottom: 20px;
   right: 20px;
   width: 60px;
@@ -241,7 +242,7 @@ input:focus, textarea:focus{outline:2px solid #bfdbfe}
   border-radius: 50%;
   cursor: pointer;
   z-index: 99999;
-  background-color: white;
+  background-color: #0ce41a;
   font-size: 22px;
   display: flex;
   justify-content: center;
@@ -256,12 +257,12 @@ badge-available a {
 }
 
 #kazidomo-chat-btn::after {
-  content: "Need Help ?"; /* message */
+  content: "Chat with Us"; /* message */
   position: absolute;
-  left: 5%;
-  top: 10%;
+  left: 10%;
+  bottom: 110%;
   transform: translateX(-50%);
-  background-color: #9089b1;
+  background-color: #4CAF50;
   color: black;
   padding: 4px 8px;
   border-radius: 40px;
@@ -275,21 +276,22 @@ badge-available a {
 #kazidomo-chat-btn:hover::after {
   opacity: 1;
 }
-#year i { color: #4CAF50; }
-#bolt i { color: #FF9800; }
-.menu-contact i { color: #2196F3; }
-#halved i{ color: #9C27B0; }
-#globe i  { color: #E91E63; }
-.menu-compte i { color: #76F310; }
-#kazidomo-chat-btn {color: #0567d7; }
-
-
 /* Animation pulse */
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }
   100% { transform: scale(1); }
 }
+#year i { color: #4CAF50; }
+#bolt i { color: #FF9800; }
+.menu-contact i { color: #2196F3; }
+#halved i{ color: #9C27B0; }
+#globe i  { color: #E91E63; }
+.menu-compte i { color: #76F310; }
+#kazidomo-chat-btn {color: #151716; }
+
+
+
 
 /* Responsive */
 @media (max-width: 900px){
