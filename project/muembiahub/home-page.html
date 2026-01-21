@@ -1,45 +1,301 @@
 <!doctype html>
-<html lang="en-US">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <title>MuembiaHub</title>
-    <script src="scripts/muembiahub-scripts.js" defer></script>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Emporium — Boutique Moderne</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style/muembiahub-style.css" />
 
-    <!-- styles -->
-    <link rel="stylesheet" href="style/muembiahub-style.css" />
-  </head>
-  <body>
-    <!-- Header -->
-    <header>
-      <div id="top-bar"></div>
-      <div id="top-chrono"></div>
-      <div id="header"></div>
-    </header>
+  <!-- script-->
+   <link rel="stylesheet" href="scripts/muembiahub-scripts.js">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="#">
+        <img src="images/logo-hub.webp" alt="muembiaHub" />
+        <span>MuembiaHub</span>
+      </a>
+      <nav class="nav">
+        <a href="#femmes">Femmes</a>
+        <a href="#hommes">Hommes</a>
+        <a href="#nouveautes">Nouveautés</a>
+        <a href="#blog">Blog</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <button class="icon-btn" id="cartBtn" aria-label="Panier">
+        <span class="icon">🛒</span><span class="badge" id="cartCount">0</span>
+      </button>
+      <button class="icon-btn mobile-nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </header>
 
-    <!-- Main content -->
-    <main>
-      <div id="app">
-        <h1>Hello World</h1>
-        <p>Tu es dans un mode sans JavaScript</p>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-media" role="img" aria-label="Mode urbaine moderne"></div>
+    <div class="hero-content container">
+      <h1>Where Fashion Meets Imagination</h1>
+      <p>Des pièces modernes, durables et pensées pour la ville.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#femmes">Collection Femmes</a>
+        <a class="btn btn-outline" href="#hommes">Collection Hommes</a>
       </div>
+    </div>
+  </section>
 
-      <noscript>
-        <p style="color:red;">⚠️ JavaScript est désactivé. Certaines fonctionnalités ne fonctionneront pas.</p>
-      </noscript>
+  <!-- Shop by Category -->
+  <section class="section container" id="categories">
+    <div class="section-head">
+      <h2>Shop by Category</h2>
+    </div>
+    <div class="grid grid-categories">
+      <a class="category-card" href="#femmes">
+        <img src="assets/category-femmes-tshirt.jpg" alt="T-shirt Femmes" />
+        <span>T-shirt Femmes</span>
+      </a>
+      <a class="category-card" href="#femmes">
+        <img src="assets/category-femmes-hoodie.jpg" alt="Hoodie Femmes" />
+        <span>Hoodie Femmes</span>
+      </a>
+      <a class="category-card" href="#hommes">
+        <img src="assets/category-hommes-hoodie.jpg" alt="Hoodie Hommes" />
+        <span>Hoodie Hommes</span>
+      </a>
+      <a class="category-card" href="#hommes">
+        <img src="assets/category-hommes-shirt.jpg" alt="Chemise Hommes" />
+        <span>Chemise Hommes</span>
+      </a>
+    </div>
+  </section>
 
-      <div id="form"></div>
-    </main>
+  <!-- Trending -->
+  <section class="section container" id="tendance">
+    <div class="section-head">
+      <h2>Tendance</h2>
+      <a class="link" href="#nouveautes">Voir tout</a>
+    </div>
+    <div class="grid grid-products">
+      <!-- Product card -->
+      <article class="product-card" data-title="White Hoodie T‑Shirt" data-price="120">
+        <div class="product-media">
+          <img src="assets/product-hoodie-white.jpg" alt="White Hoodie T‑Shirt" />
+          <span class="pill">Trending</span>
+        </div>
+        <h3>White Hoodie T‑Shirt</h3>
+        <p class="price">$120.00</p>
+        <button class="btn btn-secondary add-to-cart">Ajouter au panier</button>
+      </article>
 
-    <!-- Footer -->
-    <footer></footer>
-  </body>
+      <article class="product-card" data-title="Modern Minimalist T‑Shirt" data-price="50">
+        <div class="product-media">
+          <img src="assets/product-tshirt-minimal.jpg" alt="Modern Minimalist T‑Shirt" />
+          <span class="pill">Trending</span>
+        </div>
+        <h3>Modern Minimalist T‑Shirt</h3>
+        <p class="price">$50.00</p>
+        <button class="btn btn-secondary add-to-cart">Ajouter au panier</button>
+      </article>
+
+      <article class="product-card" data-title="Urban Explorer Shirt" data-price="80">
+        <div class="product-media">
+          <img src="assets/product-shirt-urban.jpg" alt="Urban Explorer Shirt" />
+        </div>
+        <h3>Urban Explorer Shirt</h3>
+        <p class="price">$80.00</p>
+        <button class="btn btn-secondary add-to-cart">Ajouter au panier</button>
+      </article>
+
+      <article class="product-card" data-title="Velvet Dream" data-price="150" data-compare="160">
+        <div class="product-media">
+          <img src="assets/product-dress-velvet.jpg" alt="Velvet Dream" />
+          <span class="pill pill-sale">Sale</span>
+        </div>
+        <h3>Velvet Dream</h3>
+        <p class="price"><span class="compare">$160.00</span> $150.00</p>
+        <button class="btn btn-secondary add-to-cart">Ajouter au panier</button>
+      </article>
+    </div>
+  </section>
+
+  <!-- Promo banner -->
+  <section class="promo">
+    <div class="container promo-inner">
+      <div class="promo-copy">
+        <h3>Obtenez jusqu’à 50% de réduction cet été</h3>
+        <p>BUY 2 &amp; GET 55% OFF — Code: <strong>SUMMERFRIDAY2024</strong></p>
+      </div>
+      <a class="btn btn-primary" href="#nouveautes">Profiter de l’offre</a>
+    </div>
+  </section>
+
+  <!-- New arrivals -->
+  <section class="section container" id="nouveautes">
+    <div class="section-head">
+      <h2>Nouveautés</h2>
+    </div>
+    <div class="grid grid-products">
+      <!-- Repeat product-card pattern with different images/titles/prices -->
+      <article class="product-card" data-title="Minimal Gray Blazer" data-price="250">
+        <div class="product-media">
+          <img src="assets/product-blazer-gray.jpg" alt="Minimal Gray Blazer" />
+          <span class="pill">New</span>
+        </div>
+        <h3>Minimal Gray Blazer</h3>
+        <p class="price">$250.00</p>
+        <button class="btn btn-secondary add-to-cart">Ajouter au panier</button>
+      </article>
+
+      <article class="product-card" data-title="Modern T‑Shirt" data-price="100">
+        <div class="product-media">
+          <img src="assets/product-tshirt-modern.jpg" alt="Modern T‑Shirt" />
+          <span class="pill">Trending</span>
+        </div>
+        <h3>Modern T‑Shirt</h3>
+        <p class="price">$100.00</p>
+        <button class="btn btn-secondary add-to-cart">Ajouter au panier</button>
+      </article>
+
+      <article class="product-card" data-title="Starlight Sequin Dress" data-price="70">
+        <div class="product-media">
+          <img src="assets/product-dress-starlight.jpg" alt="Starlight Sequin Dress" />
+          <span class="pill">Trending</span>
+        </div>
+        <h3>Starlight Sequin Dress</h3>
+        <p class="price">$70.00</p>
+        <button class="btn btn-secondary add-to-cart">Ajouter au panier</button>
+      </article>
+
+      <article class="product-card" data-title="Serenity Stripe Dress" data-price="100">
+        <div class="product-media">
+          <img src="assets/product-dress-serenity.jpg" alt="Serenity Stripe Dress" />
+          <span class="pill pill-limited">Limited</span>
+        </div>
+        <h3>Serenity Stripe Dress</h3>
+        <p class="price">$100.00</p>
+        <button class="btn btn-secondary add-to-cart">Ajouter au panier</button>
+      </article>
+    </div>
+  </section>
+
+  <!-- Split banners -->
+  <section class="section container split-banners">
+    <a class="split-card" href="#hommes">
+      <img src="assets/banner-men-hoodie.jpg" alt="Hoodie Hommes" />
+      <div class="split-overlay"><h3>Hoodie Hommes</h3></div>
+    </a>
+    <a class="split-card" href="#femmes">
+      <img src="assets/banner-women-hoodie.jpg" alt="Hoodie Femmes" />
+      <div class="split-overlay"><h3>Hoodie Femmes</h3></div>
+    </a>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section container" id="avis">
+    <div class="section-head">
+      <h2>Ils nous adorent</h2>
+    </div>
+    <div class="grid grid-testimonials">
+      <blockquote class="testimonial">
+        <p>« J’adore ma nouvelle veste ! Parfaite pour l’extérieur et la ville. Qualité top, coupe impeccable. »</p>
+        <footer>— Alex P. ★★★★★</footer>
+      </blockquote>
+      <blockquote class="testimonial">
+        <p>« T‑shirt ultra confortable et polyvalent. Tissu doux, ajustement parfait. Mon incontournable. »</p>
+        <footer>— Jordan L. ★★★★★</footer>
+      </blockquote>
+      <blockquote class="testimonial">
+        <p>« Ces chinos sont une révolution—confortables et stylés, du bureau aux sorties. »</p>
+        <footer>— Chris M. ★★★★★</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section container" id="faq">
+    <div class="section-head">
+      <h2>Questions fréquentes</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>De quels matériaux sont faits vos vêtements ?</summary>
+        <p>Nous privilégions coton bio, polyester recyclé, lin et autres tissus durables. Chaque fiche produit détaille les matériaux.</p>
+      </details>
+      <details>
+        <summary>Comment choisir la bonne taille ?</summary>
+        <p>Consultez notre guide des tailles et comparez avec vos mesures. Entre deux tailles, prenez la plus grande.</p>
+      </details>
+      <details>
+        <summary>Quelle est votre politique de retours ?</summary>
+        <p>Retours/échanges sous 30 jours, articles non portés et étiquetés. Voir la page Retours.</p>
+      </details>
+      <details>
+        <summary>Expédiez‑vous à l’international ?</summary>
+        <p>Oui, frais et délais varient selon le pays. Des taxes douanières peuvent s’appliquer.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Store locator -->
+  <section class="section container" id="stores">
+    <div class="store-banner">
+      <h3>Visitez nos boutiques à New York</h3>
+      <p>217 Tueri Junction, New York, NY 10002 — 10:00–19:00, tous les jours</p>
+      <div class="actions">
+        <a class="btn btn-outline" href="#">Itinéraire</a>
+        <a class="btn btn-primary" href="#">Voir toutes les boutiques</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="#"><img src="assets/logo.svg" alt="Emporium" /><span>EMPORIUM</span></a>
+        <p>La plateforme simple pour créer votre boutique, portfolio et blog.</p>
+      </div>
+      <div>
+        <h4>Boutique</h4>
+        <ul>
+          <li><a href="#femmes">Femmes</a></li>
+          <li><a href="#hommes">Hommes</a></li>
+          <li><a href="#nouveautes">Nouveautés</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Retours & échanges</a></li>
+          <li><a href="#">Livraison</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <form class="newsletter" id="newsletterForm">
+          <input type="email" placeholder="Votre email" aria-label="Email" required />
+          <button class="btn btn-secondary" type="submit">S’inscrire</button>
+        </form>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <small>© 2026 Muembiahub. Tous droits réservés.</small>
+      <div class="socials">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="Twitter">Twitter</a>
+        <a href="#" aria-label="Facebook">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
 </html>
