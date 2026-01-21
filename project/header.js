@@ -122,7 +122,7 @@ menuItems.forEach((item) => {
     <div>
       <p id = "bolt"><i class="fa-solid fa-bolt"></i> Propulsé par <a href="https://kazidomo.com/muembiahub/portifio.html" target="_blank">Muembia Hub</a></p>
       <p id = 'globe'><i class="fa-solid fa-globe"></i> Designed by Muembia Designer</p>
-      <p id = "halved"><i class="fa-solid fa-shield-halved"></i> Tous droits réservés</p>
+      <p id = "halved"><i class="fa-solid fa-shield-half"></i> Tous droits réservés</p>
     </div>
     <button id ="kazidomo-chat-btn" aria-label="Ouvrir le chat">
       <i class="fa-solid fa-blog"></i>
