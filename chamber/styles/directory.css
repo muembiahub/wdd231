@@ -330,8 +330,14 @@ button:hover {
   }
 
   #menu {
+<<<<<<< HEAD
+    font-size: 1.3rem;
+    top: 0.9rem;
+    right: 0.5rem;
+=======
     top: 5px;
     left: 250px;
+>>>>>>> 26d54fc5d00ba0b1d6fec4238a291bc3fcd2ba4d
   }
 
   .resume {
