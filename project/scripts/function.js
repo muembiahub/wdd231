@@ -221,16 +221,46 @@ function createOrUpdateBanner(
   }, 100);
 }
 
-// Exemple d’utilisation
 createOrUpdateBanner(
   "header", // endroit cible
   "kazidomoBannerHeader", // id unique
   `<h1>Bienvenue chez Kazidomo Confiance!</h1>
    <p>Nous offrons des services de confiance et de qualité.</p>
    <p>Découvrez nos services de confiance et de qualité.</p>`, // message HTML
-  "Découvrir maintenant", // texte bouton
-  () => (window.location.href = "#categoryHomepage"), // action bouton
+  "Découvrir maintenant", // texte bouton initial
+  () => {
+    const annuaire = document.getElementById("annuaire");
+    const videoContainer = document.getElementById("videoContainer");
+    const promoVideo = document.getElementById("promoVideo");
+    const bannerBtn = document.querySelector("#kazidomoBannerHeader button");
+
+    if (annuaire) {
+      const isHidden = annuaire.style.display === "none" || annuaire.style.display === "";
+
+      if (isHidden) {
+        // Affiche annuaire et cache la vidéo
+        annuaire.style.display = "block";
+        videoContainer.style.display = "none";
+        if (promoVideo) promoVideo.pause();
+
+        // Change le texte du bouton
+        if (bannerBtn) bannerBtn.textContent = "Masquer les catégories";
+
+      } else {
+        // Cache annuaire et remet la vidéo
+        annuaire.style.display = "none";
+        videoContainer.style.display = "block";
+        if (promoVideo) promoVideo.play();
+
+        // Change le texte du bouton
+        if (bannerBtn) bannerBtn.textContent = "Découvrir maintenant";
+      }
+    }
+  }
 );
+
+
+
 
 // === 4. Génération HTML d’une carte pour les pages hors accueil ===
 function createCard(item, pageName) {

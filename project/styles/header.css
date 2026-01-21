@@ -10,16 +10,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #484545;
+  background: linear-gradient(180deg, #fff 0%, #42712c 100%);
   padding: 10px 20px;
   color: white;
-  position: fixed;
   width: 100%;
-  top: 1px;
-  left: 0;
-  min-height: 50px; /* corrigé */
+  min-height: 50px;
   z-index: 2001;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 #topBar .contactInfo {
@@ -58,29 +54,30 @@
 
 /* ===== HEADER ===== */
 #header {
-  margin: 60px auto 1rem;
+  margin: 0 auto 1rem; /* plus de marge en haut, seulement en bas */
   display: flex;
   align-items: center;
   border-bottom: 2px solid #e0e0e0;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   max-width: 1200px;
-  margin-top: 30px;
-  top: 40px;
-  font-size: 0.6rem;
-  padding: 0.5rem 1rem;
+  font-size: 0.7rem;
+  padding: 1rem; /* respiration interne */
   position: relative;
-  background: linear-gradient(180deg, #fff 0% , #42712c 100%);
+  background: linear-gradient(180deg, #42712c 0%, #e0e7dc 100%);
   color: #333;
 }
-#header:hover{background: linear-gradient(180deg, #42712c 0% ,#fff  100%);}
-.menu-accueil i{ color: #4CAF50; }
-.menu-services i , #bolt i{ color: #FF9800; }
-.menu-contact i , #halved i { color: #2196F3; }
-.menu-apropos i { color: #9C27B0; }
-.menu-blog i , #year i { color: #E91E63; }
-.menu-compte i { color: #76F310; }
-.menu-recherche i , #globe i { color: #FF5722;}
 
+#annuaire {
+  display: none; /* caché par défaut */
+}
+
+.menu-accueil i { color: #4CAF50; }
+.menu-services i, #bolt i { color: #FF9800; }
+.menu-contact i, #halved i { color: #2196F3; }
+.menu-apropos i { color: #9C27B0; }
+.menu-blog i, #year i { color: #E91E63; }
+.menu-compte i { color: #76F310; }
+.menu-recherche i, #globe i { color: #FF5722; }
 
 #header img.logo {
   width: 50px;
@@ -110,8 +107,6 @@
 
 #header nav ul {
   list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -128,7 +123,6 @@
   padding: 12px 16px;
   border-radius: 8px;
   font-weight: 500;
-  font-size: 10px;
   transition: all 0.3s ease;
   position: relative;
 }
@@ -172,14 +166,16 @@
   background-color: #f8f9fa;
   transform: scale(1.1);
 }
-.card a {text-decoration: none;}
+
+.card a { text-decoration: none; }
+
 /* ===== FOOTER ===== */
 footer {
   text-align: center;
   width: 100%;
   padding: 2rem 1rem;
   background: linear-gradient(180deg, #e9ebee 0%, #0567d7 100%);
-  color: var(--text-dark); /* cohérent avec tes variables */
+  color: #333;
   font-size: 15px;
   box-shadow: 0 -4px 16px rgba(0,0,0,0.1);
   margin-top: 3rem;
@@ -193,17 +189,15 @@ footer p {
 }
 
 footer a {
-  color: var(--info); /* bleu cohérent avec ta palette */
+  color: #2196F3;
   text-decoration: none;
   font-weight: 600;
-  transition: var(--transition);
+  transition: all 0.3s ease;
 }
-
 footer a:hover {
-  color: var(--primary);
+  color: #0e4a8e;
   text-decoration: underline;
 }
-
 
 /* ===== CHAT BUTTON ===== */
 #kazidomo-chat-btn {
@@ -224,16 +218,17 @@ footer a:hover {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   transition: transform 0.2s ease-in-out;
 }
-badge-available a {
+
+.badge-available a {
   position: relative;
   display: inline-block;
 }
 
 #kazidomo-chat-btn::after {
-  content: "Need Help ?"; /* message */
+  content: "Need Help ?";
   position: absolute;
-  left: 5%;
-  top: 10%;
+  bottom: 110%;
+  left: 50%;
   transform: translateX(-50%);
   background-color: #9089b1;
   color: black;
@@ -249,7 +244,6 @@ badge-available a {
 #kazidomo-chat-btn:hover::after {
   opacity: 1;
 }
-
 
 /* Animation pulse */
 @keyframes pulse {
@@ -307,22 +301,69 @@ badge-available a {
   }
 }
 
+@media (max-width: 480px) {
+  #topBar {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    padding: 8px;
+  }
+
+  .logoTitle {
+    font-size: 0.9rem;
+    margin-right: 0;
+  }
+
+  .email, .phone {
+    font-size: 11px;
+    gap: 3px;
+  }
+
+  #header img.logo {
+    width: 45px;
+    height: 45px;
+  }
+
+  #header nav ul li a {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .searchInput {
+    width: 150px;
+    font-size: 12px;
+  }
+}
+
 @media (max-width: 320px) {
   #topBar {
     flex-direction: column;
     gap: 10px;
     text-align: center;
   }
+
   .logoTitle {
     font-size: 0.8rem;
-    margin-right: 1rem;
+    margin-right: 0;
   }
+
   .email, .phone {
     font-size: 10px;
     gap: 2px;
   }
+
   #header img.logo {
     width: 40px;
     height: 40px;
+  }
+
+  #header nav ul li a {
+    font-size: 10px;
+    padding: 8px;
+  }
+
+  .searchInput {
+    width: 120px;
+    font-size: 11px;
   }
 }

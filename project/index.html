@@ -37,7 +37,7 @@
 
 <body>
   <header>
-    <div id="t"></div>
+    <div id="top-bar"></div>
     <div id="header"></div>
   </header>
 
@@ -46,12 +46,21 @@
 
   <!-- Main content -->
   <main id="main-content">
-        
-    <section id="annuaire">
-      <h2 class="about-title">Nos catégories</h2>
-      <div id="categoryHomepage" class="category"></div>
-    </section>
-  </main>
+  <!-- Conteneur vidéo -->
+  <div id="videoContainer">
+    <video id="promoVideo" width="400" controls autoplay muted loop>
+      <source src="video.mp4" type="video/mp4">
+      Votre navigateur ne supporte pas la vidéo.
+    </video>
+  </div>
+
+  <!-- Annuaire caché par défaut -->
+  <section id="annuaire">
+    <h2 class="about-title">Nos catégories</h2>
+    <div id="categoryHomepage" class="category"></div>
+  </section>
+</main>
+
 
   <!-- Footer -->
   <footer></footer>
