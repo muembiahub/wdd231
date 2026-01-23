@@ -153,34 +153,20 @@ menuItems.forEach((item) => {
   };
   document.body.appendChild(chantbot);
 
-   
-  // Créer le bouton
-  const unmuteBtn = document.createElement("button");
-  unmuteBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i> Activer le son';
-  unmuteBtn.id = "unmuteBtn";
-  document.body.appendChild(unmuteBtn);
 
-  // Récupérer la vidéo
   const promoVideo = document.getElementById("promoVideo");
+  const unmuteBtn = document.getElementById("unmuteBtn");
 
- unmuteBtn.addEventListener("click", () => {
-  if (promoVideo) {
-    // Si la vidéo est muette, on active le son
+  unmuteBtn.addEventListener("click", () => {
     if (promoVideo.muted) {
       promoVideo.muted = false;
       promoVideo.play();
-      unmuteBtn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i> Désactiver le son';
-    } 
-    // Sinon, on coupe le son
-    else {
+      unmuteBtn.textContent = "🔇 Couper le son";
+    } else {
       promoVideo.muted = true;
-      promoVideo.play();
-      unmuteBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i> Activer le son';
-
-      
+      unmuteBtn.textContent = "🔊 Activer le son";
     }
-  }
-});
+  });
 
 
 });
