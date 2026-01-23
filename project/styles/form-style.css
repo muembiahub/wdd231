@@ -6,6 +6,36 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+main {
+  position: relative;
+  width: 100%;
+  min-height: 100vh; /* ensures main fills the screen */
+  overflow: hidden;
+}
+
+.video-background {
+  position: absolute; /* stays inside main */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* behind main content */
+}
+
+.video-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fills the main area */
+}
+
+.container {
+  position: relative;
+  z-index: 1; /* content above video */
+  color: white;
+  text-align: center;
+  margin-top: 20%;
+}
+
 
 .champ-erreur {
   border: 2px solid #b30000;
