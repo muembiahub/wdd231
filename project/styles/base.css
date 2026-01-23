@@ -17,19 +17,6 @@ h6 {
   position: center;
 }
 
-#videoContainer {
-  width: 100%;
-  max-width: 800px; /* optional limit */
-  margin: auto;
-}
-
-#promoVideo {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-
 /* Bouton flottant Kazidomo */
 #kazidomo-chat-btn {
   position: fixed;
