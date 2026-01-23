@@ -17,6 +17,37 @@ h6 {
   position: center;
 }
 
+#videoContainer {
+  width: 100%;
+  max-width: 800px; /* optional limit */
+  margin: auto;
+}
+
+#promoVideo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+#videoContainer {
+  position: relative;
+}
+
+#unmuteBtn {
+  position: absolute;
+  bottom: 100px;   /* distance depuis le bas */
+  right: 20px;    /* distance depuis la droite */
+  padding: 10px 15px;
+  background: rgba(5, 41, 202, 0.6);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#unmuteBtn:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+
 /* Bouton flottant Kazidomo */
 #kazidomo-chat-btn {
   position: fixed;
