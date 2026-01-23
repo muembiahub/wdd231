@@ -18,9 +18,11 @@ h6 {
 }
 
 #videoContainer {
+  position: relative;
   width: 100%;
-  max-width: 800px; /* optional limit */
+  max-width: 800px;   /* limite optionnelle */
   margin: auto;
+  overflow: hidden;
 }
 
 #promoVideo {
@@ -28,20 +30,34 @@ h6 {
   height: auto;
   display: block;
 }
-#videoContainer {
-  position: relative;
-}
 
 #unmuteBtn {
   position: absolute;
-  bottom: 540px;
-  right: 20px;
-  padding: 10px 15px;
-  background: rgba(38, 8, 210, 0.6);
+  top: 10px;          /* toujours en haut */
+  right: 10px;        /* aligné à droite */
+  padding: 8px 12px;
+  background: rgba(0,0,0,0.6);
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  z-index: 10;        /* au-dessus de la vidéo */
+  font-size: 14px;
+}
+
+#unmuteBtn i {
+  margin-right: 6px;
+}
+
+/* Responsive : sur mobile, bouton plus grand et centré */
+@media (max-width: 600px) {
+  #unmuteBtn {
+    top: 5px;
+    right: 50%;
+    transform: translateX(50%);
+    font-size: 16px;
+    padding: 10px 15px;
+  }
 }
 
 
