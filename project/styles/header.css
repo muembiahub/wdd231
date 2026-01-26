@@ -4,6 +4,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+header{ position: sticky;
+  top: 0;
+  z-index: 1000;}
 
 /* ===== TOP BAR ===== */
 #topBar {
@@ -54,18 +57,19 @@
 
 /* ===== HEADER ===== */
 #header {
-  margin: 0 auto 1rem; /* plus de marge en haut, seulement en bas */
+  margin: 0 auto 1rem;
   display: flex;
   align-items: center;
   border-bottom: 2px solid #e0e0e0;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  max-width: 1200px;
-  font-size: 0.7rem;
-  padding: 1rem; /* respiration interne */
-  position: relative;
+  width: 100%;
+  z-index: 2000;
+  font-size: 1rem; /* slightly larger for readability */
+  padding: 1rem;
   background: linear-gradient(180deg, #42712c 0%, #e0e7dc 100%);
   color: #333;
 }
+
 
 #annuaire {
   display: none; /* caché par défaut */
