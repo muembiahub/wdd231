@@ -5,16 +5,100 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maintenance</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background:#f9f9f9; }
-    h1 { color: #42712c; }
-    p { font-size: 18px; margin: 10px 0; }
-    .footer { margin-top: 30px; font-size: 14px; color: #777; }
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background: #f9f9f9;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #42712c;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      animation: confiture 3s infinite;
+    }
+
+    @keyframes confiture {
+      0% { color: #e63946; }   /* fraise */
+      50% { color: #ffb703; }  /* abricot */
+      75% { color: #f1faee; }  /* blanc */
+      100% { color: #6a4c93; } /* myrtille */
+    }
+
+    p {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    /* Style des confettis */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      top: -10px;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Site en maintenance</h1>
-  <p>Nous travaillons actuellement sur des améliorations. Revenez bientôt&nbsp;!</p>
-  <p>Nous sommes tellement désolés pour la gêne occasionnée.</p>
-  <div class="footer">Merci de votre patience et de votre compréhension.</div>
+  <main>
+    <div class="logo">
+      <img src="images/logo-white-ronde.webp" alt="kazidomo-Confiance logo" width="100px" height="100px">
+    </div>
+    <h1>Site en maintenance</h1>
+    <p>Nous sommes en train de mettre à jour notre site web. Veuillez patienter quelques instants.</p>
+    <p>En attendant, vous pouvez consulter nos <a href="https://www.linkedin.com/in/kazidomo-confiance-287846383/" target="_blank"  rel = noopener >articles</a> ou <a href="https://www.tiktok.com/@kazidomo3?_t=ZM-8zPu75OCnCP&_r=1" target="_blank"  rel = noopener >nos vidéos</a> sur TikTok, ou encore nos <a href="https://www.instagram.com/kazidomo3/" target="_blank"  rel = noopener >photos</a> sur Instagram.</p>its</a>.</p>  
+    <p>Besoin d'aide ? <a href="https://mail.google.com/mail/?view=cm&fs=1&to=contact@kazidomo.com" target="_blank"  rel = noopener >
+  Contactez-nous ✉️
+</a></p>
+  </main>
+
+  <footer class="footer">
+    &copy; 2026 Kazidomo - Tous droits réservés
+  </footer>
+
+  <script>
+    // Générer des confettis
+    function createConfetti() {
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+
+      // Couleurs variées
+      const colors = ["#e63946", "#ffb703", "#6a4c93", "#2a9d8f", "#f4a261"];
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+      // Position horizontale aléatoire
+      confetti.style.left = Math.random() * window.innerWidth + "px";
+
+      // Durée d'animation aléatoire
+      confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+
+      document.body.appendChild(confetti);
+
+      // Supprimer après animation
+      setTimeout(() => {
+        confetti.remove();
+      }, 5000);
+    }
+
+    // Créer des confettis en continu
+    setInterval(createConfetti, 200);
+  </script>
 </body>
 </html>
