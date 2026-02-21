@@ -1,3 +1,5 @@
+ let birthdate = "1997-07-08"; // Format: YYYY-MM-DD
+
 document.addEventListener('DOMContentLoaded', () => {
 // Mobile nav toggle
 const toggle = document.querySelector('.nav-toggle');
@@ -19,6 +21,29 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     }
   });
 });
+// Calculate and display age
+
+const birthDate = new Date(birthdate);
+const today = new Date();
+
+let age = today.getFullYear() - birthDate.getFullYear();
+
+// Vérifier si l'anniversaire est déjà passé cette année
+const hasBirthdayPassed = 
+  today.getMonth() > birthDate.getMonth() || 
+  (today.getMonth() === birthDate.getMonth() && today.getDate() >= birthDate.getDate());
+
+if (!hasBirthdayPassed) {
+  age--;
+}
+
+// Insérer l'âge calculé dans le span.meta
+const metaInfo = document.querySelector('.info .meta');
+if (metaInfo) {
+  metaInfo.textContent = `Age ${age}`;
+}
+
+
 
 
 
@@ -48,6 +73,27 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
       msg.style.display = 'block';
     });
   }
+  //  work section for project1
+  const project1 = document.querySelector('.project1');
+  const project1Content = document.createElement('p');
+  project1Content.textContent = `Portfolio MuembiaHub is a responsive and 
+  modern website built to showcase the design and development work of Jonathan M. Muembia. 
+  The site features a clean and professional layout, highlighting Jonathan’s skills, experience, and portfolio of projects. 
+  It is designed to provide an engaging user experience while effectively communicating Jonathan’s expertise in web design and development.
+  Technologies used: HTML5, CSS3, JavaScript.
+  `;
+  const project1Link = document.createElement('a');
+  project1Link.href = "https://kazidomo.com/muembiahub/portifio.html";
+  project1Link.target = "_blank";
+  project1Link.textContent = "View Project";
+  project1Link.classList.add('btn');
+  project1Content.appendChild(project1Link);
+  project1.appendChild(project1Content);
+
+  
+
+ 
+
 
 
 

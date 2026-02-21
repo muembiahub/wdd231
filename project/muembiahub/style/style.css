@@ -205,9 +205,12 @@ body{
   background:linear-gradient(18deg, #ffff 1%, #677968 100% ); border:1px solid var(--border); border-radius:12px;
   overflow:hidden; box-shadow: var(--shadow);
 }
-.work img{width:100%; display:block}
+.work img{width:100%; height: 200px; display:block}
 .work figcaption{padding:0.75rem; color: var(--muted)}
-
+.work p{padding:0.75rem; color: var(--text); margin:0}
+.work .btn{ margin:0.75rem; display:block; text-align:center; background: var(--primary); color:#fff; border-radius:8px;
+  transition:background 0.2s ease;
+}
 /* Contact form */
 .title {color: #0567d7; font-size: 0.6rem; text-align: center;}
 .contact-form{
