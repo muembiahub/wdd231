@@ -1,5 +1,6 @@
 :root{
   --bg: #f5fbff;
+  --news-bg: #a09d9957;
   --bg-alt: #eaf5ff;
   --text: #0f172a;
   --muted: #475569;
@@ -20,12 +21,54 @@ body{
   line-height: 1.6;
 }
 
-/* Header / Nav */
-.site-header{
-  position: sticky; top: 0;; z-index: 1000;
-  background: var(--primary);
-  border-bottom: 1px solid var(--border);
+.news {
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--news-bg);
+  color: var(--text);
+  text-align: center;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 9999;
 }
+
+.news .close-btn {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--primary-600);
+  position: absolute;
+  top: 5px;
+  right: 20px;
+}
+
+.news .close-btn:hover {
+  color: var(--special);
+}
+.news-text {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll 10s linear infinite;
+}
+
+@keyframes scroll {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-100%); }
+}
+
+
+.site-header {
+  margin-top: 1px;
+  z-index: 9999;
+  background: var(--primary);
+  border-bottom: 2px solid var(--primary);
+  border-top:  3px solid var(--primary); ;
+  transition: top 0.3s ease; /* animation fluide */
+}
+
+
 
 .nav{
   max-width: 1200px; margin: 0.3rem; padding: 1rem;

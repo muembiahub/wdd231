@@ -1,4 +1,6 @@
- let birthdate = "1997-07-08"; // Format: YYYY-MM-DD
+let birthdate = "1997-07-08"; // Format: YYYY-MM-DD
+const spaceId = "2zcv3fyk4t5j";  
+const accessToken = "8LDdntvKIFGlHs9vq8SSKJEG5iE-VpiVzKjtiaEAzIc"; // Content Delivery API token
 
 document.addEventListener('DOMContentLoaded', () => {
 // Mobile nav toggle
@@ -21,6 +23,88 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     }
   });
 });
+const newsBar = document.querySelector('.news');
+const siteHeader = document.querySelector('.site-header');
+const closeBtn = document.querySelector('.news .close-btn');
+const newsText = document.querySelector('.news .news-text');
+
+let newsItems = [];
+let currentIndex = 0;
+
+const spaceId = "1qn0pj19e57q";
+const accessToken = "qXklqR9QoXx1tU_gE5RAMg70luoLhpKYw1p3n9k0dPw"; 
+const locale = "en-US"; // ajuste si ton espace utilise une autre locale
+
+async function loadNews() {
+  try {
+    const response = await fetch(
+      `https://cdn.contentful.com/spaces/${spaceId}/entries?access_token=${accessToken}&content_type=updateMessage&include=1`
+    );
+    const data = await response.json();
+
+    console.log("Premier item complet:", data.items[0]);
+    console.log("Fields du premier item:", data.items[0].fields);
+
+    const resolveAsset = (assetRef) => {
+      if (!assetRef || !assetRef.sys) return null;
+      const asset = data.includes?.Asset?.find(a => a.sys.id === assetRef.sys.id);
+      return asset ? `https:${asset.fields.file.url}` : null;
+    };
+
+    newsItems = data.items.map(item => {
+      const fields = item.fields || {};
+      return {
+        title: fields.title || "Sans titre", // direct string
+        message: fields.message
+        ? (fields.message["en-US"] || "Sans message") : "Sans message", // accès direct à la locale
+        time: fields.publishedDate || null,
+        image: Array.isArray(fields.image) && fields.image.length > 0
+          ? resolveAsset(fields.image[0])
+          : null
+      };
+    });
+
+    if (newsItems.length > 0) {
+      updateNewsTicker();
+      setInterval(updateNewsTicker, 5000);
+    }
+  } catch (error) {
+    console.error("Erreur lors du chargement des news:", error);
+  }
+}
+
+
+function updateNewsTicker() {
+  if (newsItems.length === 0) return;
+  const item = newsItems[currentIndex];
+
+  newsText.innerHTML = `
+    ${item.image ? `<img src="${item.image}" alt="${item.title}" style="height:20px;vertical-align:middle;margin-right:8px;">` : ""}
+    <strong>${item.title}</strong> — ${item.message}
+    ${item.time ? `<em style="margin-left:8px;">(${item.time})</em>` : ""}
+  `;
+
+  currentIndex = (currentIndex + 1) % newsItems.length;
+}
+
+closeBtn.addEventListener('click', () => {
+  newsBar.style.display = 'none';
+  siteHeader.style.top = "0";
+});
+
+loadNews();
+
+//  Page landing content
+
+
+
+
+
+
+
+
+
+
 // Calculate and display age
 
 const birthDate = new Date(birthdate);
@@ -90,7 +174,24 @@ if (metaInfo) {
   project1Content.appendChild(project1Link);
   project1.appendChild(project1Content);
 
-  
+  // work section for project2
+  const project2 = document.querySelector('.project2');
+  const project2Content = document.createElement('p');
+  project2Content.textContent = `Kazidomo Confiance is a responsive and modern website built for Kazidomo Confiance, focusing on trust, clarity, and user-friendly navigation. The design emphasizes a clean layout with intuitive navigation to enhance user experience. 
+  The site is optimized for performance and accessibility, ensuring it is usable across various devices and by users with different needs.
+  Technologies used: HTML5, CSS3, JavaScript.
+  `;
+  const roleHighlight = document.createElement('strong');
+  roleHighlight.textContent = "Role: Full-stack development and branding integration.";
+  project2Content.appendChild(roleHighlight);
+
+  const project2Link = document.createElement('a');
+  project2Link.href = "https://kazidomo.com/";
+  project2Link.target = "_blank";
+  project2Link.textContent = "Visit Kazidomo Confiance";
+  project2Link.classList.add('btn');
+  project2Content.appendChild(project2Link);
+  project2.appendChild(project2Content);
 
  
 
@@ -165,3 +266,5 @@ setTimeout(() => {
 
 
 });
+
+
